@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { Calculator, RefreshCw, Copy, Building2, TrendingDown, DollarSign, Calendar } from 'lucide-react'
+import { Calculator, RefreshCw, Copy, Building2, TrendingDown, DollarSign } from 'lucide-react'
 import { monthlyPayment } from '../lib/money'
 import { initGA, track } from '../lib/ga'
 

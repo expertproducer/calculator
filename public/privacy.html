@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Wallet Impact App</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0b0f14;
+            color: #e5e7eb;
+        }
+        .container {
+            background: #1f2937;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #374151;
+        }
+        h1 { color: #fbbf24; margin-bottom: 20px; }
+        h2 { color: #60a5fa; margin-top: 30px; margin-bottom: 15px; }
+        p { margin-bottom: 15px; }
+        .highlight { background: #374151; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .note { background: #065f46; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981; }
+        code { background: #111827; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        
+        <p><strong>Wallet Impact App</strong> is a Progressive Web App (PWA) that helps you calculate financial impacts. This policy explains how we handle your data.</p>
+
+        <h2>Data Storage</h2>
+        <p>This app stores your input values locally on your device using <code>localStorage</code>. This means:</p>
+        <ul>
+            <li>Your data never leaves your device</li>
+            <li>We cannot see your personal financial information</li>
+            <li>Data persists between browser sessions</li>
+            <li>You can clear this data anytime through your browser settings</li>
+        </ul>
+
+        <h2>Hosting & Infrastructure</h2>
+        <p>The app is hosted on Firebase Hosting and served through Cloudflare's CDN. These services provide:</p>
+        <ul>
+            <li>HTTPS encryption for all connections</li>
+            <li>Static file serving (no server-side processing)</li>
+            <li>Global content delivery</li>
+        </ul>
+
+        <h2>Google Analytics (Optional)</h2>
+        <div class="highlight">
+            <p><strong>Analytics are only enabled if you explicitly set a Google Analytics ID.</strong></p>
+            <p>If <code>VITE_GA_ID</code> is configured, the app will send anonymous usage events to Google Analytics:</p>
+            <ul>
+                <li><code>mortgage_calc</code> - When mortgage calculations are performed</li>
+                <li><code>student_calc</code> - When student loan calculations are performed</li>
+                <li><code>gas_calc</code> - When gas impact calculations are performed</li>
+                <li><code>grid_export</code> - When CSV export is used</li>
+                <li>Copy and reset button usage</li>
+            </ul>
+        </div>
+
+        <h2>How to Disable Analytics</h2>
+        <div class="note">
+            <p><strong>Option 1:</strong> Don't set <code>VITE_GA_ID</code> environment variable - analytics will be completely disabled</p>
+            <p><strong>Option 2:</strong> Block Google Analytics in your browser using ad blockers or privacy extensions</p>
+            <p><strong>Option 3:</strong> Use the version without GA4 integration</p>
+        </div>
+
+        <h2>What We Don't Collect</h2>
+        <ul>
+            <li>Personal identification information</li>
+            <li>Financial account details</li>
+            <li>IP addresses or location data</li>
+            <li>Browsing history outside this app</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>This is an open-source project. For privacy concerns, you can:</p>
+        <ul>
+            <li>Review the source code on GitHub</li>
+            <li>Run the app locally without analytics</li>
+            <li>Modify the code to remove any tracking</li>
+        </ul>
+
+        <p><em>Last updated: December 2024</em></p>
+    </div>
+</body>
+</html> 

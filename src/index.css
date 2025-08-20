@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { 
+  color-scheme: dark; 
+}
+
+/* Custom styles for Recharts */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-default-tooltip {
+  background-color: #0f172a !important;
+  border: 1px solid #1f2937 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.recharts-tooltip-item {
+  color: #e5e7eb !important;
+}
+
+.recharts-tooltip-label {
+  color: #10b981 !important;
+  font-weight: bold !important;
+}
+
+/* Smooth transitions for chart elements */
+.recharts-bar-rectangle {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.recharts-bar-rectangle:hover {
+  opacity: 0.8;
+} 

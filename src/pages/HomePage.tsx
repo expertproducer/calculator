@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Building2, GraduationCap, Fuel, ArrowRight, Calculator, Shield, Zap } from 'lucide-react'
+import bannerImage from '../assets/images/a-photograph-of-two-television-hosts-sta_-d5lDFksS1aLGW_ztmbcqg_GXKXgXSXSRCAxA9UEz167g.png'
 
 export default function HomePage() {
   const tools = [
@@ -75,6 +76,31 @@ export default function HomePage() {
             Professional financial calculators help you make informed decisions 
             about mortgages, loans, and expense planning
           </p>
+        </motion.div>
+
+        {/* Banner Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mb-16"
+        >
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            <img 
+              src={bannerImage} 
+              alt="Financial Planning Banner" 
+              className="w-full h-auto object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+            <div className="absolute bottom-6 left-6 right-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Expert Financial Guidance
+              </h3>
+              <p className="text-slate-200 text-lg">
+                Make smart decisions with our professional calculators
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Tools */}

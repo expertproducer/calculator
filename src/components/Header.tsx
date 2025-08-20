@@ -19,40 +19,50 @@ export default function Header() {
           {/* Logo and title */}
           <Link to="/" className="flex items-center gap-3 group">
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-16 h-16 bg-black rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-red-500/25 transition-all duration-300 overflow-hidden"
+              initial={{ scale: 0.8, rotate: -5 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
+              className="relative w-20 h-20 bg-gradient-to-br from-slate-900 to-black rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-green-500/30 transition-all duration-500 overflow-hidden border border-slate-700"
             >
-              {/* Cash & Clash Logo */}
-              <div className="relative text-center">
-                {/* CASH */}
-                <div className="text-green-500 font-bold text-lg leading-none mb-1">
+              {/* Cash & Clash Logo - Professional Design */}
+              <div className="relative text-center transform group-hover:scale-105 transition-transform duration-300">
+                {/* CASH - Top */}
+                <div className="text-green-400 font-black text-xl leading-none mb-2 tracking-wider drop-shadow-lg">
                   CASH
                 </div>
                 
-                {/* Lightning Bolt */}
-                <div className="relative h-4 flex items-center justify-center">
+                {/* Lightning Bolt - Center */}
+                <div className="relative h-6 flex items-center justify-center mb-1">
                   <svg 
-                    className="w-5 h-4 text-red-500 transform rotate-12" 
+                    className="w-6 h-6 text-red-500 transform rotate-12 drop-shadow-lg filter brightness-110" 
                     viewBox="0 0 24 24" 
                     fill="currentColor"
                   >
                     <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
                   </svg>
+                  {/* Lightning glow effect */}
+                  <div className="absolute inset-0 w-6 h-6 bg-red-500/20 rounded-full blur-sm animate-pulse"></div>
                 </div>
                 
-                {/* CLASH */}
-                <div className="text-red-500 font-bold text-lg leading-none mt-1">
+                {/* CLASH - Bottom */}
+                <div className="text-red-400 font-black text-xl leading-none tracking-wider drop-shadow-lg">
                   CLASH
                 </div>
+                
+                {/* Subtle background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-red-500/5 rounded-xl"></div>
               </div>
+              
+              {/* Corner accents */}
+              <div className="absolute top-2 left-2 w-2 h-2 bg-green-500/60 rounded-full"></div>
+              <div className="absolute bottom-2 right-2 w-2 h-2 bg-red-500/60 rounded-full"></div>
             </motion.div>
-            <div>
-              <h1 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+            
+            <div className="group-hover:transform group-hover:translate-x-1 transition-transform duration-300">
+              <h1 className="text-2xl font-black text-white group-hover:text-green-400 transition-colors duration-300 tracking-tight">
                 Cash & Clash
               </h1>
-              <p className="text-xs text-slate-400">Financial Calculators</p>
+              <p className="text-xs text-slate-400 font-medium tracking-wide">Financial Calculators</p>
             </div>
           </Link>
 
@@ -68,8 +78,8 @@ export default function Header() {
                   to={item.path}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 ${
                     isActive
-                      ? 'bg-green-600/20 text-green-400 border border-green-600/30'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                      ? 'bg-green-600/20 text-green-400 border border-green-600/30 shadow-lg'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50 hover:shadow-md'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

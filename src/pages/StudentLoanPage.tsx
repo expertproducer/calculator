@@ -34,7 +34,7 @@ export default function StudentLoanPage() {
   const copy = async (text: string) => {
     try { 
       await navigator.clipboard.writeText(text)
-      alert('Скопировано')
+      alert('Copied')
     } catch {}
   }
 
@@ -44,7 +44,7 @@ export default function StudentLoanPage() {
 
   const handleCopy = () => {
     track('student_copy')
-    copy(`Проценты в месяц: ${fmtUSD(monthlyInterestAmount)} • В день: ${fmtUSD(dailyInterest)} • В год: ${fmtUSD(yearlyInterest)}`)
+    copy(`Monthly interest: ${fmtUSD(monthlyInterestAmount)} • Daily: ${fmtUSD(dailyInterest)} • Yearly: ${fmtUSD(yearlyInterest)}`)
   }
 
   const handleReset = () => {
@@ -56,15 +56,15 @@ export default function StudentLoanPage() {
   return (
     <>
       <Helmet>
-        <title>Калькулятор студенческих кредитов | Wallet Impact - Расчет процентов</title>
-        <meta name="description" content="Рассчитайте проценты по студенческим кредитам, ежемесячные и ежедневные начисления. Планируйте выплаты с умом." />
-        <meta name="keywords" content="студенческие кредиты, калькулятор процентов, расчет кредита, проценты по кредиту, планирование выплат" />
-        <meta property="og:title" content="Калькулятор студенческих кредитов | Wallet Impact" />
-        <meta property="og:description" content="Рассчитайте проценты по студенческим кредитам и планируйте выплаты" />
+        <title>Student Loan Calculator | Wallet Impact - Interest & Payment Calculator</title>
+        <meta name="description" content="Calculate student loan interest, monthly and daily accrual. Plan your payments wisely." />
+        <meta name="keywords" content="student loan calculator, interest calculator, loan interest, payment planning, student debt" />
+        <meta property="og:title" content="Student Loan Calculator | Wallet Impact" />
+        <meta property="og:description" content="Calculate student loan interest and plan your payments" />
       </Helmet>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Заголовок страницы */}
+        {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,15 +76,15 @@ export default function StudentLoanPage() {
               <GraduationCap className="w-6 h-6 text-blue-400" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white">
-              Калькулятор студенческих кредитов
+              Student Loan Calculator
             </h1>
           </div>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Оцените проценты по студенческим кредитам и планируйте выплаты
+            Estimate student loan interest and plan your payments
           </p>
         </motion.div>
 
-        {/* Основной калькулятор */}
+        {/* Main calculator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,21 +92,21 @@ export default function StudentLoanPage() {
           className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl mb-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Параметры кредита */}
+            {/* Loan parameters */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-blue-400" />
-                Параметры кредита
+                Loan Parameters
               </h2>
               <div className="space-y-4">
                 <LabeledNumber 
-                  label="Баланс кредита ($)" 
+                  label="Loan Balance ($)" 
                   value={balance} 
                   onChange={setBalance} 
                   step={100} 
                 />
                 <LabeledNumber 
-                  label="Годовая ставка (%)" 
+                  label="Annual Interest Rate (%)" 
                   value={rate} 
                   onChange={setRate} 
                   step={0.01} 
@@ -114,21 +114,21 @@ export default function StudentLoanPage() {
               </div>
             </div>
 
-            {/* Информация о ставке */}
+            {/* Rate information */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-emerald-400" />
-                Информация о ставке
+                Rate Information
               </h2>
               <div className="space-y-3">
                 <div className="p-3 bg-slate-950/40 border border-slate-800 rounded-lg">
-                  <div className="text-xs text-slate-400 mb-1">Месячная ставка</div>
+                  <div className="text-xs text-slate-400 mb-1">Monthly Rate</div>
                   <div className="text-lg font-semibold text-blue-400">
                     {(rate / 12).toFixed(4)}%
                   </div>
                 </div>
                 <div className="p-3 bg-slate-950/40 border border-slate-800 rounded-lg">
-                  <div className="text-xs text-slate-400 mb-1">Дневная ставка</div>
+                  <div className="text-xs text-slate-400 mb-1">Daily Rate</div>
                   <div className="text-lg font-semibold text-emerald-400">
                     {(rate / 365).toFixed(4)}%
                   </div>
@@ -137,30 +137,30 @@ export default function StudentLoanPage() {
             </div>
           </div>
 
-          {/* Результаты */}
+          {/* Results */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <ResultBox title="Проценты в месяц" value={fmtUSD(monthlyInterestAmount)} />
-            <ResultBox title="Проценты в день" value={fmtUSD(dailyInterest)} />
-            <ResultBox title="Проценты в год" value={fmtUSD(yearlyInterest)} accent />
+            <ResultBox title="Monthly Interest" value={fmtUSD(monthlyInterestAmount)} />
+            <ResultBox title="Daily Interest" value={fmtUSD(dailyInterest)} />
+            <ResultBox title="Yearly Interest" value={fmtUSD(yearlyInterest)} accent />
           </div>
 
-          {/* Кнопки действий */}
+          {/* Action buttons */}
           <div className="flex flex-wrap gap-3 mt-6">
-            <ActionButton icon={Calculator} label="Рассчитать" onClick={handleCalc} />
-            <ActionButton icon={RefreshCw} label="Сбросить" onClick={handleReset} />
-            <ActionButton icon={Copy} label="Копировать результат" onClick={handleCopy} />
+            <ActionButton icon={Calculator} label="Calculate" onClick={handleCalc} />
+            <ActionButton icon={RefreshCw} label="Reset" onClick={handleReset} />
+            <ActionButton icon={Copy} label="Copy Result" onClick={handleCopy} />
           </div>
 
-          {/* Подсказка */}
+          {/* Tip */}
           <div className="mt-4 p-4 bg-blue-900/20 border border-blue-800/30 rounded-xl">
             <p className="text-sm text-blue-300">
-              ⚠️ <strong>Важно:</strong> Даже если у вас '$0 платеж', проценты могут продолжать начисляться. 
-              Войдите в свой аккаунт и проверьте текущий статус.
+              ⚠️ <strong>Important:</strong> Even with a '$0 payment', interest may continue to accrue. 
+              Log into your account and verify the current status.
             </p>
           </div>
         </motion.div>
 
-        {/* Дополнительная информация */}
+        {/* Additional information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,24 +168,24 @@ export default function StudentLoanPage() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Как рассчитываются проценты</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">How interest is calculated</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Проценты начисляются ежедневно на основе текущего баланса кредита. 
-              Ежемесячная сумма процентов = (Баланс × Годовая ставка) ÷ 12. 
-              Ежедневная сумма = Ежемесячная ÷ 30.
+              Interest accrues daily based on the current loan balance. 
+              Monthly interest = (Balance × Annual Rate) ÷ 12. 
+              Daily interest = Monthly ÷ 30.
             </p>
           </div>
           
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Стратегии выплат</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Payment strategies</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Начните выплачивать проценты как можно раньше, даже если основной платеж не требуется. 
-              Это предотвратит капитализацию процентов и рост общего долга.
+              Start paying interest as early as possible, even if the main payment isn't required. 
+              This prevents interest capitalization and overall debt growth.
             </p>
           </div>
         </motion.div>
 
-        {/* Отказ от ответственности */}
+        {/* Disclaimer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function StudentLoanPage() {
           className="mt-8 text-center"
         >
           <p className="text-xs text-slate-400">
-            Не является финансовой консультацией. Данные остаются в вашем браузере.
+            Not financial advice. Data stays in your browser.
           </p>
         </motion.div>
       </div>
@@ -201,7 +201,7 @@ export default function StudentLoanPage() {
   )
 }
 
-// Вспомогательные компоненты
+// Helper components
 function LabeledNumber({ label, value, onChange, step = 1 }: { 
   label: string; 
   value: number; 

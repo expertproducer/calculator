@@ -6,17 +6,17 @@ export default function Header() {
   const location = useLocation()
   
   const navItems = [
-    { path: '/', label: 'Главная', icon: Home },
-    { path: '/mortgage', label: 'Ипотека', icon: Building2 },
-    { path: '/student-loan', label: 'Студенческие кредиты', icon: GraduationCap },
-    { path: '/gas', label: 'Бензин', icon: Fuel },
+    { path: '/', label: 'Home', icon: Home },
+    { path: '/mortgage', label: 'Mortgage', icon: Building2 },
+    { path: '/student-loan', label: 'Student Loans', icon: GraduationCap },
+    { path: '/gas', label: 'Gas', icon: Fuel },
   ]
 
   return (
     <header className="bg-slate-900/80 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Логотип и название */}
+          {/* Logo and title */}
           <Link to="/" className="flex items-center gap-3 group">
             <motion.div
               initial={{ scale: 0.8 }}
@@ -30,11 +30,11 @@ export default function Header() {
               <h1 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
                 Wallet Impact
               </h1>
-              <p className="text-xs text-slate-400">Финансовые калькуляторы</p>
+              <p className="text-xs text-slate-400">Financial Calculators</p>
             </div>
           </Link>
 
-          {/* Навигация */}
+          {/* Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon
@@ -57,7 +57,7 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Мобильное меню */}
+          {/* Mobile menu */}
           <div className="md:hidden">
             <button className="p-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

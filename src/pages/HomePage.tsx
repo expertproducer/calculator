@@ -6,59 +6,59 @@ import { Building2, GraduationCap, Fuel, ArrowRight, Calculator, Shield, Zap } f
 export default function HomePage() {
   const tools = [
     {
-      title: 'Ипотечный калькулятор',
-      description: 'Рассчитайте ежемесячные платежи по ипотеке и сравните разные процентные ставки',
+      title: 'Mortgage Calculator',
+      description: 'Calculate monthly mortgage payments and compare different interest rates',
       icon: Building2,
       path: '/mortgage',
       color: 'emerald',
-      features: ['Ежемесячные платежи', 'Сравнение ставок', 'Экономия при рефинансировании']
+      features: ['Monthly payments', 'Rate comparison', 'Refinancing savings']
     },
     {
-      title: 'Калькулятор студенческих кредитов',
-      description: 'Оцените проценты по студенческим кредитам и планируйте выплаты',
+      title: 'Student Loan Calculator',
+      description: 'Estimate student loan interest and plan your payments',
       icon: GraduationCap,
       path: '/student-loan',
       color: 'blue',
-      features: ['Расчет процентов', 'Ежедневные начисления', 'Планирование выплат']
+      features: ['Interest calculation', 'Daily accrual', 'Payment planning']
     },
     {
-      title: 'Калькулятор расходов на бензин',
-      description: 'Анализируйте влияние изменения цен на бензин на ваш бюджет',
+      title: 'Gas Expense Calculator',
+      description: 'Analyze how gas price changes impact your budget',
       icon: Fuel,
       path: '/gas',
       color: 'amber',
-      features: ['Влияние цен', 'Месячные расходы', 'Анализ профилей']
+      features: ['Price impact', 'Monthly expenses', 'Profile analysis']
     }
   ]
 
   const benefits = [
     {
       icon: Calculator,
-      title: 'Точные расчеты',
-      description: 'Используем проверенные финансовые формулы для точных результатов'
+      title: 'Accurate Calculations',
+      description: 'We use proven financial formulas for precise results'
     },
     {
       icon: Shield,
-      title: 'Безопасность',
-      description: 'Все данные остаются в вашем браузере, ничего не отправляется на серверы'
+      title: 'Privacy First',
+      description: 'All data stays in your browser, nothing is sent to servers'
     },
     {
       icon: Zap,
-      title: 'Быстро и просто',
-      description: 'Интуитивный интерфейс для мгновенных расчетов'
+      title: 'Fast & Simple',
+      description: 'Intuitive interface for instant calculations'
     }
   ]
 
   return (
     <>
       <Helmet>
-        <title>Wallet Impact - Главная | Финансовые калькуляторы</title>
-        <meta name="description" content="Профессиональные финансовые калькуляторы для планирования бюджета. Ипотека, студенческие кредиты, расходы на бензин." />
-        <meta name="keywords" content="финансовые калькуляторы, ипотека, студенческие кредиты, бензин, бюджет" />
+        <title>Wallet Impact - Financial Calculators for Smart Budgeting</title>
+        <meta name="description" content="Professional financial calculators for mortgage, student loans, and gas expenses. Plan your budget wisely." />
+        <meta name="keywords" content="financial calculators, mortgage, student loans, gas expenses, budget planning" />
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Hero секция */}
+        {/* Hero section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,18 +66,18 @@ export default function HomePage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Планируйте свой бюджет с{' '}
+            Plan your budget with{' '}
             <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-              умом
+              confidence
             </span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Профессиональные финансовые калькуляторы помогут вам принимать обоснованные решения 
-            по ипотеке, кредитам и планированию расходов
+            Professional financial calculators help you make informed decisions 
+            about mortgages, loans, and expense planning
           </p>
         </motion.div>
 
-        {/* Инструменты */}
+        {/* Tools */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export default function HomePage() {
           className="mb-16"
         >
           <h2 className="text-2xl font-bold text-white text-center mb-8">
-            Наши инструменты
+            Our Tools
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {tools.map((tool, index) => {
@@ -125,7 +125,7 @@ export default function HomePage() {
                     to={tool.path}
                     className={`inline-flex items-center gap-2 text-${tool.color}-400 hover:text-${tool.color}-300 font-medium transition-colors`}
                   >
-                    Попробовать <ArrowRight className="w-4 h-4" />
+                    Try it <ArrowRight className="w-4 h-4" />
                   </Link>
                 </motion.div>
               )
@@ -133,7 +133,7 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* Преимущества */}
+        {/* Benefits */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -141,7 +141,7 @@ export default function HomePage() {
           className="mb-16"
         >
           <h2 className="text-2xl font-bold text-white text-center mb-8">
-            Почему выбирают нас
+            Why Choose Us
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => {
@@ -165,7 +165,7 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* CTA секция */}
+        {/* CTA section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -174,10 +174,10 @@ export default function HomePage() {
         >
           <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 border border-emerald-600/30 rounded-2xl p-8">
             <h2 className="text-2xl font-bold text-white mb-4">
-              Готовы начать планирование?
+              Ready to start planning?
             </h2>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-              Выберите нужный инструмент и начните анализировать свои финансы уже сегодня
+              Choose the tool you need and start analyzing your finances today
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               {tools.map((tool) => (

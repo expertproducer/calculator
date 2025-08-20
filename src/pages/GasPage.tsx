@@ -34,7 +34,7 @@ export default function GasPage() {
   const copy = async (text: string) => {
     try { 
       await navigator.clipboard.writeText(text)
-      alert('Скопировано')
+      alert('Copied')
     } catch {}
   }
 
@@ -44,7 +44,7 @@ export default function GasPage() {
 
   const handleCopy = () => {
     track('gas_copy')
-    copy(`Влияние на бензин: ${fmtUSD(monthlyImpact)}/месяц • ${fmtUSD(yearlyImpact)}/год • ${fmtUSD(weeklyImpact)}/неделю`)
+    copy(`Gas impact: ${fmtUSD(monthlyImpact)}/month • ${fmtUSD(yearlyImpact)}/year • ${fmtUSD(weeklyImpact)}/week`)
   }
 
   const handleReset = () => {
@@ -56,15 +56,15 @@ export default function GasPage() {
   return (
     <>
       <Helmet>
-        <title>Калькулятор расходов на бензин | Wallet Impact - Анализ влияния цен</title>
-        <meta name="description" content="Анализируйте влияние изменения цен на бензин на ваш бюджет. Рассчитайте месячные и годовые расходы." />
-        <meta name="keywords" content="калькулятор бензина, расходы на топливо, влияние цен на бензин, планирование бюджета на транспорт" />
-        <meta property="og:title" content="Калькулятор расходов на бензин | Wallet Impact" />
-        <meta property="og:description" content="Анализируйте влияние изменения цен на бензин на ваш бюджет" />
+        <title>Gas Expense Calculator | Wallet Impact - Price Impact Analysis</title>
+        <meta name="description" content="Analyze how gas price changes impact your budget. Calculate monthly and yearly expenses." />
+        <meta name="keywords" content="gas calculator, fuel expenses, gas price impact, budget planning, transportation costs" />
+        <meta property="og:title" content="Gas Expense Calculator | Wallet Impact" />
+        <meta property="og:description" content="Analyze how gas price changes impact your budget" />
       </Helmet>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Заголовок страницы */}
+        {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,15 +76,15 @@ export default function GasPage() {
               <Fuel className="w-6 h-6 text-amber-400" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white">
-              Калькулятор расходов на бензин
+              Gas Expense Calculator
             </h1>
           </div>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Анализируйте влияние изменения цен на бензин на ваш бюджет
+            Analyze how gas price changes impact your budget
           </p>
         </motion.div>
 
-        {/* Основной калькулятор */}
+        {/* Main calculator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,21 +92,21 @@ export default function GasPage() {
           className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl mb-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Потребление бензина */}
+            {/* Gas consumption */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <Car className="w-5 h-5 text-amber-400" />
-                Потребление бензина
+                Gas Consumption
               </h2>
               <div className="space-y-4">
                 <LabeledNumber 
-                  label="Галлонов в месяц" 
+                  label="Gallons per month" 
                   value={gallons} 
                   onChange={setGallons} 
                   step={1} 
                 />
                 <div className="p-3 bg-slate-950/40 border border-slate-800 rounded-lg">
-                  <div className="text-xs text-slate-400 mb-1">Примерно галлонов в неделю</div>
+                  <div className="text-xs text-slate-400 mb-1">Approx. gallons per week</div>
                   <div className="text-lg font-semibold text-amber-400">
                     {(gallons / 4).toFixed(1)}
                   </div>
@@ -114,21 +114,21 @@ export default function GasPage() {
               </div>
             </div>
 
-            {/* Изменение цен */}
+            {/* Price changes */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-emerald-400" />
-                Изменение цен
+                Price Changes
               </h2>
               <div className="space-y-4">
                 <LabeledNumber 
-                  label="Изменение цены за галлон ($)" 
+                  label="Price change per gallon ($)" 
                   value={deltaPerGallon} 
                   onChange={setDeltaPerGallon} 
                   step={0.01} 
                 />
                 <div className="p-3 bg-slate-950/40 border border-slate-800 rounded-lg">
-                  <div className="text-xs text-slate-400 mb-1">Влияние на 1 галлон</div>
+                  <div className="text-xs text-slate-400 mb-1">Impact per gallon</div>
                   <div className={`text-lg font-semibold ${deltaPerGallon >= 0 ? 'text-red-400' : 'text-green-400'}`}>
                     {deltaPerGallon >= 0 ? '+' : ''}{fmtUSD(deltaPerGallon)}
                   </div>
@@ -137,30 +137,30 @@ export default function GasPage() {
             </div>
           </div>
 
-          {/* Результаты */}
+          {/* Results */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <ResultBox title="Влияние в месяц" value={fmtUSD(monthlyImpact)} />
-            <ResultBox title="Влияние в неделю" value={fmtUSD(weeklyImpact)} />
-            <ResultBox title="Влияние в год" value={fmtUSD(yearlyImpact)} accent />
+            <ResultBox title="Monthly Impact" value={fmtUSD(monthlyImpact)} />
+            <ResultBox title="Weekly Impact" value={fmtUSD(weeklyImpact)} />
+            <ResultBox title="Yearly Impact" value={fmtUSD(yearlyImpact)} accent />
           </div>
 
-          {/* Кнопки действий */}
+          {/* Action buttons */}
           <div className="flex flex-wrap gap-3 mt-6">
-            <ActionButton icon={Calculator} label="Рассчитать" onClick={handleCalc} />
-            <ActionButton icon={RefreshCw} label="Сбросить" onClick={handleReset} />
-            <ActionButton icon={Copy} label="Копировать результат" onClick={handleCopy} />
+            <ActionButton icon={Calculator} label="Calculate" onClick={handleCalc} />
+            <ActionButton icon={RefreshCw} label="Reset" onClick={handleReset} />
+            <ActionButton icon={Copy} label="Copy Result" onClick={handleCopy} />
           </div>
 
-          {/* Подсказка */}
+          {/* Tip */}
           <div className="mt-4 p-4 bg-amber-900/20 border border-amber-800/30 rounded-xl">
             <p className="text-sm text-amber-300">
-              🚗 <strong>Совет:</strong> Водители и курьеры: отслеживайте реальное потребление бензина 
-              в течение 2 недель — не угадывайте.
+              🚗 <strong>Tip:</strong> Drivers and couriers: track actual gas consumption 
+              for 2 weeks — don't guess.
             </p>
           </div>
         </motion.div>
 
-        {/* Дополнительная информация */}
+        {/* Additional information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,25 +168,24 @@ export default function GasPage() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Как рассчитывается влияние</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">How impact is calculated</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Влияние = Количество галлонов × Изменение цены за галлон. 
-              Положительное значение означает увеличение расходов, 
-              отрицательное — экономию.
+              Impact = Number of gallons × Price change per gallon. 
+              Positive values mean increased expenses, 
+              negative values mean savings.
             </p>
           </div>
           
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Стратегии экономии</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Savings strategies</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Отслеживайте цены на бензин в разных районах, используйте 
-              приложения для поиска лучших цен, планируйте маршруты 
-              для минимизации пробега.
+              Track gas prices in different areas, use apps to find better prices, 
+              plan routes to minimize mileage.
             </p>
           </div>
         </motion.div>
 
-        {/* Отказ от ответственности */}
+        {/* Disclaimer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -194,7 +193,7 @@ export default function GasPage() {
           className="mt-8 text-center"
         >
           <p className="text-xs text-slate-400">
-            Не является финансовой консультацией. Данные остаются в вашем браузере.
+            Not financial advice. Data stays in your browser.
           </p>
         </motion.div>
       </div>
@@ -202,7 +201,7 @@ export default function GasPage() {
   )
 }
 
-// Вспомогательные компоненты
+// Helper components
 function LabeledNumber({ label, value, onChange, step = 1 }: { 
   label: string; 
   value: number; 

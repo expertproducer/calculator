@@ -38,7 +38,7 @@ export default function MortgagePage() {
   const copy = async (text: string) => {
     try { 
       await navigator.clipboard.writeText(text)
-      alert('Скопировано')
+      alert('Copied')
     } catch {}
   }
 
@@ -48,7 +48,7 @@ export default function MortgagePage() {
 
   const handleCopy = () => {
     track('mortgage_copy')
-    copy(`Старая ставка: ${fmtUSD(oldMonthly)} | Новая ставка: ${fmtUSD(newMonthly)} | Экономия: ${fmtUSD(mortgageDelta)}`)
+    copy(`Old rate: ${fmtUSD(oldMonthly)} | New rate: ${fmtUSD(newMonthly)} | Savings: ${fmtUSD(mortgageDelta)}`)
   }
 
   const handleReset = () => {
@@ -62,15 +62,15 @@ export default function MortgagePage() {
   return (
     <>
       <Helmet>
-        <title>Ипотечный калькулятор | Wallet Impact - Расчет платежей и экономии</title>
-        <meta name="description" content="Рассчитайте ежемесячные платежи по ипотеке, сравните разные процентные ставки и узнайте, сколько вы сэкономите при рефинансировании." />
-        <meta name="keywords" content="ипотечный калькулятор, расчет ипотеки, ежемесячные платежи, рефинансирование ипотеки, процентные ставки" />
-        <meta property="og:title" content="Ипотечный калькулятор | Wallet Impact" />
-        <meta property="og:description" content="Рассчитайте ежемесячные платежи по ипотеке и экономию при рефинансировании" />
+        <title>Mortgage Calculator | Wallet Impact - Payment & Savings Calculator</title>
+        <meta name="description" content="Calculate monthly mortgage payments, compare different interest rates, and see how much you can save with refinancing." />
+        <meta name="keywords" content="mortgage calculator, mortgage payments, interest rates, refinancing calculator, monthly payments" />
+        <meta property="og:title" content="Mortgage Calculator | Wallet Impact" />
+        <meta property="og:description" content="Calculate monthly mortgage payments and refinancing savings" />
       </Helmet>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Заголовок страницы */}
+        {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,15 +82,15 @@ export default function MortgagePage() {
               <Building2 className="w-6 h-6 text-emerald-400" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white">
-              Ипотечный калькулятор
+              Mortgage Calculator
             </h1>
           </div>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Рассчитайте ежемесячные платежи по ипотеке и сравните разные процентные ставки
+            Calculate monthly mortgage payments and compare different interest rates
           </p>
         </motion.div>
 
-        {/* Основной калькулятор */}
+        {/* Main calculator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -98,21 +98,21 @@ export default function MortgagePage() {
           className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl mb-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Параметры кредита */}
+            {/* Loan parameters */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-emerald-400" />
-                Параметры кредита
+                Loan Parameters
               </h2>
               <div className="space-y-4">
                 <LabeledNumber 
-                  label="Сумма кредита ($)" 
+                  label="Loan Amount ($)" 
                   value={principal} 
                   onChange={setPrincipal} 
                   step={1000} 
                 />
                 <LabeledNumber 
-                  label="Срок кредита (лет)" 
+                  label="Loan Term (years)" 
                   value={years} 
                   onChange={setYears} 
                   step={1} 
@@ -120,21 +120,21 @@ export default function MortgagePage() {
               </div>
             </div>
 
-            {/* Процентные ставки */}
+            {/* Interest rates */}
             <div>
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <TrendingDown className="w-5 h-5 text-blue-400" />
-                Процентные ставки
+                Interest Rates
               </h2>
               <div className="space-y-4">
                 <LabeledNumber 
-                  label="Старая ставка (%)" 
+                  label="Old Rate (%)" 
                   value={oldRate} 
                   onChange={setOldRate} 
                   step={0.01} 
                 />
                 <LabeledNumber 
-                  label="Новая ставка (%)" 
+                  label="New Rate (%)" 
                   value={newRate} 
                   onChange={setNewRate} 
                   step={0.01} 
@@ -143,30 +143,30 @@ export default function MortgagePage() {
             </div>
           </div>
 
-          {/* Результаты */}
+          {/* Results */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <ResultBox title="Платеж (старая ставка)" value={fmtUSD(oldMonthly)} />
-            <ResultBox title="Платеж (новая ставка)" value={fmtUSD(newMonthly)} />
-            <ResultBox title="Экономия в месяц" value={fmtUSD(mortgageDelta)} accent />
+            <ResultBox title="Payment (old rate)" value={fmtUSD(oldMonthly)} />
+            <ResultBox title="Payment (new rate)" value={fmtUSD(newMonthly)} />
+            <ResultBox title="Monthly Savings" value={fmtUSD(mortgageDelta)} accent />
           </div>
 
-          {/* Кнопки действий */}
+          {/* Action buttons */}
           <div className="flex flex-wrap gap-3 mt-6">
-            <ActionButton icon={Calculator} label="Рассчитать" onClick={handleCalc} />
-            <ActionButton icon={RefreshCw} label="Сбросить" onClick={handleReset} />
-            <ActionButton icon={Copy} label="Копировать результат" onClick={handleCopy} />
+            <ActionButton icon={Calculator} label="Calculate" onClick={handleCalc} />
+            <ActionButton icon={RefreshCw} label="Reset" onClick={handleReset} />
+            <ActionButton icon={Copy} label="Copy Result" onClick={handleCopy} />
           </div>
 
-          {/* Подсказка */}
+          {/* Tip */}
           <div className="mt-4 p-4 bg-emerald-900/20 border border-emerald-800/30 rounded-xl">
             <p className="text-sm text-emerald-300">
-              💡 <strong>Совет:</strong> Покупка дисконтных пунктов снижает ежемесячные платежи, 
-              но требует дополнительных затрат. Рассчитайте время окупаемости.
+              💡 <strong>Tip:</strong> Buying discount points lowers monthly payments 
+              but costs upfront. Calculate the payback period.
             </p>
           </div>
         </motion.div>
 
-        {/* Дополнительная информация */}
+        {/* Additional information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -174,25 +174,25 @@ export default function MortgagePage() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Как это работает</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">How it works</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Калькулятор использует стандартную формулу аннуитетных платежей для расчета 
-              ежемесячных взносов по ипотеке. Сравнение старой и новой ставки показывает 
-              потенциальную экономию при рефинансировании.
+              The calculator uses the standard annuity payment formula to calculate 
+              monthly mortgage payments. Comparing old and new rates shows 
+              potential savings from refinancing.
             </p>
           </div>
           
           <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Когда рефинансировать</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">When to refinance</h3>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Рефинансирование имеет смысл, если новая ставка на 0.5-1% ниже текущей 
-              и вы планируете оставаться в доме достаточно долго для окупаемости 
-              затрат на рефинансирование.
+              Refinancing makes sense if the new rate is 0.5-1% lower than current 
+              and you plan to stay in the home long enough to recoup 
+              refinancing costs.
             </p>
           </div>
         </motion.div>
 
-        {/* Отказ от ответственности */}
+        {/* Disclaimer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -200,7 +200,7 @@ export default function MortgagePage() {
           className="mt-8 text-center"
         >
           <p className="text-xs text-slate-400">
-            Не является финансовой консультацией. Данные остаются в вашем браузере.
+            Not financial advice. Data stays in your browser.
           </p>
         </motion.div>
       </div>
@@ -208,7 +208,7 @@ export default function MortgagePage() {
   )
 }
 
-// Вспомогательные компоненты
+// Helper components
 function LabeledNumber({ label, value, onChange, step = 1 }: { 
   label: string; 
   value: number; 

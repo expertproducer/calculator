@@ -62,10 +62,10 @@ export default function MortgagePage() {
   return (
     <>
       <Helmet>
-        <title>Mortgage Calculator | Wallet Impact - Payment & Savings Calculator</title>
+        <title>Mortgage Calculator | Cash Clash - Payment & Savings Calculator</title>
         <meta name="description" content="Calculate monthly mortgage payments, compare different interest rates, and see how much you can save with refinancing." />
         <meta name="keywords" content="mortgage calculator, mortgage payments, interest rates, refinancing calculator, monthly payments" />
-        <meta property="og:title" content="Mortgage Calculator | Wallet Impact" />
+        <meta property="og:title" content="Mortgage Calculator | Cash Clash" />
         <meta property="og:description" content="Calculate monthly mortgage payments and refinancing savings" />
       </Helmet>
 

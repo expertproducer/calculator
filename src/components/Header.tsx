@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Calculator, Home, Building2, GraduationCap, Fuel } from 'lucide-react'
+import { Home, Building2, GraduationCap, Fuel } from 'lucide-react'
 
 export default function Header() {
   const location = useLocation()
@@ -22,13 +22,35 @@ export default function Header() {
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-emerald-500/25 transition-all duration-300"
+              className="relative w-16 h-16 bg-black rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-red-500/25 transition-all duration-300 overflow-hidden"
             >
-              <Calculator className="w-6 h-6 text-white" />
+              {/* Cash Clash Logo */}
+              <div className="relative text-center">
+                {/* CASH */}
+                <div className="text-green-500 font-bold text-lg leading-none mb-1">
+                  CASH
+                </div>
+                
+                {/* Lightning Bolt */}
+                <div className="relative h-4 flex items-center justify-center">
+                  <svg 
+                    className="w-5 h-4 text-red-500 transform rotate-12" 
+                    viewBox="0 0 24 24" 
+                    fill="currentColor"
+                  >
+                    <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                  </svg>
+                </div>
+                
+                {/* CLASH */}
+                <div className="text-red-500 font-bold text-lg leading-none mt-1">
+                  CLASH
+                </div>
+              </div>
             </motion.div>
             <div>
-              <h1 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-                Wallet Impact
+              <h1 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                Cash Clash
               </h1>
               <p className="text-xs text-slate-400">Financial Calculators</p>
             </div>
@@ -46,7 +68,7 @@ export default function Header() {
                   to={item.path}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 ${
                     isActive
-                      ? 'bg-emerald-600/20 text-emerald-400 border border-emerald-600/30'
+                      ? 'bg-green-600/20 text-green-400 border border-green-600/30'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >

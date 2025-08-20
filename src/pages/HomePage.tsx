@@ -52,7 +52,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Wallet Impact - Financial Calculators for Smart Budgeting</title>
+        <title>Cash Clash - Financial Calculators for Smart Budgeting</title>
         <meta name="description" content="Professional financial calculators for mortgage, student loans, and gas expenses. Plan your budget wisely." />
         <meta name="keywords" content="financial calculators, mortgage, student loans, gas expenses, budget planning" />
       </Helmet>
@@ -67,7 +67,7 @@ export default function HomePage() {
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Plan your budget with{' '}
-            <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-green-400 to-red-400 bg-clip-text text-transparent">
               confidence
             </span>
           </h1>
@@ -154,8 +154,8 @@ export default function HomePage() {
                   transition={{ duration: 0.6, delay: 0.5 + 0.1 * index }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 bg-emerald-600/20 border border-emerald-600/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-emerald-400" />
+                  <div className="w-16 h-16 bg-green-600/20 border border-green-600/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-green-400" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
                   <p className="text-slate-400 leading-relaxed">{benefit.description}</p>
@@ -172,7 +172,7 @@ export default function HomePage() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 border border-emerald-600/30 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-green-600/20 to-red-600/20 border border-green-600/30 rounded-2xl p-8">
             <h2 className="text-2xl font-bold text-white mb-4">
               Ready to start planning?
             </h2>
@@ -184,7 +184,7 @@ export default function HomePage() {
                 <Link
                   key={tool.path}
                   to={tool.path}
-                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-medium transition-colors"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-medium transition-colors"
                 >
                   <tool.icon className="w-5 h-5" />
                   {tool.title}

@@ -22,40 +22,25 @@ export default function Header() {
               initial={{ scale: 0.8, rotate: -5 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-              className="relative w-20 h-20 bg-gradient-to-br from-slate-900 to-black rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-green-500/30 transition-all duration-500 overflow-hidden border border-slate-700"
+              className="relative w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-green-500/30 transition-all duration-500 overflow-hidden border border-slate-200"
             >
-              {/* Cash & Clash Logo - Professional Design */}
+              {/* Cash & Clash Logo - Exact Figma Copy */}
               <div className="relative text-center transform group-hover:scale-105 transition-transform duration-300">
-                {/* CASH - Top */}
-                <div className="text-green-400 font-black text-xl leading-none mb-2 tracking-wider drop-shadow-lg">
-                  CASH
+                {/* cash - Top */}
+                <div className="text-green-500 font-bold text-2xl leading-none mb-1 tracking-wide">
+                  cash
                 </div>
                 
-                {/* Lightning Bolt - Center */}
-                <div className="relative h-6 flex items-center justify-center mb-1">
-                  <svg 
-                    className="w-6 h-6 text-red-500 transform rotate-12 drop-shadow-lg filter brightness-110" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
-                  >
-                    <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
-                  </svg>
-                  {/* Lightning glow effect */}
-                  <div className="absolute inset-0 w-6 h-6 bg-red-500/20 rounded-full blur-sm animate-pulse"></div>
+                {/* & - Center */}
+                <div className="text-black font-bold text-lg leading-none mb-1">
+                  &
                 </div>
                 
-                {/* CLASH - Bottom */}
-                <div className="text-red-400 font-black text-xl leading-none tracking-wider drop-shadow-lg">
-                  CLASH
+                {/* clash - Bottom */}
+                <div className="text-red-500 font-bold text-2xl leading-none tracking-wide">
+                  clash
                 </div>
-                
-                {/* Subtle background glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-red-500/5 rounded-xl"></div>
               </div>
-              
-              {/* Corner accents */}
-              <div className="absolute top-2 left-2 w-2 h-2 bg-green-500/60 rounded-full"></div>
-              <div className="absolute bottom-2 right-2 w-2 h-2 bg-red-500/60 rounded-full"></div>
             </motion.div>
             
             <div className="group-hover:transform group-hover:translate-x-1 transition-transform duration-300">

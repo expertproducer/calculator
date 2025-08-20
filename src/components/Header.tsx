@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Home, Building2, GraduationCap, Fuel } from 'lucide-react'
+import logo from '../assets/images/cash&clash.svg'
 
 export default function Header() {
   const location = useLocation()
@@ -22,25 +23,14 @@ export default function Header() {
               initial={{ scale: 0.8, rotate: -5 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-              className="relative w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-green-500/30 transition-all duration-500 overflow-hidden border border-slate-200"
+              className="relative w-20 h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300"
             >
-              {/* Cash & Clash Logo - Exact Figma Copy */}
-              <div className="relative text-center transform group-hover:scale-105 transition-transform duration-300">
-                {/* cash - Top */}
-                <div className="text-green-500 font-bold text-2xl leading-none mb-1 tracking-wide">
-                  cash
-                </div>
-                
-                {/* & - Center */}
-                <div className="text-black font-bold text-lg leading-none mb-1">
-                  &
-                </div>
-                
-                {/* clash - Bottom */}
-                <div className="text-red-500 font-bold text-2xl leading-none tracking-wide">
-                  clash
-                </div>
-              </div>
+              {/* Imported SVG Logo from Figma */}
+              <img 
+                src={logo} 
+                alt="Cash & Clash Logo" 
+                className="w-full h-full object-contain drop-shadow-lg"
+              />
             </motion.div>
             
             <div className="group-hover:transform group-hover:translate-x-1 transition-transform duration-300">

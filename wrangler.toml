@@ -1,0 +1,8 @@
+name = "wallet-impact-app"
+compatibility_date = "2025-01-20"
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build" 

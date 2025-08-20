@@ -52,7 +52,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Cash Clash - Financial Calculators for Smart Budgeting</title>
+        <title>Cash & Clash - Financial Calculators for Smart Budgeting</title>
         <meta name="description" content="Professional financial calculators for mortgage, student loans, and gas expenses. Plan your budget wisely." />
         <meta name="keywords" content="financial calculators, mortgage, student loans, gas expenses, budget planning" />
       </Helmet>

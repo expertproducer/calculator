@@ -56,10 +56,10 @@ export default function StudentLoanPage() {
   return (
     <>
       <Helmet>
-        <title>Student Loan Calculator | Cash Clash - Interest & Payment Calculator</title>
+        <title>Student Loan Calculator | Cash & Clash - Interest & Payment Calculator</title>
         <meta name="description" content="Calculate student loan interest, monthly and daily accrual. Plan your payments wisely." />
         <meta name="keywords" content="student loan calculator, interest calculator, loan interest, payment planning, student debt" />
-        <meta property="og:title" content="Student Loan Calculator | Cash Clash" />
+        <meta property="og:title" content="Student Loan Calculator | Cash & Clash" />
         <meta property="og:description" content="Calculate student loan interest and plan your payments" />
       </Helmet>
 

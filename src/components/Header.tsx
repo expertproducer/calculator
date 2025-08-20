@@ -24,7 +24,7 @@ export default function Header() {
               transition={{ duration: 0.3 }}
               className="relative w-16 h-16 bg-black rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-red-500/25 transition-all duration-300 overflow-hidden"
             >
-              {/* Cash Clash Logo */}
+              {/* Cash & Clash Logo */}
               <div className="relative text-center">
                 {/* CASH */}
                 <div className="text-green-500 font-bold text-lg leading-none mb-1">
@@ -50,7 +50,7 @@ export default function Header() {
             </motion.div>
             <div>
               <h1 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
-                Cash Clash
+                Cash & Clash
               </h1>
               <p className="text-xs text-slate-400">Financial Calculators</p>
             </div>

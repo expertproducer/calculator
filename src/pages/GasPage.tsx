@@ -56,10 +56,10 @@ export default function GasPage() {
   return (
     <>
       <Helmet>
-        <title>Gas Expense Calculator | Cash Clash - Price Impact Analysis</title>
+        <title>Gas Expense Calculator | Cash & Clash - Price Impact Analysis</title>
         <meta name="description" content="Analyze how gas price changes impact your budget. Calculate monthly and yearly expenses." />
         <meta name="keywords" content="gas calculator, fuel expenses, gas price impact, budget planning, transportation costs" />
-        <meta property="og:title" content="Gas Expense Calculator | Cash Clash" />
+        <meta property="og:title" content="Gas Expense Calculator | Cash & Clash" />
         <meta property="og:description" content="Analyze how gas price changes impact your budget" />
       </Helmet>
 

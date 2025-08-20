@@ -25,7 +25,7 @@ export default function Header() {
               transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
               className="relative w-20 h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300"
             >
-              {/* Imported SVG Logo from Figma */}
+              {/* Updated SVG Logo */}
               <img 
                 src={logo} 
                 alt="Cash & Clash Logo" 

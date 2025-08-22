@@ -59,30 +59,11 @@ export default function HomePage() {
       </Helmet>
 
       <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Hero section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Plan your budget with{' '}
-            <span className="bg-gradient-to-r from-green-400 to-red-400 bg-clip-text text-transparent">
-              confidence
-            </span>
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Professional financial calculators help you make informed decisions 
-            about mortgages, loans, and expense planning
-          </p>
-        </motion.div>
-
         {/* Banner Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8 }}
           className="mb-16"
         >
           <div className="relative overflow-hidden rounded-2xl shadow-2xl">
@@ -101,6 +82,25 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+        </motion.div>
+
+        {/* Hero section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Plan your budget with{' '}
+            <span className="bg-gradient-to-r from-green-400 to-red-400 bg-clip-text text-transparent">
+              confidence
+            </span>
+          </h1>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Professional financial calculators help you make informed decisions 
+            about mortgages, loans, and expense planning
+          </p>
         </motion.div>
 
         {/* Tools */}

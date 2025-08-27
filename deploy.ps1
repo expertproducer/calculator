@@ -14,9 +14,9 @@ foreach ($file in $requiredFiles) {
 }
 
 # Очищаем предыдущую сборку
-if (Test-Path ".next") {
+if (Test-Path "out") {
     Write-Host "🧹 Cleaning previous build..." -ForegroundColor Yellow
-    Remove-Item -Recurse -Force ".next"
+    Remove-Item -Recurse -Force "out"
 }
 
 # Собираем проект
@@ -33,11 +33,13 @@ Write-Host "✅ Build completed successfully!" -ForegroundColor Green
 # Деплоим на Cloudflare Pages
 Write-Host "🚀 Deploying to Cloudflare Pages..." -ForegroundColor Yellow
 
-try {
-    npx wrangler pages deploy .next --project-name calculator
-    Write-Host "✅ Deployment completed successfully!" -ForegroundColor Green
-    Write-Host "🌐 Your site is now live at: https://cashandclash.com" -ForegroundColor Cyan
-} catch {
-    Write-Host "❌ Deployment failed: $_" -ForegroundColor Red
+# Используем wrangler для деплоя папки out
+npx wrangler pages deploy out --project-name calculator
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Deployment failed!" -ForegroundColor Red
     exit 1
 }
+
+Write-Host "🎉 Deployment completed successfully!" -ForegroundColor Green
+Write-Host "🌐 Your site is now live on Cloudflare Pages!" -ForegroundColor Cyan

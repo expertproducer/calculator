@@ -1,0 +1,18 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output_dir": ".next",
+    "environment": {
+      "NODE_VERSION": "18"
+    }
+  },
+  "functions": {
+    "directory": "functions"
+  },
+  "routes": [
+    {
+      "pattern": "/api/*",
+      "function": "api"
+    }
+  ]
+}

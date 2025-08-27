@@ -9,7 +9,10 @@ const nextConfig = {
   // Отключаем оптимизацию изображений для статического экспорта
   images: {
     unoptimized: true
-  }
+  },
+  
+  // Указываем папку для сборки (Cloudflare Pages ожидает 'out')
+  distDir: 'out'
 }
 
 module.exports = nextConfig

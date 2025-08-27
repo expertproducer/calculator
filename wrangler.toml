@@ -5,9 +5,9 @@ name = "calculator"
 [functions]
 directory = "functions"
 
-# Конфигурация для Pages
+# Конфигурация для Pages - указываем папку out
 [pages]
-directory = ".next"
+directory = "out"
 
 # Переменные окружения для продакшена
 [env.production]

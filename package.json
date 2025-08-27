@@ -10,7 +10,7 @@
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next, out, dist -ErrorAction SilentlyContinue\"",
     "clean-cache": "powershell -Command \"Remove-Item -Recurse -Force .next, out, dist, .cache, cache, webpack -ErrorAction SilentlyContinue\"",
     "type-check": "tsc --noEmit",
-    "deploy": "npm run clean-cache && npm run build && npx wrangler pages deploy .next --project-name calculator"
+    "deploy": "npm run clean-cache && npm run build && npx wrangler pages deploy .next/standalone --project-name calculator"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

@@ -84,11 +84,14 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#3B82F6" />
         <meta name="msapplication-TileColor" content="#3B82F6" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

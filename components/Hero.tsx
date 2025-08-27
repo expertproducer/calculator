@@ -1,20 +1,194 @@
-export default function Hero({ content }: { content: any }) {
+'use client'
+
+import { useState } from 'react'
+import { ArrowRight, Shield, CheckCircle, Zap } from 'lucide-react'
+import OptimizedImage from './OptimizedImage'
+
+interface HeroProps {
+  content: {
+    title: string
+    subtitle: string
+    description?: string
+    cta: {
+      primary: string
+      secondary: string
+    }
+    features?: string[]
+    image?: {
+      src: string
+      alt: string
+      width: number
+      height: number
+    }
+  }
+}
+
+export default function Hero({ content }: HeroProps) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToServices = () => {
+    const element = document.getElementById('services')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-          {content.title}
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          {content.subtitle}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="btn btn-primary text-lg px-8 py-4">
-            {content.ctaPrimary}
-          </button>
-          <button className="btn btn-outline text-lg px-8 py-4">
-            {content.ctaSecondary}
-          </button>
+    <section 
+      className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
+      aria-labelledby="hero-title"
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-200 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-30" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div className="text-center lg:text-left">
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
+              <Shield className="text-blue-600 dark:text-blue-400" size={32} />
+              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
+                GDPR Compliance
+              </span>
+            </div>
+
+            <h1 
+              id="hero-title"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+            >
+              {content.title}
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              {content.subtitle}
+            </p>
+
+            {content.description && (
+              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                {content.description}
+              </p>
+            )}
+
+            {/* Features list */}
+            {content.features && (
+              <div className="mb-8 space-y-3">
+                {content.features.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3 justify-center lg:justify-start">
+                    <CheckCircle className="text-green-500 flex-shrink-0" size={20} />
+                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button
+                onClick={scrollToContact}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl"
+                aria-label={`${content.cta.primary} - перейти к форме контакта`}
+              >
+                <span>{content.cta.primary}</span>
+                <ArrowRight 
+                  size={20} 
+                  className={`transition-transform duration-300 ${
+                    isHovered ? 'translate-x-1' : ''
+                  }`} 
+                />
+              </button>
+              
+              <button
+                onClick={scrollToServices}
+                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label={`${content.cta.secondary} - перейти к услугам`}
+              >
+                <Zap size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                <span>{content.cta.secondary}</span>
+              </button>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2">
+                  <Shield className="text-green-500" size={16} />
+                  <span>GDPR Compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="text-blue-500" size={16} />
+                  <span>24/7 Support</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap className="text-yellow-500" size={16} />
+                  <span>Fast Setup</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Image */}
+          {content.image && (
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src={content.image.src}
+                  alt={content.image.alt}
+                  width={content.image.width}
+                  height={content.image.height}
+                  priority={true}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                
+                {/* Image overlay with stats */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <div className="grid grid-cols-3 gap-4 text-white">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">500+</div>
+                      <div className="text-sm opacity-90">Projects</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">99.9%</div>
+                      <div className="text-sm opacity-90">Success Rate</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">24h</div>
+                      <div className="text-sm opacity-90">Response Time</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Live Demo
+                  </span>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-4 -left-4 bg-blue-600 text-white rounded-xl p-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-2xl font-bold">Free</div>
+                  <div className="text-sm opacity-90">Consultation</div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

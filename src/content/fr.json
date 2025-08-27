@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "process": "Processus",
+    "cases": "Études de cas",
+    "pricing": "Tarifs",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Bannières de cookies conformes et CMP, bien faites",
+    "subtitle": "Nous configurons une plateforme de gestion du consentement, bloquons les traceurs avant le consentement, localisons les bannières et enregistrons le consentement correctement. De bout en bout.",
+    "ctaPrimary": "Réparer ma bannière",
+    "ctaSecondary": "Vérification gratuite rapide",
+    "microcopy": "Pas de dark patterns. Pas d'UX agressive. Pas de scripts inutiles."
+  },
+  "problem": {
+    "title": "Problèmes courants des bannières de cookies",
+    "points": [
+      "Cookies non essentiels chargés avant le consentement",
+      "Dark patterns et UX confuse",
+      "Journaux de consentement manquants pour les audits",
+      "Comportement incohérent entre les régions",
+      "Aucun blocage de script approprié"
+    ]
+  },
+  "services": {
+    "title": "Ce que nous faisons",
+    "items": [
+      {
+        "icon": "shield-check",
+        "title": "Configuration CMP",
+        "text": "Cookiebot, Iubenda, Usercentrics, Termly - votre choix"
+      },
+      {
+        "icon": "edit-3",
+        "title": "Réparations de bannières",
+        "text": "Texte, boutons, états et localisation"
+      },
+      {
+        "icon": "block",
+        "title": "Blocage de scripts",
+        "text": "Blocage avant consentement par catégorie"
+      },
+      {
+        "icon": "search",
+        "title": "Inventaire des cookies",
+        "text": "Scanner, classer et mapper dans le CMP"
+      },
+      {
+        "icon": "settings",
+        "title": "Intégration GTM",
+        "text": "Déclencheurs et événements de consentement appropriés"
+      },
+      {
+        "icon": "globe",
+        "title": "Multilingue",
+        "text": "FR, EN, DE et autres langues"
+      },
+      {
+        "icon": "file-text",
+        "title": "Pages de politique",
+        "text": "Politique des cookies + Politique de confidentialité + gestionnaire"
+      },
+      {
+        "icon": "refresh-cw",
+        "title": "Migration CMP",
+        "text": "Changement entre fournisseurs"
+      },
+      {
+        "icon": "database",
+        "title": "Journalisation du consentement",
+        "text": "Preuves pour les audits légaux"
+      },
+      {
+        "icon": "check-circle",
+        "title": "QA et validation",
+        "text": "Tests de profil UE/CH et protocole"
+      }
+    ]
+  },
+  "process": {
+    "title": "Comment nous travaillons",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Audit du site",
+        "text": "Inventaire des cookies/scripts et comportement actuel de la bannière"
+      },
+      {
+        "number": "02",
+        "title": "CMP et architecture",
+        "text": "Catégories, blocage automatique, régions, langues"
+      },
+      {
+        "number": "03",
+        "title": "Configuration technique",
+        "text": "Code CMP, GTM, tags de blocage, événements de consentement"
+      },
+      {
+        "number": "04",
+        "title": "Bannière et préférences",
+        "text": "Texte, boutons, états, centre de préférences"
+      },
+      {
+        "number": "05",
+        "title": "Tests et validation",
+        "text": "Profil UE/CH, vérifications avant/après, protocole"
+      }
+    ]
+  },
+  "deliverables": {
+    "title": "Ce que vous obtenez",
+    "items": [
+      "CMP entièrement configuré avec des catégories appropriées et un blocage automatique",
+      "Bannière + Centre de préférences (lien de pied de page)",
+      "Pages de politique des cookies/confidentialité (modèles + connexion CMP)",
+      "Rapport de scan (avant/après), liste des tags et cookies par catégorie",
+      "Guide de maintenance (comment ajouter de nouveaux scripts sans casser la conformité)"
+    ]
+  },
+  "benefits": {
+    "title": "Pourquoi nous choisir",
+    "items": [
+      {
+        "icon": "zap",
+        "title": "De bout en bout",
+        "text": "Texte + technique + tests dans un seul package"
+      },
+      {
+        "icon": "eye-off",
+        "title": "Pas de dark patterns",
+        "text": "Accepter/Refuser/Préférences clairs sur la première couche"
+      },
+      {
+        "icon": "target",
+        "title": "Déclenchement GTM approprié",
+        "text": "Les tags ne se déclenchent qu'après consentement"
+      },
+      {
+        "icon": "globe-2",
+        "title": "Multilingue flexible",
+        "text": "FR, EN, DE et géolocalisation"
+      },
+      {
+        "icon": "clipboard",
+        "title": "Journaux de consentement",
+        "text": "Preuves exportables pour les équipes légales/DPO"
+      }
+    ]
+  },
+  "cases": {
+    "title": "Études de cas",
+    "subtitle": "Résultats avant et après",
+    "cards": [
+      {
+        "industry": "E-commerce (FR)",
+        "before": "Bannière accepter uniquement; scripts chargés immédiatement",
+        "after": "Accepter/Refuser/Préférences; blocage strict avant consentement; conversion de bannière améliorée; rapports de consentement disponibles"
+      },
+      {
+        "industry": "Médias (DE)",
+        "before": "Cookies tiers avant consentement; pas de centre de préférences",
+        "after": "Blocage automatique des traceurs; Centre de préférences + gestionnaire de pied de page; localisation FR/DE"
+      },
+      {
+        "industry": "SaaS (UE)",
+        "before": "Logique incohérente entre sous-domaines",
+        "after": "CMP unifié; catégories cohérentes; journalisation centralisée du consentement"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Plans et tarifs",
+    "subtitle": "Choisissez le bon package pour vos besoins",
+    "plans": [
+      {
+        "name": "Basic",
+        "price": "À partir de 1 500 €",
+        "description": "Réparation de bannière + texte + blocage de base",
+        "features": [
+          "Optimisation de bannière de cookies",
+          "Blocage de script de base",
+          "Améliorations de texte et UX",
+          "Vérification de conformité RGPD"
+        ],
+        "ctaLabel": "Commencer"
+      },
+      {
+        "name": "Pro",
+        "price": "À partir de 3 500 €",
+        "description": "Configuration CMP + intégration GTM + scan/rapport + pages de politique",
+        "features": [
+          "Configuration CMP complète",
+          "Intégration GTM",
+          "Scan d'inventaire des cookies",
+          "Modèles de pages de politique",
+          "Configuration de journalisation du consentement"
+        ],
+        "ctaLabel": "Choisir Pro"
+      },
+      {
+        "name": "Business",
+        "price": "À partir de 6 500 €",
+        "description": "Multi-domaines/launchers, migration, événements personnalisés, rapport white-label",
+        "features": [
+          "Configuration multi-domaines",
+          "Migration CMP",
+          "Événements de consentement personnalisés",
+          "Rapports white-label",
+          "Support prioritaire",
+          "Garantie SLA"
+        ],
+        "ctaLabel": "Contacter les ventes"
+      }
+    ],
+    "note": "Les prix et délais dépendent de la stack, du trafic et des régions. Contactez-nous pour un devis personnalisé."
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "items": [
+      {
+        "question": "En quoi un CMP est-il différent d'une simple bannière ?",
+        "answer": "Un CMP enregistre le consentement légal par catégorie et contrôle le chargement des scripts via des événements de consentement; une simple bannière ne garantit pas un blocage approprié avant consentement."
+      },
+      {
+        "question": "Pouvons-nous garder notre design de bannière actuel ?",
+        "answer": "Oui, nous adaptons les widgets CMP à vos directives de marque tout en assurant la conformité."
+      },
+      {
+        "question": "Supportez-vous GPC / Do Not Sell ?",
+        "answer": "Là où c'est supporté par le CMP sélectionné et les exigences juridictionnelles."
+      },
+      {
+        "question": "Est-ce un conseil juridique ?",
+        "answer": "Nous fournissons une implémentation technique et des modèles de politique. L'examen juridique reste avec votre DPO/conseiller juridique."
+      },
+      {
+        "question": "Combien de temps dure l'implémentation ?",
+        "answer": "Réparations de base : 1-2 semaines. Configuration CMP complète : 2-4 semaines. Migrations complexes : 4-6 semaines."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Commencez avec des cookies conformes",
+    "subtitle": "Parlez-nous de votre projet et nous fournirons une solution personnalisée",
+    "form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "url": "URL du site web",
+      "stack": "Stack technique (optionnel)",
+      "regions": "Régions cibles (optionnel)",
+      "languages": "Langues nécessaires (optionnel)",
+      "cmp": "CMP préféré (optionnel)",
+      "integrations": "Intégrations spéciales (optionnel)",
+      "message": "Détails supplémentaires (optionnel)",
+      "submit": "Envoyer le brief",
+      "privacyNote": "En soumettant ce formulaire, vous acceptez notre politique de confidentialité."
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 C&C CookieComply par Cash & Clash",
+    "links": {
+      "privacy": "Politique de confidentialité",
+      "cookies": "Politique des cookies",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,27 +1,49 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import HomePage from './pages/HomePage'
-import MortgagePage from './pages/MortgagePage'
-import StudentLoanPage from './pages/StudentLoanPage'
-import GasPage from './pages/GasPage'
-import './index.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { locales, Locale } from './lib/i18n';
+import HomePage from './pages/HomePage';
+import PrivacyPage from './pages/PrivacyPage';
+import CookiesPage from './pages/CookiesPage';
+import './index.css';
 
-export default function App() {
+function App() {
+  const [locale, setLocale] = useState<Locale>('en');
+
+  useEffect(() => {
+    // Detect user's preferred language
+    const userLang = navigator.language.split('-')[0];
+    if (locales.includes(userLang as Locale)) {
+      setLocale(userLang as Locale);
+    }
+  }, []);
+
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/mortgage" element={<MortgagePage />} />
-            <Route path="/student-loan" element={<StudentLoanPage />} />
-            <Route path="/gas" element={<GasPage />} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        {/* Redirect root to default locale */}
+        <Route path="/" element={<Navigate to={`/${locale}`} replace />} />
+        
+        {/* Localized routes */}
+        {locales.map((lang) => (
+          <Route key={lang} path={`/${lang}`} element={<HomePage locale={lang} />} />
+        ))}
+        
+        {/* Policy pages */}
+        {locales.map((lang) => (
+          <Route key={lang} path={`/${lang}/privacy`} element={<PrivacyPage locale={lang} />} />
+        ))}
+        
+        {locales.map((lang) => (
+          <Route key={lang} path={`/${lang}/cookies`} element={<CookiesPage locale={lang} />} />
+        ))}
+        
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to={`/${locale}`} replace />} />
+      </Routes>
     </Router>
-  )
+  );
 }
+
+export default App;
 
  

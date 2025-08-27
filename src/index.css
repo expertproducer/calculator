@@ -2,36 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { 
-  color-scheme: dark; 
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --fg: #111827;
+    --muted: #6b7280;
+    --primary: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+  }
+
+  .dark {
+    --bg: #111827;
+    --fg: #f9fafb;
+    --muted: #9ca3af;
+    --primary: #60a5fa;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
 }
 
-/* Custom styles for Recharts */
-.recharts-tooltip-wrapper {
-  outline: none !important;
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto;
+  }
 }
 
-.recharts-default-tooltip {
-  background-color: #0f172a !important;
-  border: 1px solid #1f2937 !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
-}
-
-.recharts-tooltip-item {
-  color: #e5e7eb !important;
-}
-
-.recharts-tooltip-label {
-  color: #10b981 !important;
-  font-weight: bold !important;
-}
-
-/* Smooth transitions for chart elements */
-.recharts-bar-rectangle {
-  transition: opacity 0.2s ease-in-out;
-}
-
-.recharts-bar-rectangle:hover {
-  opacity: 0.8;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 } 

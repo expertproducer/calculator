@@ -8,8 +8,20 @@ pages_build_output_dir = "out"
 [functions]
 directory = "functions"
 
+# Конфигурация для Pages
+[pages]
+directory = "out"
+
+# Переменные окружения для продакшена
 [env.production]
 name = "calculator"
+vars = { ENVIRONMENT = "production" }
 
+# Переменные окружения для превью
 [env.preview]
 name = "calculator-preview"
+vars = { ENVIRONMENT = "preview" }
+
+# Глобальные переменные окружения
+[vars]
+ENVIRONMENT = "development"

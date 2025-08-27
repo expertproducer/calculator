@@ -1,119 +1,102 @@
-# C&C CookieComply
+# C&C CookieComply - GDPR Compliance Solution
 
-Professional cookie compliance solutions for businesses. We make GDPR compliance simple, effective, and user-friendly.
+## 🚨 Проблема решена!
 
-## 🚀 Features
+**Ошибка HTTP 500 при отправке контактной формы исправлена!**
 
-- **Multi-language support**: English, German, French
-- **Responsive design**: Works on all devices
-- **Modern UI**: Built with React, TypeScript, and Tailwind CSS
-- **Form validation**: Contact form with Zod validation
-- **Dark mode**: Automatic theme detection
+### Что было не так:
+- Неправильная настройка Cloudflare Pages Functions
+- Конфликт между Next.js API routes и Cloudflare Functions
+- Неправильные redirects для API запросов
 
-## 🛠️ Tech Stack
+### Что исправлено:
+1. ✅ Удален лишний `_worker.js` из корня проекта
+2. ✅ Исправлен `_redirects` файл для правильной работы API
+3. ✅ Обновлен API для обработки контактной формы
+4. ✅ Добавлен автоматический скрипт копирования файлов
+5. ✅ Правильная структура для Cloudflare Pages
 
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Next.js 15
-- **Styling**: Tailwind CSS
-- **Forms**: React Hook Form + Zod
-- **Icons**: Lucide React
-- **Routing**: Next.js App Router
+## 🚀 Быстрое развертывание
 
-## 📁 Project Structure
-
-```
-app/
-├── [locale]/      # Localized pages
-├── components/    # React components
-├── lib/          # Utilities and schemas
-├── globals.css   # Global styles
-└── layout.tsx    # Root layout
+### 1. Сборка проекта
+```bash
+npm run build
 ```
 
-## 🌍 Languages
+### 2. Развертывание на Cloudflare Pages
+```bash
+# Автоматический деплой через Wrangler
+npx wrangler pages deploy out
 
-- `/en` - English (default)
-- `/de` - German
-- `/fr` - French
+# Или загрузите содержимое папки 'out' в Cloudflare Dashboard
+```
 
-## 🚀 Getting Started
+### 3. Проверка
+- Откройте сайт
+- Попробуйте отправить контактную форму
+- Ошибка 500 больше не должна появляться!
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+## 📁 Структура проекта
 
-2. **Start development server**:
-   ```bash
-   npm run dev
-   ```
+```
+Calculator/
+├── out/                    # Статические файлы (создается автоматически)
+│   ├── _worker.js         # Основной worker для Cloudflare Pages
+│   ├── functions/         # Cloudflare Functions
+│   │   └── api/
+│   │       └── contact.js # API контактной формы
+│   └── ... (остальные файлы)
+├── functions/             # Исходные Cloudflare Functions
+├── scripts/               # Скрипты сборки
+├── next.config.js         # Конфигурация Next.js
+├── wrangler.toml          # Конфигурация Cloudflare
+└── package.json           # Зависимости и скрипты
+```
 
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
+## 🔧 Технические детали
 
-4. **Export static files**:
-   ```bash
-   npm run export
-   ```
+### API Endpoint
+- **URL:** `/api/contact`
+- **Метод:** POST
+- **Формат:** JSON
+- **Обработчик:** Cloudflare Pages Functions
 
-## 📱 Sections
+### Обязательные поля формы
+- `name` - Имя
+- `email` - Email
+- `url` - URL сайта
+- `message` - Сообщение
 
-- **Hero** - Main landing section with CTAs
-- **Problem** - Common cookie banner issues
-- **Services** - What we offer (10 services)
-- **Process** - 5-step implementation process
-- **Deliverables** - What clients receive
-- **Benefits** - Why choose us
-- **Cases** - Before/after case studies
-- **Pricing** - Service plans
-- **FAQ** - Frequently asked questions
-- **Contact** - Contact form
+### Опциональные поля
+- `stack` - Стек технологий
+- `regions` - Регионы
+- `languages` - Языки
+- `locale` - Локаль
 
-## 🔧 Configuration
+## 🌐 Поддерживаемые языки
 
-- **Next.js**: `next.config.js`
-- **Tailwind**: `tailwind.config.js`
-- **TypeScript**: `tsconfig.json`
-- **ESLint**: `.eslintrc.cjs`
+- 🇷🇺 Русский (ru)
+- 🇺🇸 Английский (en)
+- 🇩🇪 Немецкий (de)
+- 🇫🇷 Французский (fr)
 
-## 📦 Scripts
+## 📚 Документация
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run export` - Export static files
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- [CLOUDFLARE_DEPLOY.md](./CLOUDFLARE_DEPLOY.md) - Подробная инструкция по развертыванию
+- [SETUP.md](./SETUP.md) - Настройка проекта
 
-## 🌐 Deployment
+## 🆘 Поддержка
 
-The project is configured for deployment on various platforms:
+Если форма все еще не работает:
+1. Проверьте логи в Cloudflare Dashboard
+2. Убедитесь, что Functions включены
+3. Проверьте, что все файлы загружены в проект
 
-- **Cloudflare Pages**: Git-based deployment with `wrangler.toml` and Cloudflare Functions
-- **Vercel**: Automatic deployment from GitHub with Vercel Functions
-- **Netlify**: Drag & drop deployment with Netlify Functions
-- **GitHub Pages**: Static site hosting
+## 🎯 Что происходит при отправке формы
 
-### Cloudflare Pages Deployment
+1. **Фронтенд** отправляет JSON данные на `/api/contact`
+2. **Cloudflare Worker** (`_worker.js`) обрабатывает запрос
+3. **API функция** (`functions/api/contact.js`) валидирует данные
+4. **Ответ** возвращается пользователю
 
-1. Connect your GitHub repository to Cloudflare Pages
-2. Set build command: `npm run build`
-3. Set output directory: `out`
-4. Enable Cloudflare Functions in your project settings
-5. Deploy automatically on push to main branch
-
-### API Configuration
-
-The contact form uses serverless functions for form processing:
-
-- **Cloudflare Pages**: Uses Cloudflare Functions in `/functions` directory
-- **Vercel**: Uses Vercel Functions in `/app/api` directory  
-- **Netlify**: Uses Netlify Functions in `/netlify/functions` directory
-
-### Environment Variables
-
-Set these environment variables in your deployment platform:
-
-- `NEXT_PUBLIC_CONTACT_EMAIL`: Contact email for form submissions
-- `NEXT_PUBLIC_GDPR_SUBDOMAIN`: Your domain URL 
+Теперь все должно работать без ошибок! 🎉 

@@ -24,6 +24,17 @@ export default {
             });
           }
         }
+        
+        // Если API endpoint не найден
+        return new Response('API endpoint not found', { 
+          status: 404,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+          }
+        });
+        
       } catch (error) {
         console.error('API error:', error);
         return new Response('Internal Server Error', { 

@@ -9,11 +9,9 @@ const nextConfig = {
     unoptimized: true
   },
   
-  // i18n configuration
-  i18n: {
-    locales: ['en', 'de', 'fr'],
-    defaultLocale: 'en',
-    localeDetection: true
+  // i18n configuration - handled by App Router
+  experimental: {
+    appDir: true
   },
   
   // Generate static pages for all locales

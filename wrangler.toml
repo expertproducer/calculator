@@ -17,3 +17,4 @@ vars = { ENVIRONMENT = "preview" }
 # Глобальные переменные окружения
 [vars]
 ENVIRONMENT = "development"
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/T09CEV66EPN/B09CFBXDUGL/ACRW8p7RmKKalRIJrOti2"

@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .next out dist",
-    "clean-cache": "rm -rf .next out dist .cache cache webpack",
+    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next, out, dist -ErrorAction SilentlyContinue\"",
+    "clean-cache": "powershell -Command \"Remove-Item -Recurse -Force .next, out, dist, .cache, cache, webpack -ErrorAction SilentlyContinue\"",
     "type-check": "tsc --noEmit",
     "deploy": "npm run clean-cache && npm run build && npx wrangler pages deploy .next --project-name calculator"
   },

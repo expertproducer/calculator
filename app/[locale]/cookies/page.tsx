@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   description: 'Learn about how we use cookies and similar technologies on our website.',
 }
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
+}
+
 export default function CookiesPage({ params }: { params: Promise<{ locale: string }> }) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   description: 'Our privacy policy explains how we collect, use, and protect your personal information.',
 }
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
+}
+
 export default function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

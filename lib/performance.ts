@@ -36,7 +36,10 @@ export function monitorCoreWebVitals(): Promise<PerformanceMetrics> {
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
         if (entry.entryType === 'first-input') {
-          metrics.firstInputDelay = entry.processingStart - entry.startTime
+          const firstInputEntry = entry as PerformanceEntry & { processingStart?: number }
+          if (firstInputEntry.processingStart) {
+            metrics.firstInputDelay = firstInputEntry.processingStart - entry.startTime
+          }
         }
       }
     }).observe({ entryTypes: ['first-input'] })
@@ -45,16 +48,22 @@ export function monitorCoreWebVitals(): Promise<PerformanceMetrics> {
     new PerformanceObserver((list) => {
       let cls = 0
       for (const entry of list.getEntries()) {
-        if (entry.entryType === 'layout-shift' && !entry.hadRecentInput) {
-          cls += (entry as any).value
+        if (entry.entryType === 'layout-shift') {
+          const layoutShiftEntry = entry as PerformanceEntry & { hadRecentInput?: boolean, value?: number }
+          if (!layoutShiftEntry.hadRecentInput && layoutShiftEntry.value) {
+            cls += layoutShiftEntry.value
+          }
         }
       }
       metrics.cumulativeLayoutShift = cls
     }).observe({ entryTypes: ['layout-shift'] })
 
     // Time to Interactive
-    if ('interactive' in performance.timing) {
-      metrics.timeToInteractive = performance.timing.interactive - performance.timing.navigationStart
+    if ('timing' in performance && performance.timing) {
+      const timing = performance.timing as PerformanceTiming
+      if (timing.domInteractive && timing.navigationStart) {
+        metrics.timeToInteractive = timing.domInteractive - timing.navigationStart
+      }
     }
 
     // Total Blocking Time
@@ -181,7 +190,8 @@ export function optimizeAnimations() {
   const animatedElements = document.querySelectorAll('[data-animate]')
   
   animatedElements.forEach((element) => {
-    element.style.willChange = 'transform, opacity'
+    const htmlElement = element as HTMLElement
+    htmlElement.style.willChange = 'transform, opacity'
   })
 }
 

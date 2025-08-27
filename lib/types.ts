@@ -224,3 +224,12 @@ export interface AccessibilityFeatures {
   screenReader: boolean
   keyboardNavigation: boolean
 }
+
+// Глобальные типы для window объекта
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void
+    fbq: (...args: any[]) => void
+    dataLayer: any[]
+  }
+}

@@ -161,8 +161,7 @@ export function ConditionalFont({
       className={className}
       style={{
         fontFamily: isLoaded ? `"${fontFamily}", ${fallback}` : fallback,
-        fontWeight: weight,
-        fontDisplay: 'swap'
+        fontWeight: weight
       }}
     >
       {children}

@@ -108,10 +108,10 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         
         {/* Hreflang tags */}
-        <link rel="alternate" href={`${baseUrl}/en`} hreflang="en" />
-        <link rel="alternate" href={`${baseUrl}/de`} hreflang="de" />
-        <link rel="alternate" href={`${baseUrl}/fr`} hreflang="fr" />
-        <link rel="alternate" href={`${baseUrl}/en`} hreflang="x-default" />
+        <link rel="alternate" href={`${baseUrl}/en`} hrefLang="en" />
+        <link rel="alternate" href={`${baseUrl}/de`} hrefLang="de" />
+        <link rel="alternate" href={`${baseUrl}/fr`} hrefLang="fr" />
+        <link rel="alternate" href={`${baseUrl}/en`} hrefLang="x-default" />
         
         {/* DNS prefetch */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />

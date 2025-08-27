@@ -139,24 +139,274 @@ export function getContent(locale: Locale) {
       }
     },
     de: {
-      // German translations (simplified for now)
       hero: {
         title: 'C&C CookieComply — GDPR CMP Einrichtung & Cookie-Banner Reparaturen',
         subtitle: 'Wir richten CMP ein, reparieren Cookie-Banner und blockieren Tracker vor der Zustimmung.',
         ctaPrimary: 'Meinen Banner reparieren',
         ctaSecondary: 'Kostenlose Schnellprüfung'
       },
-      // ... other sections would have German translations
+      problem: {
+        title: 'Häufige GDPR-Compliance-Probleme',
+        points: [
+          'Nicht konforme Cookie-Banner',
+          'Skripte werden vor der Zustimmung geladen',
+          'Fehlende Zustimmungsprotokolle',
+          'Schlechte Benutzererfahrung'
+        ]
+      },
+      services: {
+        title: 'Unsere Dienstleistungen',
+        items: [
+          'CMP-Einrichtung (Cookiebot, Iubenda, Usercentrics, Termly)',
+          'Cookie-Banner-Reparaturen',
+          'Skript-Blockierung vor der Zustimmung',
+          'GTM-Integration',
+          'Mehrsprachige Unterstützung',
+          'Richtlinien-Seiten',
+          'Zustimmungsprotokollierung',
+          'QA & Validierung'
+        ]
+      },
+      process: {
+        title: 'Wie wir arbeiten',
+        steps: [
+          'Website-Audit & Bestandsaufnahme',
+          'CMP-Architektur-Design',
+          'Technische Einrichtung',
+          'Banner-Anpassung',
+          'Tests & Validierung'
+        ]
+      },
+      deliverables: {
+        title: 'Was Sie bekommen',
+        items: [
+          'Vollständig konfiguriertes CMP',
+          'Konformes Cookie-Banner',
+          'Präferenzzentrum',
+          'Richtlinien-Seiten',
+          'Wartungsanleitung'
+        ]
+      },
+      benefits: {
+        title: 'Warum uns wählen',
+        items: [
+          'End-to-End-Lösung',
+          'Keine Dark Patterns',
+          'Proper GTM-Integration',
+          'Mehrsprachige Unterstützung',
+          'Zustimmungsprotokolle & Exporte'
+        ]
+      },
+      cases: {
+        title: 'Fallstudien',
+        cards: [
+          {
+            title: 'E-Commerce (DE)',
+            before: 'Nur-Akzeptieren-Banner, Skripte sofort geladen',
+            after: 'Akzeptieren/Ablehnen/Präferenzen, strenge Blockierung, verbesserte Konversion'
+          },
+          {
+            title: 'Medien (FR)',
+            before: 'Third-Party-Cookies vor Zustimmung, kein Präferenzzentrum',
+            after: 'Auto-Blockierung, Präferenzzentrum, DE/EN-Lokalisierung'
+          },
+          {
+            title: 'SaaS (EU)',
+            before: 'Inkonsistente Logik über Subdomains',
+            after: 'Einheitliches CMP, konsistente Kategorien, zentrale Protokollierung'
+          }
+        ]
+      },
+      pricing: {
+        title: 'Preispläne',
+        plans: [
+          {
+            name: 'Basic',
+            features: ['Banner-Reparatur', 'Kopier-Optimierung', 'Grundlegende Blockierung']
+          },
+          {
+            name: 'Pro',
+            features: ['CMP-Einrichtung', 'GTM-Integration', 'Scan-Bericht', 'Richtlinien-Seiten']
+          },
+          {
+            name: 'Business',
+            features: ['Multi-Domain', 'Migration', 'Benutzerdefinierte Ereignisse', 'White-Label-Bericht']
+          }
+        ],
+        note: 'Preise & Zeitpläne auf Anfrage (abhängig von Stack, Traffic, Regionen)'
+      },
+      faq: {
+        title: 'Häufig gestellte Fragen',
+        items: [
+          {
+            question: 'Wie unterscheidet sich ein CMP von einem einfachen Banner?',
+            answer: 'Ein CMP zeichnet rechtmäßige Zustimmung pro Kategorie auf und steuert das Laden von Skripten über Zustimmungsereignisse; ein einfaches Banner stellt keine ordnungsgemäße Vor-Zustimmung-Blockierung sicher.'
+          },
+          {
+            question: 'Können wir unser aktuelles Banner-Design beibehalten?',
+            answer: 'Ja, wir passen CMP-Widgets an Ihre Markenrichtlinien an.'
+          },
+          {
+            question: 'Unterstützen Sie GPC / Do Not Sell?',
+            answer: 'Wo es vom ausgewählten CMP und der Gerichtsbarkeit unterstützt wird.'
+          }
+        ]
+      },
+      contact: {
+        title: 'Loslegen',
+        subtitle: 'Erzählen Sie uns von Ihrem Projekt',
+        fields: {
+          name: 'Name',
+          email: 'E-Mail',
+          url: 'Website-URL',
+          stack: 'Tech-Stack',
+          regions: 'Zielregionen',
+          languages: 'Sprachen',
+          cmp: 'Bevorzugtes CMP',
+          integrations: 'Integrationen',
+          message: 'Nachricht'
+        },
+        submit: 'Anfrage senden'
+      },
+      footer: {
+        copyright: '© 2024 C&C CookieComply von Cash & Clash',
+        links: ['Datenschutzrichtlinie', 'Cookie-Richtlinie', 'Kontakt']
+      }
     },
     fr: {
-      // French translations (simplified for now)
       hero: {
         title: 'C&C CookieComply — Configuration CMP GDPR & Corrections de Bannières',
         subtitle: 'Nous configurons CMP et corrigeons les bannières de cookies.',
         ctaPrimary: 'Corriger ma bannière',
         ctaSecondary: 'Vérification gratuite'
       },
-      // ... other sections would have French translations
+      problem: {
+        title: 'Problèmes courants de conformité GDPR',
+        points: [
+          'Bannières de cookies non conformes',
+          'Scripts chargés avant le consentement',
+          'Journaux de consentement manquants',
+          'Mauvaise expérience utilisateur'
+        ]
+      },
+      services: {
+        title: 'Nos services',
+        items: [
+          'Configuration CMP (Cookiebot, Iubenda, Usercentrics, Termly)',
+          'Corrections de bannières de cookies',
+          'Blocage de scripts avant consentement',
+          'Intégration GTM',
+          'Support multilingue',
+          'Pages de politique',
+          'Journalisation du consentement',
+          'QA & validation'
+        ]
+      },
+      process: {
+        title: 'Comment nous travaillons',
+        steps: [
+          'Audit du site et inventaire',
+          'Conception de l\'architecture CMP',
+          'Configuration technique',
+          'Personnalisation de la bannière',
+          'Tests et validation'
+        ]
+      },
+      deliverables: {
+        title: 'Ce que vous obtenez',
+        items: [
+          'CMP entièrement configuré',
+          'Bannière de cookies conforme',
+          'Centre de préférences',
+          'Pages de politique',
+          'Guide de maintenance'
+        ]
+      },
+      benefits: {
+        title: 'Pourquoi nous choisir',
+        items: [
+          'Solution de bout en bout',
+          'Pas de dark patterns',
+          'Intégration GTM appropriée',
+          'Support multilingue',
+          'Journaux et exportations de consentement'
+        ]
+      },
+      cases: {
+        title: 'Études de cas',
+        cards: [
+          {
+            title: 'E-commerce (FR)',
+            before: 'Bannière acceptation uniquement, scripts chargés immédiatement',
+            after: 'Accepter/Refuser/Préférences, blocage strict, conversion améliorée'
+          },
+          {
+            title: 'Médias (FR)',
+            before: 'Cookies tiers avant consentement, pas de centre de préférences',
+            after: 'Blocage automatique, centre de préférences, localisation FR/EN'
+          },
+          {
+            title: 'SaaS (EU)',
+            before: 'Logique incohérente entre sous-domaines',
+            after: 'CMP unifié, catégories cohérentes, journalisation centralisée'
+          }
+        ]
+      },
+      pricing: {
+        title: 'Plans tarifaires',
+        plans: [
+          {
+            name: 'Basic',
+            features: ['Correction de bannière', 'Optimisation de copie', 'Blocage de base']
+          },
+          {
+            name: 'Pro',
+            features: ['Configuration CMP', 'Intégration GTM', 'Rapport de scan', 'Pages de politique']
+          },
+          {
+            name: 'Business',
+            features: ['Multi-domain', 'Migration', 'Événements personnalisés', 'Rapport white-label']
+          }
+        ],
+        note: 'Prix et délais sur demande (dépendent de la stack, du trafic, des régions)'
+      },
+      faq: {
+        title: 'Questions fréquemment posées',
+        items: [
+          {
+            question: 'En quoi un CMP diffère-t-il d\'une simple bannière ?',
+            answer: 'Un CMP enregistre le consentement légal par catégorie et contrôle le chargement des scripts via des événements de consentement ; une simple bannière n\'assure pas un blocage approprié avant consentement.'
+          },
+          {
+            question: 'Pouvons-nous garder notre design de bannière actuel ?',
+            answer: 'Oui, nous adaptons les widgets CMP à vos directives de marque.'
+          },
+          {
+            question: 'Soutenez-vous GPC / Do Not Sell ?',
+            answer: 'Là où c\'est supporté par le CMP sélectionné et la juridiction.'
+          }
+        ]
+      },
+      contact: {
+        title: 'Commencer',
+        subtitle: 'Parlez-nous de votre projet',
+        fields: {
+          name: 'Nom',
+          email: 'E-mail',
+          url: 'URL du site web',
+          stack: 'Stack technique',
+          regions: 'Régions cibles',
+          languages: 'Langues',
+          cmp: 'CMP préféré',
+          integrations: 'Intégrations',
+          message: 'Message'
+        },
+        submit: 'Envoyer la demande'
+      },
+      footer: {
+        copyright: '© 2024 C&C CookieComply par Cash & Clash',
+        links: ['Politique de confidentialité', 'Politique des cookies', 'Contact']
+      }
     }
   }
   

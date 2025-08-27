@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale)
+  const content = getContent(locale as 'en' | 'de' | 'fr')
   
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">

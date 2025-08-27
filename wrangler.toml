@@ -9,17 +9,3 @@ format = "directory"
 
 # Указываем папку dist для Cloudflare Pages
 pages_build_output_dir = "dist"
-
-# Добавляем функции для API роутов
-[functions]
-directory = "dist/server/app/api"
-
-[[redirects]]
-from = "/api/*"
-to = "/api/:splat"
-status = 200
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200

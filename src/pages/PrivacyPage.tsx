@@ -1,4 +1,4 @@
-import { getContent, Locale } from '../lib/i18n';
+import { Locale } from '../lib/i18n';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 

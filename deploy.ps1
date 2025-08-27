@@ -1,45 +1,37 @@
 # Скрипт деплоя для Cloudflare Pages
-Write-Host "🚀 Starting deployment to Cloudflare Pages..." -ForegroundColor Green
+# Убедитесь что у вас установлен Wrangler CLI: npm install -g wrangler
 
-# Проверяем наличие необходимых файлов
-$requiredFiles = @("next.config.js", "package.json", "wrangler.toml")
+Write-Host "🚀 Начинаем деплой на Cloudflare Pages..." -ForegroundColor Green
 
-foreach ($file in $requiredFiles) {
-    if (Test-Path $file) {
-        Write-Host "✅ Found $file" -ForegroundColor Green
-    } else {
-        Write-Host "❌ Missing required file: $file" -ForegroundColor Red
-        exit 1
-    }
-}
+# Очищаем предыдущие сборки
+Write-Host "🧹 Очищаем предыдущие сборки..." -ForegroundColor Yellow
+if (Test-Path ".next") { Remove-Item -Recurse -Force ".next" }
+if (Test-Path "out") { Remove-Item -Recurse -Force "out" }
 
-# Очищаем предыдущую сборку
-if (Test-Path "out") {
-    Write-Host "🧹 Cleaning previous build..." -ForegroundColor Yellow
-    Remove-Item -Recurse -Force "out"
-}
+# Устанавливаем зависимости
+Write-Host "📦 Устанавливаем зависимости..." -ForegroundColor Yellow
+npm install
 
 # Собираем проект
-Write-Host "🔨 Building project..." -ForegroundColor Yellow
+Write-Host "🔨 Собираем проект..." -ForegroundColor Yellow
 npm run build
 
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "❌ Build failed!" -ForegroundColor Red
+# Проверяем что сборка прошла успешно
+if (-not (Test-Path ".next")) {
+    Write-Host "❌ Ошибка: папка .next не найдена после сборки" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "✅ Build completed successfully!" -ForegroundColor Green
+Write-Host "✅ Сборка завершена успешно!" -ForegroundColor Green
 
 # Деплоим на Cloudflare Pages
-Write-Host "🚀 Deploying to Cloudflare Pages..." -ForegroundColor Yellow
+Write-Host "🚀 Деплоим на Cloudflare Pages..." -ForegroundColor Yellow
+npx wrangler pages deploy .next --project-name calculator
 
-# Используем wrangler для деплоя папки out
-npx wrangler pages deploy out --project-name calculator
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "❌ Deployment failed!" -ForegroundColor Red
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "🎉 Деплой завершен успешно!" -ForegroundColor Green
+    Write-Host "🌐 Ваш сайт доступен на Cloudflare Pages" -ForegroundColor Cyan
+} else {
+    Write-Host "❌ Ошибка при деплое" -ForegroundColor Red
     exit 1
 }
-
-Write-Host "🎉 Deployment completed successfully!" -ForegroundColor Green
-Write-Host "🌐 Your site is now live on Cloudflare Pages!" -ForegroundColor Cyan

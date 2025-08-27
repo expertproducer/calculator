@@ -10,7 +10,7 @@
     "lint": "next lint",
     "clean": "rm -rf .next out dist",
     "type-check": "tsc --noEmit",
-    "dev:static": "npm run build && npx serve out"
+    "dev:static": "npm run build && npx serve dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

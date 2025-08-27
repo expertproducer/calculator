@@ -1,6 +1,9 @@
 # Конфигурация для Cloudflare Pages
 name = "calculator"
 
+# Указываем папку с собранными файлами
+pages_build_output_dir = "dist"
+
 [env.production]
 name = "calculator"
 

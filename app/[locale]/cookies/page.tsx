@@ -30,7 +30,7 @@ export async function generateStaticParams() {
   ]
 }
 
-export default function CookiesPage({ params }: { params: Promise<{ locale: string }> }) {
+export default function CookiesPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}

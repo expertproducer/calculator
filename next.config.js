@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Убираем статический экспорт для работы API routes
-  // output: 'export',
+  // Включаем статический экспорт для создания папки out
+  output: 'export',
   
   // Убираем trailingSlash для стандартного поведения
   // trailingSlash: true,
@@ -9,7 +9,7 @@ const nextConfig = {
   // Отключаем оптимизацию изображений для статического экспорта
   images: {
     unoptimized: true
-  }
+  },
   
   // Убираем distDir, чтобы использовать стандартную папку .next
   // distDir: 'out'

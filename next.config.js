@@ -11,11 +11,6 @@ const nextConfig = {
     unoptimized: true
   },
   
-  // Включаем экспериментальные функции
-  experimental: {
-    appDir: true
-  },
-  
   // Исключаем большие файлы webpack и кэша
   webpack: (config, { isServer }) => {
     if (!isServer) {

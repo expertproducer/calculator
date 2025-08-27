@@ -232,3 +232,124 @@ export function Navbar({ locale }: { locale: string }) {
     </nav>
   )
 }
+
+// Main AllComponents component that renders all sections
+function AllComponents({ locale }: { locale: string }) {
+  // Mock content for demonstration - in real app this would come from i18n
+  const content = {
+    problem: {
+      title: "Проблемы с cookies",
+      points: [
+        "Несоответствие GDPR требованиям",
+        "Риск штрафов и санкций", 
+        "Потеря доверия клиентов",
+        "Правовые сложности"
+      ]
+    },
+    services: {
+      title: "Наши услуги",
+      items: [
+        "Аудит cookies",
+        "Настройка согласия",
+        "Техническая реализация",
+        "Правовая поддержка"
+      ]
+    },
+    process: {
+      title: "Процесс работы",
+      steps: [
+        "Анализ",
+        "Планирование", 
+        "Реализация",
+        "Тестирование",
+        "Запуск"
+      ]
+    },
+    deliverables: {
+      title: "Что вы получите",
+      items: [
+        "Полный отчет",
+        "Готовое решение",
+        "Документация",
+        "Поддержка"
+      ]
+    },
+    benefits: {
+      title: "Преимущества",
+      items: [
+        "Соответствие законам",
+        "Защита от штрафов",
+        "Доверие клиентов",
+        "Профессионализм"
+      ]
+    },
+    cases: {
+      title: "Кейсы",
+      items: [
+        "E-commerce платформа",
+        "Новостной сайт",
+        "Банковский сервис",
+        "Медицинский портал"
+      ],
+      note: "Все проекты успешно прошли проверки"
+    },
+    faq: {
+      title: "Частые вопросы",
+      items: [
+        {
+          question: "Сколько времени занимает настройка?",
+          answer: "Обычно 2-4 недели в зависимости от сложности"
+        },
+        {
+          question: "Какие законы учитываются?",
+          answer: "GDPR, CCPA, LGPD и другие международные нормы"
+        }
+      ]
+    },
+    contact: {
+      title: "Свяжитесь с нами",
+      subtitle: "Получите бесплатную консультацию",
+      fields: {
+        name: "Ваше имя",
+        email: "Email",
+        url: "URL сайта",
+        stack: "Технологический стек",
+        regions: "Регионы работы",
+        languages: "Языки сайта",
+        cmp: "Текущий CMP",
+        integrations: "Интеграции",
+        message: "Дополнительная информация"
+      },
+      submit: "Отправить заявку"
+    },
+    footer: {
+      copyright: "© 2024 C&C CookieComply. Все права защищены.",
+      links: ["Политика конфиденциальности", "Условия использования", "Cookies"]
+    },
+    cookies: {
+      title: "Политика использования cookies",
+      content: "Мы используем cookies для улучшения работы сайта и анализа трафика. Продолжая использовать сайт, вы соглашаетесь с нашей политикой cookies."
+    },
+    privacy: {
+      title: "Политика конфиденциальности",
+      content: "Мы защищаем вашу личную информацию и соблюдаем все требования GDPR. Ваши данные используются только для предоставления услуг и никогда не передаются третьим лицам."
+    }
+  }
+
+  return (
+    <div>
+      <Navbar locale={locale} />
+      <Problem content={content.problem} />
+      <Services content={content.services} />
+      <Process content={content.process} />
+      <Deliverables content={content.deliverables} />
+      <Benefits content={content.benefits} />
+      <Cases content={content.cases} />
+      <FAQ content={content.faq} />
+      <Contact content={content.contact} locale={locale} />
+      <Footer content={content.footer} locale={locale} />
+    </div>
+  )
+}
+
+export default AllComponents

@@ -1,3 +1,4 @@
+// Cloudflare Pages Function для обработки контактной формы
 export async function onRequestPost(context) {
   try {
     const { request } = context;

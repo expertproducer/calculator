@@ -13,23 +13,21 @@ Professional cookie compliance solutions for businesses. We make GDPR compliance
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
+- **Build Tool**: Next.js 15
 - **Styling**: Tailwind CSS
 - **Forms**: React Hook Form + Zod
 - **Icons**: Lucide React
-- **Routing**: React Router DOM
+- **Routing**: Next.js App Router
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/     # React components
-├── content/        # i18n content files
-├── lib/           # Utilities and schemas
-├── pages/         # Page components
-├── App.tsx        # Main app component
-├── main.tsx       # Entry point
-└── index.css      # Global styles
+app/
+├── [locale]/      # Localized pages
+├── components/    # React components
+├── lib/          # Utilities and schemas
+├── globals.css   # Global styles
+└── layout.tsx    # Root layout
 ```
 
 ## 🌍 Languages
@@ -55,9 +53,9 @@ src/
    npm run build
    ```
 
-4. **Preview production build**:
+4. **Export static files**:
    ```bash
-   npm run preview
+   npm run export
    ```
 
 ## 📱 Sections
@@ -75,33 +73,31 @@ src/
 
 ## 🔧 Configuration
 
-- **Vite**: `vite.config.ts`
-- **Tailwind**: `tailwind.config.cjs`
+- **Next.js**: `next.config.js`
+- **Tailwind**: `tailwind.config.js`
 - **TypeScript**: `tsconfig.json`
 - **ESLint**: `.eslintrc.cjs`
-- **Prettier**: `.prettierrc`
 
 ## 📦 Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
-- `npm run preview` - Preview production build
+- `npm run export` - Export static files
+- `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
 
 ## 🌐 Deployment
 
 The project is configured for deployment on various platforms:
 
+- **Cloudflare Pages**: Git-based deployment with `wrangler.toml`
 - **Vercel**: Automatic deployment from GitHub
 - **Netlify**: Drag & drop deployment
-- **Cloudflare Pages**: Git-based deployment
 - **GitHub Pages**: Static site hosting
 
-## 📄 License
+### Cloudflare Pages Deployment
 
-This project is proprietary software. All rights reserved.
-
----
-
-Built with ❤️ for compliance 
+1. Connect your GitHub repository to Cloudflare Pages
+2. Set build command: `npm run build`
+3. Set output directory: `dist`
+4. Deploy automatically on push to main branch 

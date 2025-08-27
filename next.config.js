@@ -9,11 +9,6 @@ const nextConfig = {
   // Отключаем оптимизацию изображений для статического экспорта
   images: {
     unoptimized: true
-  },
-  
-  // Отключаем трассировку для статического экспорта
-  experimental: {
-    outputFileTracingRoot: undefined
   }
 }
 

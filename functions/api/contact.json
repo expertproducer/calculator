@@ -1,0 +1,23 @@
+{
+  "name": "contact-api",
+  "version": "1.0.0",
+  "description": "Contact form API endpoint",
+  "main": "contact.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cloudflare",
+    "functions",
+    "api",
+    "contact"
+  ],
+  "author": "C&C CookieComply",
+  "license": "MIT"
+}

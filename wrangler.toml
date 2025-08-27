@@ -2,6 +2,10 @@
 command = "npm run build"
 output_dir = "out"
 
+# Конфигурация для Cloudflare Pages
+[pages_build_output_dir]
+output_dir = "out"
+
 [env.production]
 name = "calculator"
 

@@ -4,11 +4,7 @@ name = "calculator"
 # Указываем папку для сборки Pages
 pages_build_output_dir = ".next"
 
-# Исключаем большие файлы и папки
-[build]
-command = "npm run build"
-
-# Переменные окружения для продакшена
+# Исключаем большие файлы из деплоя
 [env.production]
 name = "calculator"
 vars = { ENVIRONMENT = "production" }
@@ -22,12 +18,16 @@ vars = { ENVIRONMENT = "preview" }
 [vars]
 ENVIRONMENT = "development"
 
-# Настройки для Pages
-[pages]
-# Исключаем большие файлы
+# Настройки для исключения файлов
+[build]
+command = "npm run clean-cache && npm run build"
+
+# Исключаем большие файлы webpack и кэша
+[[build.upload]]
 exclude = [
   "**/cache/**",
-  "**/*.pack",
   "**/webpack/**",
-  "**/server-production/**"
+  "**/*.pack",
+  "**/*.pack.gz",
+  "**/.cache/**"
 ]

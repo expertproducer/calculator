@@ -1,0 +1,68 @@
+# Конфигурация для Cloudflare Pages
+[build]
+command = "npm run build:full"
+publish = ".next"
+
+# Исключаем большие файлы и папки
+[build.exclude]
+# Исключаем папки кэша
+.next/cache/
+.next/server/
+.next/static/chunks/
+.next/static/webpack/
+.next/static/development/
+.next/static/production/
+.next/static/compiler/
+
+# Исключаем source maps
+*.map
+
+# Исключаем логи
+*.log
+
+# Исключаем временные файлы
+*.tmp
+*.temp
+
+# Исключаем большие файлы webpack
+**/*.pack
+**/webpack/
+**/server-production/
+
+# Исключаем папки сборки
+out/
+build/
+dist/
+
+# Исключаем файлы разработки
+.env*
+.env.local
+.env.development
+.env.production
+
+# Исключаем node_modules
+node_modules/
+
+# Исключаем git файлы
+.git/
+.gitignore
+
+# Исключаем README и документацию
+README.md
+*.md
+
+# Исключаем конфигурационные файлы разработки
+.eslintrc*
+.prettierrc*
+tsconfig.json
+tailwind.config.*
+
+# Исключаем тесты
+**/*.test.*
+**/*.spec.*
+test/
+tests/
+
+# Исключаем скрипты разработки
+scripts/
+deploy.ps1

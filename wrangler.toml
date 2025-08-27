@@ -4,6 +4,10 @@ name = "calculator"
 # Указываем папку для сборки Pages
 pages_build_output_dir = ".next"
 
+# Исключаем большие файлы и папки
+[build]
+command = "npm run build"
+
 # Переменные окружения для продакшена
 [env.production]
 name = "calculator"
@@ -17,3 +21,13 @@ vars = { ENVIRONMENT = "preview" }
 # Глобальные переменные окружения
 [vars]
 ENVIRONMENT = "development"
+
+# Настройки для Pages
+[pages]
+# Исключаем большие файлы
+exclude = [
+  "**/cache/**",
+  "**/*.pack",
+  "**/webpack/**",
+  "**/server-production/**"
+]

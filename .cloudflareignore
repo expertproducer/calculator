@@ -1,0 +1,13 @@
+# Исключаем большие файлы webpack и кэша
+cache/
+.cache/
+webpack/
+**/*.pack
+**/*.pack.gz
+
+# Исключаем node_modules и другие ненужные файлы
+node_modules/
+.git/
+.github/
+*.log
+.env*

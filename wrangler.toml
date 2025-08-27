@@ -17,17 +17,3 @@ vars = { ENVIRONMENT = "preview" }
 # Глобальные переменные окружения
 [vars]
 ENVIRONMENT = "development"
-
-# Настройки для исключения файлов
-[build]
-command = "npm run clean-cache && npm run build"
-
-# Исключаем большие файлы webpack и кэша
-[[build.upload]]
-exclude = [
-  "**/cache/**",
-  "**/webpack/**",
-  "**/*.pack",
-  "**/*.pack.gz",
-  "**/.cache/**"
-]

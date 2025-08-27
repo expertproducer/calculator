@@ -2,7 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+})
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -19,19 +23,36 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: 'Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement.'
   }
 
+  const baseUrl = 'https://gdpr.cashandclash.com'
+
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    description: descriptions[locale as keyof typeof titles] || descriptions.en,
+    keywords: ['GDPR compliance', 'CMP setup', 'cookie banner', 'consent management', 'privacy compliance'],
+    authors: [{ name: 'C&C CookieComply' }],
+    creator: 'C&C CookieComply',
+    publisher: 'C&C CookieComply',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
-      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-      url: `https://gdpr.cashandclash.com/${locale}`,
+      description: descriptions[locale as keyof typeof titles] || descriptions.en,
+      url: `${baseUrl}/${locale}`,
       siteName: 'C&C CookieComply',
       locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : 'fr_FR',
       type: 'website',
       images: [
         {
-          url: 'https://gdpr.cashandclash.com/og-image.jpg',
+          url: `${baseUrl}/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: 'C&C CookieComply - GDPR Compliance Solutions'
@@ -41,16 +62,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     twitter: {
       card: 'summary_large_image',
       title: titles[locale as keyof typeof titles] || titles.en,
-      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-      images: ['https://gdpr.cashandclash.com/og-image.jpg']
+      description: descriptions[locale as keyof typeof titles] || descriptions.en,
+      images: [`${baseUrl}/og-image.jpg`],
+      creator: '@cashandclash',
+      site: '@cashandclash'
     },
     alternates: {
-      canonical: `https://gdpr.cashandclash.com/${locale}`,
+      canonical: `${baseUrl}/${locale}`,
       languages: {
-        'en': 'https://gdpr.cashandclash.com/en',
-        'de': 'https://gdpr.cashandclash.com/de',
-        'fr': 'https://gdpr.cashandclash.com/fr',
+        'en': `${baseUrl}/en`,
+        'de': `${baseUrl}/de`,
+        'fr': `${baseUrl}/fr`,
+        'x-default': `${baseUrl}/en`
       },
+    },
+    verification: {
+      google: 'your-google-verification-code',
+      yandex: 'your-yandex-verification-code'
     }
   }
 }
@@ -63,16 +91,61 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const baseUrl = 'https://gdpr.cashandclash.com'
+  
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#3B82F6" />
+        <meta name="msapplication-TileColor" content="#3B82F6" />
+        
+        {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        
+        {/* Hreflang tags */}
+        <link rel="alternate" href={`${baseUrl}/en`} hreflang="en" />
+        <link rel="alternate" href={`${baseUrl}/de`} hreflang="de" />
+        <link rel="alternate" href={`${baseUrl}/fr`} hreflang="fr" />
+        <link rel="alternate" href={`${baseUrl}/en`} hreflang="x-default" />
+        
+        {/* DNS prefetch */}
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "C&C CookieComply",
+              "url": baseUrl,
+              "logo": `${baseUrl}/logo.svg`,
+              "description": "Professional GDPR compliance solutions for businesses",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "EU"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "contact@cashandclash.com"
+              },
+              "sameAs": [
+                "https://twitter.com/cashandclash",
+                "https://linkedin.com/company/cashandclash"
+              ]
+            })
+          }}
+        />
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} ${inter.variable}`} suppressHydrationWarning>
         {children}
       </body>
     </html>

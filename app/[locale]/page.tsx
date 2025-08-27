@@ -18,6 +18,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navbar locale={locale} />
       
+      {/* Отступ для фиксированной навигации */}
+      <div className="pt-20"></div>
+      
       <main>
         <section id="hero">
           <Hero content={content.hero} />

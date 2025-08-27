@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Убираем статический экспорт для работы API роутов
-  // output: 'export',
+  // Включаем статический экспорт для Cloudflare Pages
+  output: 'export',
   
   // Убираем trailingSlash для стандартного поведения
   // trailingSlash: true,
@@ -11,8 +11,13 @@ const nextConfig = {
     unoptimized: true
   },
   
-  // Убираем distDir, чтобы использовать стандартную папку .next
-  // distDir: 'out'
+  // Настраиваем папку для статического экспорта
+  distDir: 'dist',
+  
+  // Отключаем трассировку для статического экспорта
+  experimental: {
+    outputFileTracingRoot: undefined
+  }
 }
 
 module.exports = nextConfig

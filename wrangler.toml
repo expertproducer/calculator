@@ -1,0 +1,12 @@
+[build]
+command = "npm run build"
+output_dir = "dist"
+
+[env.production]
+name = "calculator"
+
+[env.preview]
+name = "calculator-preview"
+
+[env.development]
+name = "calculator-dev"

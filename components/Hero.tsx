@@ -52,10 +52,10 @@ export default function Hero({ content }: HeroProps) {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-4xl mx-auto">
           {/* Content */}
-          <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-3 mb-6">
               <Shield className="text-blue-600 dark:text-blue-400" size={32} />
               <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
                 GDPR Compliance
@@ -69,12 +69,12 @@ export default function Hero({ content }: HeroProps) {
               {content.title}
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
               {content.subtitle}
             </p>
 
             {content.description && (
-              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
                 {content.description}
               </p>
             )}
@@ -83,7 +83,7 @@ export default function Hero({ content }: HeroProps) {
             {content.features && (
               <div className="mb-8 space-y-3">
                 {content.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 justify-center lg:justify-start">
+                  <div key={index} className="flex items-center gap-3 justify-center">
                     <CheckCircle className="text-green-500 flex-shrink-0" size={20} />
                     <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                   </div>
@@ -92,7 +92,7 @@ export default function Hero({ content }: HeroProps) {
             )}
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={scrollToContact}
                 onMouseEnter={() => setIsHovered(true)}

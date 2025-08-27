@@ -7,7 +7,10 @@ pages_build_output_dir = ".next/standalone"
 # Исключаем большие файлы из деплоя
 [env.production]
 name = "calculator"
-vars = { ENVIRONMENT = "production" }
+vars = { 
+  ENVIRONMENT = "production",
+  SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/T09CEV66EPN/B09CFBXDUGL/ACRW8p7RmKKalRIJrOti2"
+}
 
 # Переменные окружения для превью
 [env.preview]

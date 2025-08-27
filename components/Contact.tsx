@@ -37,14 +37,21 @@ export default function Contact({ content, locale }: { content: any; locale: str
   })
 
   const onSubmit = async (data: ContactFormData) => {
+    console.log('onSubmit called with data:', data)
+    
     if (data.honeypot) {
+      console.log('Honeypot triggered, form not submitted')
       return // Спам-защита
     }
 
+    console.log('Form validation passed, starting submission...')
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setSubmitMessage('')
 
     try {
+      console.log('Submitting form data:', data)
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -58,16 +65,21 @@ export default function Contact({ content, locale }: { content: any; locale: str
         })
       })
 
+      console.log('Response status:', response.status)
+      const responseData = await response.json()
+      console.log('Response data:', responseData)
+
       if (response.ok) {
         setSubmitStatus('success')
         setSubmitMessage('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.')
         reset()
       } else {
-        throw new Error('Ошибка отправки')
+        throw new Error(responseData.message || `HTTP ${response.status}: ${response.statusText}`)
       }
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
-      setSubmitMessage('Произошла ошибка при отправке. Попробуйте еще раз или свяжитесь с нами напрямую.')
+      setSubmitMessage(`Произошла ошибка при отправке: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}. Попробуйте еще раз или свяжитесь с нами напрямую.`)
     } finally {
       setIsSubmitting(false)
     }

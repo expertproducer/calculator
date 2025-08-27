@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static export for Cloudflare Pages
-  output: 'export',
-  trailingSlash: true,
+  // Убираем статический экспорт для работы API routes
+  // output: 'export',
   
-  // Disable image optimization for static export
+  // Убираем trailingSlash для стандартного поведения
+  // trailingSlash: true,
+  
+  // Отключаем оптимизацию изображений для статического экспорта
   images: {
     unoptimized: true
-  },
+  }
   
-  // Ensure proper static generation
-  distDir: 'out'
+  // Убираем distDir, чтобы использовать стандартную папку .next
+  // distDir: 'out'
 }
 
 module.exports = nextConfig

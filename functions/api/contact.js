@@ -5,31 +5,28 @@ export async function onRequestPost(context) {
     
     // Проверяем метод запроса
     if (request.method !== 'POST') {
-      return new Response('Method Not Allowed', { status: 405 });
+      return new Response('Method Not Allowed', { 
+        status: 405,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      });
     }
     
-    // Получаем данные формы
-    const formData = await request.formData();
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const company = formData.get('company');
-    const message = formData.get('message');
-    const stack = formData.get('stack');
-    const regions = formData.get('regions');
-    const languages = formData.get('languages');
-    const preferredCmp = formData.get('preferredCmp');
-    const integrations = formData.get('integrations');
-    const locale = formData.get('locale');
-    const timestamp = formData.get('timestamp');
-    const userAgent = formData.get('userAgent');
+    const body = await request.json();
     
-    // Валидация данных
-    if (!name || !email || !message) {
-      return new Response(JSON.stringify({
-        error: 'Missing required fields: name, email, message'
+    console.log('Received form data:', body);
+    
+    // Простая валидация
+    if (!body.name || !body.email || !body.url || !body.stack || !body.regions || !body.languages || !body.message || !body.locale) {
+      return new Response(JSON.stringify({ 
+        success: false, 
+        message: 'Missing required fields' 
       }), {
         status: 400,
-        headers: {
+        headers: { 
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -38,31 +35,82 @@ export async function onRequestPost(context) {
       });
     }
     
-    // Здесь можно добавить отправку email или сохранение в базу данных
-    // Пока просто возвращаем успешный ответ
+    // Проверка honeypot
+    if (body.honeypot) {
+      console.log('Honeypot triggered, treating as spam');
+      return new Response(JSON.stringify({ 
+        success: true, 
+        message: 'Message sent successfully' 
+      }), {
+        status: 200,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      });
+    }
     
-    // Логируем данные (в продакшене убрать)
-    console.log('Form submission:', { 
-      name, 
-      email, 
-      company, 
-      message, 
-      stack, 
-      regions, 
-      languages, 
-      preferredCmp, 
-      integrations, 
-      locale, 
-      timestamp, 
-      userAgent 
-    });
+    // Подготовка сообщения для Slack
+    const slackMessage = {
+      text: `🎯 *Новая заявка от ${body.name}*`,
+      blocks: [
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*Имя:*\n${body.name}` },
+            { type: "mrkdwn", text: `*Email:*\n${body.email}` },
+            { type: "mrkdwn", text: `*URL сайта:*\n${body.url}` },
+            { type: "mrkdwn", text: `*Стек:*\n${body.stack}` },
+            { type: "mrkdwn", text: `*Регионы:*\n${body.regions}` },
+            { type: "mrkdwn", text: `*Языки:*\n${body.languages}` }
+          ]
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `*Сообщение:*\n${body.message || 'Не указано'}`
+          }
+        },
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*Локаль:*\n${body.locale}` },
+            { type: "mrkdwn", text: `*Время:*\n${body.timestamp || 'Не указано'}` }
+          ]
+        }
+      ]
+    };
     
-    return new Response(JSON.stringify({
-      success: true,
-      message: 'Form submitted successfully'
+    console.log('Slack message prepared:', slackMessage);
+    
+    // Отправка в Slack
+    const slackWebhook = context.env.CONTACT_SLACK_WEBHOOK;
+    if (slackWebhook) {
+      console.log('Sending to Slack webhook');
+      const slackResponse = await fetch(slackWebhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(slackMessage)
+      });
+      
+      if (slackResponse.ok) {
+        console.log('Slack message sent successfully');
+      } else {
+        console.error('Slack API error:', await slackResponse.text());
+      }
+    } else {
+      console.warn('CONTACT_SLACK_WEBHOOK environment variable not set');
+    }
+    
+    return new Response(JSON.stringify({ 
+      success: true, 
+      message: 'Thank you! We will contact you soon.' 
     }), {
       status: 200,
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -71,13 +119,14 @@ export async function onRequestPost(context) {
     });
     
   } catch (error) {
-    console.error('Error processing form:', error);
+    console.error('Contact form error:', error);
     
-    return new Response(JSON.stringify({
-      error: 'Internal server error'
+    return new Response(JSON.stringify({ 
+      success: false, 
+      message: 'Internal server error' 
     }), {
       status: 500,
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -87,8 +136,8 @@ export async function onRequestPost(context) {
   }
 }
 
+// Обработка OPTIONS запроса для CORS
 export async function onRequestOptions(context) {
-  // Обработка preflight запроса
   return new Response(null, {
     status: 200,
     headers: {

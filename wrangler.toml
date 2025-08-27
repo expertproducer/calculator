@@ -2,7 +2,11 @@
 name = "calculator"
 
 # Указываем папку с собранными файлами
-pages_build_output_dir = "dist"
+pages_build_output_dir = "out"
+
+# Конфигурация для функций
+[functions]
+directory = "functions"
 
 [env.production]
 name = "calculator"

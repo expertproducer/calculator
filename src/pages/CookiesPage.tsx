@@ -7,8 +7,7 @@ interface CookiesPageProps {
 }
 
 export default function CookiesPage({ locale }: CookiesPageProps) {
-  const content = getContent(locale);
-
+  // Убираем неиспользуемую переменную content
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navbar />

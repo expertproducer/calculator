@@ -1,4 +1,4 @@
-import { getContent, getLocaleFromPath, Locale } from '../lib/i18n';
+import { Locale } from '../lib/i18n';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Problem from '../components/Problem';

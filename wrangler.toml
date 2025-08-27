@@ -2,11 +2,17 @@ name = "calculator"
 compatibility_date = "2024-01-01"
 
 [build]
-command = "npm run build"
-pages_build_output_dir = ".next"
+command = "npm run build:pages"
 
 [build.upload]
 format = "directory"
+
+# Указываем папку dist для Cloudflare Pages
+pages_build_output_dir = "dist"
+
+# Добавляем функции для API роутов
+[functions]
+directory = "dist/server/app/api"
 
 [[redirects]]
 from = "/api/*"

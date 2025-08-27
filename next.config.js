@@ -7,7 +7,10 @@ const nextConfig = {
   // Disable image optimization for static export
   images: {
     unoptimized: true
-  }
+  },
+  
+  // Ensure proper static generation
+  distDir: 'out'
 }
 
 module.exports = nextConfig

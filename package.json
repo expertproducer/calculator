@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:export": "next build && npm run copy-dist",
+    "copy-dist": "if exist dist rmdir /s /q dist && xcopy out dist /e /i /h /y",
     "start": "next start",
     "lint": "next lint"
   },

@@ -41,7 +41,7 @@ export async function onRequestPost(context) {
     })
 
     // Отправляем уведомление в Slack
-    const slackWebhookUrl = context.env.SLACK_WEBHOOK_URL;
+    const slackWebhookUrl = context.env.CONTACT_SLACK_WEBHOOK;
     
     if (slackWebhookUrl) {
       try {
@@ -100,7 +100,7 @@ export async function onRequestPost(context) {
         // Не прерываем выполнение, если Slack недоступен
       }
     } else {
-      console.warn('SLACK_WEBHOOK_URL не настроен');
+      console.warn('CONTACT_SLACK_WEBHOOK не настроен');
     }
 
     // Здесь можно добавить логику отправки email

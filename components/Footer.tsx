@@ -87,7 +87,7 @@ export default function Footer({ content, locale }: { content: any; locale: stri
                   className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <Settings size={16} />
-                  Настройки cookies
+                  Cookie Preferences
                 </button>
               </li>
             </ul>

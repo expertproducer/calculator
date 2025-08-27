@@ -2,9 +2,24 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Shield, Cookie, Settings, Info, AlertTriangle, CheckCircle } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'Cookie Policy — C&C CookieComply',
-  description: 'Learn about how we use cookies and similar technologies on our website.',
+import { PAGE_METADATA, GDPR_SUBDOMAIN } from '@/lib/locales'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const meta = PAGE_METADATA.cookies[locale as keyof typeof PAGE_METADATA.cookies] || PAGE_METADATA.cookies.en
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/cookies' : `/${locale}/cookies`}`,
+      languages: {
+        en: `${GDPR_SUBDOMAIN}/cookies`,
+        de: `${GDPR_SUBDOMAIN}/de/cookies`,
+        fr: `${GDPR_SUBDOMAIN}/fr/cookies`,
+      },
+    },
+  }
 }
 
 export async function generateStaticParams() {

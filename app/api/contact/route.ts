@@ -13,23 +13,37 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'Message sent successfully' })
     }
     
-    // Here you would send to email/Slack/Airtable
-    // For now, just log the data
-    console.log('Contact form submission:', {
-      name: validatedData.name,
-      email: validatedData.email,
-      url: validatedData.url,
-      stack: validatedData.stack,
-      regions: validatedData.regions,
-      languages: validatedData.languages,
-      cmp: validatedData.cmp,
-      integrations: validatedData.integrations,
-      message: validatedData.message,
-      locale: validatedData.locale
-    })
+    // Отправляем в Slack
+    const slackMessage = {
+      text: `🎯 *Новая заявка от ${validatedData.name}*`,
+      blocks: [
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*Имя:*\n${validatedData.name}` },
+            { type: "mrkdwn", text: `*Email:*\n${validatedData.email}` },
+            { type: "mrkdwn", text: `*URL сайта:*\n${validatedData.url}` },
+            { type: "mrkdwn", text: `*Локаль:*\n${validatedData.locale}` }
+          ]
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `*Сообщение:*\n${validatedData.message || 'Не указано'}`
+          }
+        }
+      ]
+    }
     
-    // Simulate processing delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // POST запрос в Slack
+    if (process.env.CONTACT_SLACK_WEBHOOK) {
+      await fetch(process.env.CONTACT_SLACK_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(slackMessage)
+      })
+    }
     
     return NextResponse.json({ 
       success: true, 

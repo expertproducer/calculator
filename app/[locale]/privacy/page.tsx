@@ -2,9 +2,24 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Shield, Eye, Lock, Users, FileText, Mail } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy — C&C CookieComply',
-  description: 'Our privacy policy explains how we collect, use, and protect your personal information.',
+import { PAGE_METADATA, GDPR_SUBDOMAIN } from '@/lib/locales'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const meta = PAGE_METADATA.privacy[locale as keyof typeof PAGE_METADATA.privacy] || PAGE_METADATA.privacy.en
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/privacy' : `/${locale}/privacy`}`,
+      languages: {
+        en: `${GDPR_SUBDOMAIN}/privacy`,
+        de: `${GDPR_SUBDOMAIN}/de/privacy`,
+        fr: `${GDPR_SUBDOMAIN}/fr/privacy`,
+      },
+    },
+  }
 }
 
 export async function generateStaticParams() {

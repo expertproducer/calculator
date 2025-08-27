@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../globals.css'
+import { PAGE_METADATA, GDPR_SUBDOMAIN } from '@/lib/locales'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -11,24 +12,12 @@ const inter = Inter({
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   
-  const titles = {
-    en: 'C&C CookieComply — GDPR CMP Setup & Cookie Banner Fixes',
-    de: 'C&C CookieComply — GDPR CMP Einrichtung & Cookie-Banner Reparaturen',
-    fr: 'C&C CookieComply — Configuration CMP GDPR & Corrections de Bannières de Cookies'
-  }
-  
-  const descriptions = {
-    en: 'We set up CMP, fix cookie banners, block trackers before consent, and log consent properly. Professional GDPR compliance solutions for businesses.',
-    de: 'Wir richten CMP ein, reparieren Cookie-Banner, blockieren Tracker vor der Zustimmung und protokollieren die Zustimmung ordnungsgemäß.',
-    fr: 'Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement.'
-  }
-
-  const baseUrl = 'https://gdpr.cashandclash.com'
+  const meta = PAGE_METADATA.home[locale as keyof typeof PAGE_METADATA.home] || PAGE_METADATA.home.en
 
   return {
-    title: titles[locale as keyof typeof titles] || titles.en,
-    description: descriptions[locale as keyof typeof titles] || descriptions.en,
-    keywords: ['GDPR compliance', 'CMP setup', 'cookie banner', 'consent management', 'privacy compliance'],
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     authors: [{ name: 'C&C CookieComply' }],
     creator: 'C&C CookieComply',
     publisher: 'C&C CookieComply',
@@ -44,15 +33,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: titles[locale as keyof typeof titles] || titles.en,
-      description: descriptions[locale as keyof typeof titles] || descriptions.en,
-      url: `${baseUrl}/${locale}`,
+      title: meta.title,
+      description: meta.description,
+      url: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/' : `/${locale}/`}`,
       siteName: 'C&C CookieComply',
       locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : 'fr_FR',
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/og-image.jpg`,
+          url: `${GDPR_SUBDOMAIN}/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: 'C&C CookieComply - GDPR Compliance Solutions'
@@ -61,19 +50,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: 'summary_large_image',
-      title: titles[locale as keyof typeof titles] || titles.en,
-      description: descriptions[locale as keyof typeof titles] || descriptions.en,
-      images: [`${baseUrl}/og-image.jpg`],
+      title: meta.title,
+      description: meta.description,
+      images: [`${GDPR_SUBDOMAIN}/og-image.jpg`],
       creator: '@cashandclash',
       site: '@cashandclash'
     },
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
+      canonical: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/' : `/${locale}/`}`,
       languages: {
-        'en': `${baseUrl}/en`,
-        'de': `${baseUrl}/de`,
-        'fr': `${baseUrl}/fr`,
-        'x-default': `${baseUrl}/en`
+        'en': `${GDPR_SUBDOMAIN}/`,
+        'de': `${GDPR_SUBDOMAIN}/de/`,
+        'fr': `${GDPR_SUBDOMAIN}/fr/`,
+        'x-default': `${GDPR_SUBDOMAIN}/`
       },
     },
     verification: {
@@ -91,7 +80,6 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const baseUrl = 'https://gdpr.cashandclash.com'
   
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -108,10 +96,10 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         
         {/* Hreflang tags */}
-        <link rel="alternate" href={`${baseUrl}/en`} hrefLang="en" />
-        <link rel="alternate" href={`${baseUrl}/de`} hrefLang="de" />
-        <link rel="alternate" href={`${baseUrl}/fr`} hrefLang="fr" />
-        <link rel="alternate" href={`${baseUrl}/en`} hrefLang="x-default" />
+        <link rel="alternate" href={`${GDPR_SUBDOMAIN}/`} hrefLang="en" />
+        <link rel="alternate" href={`${GDPR_SUBDOMAIN}/de/`} hrefLang="de" />
+        <link rel="alternate" href={`${GDPR_SUBDOMAIN}/fr/`} hrefLang="fr" />
+        <link rel="alternate" href={`${GDPR_SUBDOMAIN}/`} hrefLang="x-default" />
         
         {/* DNS prefetch */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -125,8 +113,8 @@ export default async function LocaleLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "C&C CookieComply",
-              "url": baseUrl,
-              "logo": `${baseUrl}/logo.svg`,
+              "url": GDPR_SUBDOMAIN,
+              "logo": `${GDPR_SUBDOMAIN}/logo.svg`,
               "description": "Professional GDPR compliance solutions for businesses",
               "address": {
                 "@type": "PostalAddress",

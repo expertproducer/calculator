@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X, Settings, Shield, Info } from 'lucide-react'
+import { Cookie, Settings, X, CheckCircle, AlertTriangle, Info } from 'lucide-react'
+import { initializeGTM, sendConsentEvent } from '@/lib/gtm'
 
 interface CookiePreferences {
   essential: boolean
@@ -21,15 +22,14 @@ export default function CookieConsent() {
   })
 
   useEffect(() => {
-    // Проверяем, было ли уже принято решение
+    // Проверяем, есть ли уже согласие
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
       setShowBanner(true)
     } else {
-      // Применяем сохраненные настройки
-      const savedPreferences = JSON.parse(consent)
-      setPreferences(savedPreferences)
-      applyConsent(savedPreferences)
+      const savedPrefs = JSON.parse(consent)
+      setPreferences(savedPrefs)
+      applyConsent(savedPrefs)
     }
 
     // Слушаем событие открытия настроек cookies из футера
@@ -44,39 +44,19 @@ export default function CookieConsent() {
     }
   }, [])
 
-  const applyConsent = (consent: CookiePreferences) => {
-    // Блокируем все не-essential скрипты до получения согласия
-    if (!consent.analytics) {
-      // Блокируем Google Analytics, Facebook Pixel и т.д.
-      window.gtag = () => {}
-      window.fbq = () => {}
-    }
+  const applyConsent = (prefs: CookiePreferences) => {
+    // Essential cookies всегда активны
     
-    if (!consent.marketing) {
-      // Блокируем рекламные скрипты
-      window.dataLayer = []
-    }
-    
-    if (!consent.functional) {
-      // Блокируем функциональные скрипты
-      // (например, чаты, виджеты)
-    }
-
     // Инициализируем GTM только после получения согласия
-    if (consent.analytics || consent.marketing) {
-      initializeGTM()
+    if (prefs.analytics || prefs.marketing || prefs.functional) {
+      initializeGTM(prefs)
     }
+    
+    // Отправляем событие согласия
+    sendConsentEvent(prefs)
   }
 
-  const initializeGTM = () => {
-    // Инициализируем Google Tag Manager
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      })
-    }
-  }
+
 
   const handleAcceptAll = () => {
     const allAccepted = {
@@ -85,238 +65,195 @@ export default function CookieConsent() {
       marketing: true,
       functional: true
     }
-    
     setPreferences(allAccepted)
     localStorage.setItem('cookie-consent', JSON.stringify(allAccepted))
     setShowBanner(false)
     applyConsent(allAccepted)
-    
-    // Отправляем событие согласия
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        ad_storage: 'granted',
-        analytics_storage: 'granted',
-        functionality_storage: 'granted'
-      })
-    }
   }
 
-  const handleDeclineAll = () => {
+  const handleDecline = () => {
     const onlyEssential = {
       essential: true,
       analytics: false,
       marketing: false,
       functional: false
     }
-    
     setPreferences(onlyEssential)
     localStorage.setItem('cookie-consent', JSON.stringify(onlyEssential))
     setShowBanner(false)
     applyConsent(onlyEssential)
-    
-    // Отправляем событие отказа
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
-        functionality_storage: 'denied'
-      })
-    }
   }
 
   const handleSavePreferences = () => {
     localStorage.setItem('cookie-consent', JSON.stringify(preferences))
-    setShowBanner(false)
     setShowPreferences(false)
+    setShowBanner(false)
     applyConsent(preferences)
-    
-    // Отправляем событие с настройками
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        ad_storage: preferences.marketing ? 'granted' : 'denied',
-        analytics_storage: preferences.analytics ? 'granted' : 'denied',
-        functionality_storage: preferences.functional ? 'granted' : 'denied'
-      })
-    }
   }
 
-  const handlePreferenceChange = (category: keyof CookiePreferences) => {
-    if (category === 'essential') return // Essential всегда включены
-    
+  const handlePreferencesChange = (type: keyof CookiePreferences) => {
+    if (type === 'essential') return // Essential всегда true
     setPreferences(prev => ({
       ...prev,
-      [category]: !prev[category]
+      [type]: !prev[type]
     }))
   }
 
   if (!showBanner && !showPreferences) return null
 
-  return (
-    <>
-      {/* Основной баннер */}
-      {showBanner && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-2xl">
-          <div className="max-w-7xl mx-auto p-6">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <Shield className="text-blue-600 dark:text-blue-400" size={24} />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Мы используем cookies для улучшения вашего опыта
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Мы используем cookies для анализа трафика, персонализации контента и рекламы. 
-                  Essential cookies всегда активны для работы сайта. 
-                  <a href="/en/cookies" className="text-blue-600 dark:text-blue-400 hover:underline ml-1">
-                    Узнать больше
-                  </a>
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-                <button
-                  onClick={handleDeclineAll}
-                  className="px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg font-medium transition-colors"
-                >
-                  Отклонить все
-                </button>
-                <button
-                  onClick={() => setShowPreferences(true)}
-                  className="px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg font-medium transition-colors flex items-center gap-2"
-                >
-                  <Settings size={16} />
-                  Настройки
-                </button>
-                <button
-                  onClick={handleAcceptAll}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
-                >
-                  Принять все
-                </button>
-              </div>
+  if (showPreferences) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                <Settings className="text-blue-600" size={24} />
+                Cookie Preferences
+              </h2>
+              <button
+                onClick={() => setShowPreferences(false)}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              >
+                <X size={24} />
+              </button>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Модальное окно настроек */}
-      {showPreferences && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Настройки cookies
-                </h2>
-                <button
-                  onClick={() => setShowPreferences(false)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-            </div>
-            
-            <div className="p-6 space-y-6">
+            <div className="space-y-6">
               {/* Essential Cookies */}
-              <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <input
-                      type="checkbox"
-                      checked={preferences.essential}
-                      disabled
-                      className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                    />
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Essential Cookies</h3>
-                    <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">
-                      Всегда активны
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Необходимы для работы сайта. Не могут быть отключены.
-                  </p>
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <CheckCircle className="text-green-600" size={20} />
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Essential Cookies</h3>
+                  <span className="px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">
+                    Always Active
+                  </span>
                 </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  These cookies are necessary for the website to function and cannot be disabled.
+                </p>
               </div>
 
               {/* Analytics Cookies */}
-              <div className="flex items-start gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <Info className="text-blue-600" size={20} />
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Analytics Cookies</h3>
+                  <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
                       checked={preferences.analytics}
-                      onChange={() => handlePreferenceChange('analytics')}
-                      className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                      onChange={() => handlePreferencesChange('analytics')}
+                      className="sr-only peer"
                     />
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Analytics Cookies</h3>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Помогают нам понять, как используется сайт, для улучшения пользовательского опыта.
-                  </p>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                  </label>
                 </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Help us understand how visitors interact with our website by collecting and reporting information anonymously.
+                </p>
               </div>
 
               {/* Marketing Cookies */}
-              <div className="flex items-start gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <AlertTriangle className="text-orange-600" size={20} />
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Marketing Cookies</h3>
+                  <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
                       checked={preferences.marketing}
-                      onChange={() => handlePreferenceChange('marketing')}
-                      className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                      onChange={() => handlePreferencesChange('marketing')}
+                      className="sr-only peer"
                     />
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Marketing Cookies</h3>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Используются для показа релевантной рекламы и отслеживания эффективности кампаний.
-                  </p>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                  </label>
                 </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Used to track visitors across websites to display relevant and engaging advertisements.
+                </p>
               </div>
 
               {/* Functional Cookies */}
-              <div className="flex items-start gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <Info className="text-purple-600" size={20} />
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Functional Cookies</h3>
+                  <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
                       checked={preferences.functional}
-                      onChange={() => handlePreferenceChange('functional')}
-                      className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                      onChange={() => handlePreferencesChange('functional')}
+                      className="sr-only peer"
                     />
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Functional Cookies</h3>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Обеспечивают дополнительную функциональность, такую как чаты и виджеты.
-                  </p>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                  </label>
                 </div>
-              </div>
-
-              <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                <Info size={14} className="inline mr-1" />
-                Ваши настройки будут сохранены и применены ко всем страницам сайта.
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Enable enhanced functionality and personalization such as chat support and social media integration.
+                </p>
               </div>
             </div>
-            
-            <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => setShowPreferences(false)}
-                className="px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg font-medium transition-colors"
-              >
-                Отмена
-              </button>
+
+            <div className="flex gap-3 mt-8">
               <button
                 onClick={handleSavePreferences}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex-1"
+                className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
               >
-                Сохранить настройки
+                Save Preferences
+              </button>
+              <button
+                onClick={() => setShowPreferences(false)}
+                className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                Cancel
               </button>
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    )
+  }
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-2xl z-40">
+      <div className="max-w-7xl mx-auto p-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+          <div className="flex items-start gap-3 flex-1">
+            <Cookie className="text-blue-600 mt-1" size={24} />
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                We use cookies to enhance your experience
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                We use cookies and similar technologies to help personalize content, provide social media features, and analyze our traffic. 
+                We also share information about your use of our site with our social media, advertising, and analytics partners.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <button
+              onClick={handleAcceptAll}
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+            >
+              Accept All
+            </button>
+            <button
+              onClick={handleDecline}
+              className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              Decline
+            </button>
+            <button
+              onClick={() => setShowPreferences(true)}
+              className="px-6 py-3 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+            >
+              Preferences
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

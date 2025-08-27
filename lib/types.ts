@@ -228,8 +228,13 @@ export interface AccessibilityFeatures {
 // Глобальные типы для window объекта
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void
-    fbq: (...args: any[]) => void
-    dataLayer: any[]
+    gtag?: (...args: any[]) => void
+    fbq?: (...args: any[]) => void
+    dataLayer?: any[]
+    addEventListener(type: 'openCookiePreferences', listener: () => void): void
+    removeEventListener(type: 'openCookiePreferences', listener: () => void): void
+    dispatchEvent(event: CustomEvent): boolean
   }
 }
+
+export {}

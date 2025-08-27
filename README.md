@@ -90,14 +90,30 @@ app/
 
 The project is configured for deployment on various platforms:
 
-- **Cloudflare Pages**: Git-based deployment with `wrangler.toml`
-- **Vercel**: Automatic deployment from GitHub
-- **Netlify**: Drag & drop deployment
+- **Cloudflare Pages**: Git-based deployment with `wrangler.toml` and Cloudflare Functions
+- **Vercel**: Automatic deployment from GitHub with Vercel Functions
+- **Netlify**: Drag & drop deployment with Netlify Functions
 - **GitHub Pages**: Static site hosting
 
 ### Cloudflare Pages Deployment
 
 1. Connect your GitHub repository to Cloudflare Pages
 2. Set build command: `npm run build`
-3. Set output directory: `dist`
-4. Deploy automatically on push to main branch 
+3. Set output directory: `out`
+4. Enable Cloudflare Functions in your project settings
+5. Deploy automatically on push to main branch
+
+### API Configuration
+
+The contact form uses serverless functions for form processing:
+
+- **Cloudflare Pages**: Uses Cloudflare Functions in `/functions` directory
+- **Vercel**: Uses Vercel Functions in `/app/api` directory  
+- **Netlify**: Uses Netlify Functions in `/netlify/functions` directory
+
+### Environment Variables
+
+Set these environment variables in your deployment platform:
+
+- `NEXT_PUBLIC_CONTACT_EMAIL`: Contact email for form submissions
+- `NEXT_PUBLIC_GDPR_SUBDOMAIN`: Your domain URL 

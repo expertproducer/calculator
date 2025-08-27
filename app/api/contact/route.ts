@@ -16,63 +16,58 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'Message sent successfully' })
     }
     
-    // Отправляем в Slack только если настроен webhook
-    if (process.env.CONTACT_SLACK_WEBHOOK) {
-      try {
-        const slackMessage = {
-          text: `🎯 *Новая заявка от ${validatedData.name}*`,
-          blocks: [
-            {
-              type: "section",
-              fields: [
-                { type: "mrkdwn", text: `*Имя:*\n${validatedData.name}` },
-                { type: "mrkdwn", text: `*Email:*\n${validatedData.email}` },
-                { type: "mrkdwn", text: `*URL сайта:*\n${validatedData.url}` },
-                { type: "mrkdwn", text: `*Стек:*\n${validatedData.stack}` },
-                { type: "mrkdwn", text: `*Регионы:*\n${validatedData.regions}` },
-                { type: "mrkdwn", text: `*Языки:*\n${validatedData.languages}` }
-              ]
-            },
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: `*Сообщение:*\n${validatedData.message || 'Не указано'}`
-              }
-            },
-            {
-              type: "section",
-              fields: [
-                { type: "mrkdwn", text: `*Локаль:*\n${validatedData.locale}` },
-                { type: "mrkdwn", text: `*Время:*\n${validatedData.timestamp || 'Не указано'}` }
-              ]
-            }
+    // Отправляем в Slack
+    const slackMessage = {
+      text: `🎯 *Новая заявка от ${validatedData.name}*`,
+      blocks: [
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*Имя:*\n${validatedData.name}` },
+            { type: "mrkdwn", text: `*Email:*\n${validatedData.email}` },
+            { type: "mrkdwn", text: `*URL сайта:*\n${validatedData.url}` },
+            { type: "mrkdwn", text: `*Стек:*\n${validatedData.stack}` },
+            { type: "mrkdwn", text: `*Регионы:*\n${validatedData.regions}` },
+            { type: "mrkdwn", text: `*Языки:*\n${validatedData.languages}` }
+          ]
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `*Сообщение:*\n${validatedData.message || 'Не указано'}`
+          }
+        },
+        {
+          type: "section",
+          fields: [
+            { type: "mrkdwn", text: `*Локаль:*\n${validatedData.locale}` },
+            { type: "mrkdwn", text: `*Время:*\n${validatedData.timestamp || 'Не указано'}` }
           ]
         }
-        
-        console.log('Slack message prepared:', slackMessage)
-        
-        const slackResponse = await fetch(process.env.CONTACT_SLACK_WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(slackMessage)
-        })
-        
-        if (slackResponse.ok) {
-          console.log('Slack message sent successfully')
-        } else {
-          console.error('Slack API error:', await slackResponse.text())
-          // Не прерываем выполнение, если Slack недоступен
-        }
-      } catch (slackError) {
-        console.error('Slack integration error:', slackError)
-        // Не прерываем выполнение, если Slack недоступен
-      }
-    } else {
-      console.warn('CONTACT_SLACK_WEBHOOK environment variable not set - skipping Slack notification')
+      ]
     }
     
-    // Всегда возвращаем успешный ответ, если валидация прошла
+    console.log('Slack message prepared:', slackMessage)
+    
+    // POST запрос в Slack
+    if (process.env.CONTACT_SLACK_WEBHOOK) {
+      console.log('Sending to Slack webhook:', process.env.CONTACT_SLACK_WEBHOOK)
+      const slackResponse = await fetch(process.env.CONTACT_SLACK_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(slackMessage)
+      })
+      
+      if (slackResponse.ok) {
+        console.log('Slack message sent successfully')
+      } else {
+        console.error('Slack API error:', await slackResponse.text())
+      }
+    } else {
+      console.warn('CONTACT_SLACK_WEBHOOK environment variable not set')
+    }
+    
     return NextResponse.json({ 
       success: true, 
       message: 'Thank you! We will contact you soon.' 

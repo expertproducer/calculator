@@ -52,41 +52,36 @@ export default function Contact({ content, locale }: { content: any; locale: str
     try {
       console.log('Submitting form data:', data)
       
+      // Создаем FormData для отправки
+      const formData = new FormData()
+      formData.append('name', data.name)
+      formData.append('email', data.email)
+      formData.append('company', data.url) // Используем url как company
+      formData.append('message', data.message)
+      formData.append('stack', data.stack)
+      formData.append('regions', data.regions)
+      formData.append('languages', data.languages)
+      formData.append('preferredCmp', data.preferredCmp || '')
+      formData.append('integrations', data.integrations || '')
+      formData.append('locale', locale)
+      formData.append('timestamp', new Date().toISOString())
+      formData.append('userAgent', navigator.userAgent)
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          locale,
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent
-        })
+        body: formData
       })
 
       console.log('Response status:', response.status)
-      
-      // Проверяем, есть ли содержимое в ответе
-      const responseText = await response.text()
-      console.log('Response text:', responseText)
-      
-      let responseData
-      try {
-        responseData = responseText ? JSON.parse(responseText) : {}
-      } catch (parseError) {
-        console.error('Failed to parse response as JSON:', parseError)
-        throw new Error('Сервер вернул некорректный ответ. Попробуйте еще раз.')
-      }
-
+      const responseData = await response.json()
       console.log('Response data:', responseData)
 
-      if (response.ok && responseData.success) {
+      if (response.ok) {
         setSubmitStatus('success')
         setSubmitMessage('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.')
         reset()
       } else {
-        throw new Error(responseData.message || `HTTP ${response.status}: ${response.statusText}`)
+        throw new Error(responseData.error || `HTTP ${response.status}: ${response.statusText}`)
       }
     } catch (error) {
       console.error('Form submission error:', error)

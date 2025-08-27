@@ -1,6 +1,6 @@
 [build]
 command = "npm run build"
-output_dir = "dist"
+output_dir = "out"
 
 [env.production]
 name = "calculator"
@@ -10,3 +10,7 @@ name = "calculator-preview"
 
 [env.development]
 name = "calculator-dev"
+
+# Поддержка функций
+[functions]
+directory = "functions"

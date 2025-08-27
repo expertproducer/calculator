@@ -8,8 +8,9 @@
     "export": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .next dist out",
-    "type-check": "tsc --noEmit"
+    "clean": "rm -rf .next out dist",
+    "type-check": "tsc --noEmit",
+    "dev:static": "npm run build && npx serve out"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

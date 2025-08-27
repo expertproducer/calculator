@@ -11,9 +11,6 @@ const nextConfig = {
     unoptimized: true
   },
   
-  // Настраиваем папку для статического экспорта
-  distDir: 'dist',
-  
   // Отключаем трассировку для статического экспорта
   experimental: {
     outputFileTracingRoot: undefined

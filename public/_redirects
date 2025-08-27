@@ -1,5 +1,13 @@
-# API роуты
+# API роуты - перенаправляем на Cloudflare Functions или Vercel Functions
 /api/* /api/:splat 200
 
 # SPA роуты - все остальные маршруты ведут на главную страницу
 /* /index.html 200
+
+# Локализация
+/en /en/index.html 200
+/de /de/index.html 200
+/fr /fr/index.html 200
+/en/* /en/index.html 200
+/de/* /de/index.html 200
+/fr/* /fr/index.html 200

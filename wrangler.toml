@@ -1,11 +1,8 @@
 # Конфигурация для Cloudflare Pages
-pages_build_output_dir = "out"
+name = "calculator"
 
 [env.production]
 name = "calculator"
 
 [env.preview]
 name = "calculator-preview"
-
-[env.development]
-name = "calculator-dev"

@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run prepare-pages",
-    "build:pages": "next build && npm run prepare-pages",
-    "prepare-pages": "node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('dist'))fs.rmSync('dist',{recursive:true});fs.mkdirSync('dist');function copyDir(src, dest) {if(!fs.existsSync(dest))fs.mkdirSync(dest,{recursive:true});const items=fs.readdirSync(src);for(const item of items) {if(item==='cache')continue;const srcPath=path.join(src,item);const destPath=path.join(dest,item);const stat=fs.statSync(srcPath);if(stat.isDirectory())copyDir(srcPath,destPath);else if(stat.size<25*1024*1024)fs.copyFileSync(srcPath,destPath);}}copyDir('.next','dist');console.log('dist folder created for Cloudflare Pages (excluding large cache files)');\"",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

@@ -2,10 +2,10 @@ name = "calculator"
 compatibility_date = "2024-01-01"
 
 [build]
-command = "npm run build:pages"
+command = "npm run build"
 
 [build.upload]
 format = "directory"
 
-# Указываем папку dist для Cloudflare Pages
-pages_build_output_dir = "dist"
+# Указываем папку out для статического экспорта
+pages_build_output_dir = "out"

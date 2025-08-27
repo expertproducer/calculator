@@ -3,10 +3,15 @@ compatibility_date = "2024-01-01"
 
 [build]
 command = "npm run build"
-pages_build_output_dir = "dist"
+pages_build_output_dir = ".next"
 
 [build.upload]
 format = "directory"
+
+[[redirects]]
+from = "/api/*"
+to = "/api/:splat"
+status = 200
 
 [[redirects]]
 from = "/*"

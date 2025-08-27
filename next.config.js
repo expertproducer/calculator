@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Включаем статический экспорт для создания папки out
-  output: 'export',
+  // Убираем статический экспорт для работы API роутов
+  // output: 'export',
   
   // Убираем trailingSlash для стандартного поведения
   // trailingSlash: true,

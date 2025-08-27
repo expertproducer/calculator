@@ -1,46 +1,53 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('📁 Copying files after build...');
-
-// Создаем папку functions в out если её нет
-const functionsDir = path.join('out', 'functions');
-if (!fs.existsSync(functionsDir)) {
-    fs.mkdirSync(functionsDir, { recursive: true });
-    console.log('✅ Created functions directory');
+// Создаем папку out если её нет
+const outDir = path.join('out');
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir, { recursive: true });
 }
 
-// Копируем _worker.js в корень out
-const workerSource = path.join('functions', '_worker.js');
-const workerDest = path.join('out', '_worker.js');
+// Копируем основные файлы
+const filesToCopy = [
+  { source: 'public', dest: 'out' },
+  { source: 'next.config.js', dest: 'out' },
+  { source: 'package.json', dest: 'out' }
+];
 
-if (fs.existsSync(workerSource)) {
-    fs.copyFileSync(workerSource, workerDest);
-    console.log('✅ Copied _worker.js to out/');
-} else {
-    console.log('❌ _worker.js not found in functions/');
-}
-
-// Копируем папку api
-const apiSource = path.join('functions', 'api');
-const apiDest = path.join('out', 'functions', 'api');
-
-if (fs.existsSync(apiSource)) {
-    // Создаем папку api если её нет
-    if (!fs.existsSync(apiDest)) {
-        fs.mkdirSync(apiDest, { recursive: true });
+filesToCopy.forEach(({ source, dest }) => {
+  const sourcePath = path.join(source);
+  const destPath = path.join(dest, path.basename(source));
+  
+  if (fs.existsSync(sourcePath)) {
+    if (fs.lstatSync(sourcePath).isDirectory()) {
+      // Копируем папку рекурсивно
+      copyDir(sourcePath, destPath);
+    } else {
+      // Копируем файл
+      fs.copyFileSync(sourcePath, destPath);
     }
+    console.log(`✅ Copied ${source} to ${dest}/`);
+  } else {
+    console.log(`❌ ${source} not found`);
+  }
+});
+
+function copyDir(src, dest) {
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+  
+  const items = fs.readdirSync(src);
+  items.forEach(item => {
+    const srcPath = path.join(src, item);
+    const destPath = path.join(dest, item);
     
-    // Копируем все файлы из api
-    const files = fs.readdirSync(apiSource);
-    files.forEach(file => {
-        const sourceFile = path.join(apiSource, file);
-        const destFile = path.join(apiDest, file);
-        fs.copyFileSync(sourceFile, destFile);
-        console.log(`✅ Copied ${file} to out/functions/api/`);
-    });
-} else {
-    console.log('❌ API directory not found in functions/');
+    if (fs.lstatSync(srcPath).isDirectory()) {
+      copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
 }
 
-console.log('🎉 File copying completed!');
+console.log('✅ Build files copied successfully!');

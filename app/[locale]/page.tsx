@@ -1,16 +1,6 @@
-import { getContent } from '@/lib/i18n'
-import Hero from '@/components/Hero'
-import Problem from '@/components/Problem'
-import Services from '@/components/Services'
-import Process from '@/components/Process'
-import Deliverables from '@/components/Deliverables'
-import Benefits from '@/components/Benefits'
-import Cases from '@/components/Cases'
-import Pricing from '@/components/Pricing'
-import FAQ from '@/components/FAQ'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import { getContent } from '../lib/i18n'
+import Hero from '../components/Hero'
+import { Problem, Services, Process, Deliverables, Benefits, Cases, Pricing, FAQ, Contact, Footer, Navbar } from '../components/AllComponents'
 
 export async function generateStaticParams() {
   return [
@@ -20,12 +10,13 @@ export async function generateStaticParams() {
   ]
 }
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  const content = getContent(params.locale)
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const content = getContent(locale)
   
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Navbar locale={params.locale} />
+      <Navbar locale={locale} />
       
       <main>
         <section id="hero">
@@ -65,11 +56,11 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </section>
         
         <section id="contact">
-          <Contact content={content.contact} locale={params.locale} />
+          <Contact content={content.contact} locale={locale} />
         </section>
       </main>
       
-      <Footer content={content.footer} locale={params.locale} />
+      <Footer content={content.footer} locale={locale} />
     </div>
   )
 }

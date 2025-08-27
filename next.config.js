@@ -7,20 +7,6 @@ const nextConfig = {
   // Disable image optimization for static export
   images: {
     unoptimized: true
-  },
-  
-  // i18n configuration - handled by App Router
-  experimental: {
-    appDir: true
-  },
-  
-  // Generate static pages for all locales
-  async generateStaticParams() {
-    return {
-      '/': ['en', 'de', 'fr'],
-      '/privacy': ['en', 'de', 'fr'],
-      '/cookies': ['en', 'de', 'fr']
-    }
   }
 }
 

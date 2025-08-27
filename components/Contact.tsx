@@ -78,8 +78,22 @@ export default function Contact({ content, locale }: { content: any; locale: str
       })
 
       console.log('Response status:', response.status)
-      const responseData = await response.json()
-      console.log('Response data:', responseData)
+      
+      // Проверяем, есть ли содержимое в ответе
+      let responseData
+      const responseText = await response.text()
+      
+      if (responseText) {
+        try {
+          responseData = JSON.parse(responseText)
+          console.log('Response data:', responseData)
+        } catch (parseError) {
+          console.error('Failed to parse response as JSON:', parseError)
+          throw new Error('Неверный формат ответа от сервера')
+        }
+      } else {
+        responseData = {}
+      }
 
       if (response.ok && responseData.success) {
         setSubmitStatus('success')

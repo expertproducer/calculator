@@ -95,7 +95,7 @@ export default function Contact({ content, locale }: { content: any; locale: str
         responseData = {}
       }
 
-      if (response.ok && responseData.success) {
+      if (response.ok) {
         setSubmitStatus('success')
         setSubmitMessage('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.')
         reset()

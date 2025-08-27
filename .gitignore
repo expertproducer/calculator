@@ -44,14 +44,6 @@ pids
 # Coverage directory used by tools like istanbul
 coverage/
 
-# Firebase
-.firebase/
-firebase-debug.log
-firebase-debug.*.log
-
-# PWA icons (placeholder files)
-public/pwa-*.png.txt
-
 # Temporary files
 *.tmp
 *.temp

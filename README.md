@@ -4,157 +4,103 @@ Professional cookie compliance solutions for businesses. We make GDPR compliance
 
 ## 🚀 Features
 
-- **Multilingual Support**: English, German, and French
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Modern Tech Stack**: React 18, TypeScript, Vite
-- **Accessibility**: WCAG compliant with focus management
-- **Dark Mode**: Automatic theme detection and manual toggle
+- **Multi-language support**: English, German, French
+- **Responsive design**: Works on all devices
+- **Modern UI**: Built with React, TypeScript, and Tailwind CSS
+- **Form validation**: Contact form with Zod validation
+- **Dark mode**: Automatic theme detection
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18 + TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
+- **Forms**: React Hook Form + Zod
 - **Icons**: Lucide React
-- **Forms**: React Hook Form + Zod validation
 - **Routing**: React Router DOM
-- **Animations**: Framer Motion
 
 ## 📁 Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-├── content/            # i18n content files (EN, DE, FR)
-├── lib/                # Utilities and configurations
-├── pages/              # Page components
-└── App.tsx            # Main app with routing
+├── components/     # React components
+├── content/        # i18n content files
+├── lib/           # Utilities and schemas
+├── pages/         # Page components
+├── App.tsx        # Main app component
+├── main.tsx       # Entry point
+└── index.css      # Global styles
 ```
 
-## 🌍 Internationalization
+## 🌍 Languages
 
-The app supports three languages:
-- **English** (`/en`) - Default
-- **German** (`/de`) - Deutsch
-- **French** (`/fr`) - Français
-
-Content is managed through JSON files in `src/content/`.
+- `/en` - English (default)
+- `/de` - German
+- `/fr` - French
 
 ## 🚀 Getting Started
 
-### Prerequisites
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- Node.js 18+ 
-- npm or yarn
+2. **Start development server**:
+   ```bash
+   npm run dev
+   ```
 
-### Installation
+3. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd cc-cookiecomply
-```
+4. **Preview production build**:
+   ```bash
+   npm run preview
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## 📱 Sections
 
-3. Start development server:
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-## 📱 Pages & Sections
-
-- **Hero**: Main value proposition and CTAs
-- **Problem**: Common cookie banner issues
-- **Services**: What we offer (CMP setup, banner fixes, etc.)
-- **Process**: 5-step implementation process
-- **Deliverables**: What clients receive
-- **Benefits**: Why choose us
-- **Cases**: Before/after case studies
-- **Pricing**: Service plans and pricing
-- **FAQ**: Frequently asked questions
-- **Contact**: Contact form with validation
-
-## 🎨 Design System
-
-- **Colors**: Blue primary (#3B82F6), semantic colors for success/warning/error
-- **Typography**: Inter font family with responsive sizing
-- **Spacing**: Consistent 8px grid system
-- **Components**: Reusable button, card, and form components
+- **Hero** - Main landing section with CTAs
+- **Problem** - Common cookie banner issues
+- **Services** - What we offer (10 services)
+- **Process** - 5-step implementation process
+- **Deliverables** - What clients receive
+- **Benefits** - Why choose us
+- **Cases** - Before/after case studies
+- **Pricing** - Service plans
+- **FAQ** - Frequently asked questions
+- **Contact** - Contact form
 
 ## 🔧 Configuration
 
-### Environment Variables
+- **Vite**: `vite.config.ts`
+- **Tailwind**: `tailwind.config.cjs`
+- **TypeScript**: `tsconfig.json`
+- **ESLint**: `.eslintrc.cjs`
+- **Prettier**: `.prettierrc`
 
-Create a `.env` file in the root directory:
+## 📦 Scripts
 
-```env
-VITE_APP_TITLE=C&C CookieComply
-VITE_APP_DESCRIPTION=Professional cookie compliance solutions
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
 
-### Tailwind Configuration
+## 🌐 Deployment
 
-Custom colors and components are defined in `tailwind.config.cjs`.
+The project is configured for deployment on various platforms:
 
-## 📝 Content Management
-
-To add or modify content:
-
-1. Edit the appropriate language file in `src/content/`
-2. Follow the existing structure and keys
-3. Ensure all languages have the same keys for consistency
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect the Vite configuration
-3. Deploy with default settings
-
-### Other Platforms
-
-The app can be deployed to any static hosting platform:
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
-- Any VPS with nginx
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+- **Vercel**: Automatic deployment from GitHub
+- **Netlify**: Drag & drop deployment
+- **Cloudflare Pages**: Git-based deployment
+- **GitHub Pages**: Static site hosting
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
-## 📞 Support
-
-For support or questions:
-- Email: [contact@cccookiecomply.com]
-- Website: [https://cccookiecomply.com]
+This project is proprietary software. All rights reserved.
 
 ---
 

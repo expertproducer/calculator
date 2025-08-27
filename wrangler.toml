@@ -1,16 +1,13 @@
 # Конфигурация для Cloudflare Pages
 name = "calculator"
 
-# Указываем папку с собранными файлами
-pages_build_output_dir = "out"
-
-# Конфигурация для функций
+# Указываем папку с функциями
 [functions]
 directory = "functions"
 
 # Конфигурация для Pages
 [pages]
-directory = "out"
+directory = ".next"
 
 # Переменные окружения для продакшена
 [env.production]

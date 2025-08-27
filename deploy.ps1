@@ -2,7 +2,7 @@
 Write-Host "🚀 Starting deployment to Cloudflare Pages..." -ForegroundColor Green
 
 # Проверяем наличие необходимых файлов
-$requiredFiles = @("next.config.js", "package.json")
+$requiredFiles = @("next.config.js", "package.json", "wrangler.toml")
 
 foreach ($file in $requiredFiles) {
     if (Test-Path $file) {
@@ -14,9 +14,9 @@ foreach ($file in $requiredFiles) {
 }
 
 # Очищаем предыдущую сборку
-if (Test-Path "out") {
+if (Test-Path ".next") {
     Write-Host "🧹 Cleaning previous build..." -ForegroundColor Yellow
-    Remove-Item -Recurse -Force "out"
+    Remove-Item -Recurse -Force ".next"
 }
 
 # Собираем проект
@@ -34,7 +34,7 @@ Write-Host "✅ Build completed successfully!" -ForegroundColor Green
 Write-Host "🚀 Deploying to Cloudflare Pages..." -ForegroundColor Yellow
 
 try {
-    npx wrangler pages deploy out --project-name calculator2
+    npx wrangler pages deploy .next --project-name calculator
     Write-Host "✅ Deployment completed successfully!" -ForegroundColor Green
     Write-Host "🌐 Your site is now live at: https://cashandclash.com" -ForegroundColor Cyan
 } catch {

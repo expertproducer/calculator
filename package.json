@@ -5,13 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/copy-files.js",
-    "export": "next build",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next out dist",
     "type-check": "tsc --noEmit",
-    "dev:static": "npm run build && npx serve out"
+    "deploy": "npm run build && npx wrangler pages deploy .next --project-name calculator"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

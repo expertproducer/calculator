@@ -41,7 +41,7 @@ export function getContent(locale: Locale) {
   const content = {
     en: {
       hero: {
-        title: 'C&C CookieComply — GDPR CMP Setup & Cookie Banner Fixes',
+        title: 'GDPR Cookie Banner & CMP Setup — C&C CookieComply (EU/EEA)',
         subtitle: 'We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.',
         cta: {
           primary: 'Fix my banner',
@@ -49,7 +49,7 @@ export function getContent(locale: Locale) {
         }
       },
       problem: {
-        title: 'Common GDPR Compliance Issues',
+        title: 'Common GDPR & Cookie Banner Issues',
         points: [
           'Non-compliant cookie banners',
           'Scripts loading before consent',
@@ -58,7 +58,7 @@ export function getContent(locale: Locale) {
         ]
       },
       services: {
-        title: 'Our Services',
+        title: 'GDPR Services: CMP Setup & Cookie Banner Fixes',
         items: [
           'CMP setup (Cookiebot, Iubenda, Usercentrics, Termly)',
           'Cookie banner fixes',
@@ -71,7 +71,7 @@ export function getContent(locale: Locale) {
         ]
       },
       process: {
-        title: 'How We Work',
+        title: 'Implementation Process: From Audit to Validation',
         steps: [
           'Site audit & inventory',
           'CMP architecture design',
@@ -104,17 +104,17 @@ export function getContent(locale: Locale) {
         title: 'Case Studies',
         cards: [
           {
-            title: 'E-commerce (DE)',
+            title: 'E-commerce Audit (DE)',
             before: 'Accept-only banner, scripts loaded immediately',
             after: 'Accept/Decline/Preferences, strict blocking, improved conversion'
           },
           {
-            title: 'Media (FR)',
+            title: 'Media Compliance (FR)',
             before: 'Third-party cookies before consent, no preference center',
             after: 'Auto-blocking, preference center, FR/EN localization'
           },
           {
-            title: 'SaaS (EU)',
+            title: 'SaaS Platform (EU)',
             before: 'Inconsistent logic across subdomains',
             after: 'Unified CMP, consistent categories, centralized logging'
           }
@@ -124,15 +124,15 @@ export function getContent(locale: Locale) {
         title: 'Pricing Plans',
         plans: [
           {
-            name: 'Basic',
+            name: 'Basic Plan',
             features: ['Banner fix', 'Copy optimization', 'Basic blocking']
           },
           {
-            name: 'Pro',
+            name: 'Pro Plan',
             features: ['CMP setup', 'GTM integration', 'Scan report', 'Policy pages']
           },
           {
-            name: 'Business',
+            name: 'Business Plan',
             features: ['Multi-domain', 'Migration', 'Custom events', 'White-label report']
           }
         ],
@@ -156,7 +156,7 @@ export function getContent(locale: Locale) {
         ]
       },
       contact: {
-        title: 'Get Started',
+        title: 'Contact Us for GDPR CMP Setup',
         subtitle: 'Tell us about your project',
         fields: {
           name: 'Name',
@@ -220,7 +220,7 @@ export function getContent(locale: Locale) {
     },
     de: {
       hero: {
-        title: 'C&C CookieComply — GDPR CMP Einrichtung & Cookie-Banner Reparaturen',
+        title: 'DSGVO Cookie-Banner & CMP Einrichtung — C&C CookieComply (EU/EWR)',
         subtitle: 'Wir richten CMP ein, reparieren Cookie-Banner und blockieren Tracker vor der Zustimmung.',
         cta: {
           primary: 'Meinen Banner reparieren',
@@ -228,7 +228,7 @@ export function getContent(locale: Locale) {
         }
       },
       problem: {
-        title: 'Häufige GDPR-Compliance-Probleme',
+        title: 'Häufige DSGVO & Cookie-Banner Probleme',
         points: [
           'Nicht konforme Cookie-Banner',
           'Skripte werden vor der Zustimmung geladen',
@@ -237,7 +237,7 @@ export function getContent(locale: Locale) {
         ]
       },
       services: {
-        title: 'Unsere Dienstleistungen',
+        title: 'DSGVO Dienstleistungen: CMP Einrichtung & Cookie-Banner Reparaturen',
         items: [
           'CMP-Einrichtung (Cookiebot, Iubenda, Usercentrics, Termly)',
           'Cookie-Banner-Reparaturen',
@@ -250,7 +250,7 @@ export function getContent(locale: Locale) {
         ]
       },
       process: {
-        title: 'Wie wir arbeiten',
+        title: 'Implementierungsprozess: Vom Audit zur Validierung',
         steps: [
           'Website-Audit & Bestandsaufnahme',
           'CMP-Architektur-Design',
@@ -283,17 +283,17 @@ export function getContent(locale: Locale) {
         title: 'Fallstudien',
         cards: [
           {
-            title: 'E-Commerce (DE)',
+            title: 'E-Commerce Audit (DE)',
             before: 'Nur-Akzeptieren-Banner, Skripte sofort geladen',
             after: 'Akzeptieren/Ablehnen/Einstellungen, strikte Blockierung, verbesserte Konversion'
           },
           {
-            title: 'Medien (DE)',
+            title: 'Medien Compliance (DE)',
             before: 'Third-Party-Cookies vor Zustimmung, kein Einstellungszentrum',
             after: 'Auto-Blockierung, Einstellungszentrum, DE/EN-Lokalisierung'
           },
           {
-            title: 'SaaS (EU)',
+            title: 'SaaS Plattform (EU)',
             before: 'Inkonsistente Logik über Subdomains',
             after: 'Einheitliches CMP, konsistente Kategorien, zentrale Protokollierung'
           }
@@ -303,15 +303,15 @@ export function getContent(locale: Locale) {
         title: 'Preispläne',
         plans: [
           {
-            name: 'Basic',
+            name: 'Basic Plan',
             features: ['Banner-Reparatur', 'Kopie-Optimierung', 'Grundlegende Blockierung']
           },
           {
-            name: 'Pro',
+            name: 'Pro Plan',
             features: ['CMP-Einrichtung', 'GTM-Integration', 'Scan-Bericht', 'Richtlinien-Seiten']
           },
           {
-            name: 'Business',
+            name: 'Business Plan',
             features: ['Multi-Domain', 'Migration', 'Benutzerdefinierte Ereignisse', 'White-Label-Bericht']
           }
         ],
@@ -335,7 +335,7 @@ export function getContent(locale: Locale) {
         ]
       },
       contact: {
-        title: 'Loslegen',
+        title: 'Kontaktieren Sie uns für DSGVO CMP Einrichtung',
         subtitle: 'Erzählen Sie uns von Ihrem Projekt',
         fields: {
           name: 'Name',
@@ -399,7 +399,7 @@ export function getContent(locale: Locale) {
     },
     fr: {
       hero: {
-        title: 'C&C CookieComply — Configuration CMP GDPR & Corrections de Bannières',
+        title: 'Mise en place CMP & bannières cookies RGPD — C&C CookieComply (UE/EEE)',
         subtitle: 'Nous configurons CMP et corrigeons les bannières de cookies.',
         cta: {
           primary: 'Corriger ma bannière',
@@ -407,7 +407,7 @@ export function getContent(locale: Locale) {
         }
       },
       problem: {
-        title: 'Problèmes courants de conformité GDPR',
+        title: 'Problèmes courants RGPD & bannières cookies',
         points: [
           'Bannières de cookies non conformes',
           'Scripts chargés avant le consentement',
@@ -416,7 +416,7 @@ export function getContent(locale: Locale) {
         ]
       },
       services: {
-        title: 'Nos services',
+        title: 'Services RGPD: Configuration CMP & Corrections de Bannières',
         items: [
           'Configuration CMP (Cookiebot, Iubenda, Usercentrics, Termly)',
           'Corrections de bannières de cookies',
@@ -429,7 +429,7 @@ export function getContent(locale: Locale) {
         ]
       },
       process: {
-        title: 'Comment nous travaillons',
+        title: 'Processus d\'implémentation: De l\'audit à la validation',
         steps: [
           'Audit du site & inventaire',
           'Conception de l\'architecture CMP',
@@ -462,17 +462,17 @@ export function getContent(locale: Locale) {
         title: 'Études de cas',
         cards: [
           {
-            title: 'E-commerce (FR)',
+            title: 'Audit E-commerce (FR)',
             before: 'Bannière acceptation uniquement, scripts chargés immédiatement',
             after: 'Accepter/Refuser/Préférences, blocage strict, conversion améliorée'
           },
           {
-            title: 'Médias (FR)',
+            title: 'Conformité Médias (FR)',
             before: 'Cookies tiers avant consentement, pas de centre de préférences',
             after: 'Blocage automatique, centre de préférences, localisation FR/EN'
           },
           {
-            title: 'SaaS (UE)',
+            title: 'Plateforme SaaS (UE)',
             before: 'Logique incohérente sur les sous-domaines',
             after: 'CMP unifié, catégories cohérentes, journalisation centralisée'
           }
@@ -482,15 +482,15 @@ export function getContent(locale: Locale) {
         title: 'Plans tarifaires',
         plans: [
           {
-            name: 'Basic',
+            name: 'Plan Basic',
             features: ['Correction de bannière', 'Optimisation de copie', 'Blocage de base']
           },
           {
-            name: 'Pro',
+            name: 'Plan Pro',
             features: ['Configuration CMP', 'Intégration GTM', 'Rapport de scan', 'Pages de politique']
           },
           {
-            name: 'Business',
+            name: 'Plan Business',
             features: ['Multi-domaines', 'Migration', 'Événements personnalisés', 'Rapport white-label']
           }
         ],
@@ -514,7 +514,7 @@ export function getContent(locale: Locale) {
         ]
       },
       contact: {
-        title: 'Commencer',
+        title: 'Contactez-nous pour la configuration CMP RGPD',
         subtitle: 'Parlez-nous de votre projet',
         fields: {
           name: 'Nom',

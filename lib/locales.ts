@@ -33,19 +33,19 @@ export function fullUrlFor(locale: Locale, slug = "/") {
 export const PAGE_METADATA = {
   home: {
     en: {
-      title: "C&C CookieComply — GDPR CMP Setup & Cookie Banner Fixes",
+      title: "GDPR Cookie Banner & CMP Setup — C&C CookieComply (EU/EEA)",
       description: "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly. Professional GDPR compliance solutions for businesses.",
       keywords: ["GDPR compliance", "CMP setup", "cookie banner", "consent management", "privacy compliance"]
     },
     de: {
-      title: "C&C CookieComply — GDPR CMP Einrichtung & Cookie-Banner Reparaturen",
-      description: "Wir richten CMP ein, reparieren Cookie-Banner, blockieren Tracker vor der Zustimmung und protokollieren die Zustimmung ordnungsgemäß. Professionelle GDPR-Compliance-Lösungen für Unternehmen.",
-      keywords: ["GDPR Compliance", "CMP Einrichtung", "Cookie-Banner", "Consent Management", "Datenschutz-Compliance"]
+      title: "DSGVO Cookie-Banner & CMP Einrichtung — C&C CookieComply (EU/EWR)",
+      description: "Wir richten CMP ein, reparieren Cookie-Banner, blockieren Tracker vor der Zustimmung und protokollieren die Zustimmung ordnungsgemäß. Professionelle DSGVO-Compliance-Lösungen für Unternehmen.",
+      keywords: ["DSGVO Compliance", "CMP Einrichtung", "Cookie-Banner", "Consent Management", "Datenschutz-Compliance"]
     },
     fr: {
-      title: "C&C CookieComply — Configuration CMP GDPR & Corrections de Bannières de Cookies",
-      description: "Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement. Solutions professionnelles de conformité GDPR pour les entreprises.",
-      keywords: ["Conformité GDPR", "Configuration CMP", "Bannière cookies", "Gestion consentement", "Conformité confidentialité"]
+      title: "Mise en place CMP & bannières cookies RGPD — C&C CookieComply (UE/EEE)",
+      description: "Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement. Solutions professionnelles de conformité RGPD pour les entreprises.",
+      keywords: ["Conformité RGPD", "Configuration CMP", "Bannière cookies", "Gestion consentement", "Conformité confidentialité"]
     }
   },
   privacy: {

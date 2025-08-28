@@ -3,7 +3,7 @@ import { GDPR_SUBDOMAIN } from "@/lib/locales";
 export default function StructuredData({ locale = "en" }: { locale?: "en"|"de"|"fr" }) {
   const t = {
     en: {
-      serviceName: "GDPR CMP Setup & Cookie Banner Fixes",
+      serviceName: "GDPR Cookie Banner & CMP Setup Services",
       serviceDesc: "Consent Management implementation and compliant cookie banners for GDPR compliance.",
       faq: [
         ["How is a CMP different from a simple cookie banner?",
@@ -21,15 +21,15 @@ export default function StructuredData({ locale = "en" }: { locale?: "en"|"de"|"
       pricingUrl: `${GDPR_SUBDOMAIN}${locale==="en" ? "/#pricing" : `/${locale}/#pricing`}`,
     },
     de: {
-      serviceName: "CMP-Setup & Cookie-Banner (GDPR)",
-      serviceDesc: "Consent-Management-Implementierung und konforme Banner für GDPR-Compliance.",
+      serviceName: "DSGVO Cookie-Banner & CMP Einrichtung Dienstleistungen",
+      serviceDesc: "Consent-Management-Implementierung und konforme Banner für DSGVO-Compliance.",
       faq: [
         ["Worin unterscheidet sich ein CMP von einem einfachen Cookie-Banner?",
-         "Ein CMP protokolliert Einwilligungen nach Kategorien und blockiert Skripte vor Consent, um GDPR-Compliance zu gewährleisten."],
+         "Ein CMP protokolliert Einwilligungen nach Kategorien und blockiert Skripte vor Consent, um DSGVO-Compliance zu gewährleisten."],
         ["Können wir unser Banner-Design behalten?",
          "Ja, wir passen CMP-Widgets an Ihr Brand-Design an und behalten dabei die Compliance bei."],
         ["Was passiert, wenn wir kein ordnungsgemäßes Consent-Management implementieren?",
-         "Nicht-Compliance kann zu Bußgeldern von bis zu 20 Millionen Euro oder 4% des globalen Jahresumsatzes unter GDPR führen."],
+         "Nicht-Compliance kann zu Bußgeldern von bis zu 20 Millionen Euro oder 4% des globalen Jahresumsatzes unter DSGVO führen."],
         ["Wie lange dauert die CMP-Implementierung?",
          "Typischerweise 2-4 Wochen, abhängig von der Komplexität und den erforderlichen Integrationen."],
         ["Bieten Sie laufende Unterstützung nach der Implementierung?",
@@ -39,7 +39,7 @@ export default function StructuredData({ locale = "en" }: { locale?: "en"|"de"|"
       pricingUrl: `${GDPR_SUBDOMAIN}/de/#pricing`,
     },
     fr: {
-      serviceName: "Mise en place CMP & bannières cookies (RGPD)",
+      serviceName: "Services RGPD: Mise en place CMP & bannières cookies",
       serviceDesc: "Implémentation de Consent Management et bannières conformes pour la conformité RGPD.",
       faq: [
         ["Quelle différence entre CMP et simple bannière cookies ?",

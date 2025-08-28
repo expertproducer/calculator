@@ -83,6 +83,9 @@ export default function Navbar({ locale }: { locale: string }) {
   ]
 
   const switchLanguage = (newLocale: string) => {
+    console.log('Switching language to:', newLocale)
+    console.log('Current pathname:', pathname)
+    
     // Определяем новый путь
     let newPath = '/'
     
@@ -95,10 +98,13 @@ export default function Navbar({ locale }: { locale: string }) {
       newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`
     }
     
+    console.log('New path will be:', newPath)
+    
     // Сохраняем выбор языка в cookie
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
     
     // Переходим на новую страницу
+    console.log('Navigating to:', newPath)
     router.push(newPath)
     setShowLanguageMenu(false)
   }
@@ -138,8 +144,13 @@ export default function Navbar({ locale }: { locale: string }) {
             {/* Language Switcher */}
             <div className="relative language-switcher">
               <button
-                onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                onClick={() => {
+                  console.log('Language switcher clicked!')
+                  setShowLanguageMenu(!showLanguageMenu)
+                }}
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 cursor-pointer bg-white dark:bg-gray-800 shadow-sm hover:shadow-md"
+                style={{ minWidth: '60px' }}
+                type="button"
               >
                 <Globe size={16} />
                 <span>{locale.toUpperCase()}</span>

@@ -160,26 +160,8 @@ export function FAQ({ content }: { content: any }) {
   )
 }
 
-// Contact Component
-export function Contact({ content, locale }: { content: any; locale: string }) {
-  return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4">{content.title}</h2>
-        <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12">{content.subtitle}</p>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-8">{content.description}</p>
-        <div className="max-w-2xl mx-auto text-center">
-          <a 
-            href="mailto:contact@cashandclash.com" 
-            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Contact Us
-          </a>
-        </div>
-      </div>
-    </section>
-  )
-}
+// Contact Component - Re-export from the main Contact component
+export { default as Contact } from './Contact'
 
 // Footer Component
 export function Footer({ content, locale }: { content: any; locale: string }) {
@@ -199,23 +181,5 @@ export function Footer({ content, locale }: { content: any; locale: string }) {
   )
 }
 
-// Navbar Component
-export function Navbar({ locale }: { locale: string }) {
-  return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-blue-600">C&C CookieComply</div>
-          <div className="hidden md:flex space-x-8">
-            <a href="#services" className="text-gray-600 dark:text-gray-300 hover:text-blue-600">Services</a>
-            <a href="#process" className="text-gray-600 dark:text-gray-300 hover:text-blue-600">Process</a>
-            <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-blue-600">Pricing</a>
-            <a href="#faq" className="text-gray-600 dark:text-gray-300 hover:text-blue-600">FAQ</a>
-            <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-blue-600">Contact</a>
-          </div>
-          <div className="text-sm text-gray-500">{locale.toUpperCase()}</div>
-        </div>
-      </div>
-    </nav>
-  )
-}
+// Navbar Component - Re-export from the main Navbar component
+export { default as Navbar } from './Navbar'

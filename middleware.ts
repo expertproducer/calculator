@@ -31,7 +31,7 @@ export function middleware(req: NextRequest) {
       }
       
       if (locale !== defaultLocale) {
-        const response = NextResponse.redirect(new URL(`/${locale}`, req.url));
+        const response = NextResponse.redirect(new URL(`/${locale}/`, req.url));
         response.cookies.set("NEXT_LOCALE", locale, { 
           path: "/",
           maxAge: 60 * 60 * 24 * 365,
@@ -42,14 +42,17 @@ export function middleware(req: NextRequest) {
         return response;
       }
     } else if (cookie && cookie !== defaultLocale) {
-      return NextResponse.redirect(new URL(`/${cookie}`, req.url));
+      return NextResponse.redirect(new URL(`/${cookie}/`, req.url));
     }
+    
+    // Если нет cookie или это английский, перенаправляем на /en/
+    return NextResponse.redirect(new URL('/en/', req.url));
   }
 
   // Редирект для старых путей без локали
   if (pathname === '/cookies' || pathname === '/privacy') {
     const cookie = req.cookies.get("NEXT_LOCALE")?.value || defaultLocale;
-    return NextResponse.redirect(new URL(`/${cookie}${pathname}`, req.url));
+    return NextResponse.redirect(new URL(`/${cookie}${pathname}/`, req.url));
   }
 
   return NextResponse.next();

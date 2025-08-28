@@ -1,8 +1,8 @@
 # Конфигурация для Cloudflare Pages
 name = "calculator"
 
-# Указываем папку для сборки Pages (теперь это standalone)
-pages_build_output_dir = ".next/standalone"
+# Указываем папку для сборки Pages (статический экспорт)
+pages_build_output_dir = "out"
 
 # Исключаем большие файлы из деплоя
 [env.production]

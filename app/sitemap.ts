@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { GDPR_SUBDOMAIN, fullUrlFor } from "@/lib/locales";
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
   

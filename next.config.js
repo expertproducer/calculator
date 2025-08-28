@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Отключаем статическую генерацию - используем серверный рендеринг
-  output: 'standalone',
+  // Включаем статическую генерацию для Cloudflare Pages
+  output: 'export',
   
   // Настраиваем для Cloudflare Pages
   trailingSlash: true,

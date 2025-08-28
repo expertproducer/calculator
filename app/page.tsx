@@ -104,7 +104,19 @@ export default function RootPage() {
     contact: {
       title: "Get Started Today",
       subtitle: "Ready to make your website GDPR compliant?",
-      description: "Contact us for a free consultation and quote."
+      description: "Contact us for a free consultation and quote.",
+      fields: {
+        name: "Name",
+        email: "Email",
+        url: "Website URL",
+        stack: "Tech Stack",
+        regions: "Target Regions",
+        languages: "Languages",
+        cmp: "Preferred CMP",
+        integrations: "Integrations",
+        message: "Message"
+      },
+      submit: "Send Request"
     }
   }
 

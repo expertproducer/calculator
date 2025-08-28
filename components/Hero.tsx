@@ -1,4 +1,4 @@
-import { Shield, CheckCircle, Zap } from 'lucide-react'
+import { Shield, CheckCircle, Zap, Clock, AlertTriangle, Unlock, FileX, Frown, ShieldCheck } from 'lucide-react'
 import OptimizedImage from './OptimizedImage'
 
 interface HeroProps {
@@ -16,6 +16,10 @@ interface HeroProps {
       alt: string
       width: number
       height: number
+    }
+    problem?: {
+      title: string
+      points: string[]
     }
   }
 }
@@ -75,8 +79,8 @@ export default function Hero({ content }: HeroProps) {
             {/* CTA Buttons - Apple style */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <a
-                href="#contact"
-                className="group relative inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-white font-medium rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-apple hover:shadow-apple-lg"
+                href="/contact"
+                className="group relative inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent-light text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-apple hover:shadow-apple-lg"
                 aria-label={`${content.cta.primary} - go to contact form`}
               >
                 <span className="text-lg">{content.cta.primary}</span>
@@ -86,9 +90,9 @@ export default function Hero({ content }: HeroProps) {
               </a>
               
               <a
-                href="#services"
+                href="/services"
                 className="group inline-flex items-center gap-3 px-10 py-4 border border-gray-300/60 dark:border-gray-600/60 text-gray-700 dark:text-gray-300 hover:border-accent hover:text-accent bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl font-medium rounded-2xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-sm hover:shadow-apple"
-                aria-label={`${content.cta.secondary} - перейти к услугам`}
+                aria-label={`${content.cta.secondary} - go to services`}
               >
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -100,16 +104,16 @@ export default function Hero({ content }: HeroProps) {
             {/* Trust indicators - Apple style */}
             <div className="pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
               <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500 dark:text-gray-400">
-                <div className="flex items-center gap-2">
-                  <Shield className="text-gray-400 dark:text-gray-500" size={16} />
+                <div className="flex items-center gap-2 group hover:text-green-500 transition-colors duration-300">
+                  <ShieldCheck className="text-green-500 group-hover:scale-110 transition-transform duration-300" size={16} />
                   <span>GDPR Compliant</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-gray-400 dark:text-gray-500" size={16} />
+                <div className="flex items-center gap-2 group hover:text-blue-500 transition-colors duration-300">
+                  <Clock className="text-blue-500 group-hover:scale-110 transition-transform duration-300" size={16} />
                   <span>24/7 Support</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="text-gray-400 dark:text-gray-500" size={16} />
+                <div className="flex items-center gap-2 group hover:text-yellow-500 transition-colors duration-300">
+                  <Zap className="text-yellow-500 group-hover:scale-110 transition-transform duration-300" size={16} />
                   <span>Fast Setup</span>
                 </div>
               </div>
@@ -162,6 +166,44 @@ export default function Hero({ content }: HeroProps) {
           )}
         </div>
       </div>
+
+      {/* Problems Section */}
+      {content.problem && (
+        <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-xl border-t border-gray-200/30 dark:border-gray-700/30">
+          <div className="container mx-auto px-6 py-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
+                {content.problem.title}
+              </h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {content.problem.points.map((point, index) => {
+                const icons = [AlertTriangle, Unlock, FileX, Frown]
+                const IconComponent = icons[index % icons.length]
+                
+                return (
+                  <div 
+                    key={index}
+                    className="group bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl p-6 border border-red-200/50 dark:border-red-800/50 hover:border-red-300/70 dark:hover:border-red-700/70 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 p-3 bg-red-100/80 dark:bg-red-900/30 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="text-red-600 dark:text-red-400" size={24} />
+                      </div>
+                      <div>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed font-medium">
+                          {point}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

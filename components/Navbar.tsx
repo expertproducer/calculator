@@ -31,14 +31,9 @@ export default function Navbar({ locale }: { locale: string }) {
     }
   }, [showLanguageMenu])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      })
-    }
+  const navigateToPage = (page: string) => {
+    const basePath = locale === 'en' ? '' : `/${locale}`
+    router.push(`${basePath}/${page}`)
     setIsMenuOpen(false)
   }
 
@@ -118,19 +113,25 @@ export default function Navbar({ locale }: { locale: string }) {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <button 
+            onClick={() => {
+              const basePath = locale === 'en' ? '/' : `/${locale}`
+              router.push(basePath)
+            }}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+          >
             <Shield className="text-accent" size={28} />
             <span className="text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
               C&C CookieComply
             </span>
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => navigateToPage(item.id)}
                 className="text-gray-600 dark:text-gray-300 hover:text-accent transition-colors duration-300 font-medium text-sm tracking-wide relative group"
               >
                 {item.label}
@@ -194,7 +195,7 @@ export default function Navbar({ locale }: { locale: string }) {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => navigateToPage(item.id)}
                   className="block w-full text-left px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors font-medium"
                 >
                   {item.label}

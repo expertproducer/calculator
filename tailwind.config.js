@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: '#0A84FF',
+        accent: '#0056CC',  // Darker blue for better contrast
+        'accent-light': '#0A84FF',  // Original blue for hover states
         primary: {
           50: '#E5F3FF',
           100: '#CCE7FF',

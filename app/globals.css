@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  /* Apple-style Colors */
+  /* Apple-style Colors - Improved Contrast */
   --bg: #F8F9FB;
   --fg: #0B0D12;
   --muted: #8D95A3;
   --line: rgba(0,0,0,0.08);
-  --accent: #0A84FF;
+  --accent: #0056CC;  /* Darker blue for better contrast */
+  --accent-light: #0A84FF;  /* Original blue for hover states */
   --success: #30D158;
   --warning: #FF9F0A;
   --danger: #FF453A;
@@ -142,10 +143,11 @@ body {
   background-color: var(--accent);
   color: white;
   box-shadow: var(--shadow);
+  font-weight: 600; /* Bolder text for better contrast */
 }
 
 .btn-primary:hover {
-  background-color: #0066CC;
+  background-color: var(--accent-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Cloudflare Pages
-  output: 'export',
+  // Static export for Cloudflare Pages - DISABLE FOR DEVELOPMENT
+  // output: 'export',
   
   // Disable image optimization for better compatibility
   images: {

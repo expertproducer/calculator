@@ -24,7 +24,7 @@ export default function FinalCTA() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-3 px-12 py-5 bg-accent hover:bg-accent/90 text-white font-medium rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-apple hover:shadow-apple-lg text-lg"
+              className="group inline-flex items-center gap-3 px-12 py-5 bg-accent hover:bg-accent-light text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-apple hover:shadow-apple-lg text-lg"
             >
               <span>Fix my banner</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

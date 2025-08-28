@@ -7,55 +7,61 @@ const defaultLocale = 'en';
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   
+  // Пропускаем статические файлы, API и Next.js внутренние пути
+  if (
+    pathname.startsWith('/_next/') ||
+    pathname.startsWith('/api/') ||
+    pathname.startsWith('/__nextjs_original-stack-frame') ||
+    pathname.includes('.') ||
+    pathname.startsWith('/favicon')
+  ) {
+    return NextResponse.next();
+  }
+  
   // Проверяем, есть ли уже локаль в пути
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}`) && (pathname === `/${locale}` || pathname.startsWith(`/${locale}/`))
   );
 
+  // Если локаль уже есть, продолжаем
   if (pathnameHasLocale) {
     return NextResponse.next();
   }
 
-  // Обработка корневого пути
-  if (pathname === '/') {
-    const cookie = req.cookies.get("NEXT_LOCALE")?.value;
-    
-    if (!cookie) {
-      const acceptLang = req.headers.get("accept-language") || "";
-      let locale = defaultLocale;
-      
-      if (acceptLang.startsWith("de")) {
+  // Для корневого пути и путей без локали - добавляем локаль
+  let locale = defaultLocale;
+  
+  // Проверяем cookie
+  const cookieLocale = req.cookies.get("NEXT_LOCALE")?.value;
+  if (cookieLocale && locales.includes(cookieLocale)) {
+    locale = cookieLocale;
+  } else {
+    // Определяем локаль по заголовку Accept-Language
+    const acceptLanguage = req.headers.get("accept-language");
+    if (acceptLanguage) {
+      if (acceptLanguage.includes('de')) {
         locale = 'de';
-      } else if (acceptLang.startsWith("fr")) {
+      } else if (acceptLanguage.includes('fr')) {
         locale = 'fr';
       }
-      
-      if (locale !== defaultLocale) {
-        const response = NextResponse.redirect(new URL(`/${locale}/`, req.url));
-        response.cookies.set("NEXT_LOCALE", locale, { 
-          path: "/",
-          maxAge: 60 * 60 * 24 * 365,
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          sameSite: "lax"
-        });
-        return response;
-      }
-    } else if (cookie && cookie !== defaultLocale) {
-      return NextResponse.redirect(new URL(`/${cookie}/`, req.url));
     }
-    
-    // Если нет cookie или это английский, перенаправляем на /en/
-    return NextResponse.redirect(new URL('/en/', req.url));
   }
-
-  // Редирект для старых путей без локали
-  if (pathname === '/cookies' || pathname === '/privacy') {
-    const cookie = req.cookies.get("NEXT_LOCALE")?.value || defaultLocale;
-    return NextResponse.redirect(new URL(`/${cookie}${pathname}/`, req.url));
-  }
-
-  return NextResponse.next();
+  
+  // Создаем новый URL с локалью
+  const newPathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`;
+  const newUrl = new URL(newPathname, req.url);
+  
+  const response = NextResponse.redirect(newUrl);
+  
+  // Устанавливаем cookie с локалью
+  response.cookies.set("NEXT_LOCALE", locale, { 
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax"
+  });
+  
+  return response;
 }
 
 export const config = {

@@ -99,15 +99,17 @@ export function Cases({ content }: { content: any }) {
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {content.cards.map((card: any, index: number) => (
-            <div key={index} className="bg-white dark:bg-gray-700 rounded-lg shadow p-6">
+            <div key={index} className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow">
               <h3 className="text-xl font-bold mb-4">{card.title}</h3>
-              <div className="mb-4">
-                <p className="text-red-600 font-semibold">Before:</p>
-                <p className="text-gray-600 dark:text-gray-400">{card.before}</p>
-              </div>
-              <div>
-                <p className="text-green-600 font-semibold">After:</p>
-                <p className="text-gray-600 dark:text-gray-400">{card.after}</p>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-red-600 font-semibold">Before:</p>
+                  <p className="text-gray-600 dark:text-gray-400">{card.before}</p>
+                </div>
+                <div>
+                  <p className="text-green-600 font-semibold">After:</p>
+                  <p className="text-gray-600 dark:text-gray-400">{card.after}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -117,29 +119,8 @@ export function Cases({ content }: { content: any }) {
   )
 }
 
-// Pricing Component
-export function Pricing({ content }: { content: any }) {
-  return (
-    <section className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {content.plans.map((plan: any, index: number) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-              <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-              <ul className="space-y-2">
-                {plan.features.map((feature: string, fIndex: number) => (
-                  <li key={fIndex} className="text-gray-600 dark:text-gray-400">• {feature}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-gray-600 dark:text-gray-400">{content.note}</p>
-      </div>
-    </section>
-  )
-}
+// Pricing Component - Re-export from the main Pricing component
+export { default as Pricing } from './Pricing'
 
 // FAQ Component
 export function FAQ({ content }: { content: any }) {
@@ -163,23 +144,8 @@ export function FAQ({ content }: { content: any }) {
 // Contact Component - Re-export from the main Contact component
 export { default as Contact } from './Contact'
 
-// Footer Component
-export function Footer({ content, locale }: { content: any; locale: string }) {
-  return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4 text-center">
-        <p className="mb-4">{content.copyright}</p>
-        <div className="flex justify-center space-x-6">
-          {content.links.map((link: string, index: number) => (
-            <a key={index} href="#" className="text-gray-300 hover:text-white">
-              {link}
-            </a>
-          ))}
-        </div>
-      </div>
-    </footer>
-  )
-}
+// Footer Component - Re-export from the main Footer component
+export { default as Footer } from './Footer'
 
 // Navbar Component - Re-export from the main Navbar component
 export { default as Navbar } from './Navbar'

@@ -104,9 +104,9 @@ export default async function LocaleLayout({
         <meta name="application-name" content="Financial Calculators" />
         <meta name="msapplication-TileImage" content="/favicon.png" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

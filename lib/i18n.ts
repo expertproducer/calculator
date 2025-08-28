@@ -141,7 +141,6 @@ export function getContent(locale: Locale) {
       }
     },
     de: {
-      // German translations (simplified for now)
       hero: {
         title: 'C&C CookieComply — GDPR CMP Einrichtung & Cookie-Banner Reparaturen',
         subtitle: 'Wir richten CMP ein, reparieren Cookie-Banner und blockieren Tracker vor der Zustimmung.',
@@ -187,7 +186,7 @@ export function getContent(locale: Locale) {
         items: [
           'Vollständig konfiguriertes CMP',
           'Konformes Cookie-Banner',
-          'Einstellungscenter',
+          'Einstellungszentrum',
           'Richtlinien-Seiten',
           'Wartungsanleitung'
         ]
@@ -211,9 +210,9 @@ export function getContent(locale: Locale) {
             after: 'Akzeptieren/Ablehnen/Einstellungen, strikte Blockierung, verbesserte Konversion'
           },
           {
-            title: 'Medien (FR)',
-            before: 'Third-Party-Cookies vor der Zustimmung, kein Einstellungscenter',
-            after: 'Auto-Blockierung, Einstellungscenter, DE/EN-Lokalisierung'
+            title: 'Medien (DE)',
+            before: 'Third-Party-Cookies vor Zustimmung, kein Einstellungszentrum',
+            after: 'Auto-Blockierung, Einstellungszentrum, DE/EN-Lokalisierung'
           },
           {
             title: 'SaaS (EU)',
@@ -235,7 +234,7 @@ export function getContent(locale: Locale) {
           },
           {
             name: 'Business',
-            features: ['Multi-Domain', 'Migration', 'Benutzerdefinierte Events', 'White-Label-Bericht']
+            features: ['Multi-Domain', 'Migration', 'Benutzerdefinierte Ereignisse', 'White-Label-Bericht']
           }
         ],
         note: 'Preise & Zeitpläne auf Anfrage (abhängig von Stack, Traffic, Regionen)'
@@ -245,7 +244,7 @@ export function getContent(locale: Locale) {
         items: [
           {
             question: 'Wie unterscheidet sich ein CMP von einem einfachen Banner?',
-            answer: 'Ein CMP zeichnet rechtmäßige Zustimmung pro Kategorie auf und steuert das Laden von Skripten über Zustimmungs-Events; ein einfaches Banner stellt keine ordnungsgemäße Vor-Zustimmungs-Blockierung sicher.'
+            answer: 'Ein CMP zeichnet rechtmäßige Zustimmung pro Kategorie auf und steuert das Laden von Skripten über Zustimmungsereignisse; ein einfaches Banner gewährleistet keine ordnungsgemäße Vor-Zustimmungs-Blockierung.'
           },
           {
             question: 'Können wir unser aktuelles Banner-Design beibehalten?',
@@ -279,7 +278,6 @@ export function getContent(locale: Locale) {
       }
     },
     fr: {
-      // French translations (simplified for now)
       hero: {
         title: 'C&C CookieComply — Configuration CMP GDPR & Corrections de Bannières',
         subtitle: 'Nous configurons CMP et corrigeons les bannières de cookies.',
@@ -298,7 +296,7 @@ export function getContent(locale: Locale) {
         ]
       },
       services: {
-        title: 'Nos Services',
+        title: 'Nos services',
         items: [
           'Configuration CMP (Cookiebot, Iubenda, Usercentrics, Termly)',
           'Corrections de bannières de cookies',
@@ -345,16 +343,16 @@ export function getContent(locale: Locale) {
         cards: [
           {
             title: 'E-commerce (FR)',
-            before: 'Bannière accepter uniquement, scripts chargés immédiatement',
+            before: 'Bannière acceptation uniquement, scripts chargés immédiatement',
             after: 'Accepter/Refuser/Préférences, blocage strict, conversion améliorée'
           },
           {
-            title: 'Médias (DE)',
+            title: 'Médias (FR)',
             before: 'Cookies tiers avant consentement, pas de centre de préférences',
-            after: 'Auto-blocage, centre de préférences, localisation FR/EN'
+            after: 'Blocage automatique, centre de préférences, localisation FR/EN'
           },
           {
-            title: 'SaaS (EU)',
+            title: 'SaaS (UE)',
             before: 'Logique incohérente sur les sous-domaines',
             after: 'CMP unifié, catégories cohérentes, journalisation centralisée'
           }
@@ -373,7 +371,7 @@ export function getContent(locale: Locale) {
           },
           {
             name: 'Business',
-            features: ['Multi-domaine', 'Migration', 'Événements personnalisés', 'Rapport white-label']
+            features: ['Multi-domaines', 'Migration', 'Événements personnalisés', 'Rapport white-label']
           }
         ],
         note: 'Prix & délais sur demande (dépendent de la stack, du trafic, des régions)'
@@ -382,15 +380,15 @@ export function getContent(locale: Locale) {
         title: 'Questions fréquemment posées',
         items: [
           {
-            question: 'Comment un CMP diffère-t-il d\'une simple bannière?',
-            answer: 'Un CMP enregistre le consentement légal par catégorie et contrôle le chargement des scripts via des événements de consentement; une simple bannière ne garantit pas un blocage approprié avant consentement.'
+            question: 'En quoi un CMP diffère-t-il d\'une simple bannière ?',
+            answer: 'Un CMP enregistre le consentement légal par catégorie et contrôle le chargement des scripts via des événements de consentement ; une simple bannière ne garantit pas un blocage approprié avant consentement.'
           },
           {
-            question: 'Pouvons-nous garder notre design de bannière actuel?',
+            question: 'Pouvons-nous conserver notre design de bannière actuel ?',
             answer: 'Oui, nous adaptons les widgets CMP à vos directives de marque.'
           },
           {
-            question: 'Supportez-vous GPC / Do Not Sell?',
+            question: 'Supportez-vous GPC / Do Not Sell ?',
             answer: 'Là où c\'est supporté par le CMP sélectionné et la juridiction.'
           }
         ]
@@ -400,7 +398,7 @@ export function getContent(locale: Locale) {
         subtitle: 'Parlez-nous de votre projet',
         fields: {
           name: 'Nom',
-          email: 'Email',
+          email: 'E-mail',
           url: 'URL du site web',
           stack: 'Stack technique',
           regions: 'Régions cibles',

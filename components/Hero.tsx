@@ -1,7 +1,4 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import { ArrowRight, Shield, CheckCircle, Zap } from 'lucide-react'
+import { Shield, CheckCircle, Zap } from 'lucide-react'
 import OptimizedImage from './OptimizedImage'
 
 interface HeroProps {
@@ -24,22 +21,6 @@ interface HeroProps {
 }
 
 export default function Hero({ content }: HeroProps) {
-  const [isHovered, setIsHovered] = useState(false)
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const scrollToServices = () => {
-    const element = document.getElementById('services')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section 
       className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
@@ -91,32 +72,29 @@ export default function Hero({ content }: HeroProps) {
               </div>
             )}
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Static for SSR */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={scrollToContact}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+              <a
+                href="#contact"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl"
                 aria-label={`${content.cta.primary} - перейти к форме контакта`}
               >
                 <span>{content.cta.primary}</span>
-                <ArrowRight 
-                  size={20} 
-                  className={`transition-transform duration-300 ${
-                    isHovered ? 'translate-x-1' : ''
-                  }`} 
-                />
-              </button>
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
               
-              <button
-                onClick={scrollToServices}
+              <a
+                href="#services"
                 className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 aria-label={`${content.cta.secondary} - перейти к услугам`}
               >
-                <Zap size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
                 <span>{content.cta.secondary}</span>
-              </button>
+              </a>
             </div>
 
             {/* Trust indicators */}
@@ -178,13 +156,6 @@ export default function Hero({ content }: HeroProps) {
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Live Demo
                   </span>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-4 -left-4 bg-blue-600 text-white rounded-xl p-4 shadow-lg">
-                <div className="text-center">
-                  <div className="text-2xl font-bold">Free</div>
-                  <div className="text-sm opacity-90">Consultation</div>
                 </div>
               </div>
             </div>

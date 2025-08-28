@@ -1,8 +1,6 @@
 import { MetadataRoute } from 'next'
 import { GDPR_SUBDOMAIN } from '@/lib/locales'
 
-export const dynamic = "force-static";
-
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [

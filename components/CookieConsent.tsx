@@ -11,7 +11,7 @@ interface CookiePreferences {
   functional: boolean
 }
 
-export default function CookieConsent() {
+export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
   const [showBanner, setShowBanner] = useState(false)
   const [showPreferences, setShowPreferences] = useState(false)
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -20,6 +20,68 @@ export default function CookieConsent() {
     marketing: false,
     functional: false
   })
+
+  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'
+  
+  const translations = {
+    en: {
+      title: "We use cookies to enhance your experience",
+      description: "We use cookies and similar technologies to help personalize content, provide social media features, and analyze our traffic. We also share information about your use of our site with our social media, advertising, and analytics partners.",
+      acceptAll: "Accept All",
+      decline: "Decline",
+      preferences: "Preferences",
+      preferencesTitle: "Cookie Preferences",
+      essential: "Essential Cookies",
+      analytics: "Analytics Cookies",
+      marketing: "Marketing Cookies",
+      functional: "Functional Cookies",
+      alwaysActive: "Always Active",
+      savePreferences: "Save Preferences",
+      cancel: "Cancel",
+      essentialDesc: "These cookies are necessary for the website to function and cannot be disabled.",
+      analyticsDesc: "Help us understand how visitors interact with our website by collecting and reporting information anonymously.",
+      marketingDesc: "Used to track visitors across websites to display relevant and engaging advertisements.",
+      functionalDesc: "Enable enhanced functionality and personalization such as chat support and social media integration."
+    },
+    de: {
+      title: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern",
+      description: "Wir verwenden Cookies und ähnliche Technologien, um Inhalte zu personalisieren, Social-Media-Funktionen bereitzustellen und unseren Traffic zu analysieren. Wir teilen auch Informationen über Ihre Nutzung unserer Website mit unseren Social-Media-, Werbe- und Analytics-Partnern.",
+      acceptAll: "Alle akzeptieren",
+      decline: "Ablehnen",
+      preferences: "Einstellungen",
+      preferencesTitle: "Cookie-Einstellungen",
+      essential: "Wesentliche Cookies",
+      analytics: "Analytics-Cookies",
+      marketing: "Marketing-Cookies",
+      functional: "Funktionale Cookies",
+      alwaysActive: "Immer aktiv",
+      savePreferences: "Einstellungen speichern",
+      cancel: "Abbrechen",
+      essentialDesc: "Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.",
+      analyticsDesc: "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln und melden.",
+      marketingDesc: "Werden verwendet, um Besucher über Websites hinweg zu verfolgen und relevante und ansprechende Werbung anzuzeigen.",
+      functionalDesc: "Ermöglichen erweiterte Funktionalität und Personalisierung wie Chat-Support und Social-Media-Integration."
+    },
+    fr: {
+      title: "Nous utilisons des cookies pour améliorer votre expérience",
+      description: "Nous utilisons des cookies et des technologies similaires pour aider à personnaliser le contenu, fournir des fonctionnalités de médias sociaux et analyser notre trafic. Nous partageons également des informations sur votre utilisation de notre site avec nos partenaires de médias sociaux, de publicité et d'analyse.",
+      acceptAll: "Tout accepter",
+      decline: "Refuser",
+      preferences: "Préférences",
+      preferencesTitle: "Préférences des cookies",
+      essential: "Cookies essentiels",
+      analytics: "Cookies analytiques",
+      marketing: "Cookies marketing",
+      functional: "Cookies fonctionnels",
+      alwaysActive: "Toujours actif",
+      savePreferences: "Sauvegarder les préférences",
+      cancel: "Annuler",
+      essentialDesc: "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
+      analyticsDesc: "Nous aident à comprendre comment les visiteurs interagissent avec notre site web en collectant et rapportant des informations de manière anonyme.",
+      marketingDesc: "Utilisés pour suivre les visiteurs sur les sites web afin d'afficher des publicités pertinentes et engageantes.",
+      functionalDesc: "Permettent une fonctionnalité améliorée et la personnalisation comme le support de chat et l'intégration des médias sociaux."
+    }
+  }[localeTyped]
 
   useEffect(() => {
     // Проверяем, есть ли уже согласие
@@ -109,7 +171,7 @@ export default function CookieConsent() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                 <Settings className="text-blue-600" size={24} />
-                Cookie Preferences
+                {translations.preferencesTitle}
               </h2>
               <button
                 onClick={() => setShowPreferences(false)}
@@ -124,13 +186,13 @@ export default function CookieConsent() {
               <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <CheckCircle className="text-green-600" size={20} />
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Essential Cookies</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{translations.essential}</h3>
                   <span className="px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">
-                    Always Active
+                    {translations.alwaysActive}
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  These cookies are necessary for the website to function and cannot be disabled.
+                  {translations.essentialDesc}
                 </p>
               </div>
 
@@ -138,7 +200,7 @@ export default function CookieConsent() {
               <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <Info className="text-blue-600" size={20} />
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Analytics Cookies</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{translations.analytics}</h3>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
@@ -150,7 +212,7 @@ export default function CookieConsent() {
                   </label>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Help us understand how visitors interact with our website by collecting and reporting information anonymously.
+                  {translations.analyticsDesc}
                 </p>
               </div>
 
@@ -158,7 +220,7 @@ export default function CookieConsent() {
               <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <AlertTriangle className="text-orange-600" size={20} />
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Marketing Cookies</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{translations.marketing}</h3>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
@@ -170,7 +232,7 @@ export default function CookieConsent() {
                   </label>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Used to track visitors across websites to display relevant and engaging advertisements.
+                  {translations.marketingDesc}
                 </p>
               </div>
 
@@ -178,7 +240,7 @@ export default function CookieConsent() {
               <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <Info className="text-purple-600" size={20} />
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Functional Cookies</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{translations.functional}</h3>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
@@ -190,7 +252,7 @@ export default function CookieConsent() {
                   </label>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Enable enhanced functionality and personalization such as chat support and social media integration.
+                  {translations.functionalDesc}
                 </p>
               </div>
             </div>
@@ -200,13 +262,13 @@ export default function CookieConsent() {
                 onClick={handleSavePreferences}
                 className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
               >
-                Save Preferences
+                {translations.savePreferences}
               </button>
               <button
                 onClick={() => setShowPreferences(false)}
                 className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
-                Cancel
+                {translations.cancel}
               </button>
             </div>
           </div>
@@ -223,11 +285,10 @@ export default function CookieConsent() {
             <Cookie className="text-blue-600 mt-1" size={24} />
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                We use cookies to enhance your experience
+                {translations.title}
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                We use cookies and similar technologies to help personalize content, provide social media features, and analyze our traffic. 
-                We also share information about your use of our site with our social media, advertising, and analytics partners.
+                {translations.description}
               </p>
             </div>
           </div>
@@ -237,19 +298,19 @@ export default function CookieConsent() {
               onClick={handleAcceptAll}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
             >
-              Accept All
+              {translations.acceptAll}
             </button>
             <button
               onClick={handleDecline}
               className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
-              Decline
+              {translations.decline}
             </button>
             <button
               onClick={() => setShowPreferences(true)}
               className="px-6 py-3 text-blue-600 hover:text-blue-700 font-medium transition-colors"
             >
-              Preferences
+              {translations.preferences}
             </button>
           </div>
         </div>

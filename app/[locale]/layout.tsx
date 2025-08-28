@@ -114,33 +114,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "C&C CookieComply",
-              "url": GDPR_SUBDOMAIN,
-              "logo": `${GDPR_SUBDOMAIN}/logo.svg`,
-              "description": "Professional GDPR compliance solutions for businesses",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "EU"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "email": "contact@cashandclash.com"
-              },
-              "sameAs": [
-                "https://twitter.com/cashandclash",
-                "https://linkedin.com/company/cashandclash"
-              ]
-            })
-          }}
-        />
+        {/* Structured Data - будет добавлено через компонент StructuredData */}
       </head>
       <body className={`${inter.className} ${inter.variable}`} suppressHydrationWarning>
         {children}

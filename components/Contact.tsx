@@ -6,25 +6,110 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Имя должно содержать минимум 2 символа'),
-  email: z.string().email('Введите корректный email'),
-  url: z.string().url('Введите корректный URL сайта'),
-  stack: z.string().min(1, 'Укажите ваш стек технологий'),
-  regions: z.string().min(1, 'Укажите регионы'),
-  languages: z.string().min(1, 'Укажите языки'),
-  preferredCmp: z.string().optional(),
-  integrations: z.string().optional(),
-  message: z.string().min(10, 'Сообщение должно содержать минимум 10 символов'),
-  honeypot: z.string().max(0, 'Спам не пройдет!')
-})
+const getContactSchema = (locale: string) => {
+  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'
+  
+  const validationMessages = {
+    en: {
+      nameMin: 'Name must contain at least 2 characters',
+      emailInvalid: 'Enter a valid email',
+      urlInvalid: 'Enter a valid website URL',
+      stackRequired: 'Specify your tech stack',
+      regionsRequired: 'Specify regions',
+      languagesRequired: 'Specify languages',
+      messageMin: 'Message must contain at least 10 characters',
+      noSpam: 'Spam not allowed!'
+    },
+    de: {
+      nameMin: 'Name muss mindestens 2 Zeichen enthalten',
+      emailInvalid: 'Geben Sie eine gültige E-Mail ein',
+      urlInvalid: 'Geben Sie eine gültige Website-URL ein',
+      stackRequired: 'Geben Sie Ihren Tech-Stack an',
+      regionsRequired: 'Geben Sie Regionen an',
+      languagesRequired: 'Geben Sie Sprachen an',
+      messageMin: 'Nachricht muss mindestens 10 Zeichen enthalten',
+      noSpam: 'Spam nicht erlaubt!'
+    },
+    fr: {
+      nameMin: 'Le nom doit contenir au moins 2 caractères',
+      emailInvalid: 'Entrez un email valide',
+      urlInvalid: 'Entrez une URL de site web valide',
+      stackRequired: 'Spécifiez votre stack technique',
+      regionsRequired: 'Spécifiez les régions',
+      languagesRequired: 'Spécifiez les langues',
+      messageMin: 'Le message doit contenir au moins 10 caractères',
+      noSpam: 'Spam non autorisé !'
+    }
+  }[localeTyped]
 
-type ContactFormData = z.infer<typeof contactSchema>
+  return z.object({
+    name: z.string().min(2, validationMessages.nameMin),
+    email: z.string().email(validationMessages.emailInvalid),
+    url: z.string().url(validationMessages.urlInvalid),
+    stack: z.string().min(1, validationMessages.stackRequired),
+    regions: z.string().min(1, validationMessages.regionsRequired),
+    languages: z.string().min(1, validationMessages.languagesRequired),
+    preferredCmp: z.string().optional(),
+    integrations: z.string().optional(),
+    message: z.string().min(10, validationMessages.messageMin),
+    honeypot: z.string().max(0, validationMessages.noSpam)
+  })
+}
 
 export default function Contact({ content, locale }: { content: any; locale: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+
+  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'
+  
+  const translations = {
+    en: {
+      whatYouGet: "What you get?",
+      freeConsultation: "Free consultation about your project",
+      technicalAudit: "Technical audit of current state",
+      personalOffer: "Personal solution proposal",
+      timelineEstimate: "Timeline and cost estimate",
+      responseTime: "Response Time",
+      responseDescription: "We respond to all inquiries within 24 hours on business days.",
+      workingHours: "🕐 Mon-Fri: 9:00 - 18:00 CET",
+      timezone: "🌍 European Time",
+      sending: "Sending...",
+      successMessage: "Thank you! Your request has been sent. We will contact you shortly.",
+      errorPrefix: "An error occurred while sending: "
+    },
+    de: {
+      whatYouGet: "Was Sie erhalten?",
+      freeConsultation: "Kostenlose Beratung zu Ihrem Projekt",
+      technicalAudit: "Technisches Audit des aktuellen Zustands",
+      personalOffer: "Persönliches Lösungsangebot",
+      timelineEstimate: "Zeitplan- und Kostenschätzung",
+      responseTime: "Antwortzeit",
+      responseDescription: "Wir antworten auf alle Anfragen innerhalb von 24 Stunden an Werktagen.",
+      workingHours: "🕐 Mo-Fr: 9:00 - 18:00 CET",
+      timezone: "🌍 Europäische Zeit",
+      sending: "Senden...",
+      successMessage: "Vielen Dank! Ihre Anfrage wurde gesendet. Wir werden uns in Kürze bei Ihnen melden.",
+      errorPrefix: "Beim Senden ist ein Fehler aufgetreten: "
+    },
+    fr: {
+      whatYouGet: "Ce que vous obtenez ?",
+      freeConsultation: "Consultation gratuite sur votre projet",
+      technicalAudit: "Audit technique de l'état actuel",
+      personalOffer: "Proposition de solution personnalisée",
+      timelineEstimate: "Estimation des délais et coûts",
+      responseTime: "Temps de Réponse",
+      responseDescription: "Nous répondons à toutes les demandes dans les 24 heures les jours ouvrables.",
+      workingHours: "🕐 Lun-Ven : 9:00 - 18:00 CET",
+      timezone: "🌍 Heure Européenne",
+      sending: "Envoi...",
+      successMessage: "Merci ! Votre demande a été envoyée. Nous vous contacterons sous peu.",
+      errorPrefix: "Une erreur s'est produite lors de l'envoi : "
+    }
+  }[localeTyped]
+
+  const contactSchema = getContactSchema(locale)
+  type ContactFormData = z.infer<typeof contactSchema>
 
   const {
     register,
@@ -97,7 +182,7 @@ export default function Contact({ content, locale }: { content: any; locale: str
 
       if (response.ok) {
         setSubmitStatus('success')
-        setSubmitMessage('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.')
+        setSubmitMessage(translations.successMessage)
         reset()
       } else {
         throw new Error(responseData.message || `HTTP ${response.status}: ${response.statusText}`)
@@ -105,7 +190,7 @@ export default function Contact({ content, locale }: { content: any; locale: str
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
-      setSubmitMessage(`Произошла ошибка при отправке: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}. Попробуйте еще раз или свяжитесь с нами напрямую.`)
+      setSubmitMessage(`${translations.errorPrefix}${error instanceof Error ? error.message : 'Unknown error'}. Please try again or contact us directly.`)
     } finally {
       setIsSubmitting(false)
     }
@@ -296,7 +381,7 @@ export default function Contact({ content, locale }: { content: any; locale: str
                   {isSubmitting ? (
                     <>
                       <Loader2 size={20} className="animate-spin" />
-                      Отправка...
+                      {translations.sending}
                     </>
                   ) : (
                     <>
@@ -323,42 +408,42 @@ export default function Contact({ content, locale }: { content: any; locale: str
               </form>
             </div>
 
-            {/* Информация */}
+            {/* Information */}
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-100 dark:border-blue-800">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                  Что вы получите?
+                  {translations.whatYouGet}
                 </h3>
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li className="flex items-center gap-3">
                     <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
-                    <span>Бесплатная консультация по вашему проекту</span>
+                    <span>{translations.freeConsultation}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
-                    <span>Технический аудит текущего состояния</span>
+                    <span>{translations.technicalAudit}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
-                    <span>Персональное предложение по решению</span>
+                    <span>{translations.personalOffer}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
-                    <span>Оценка сроков и стоимости работ</span>
+                    <span>{translations.timelineEstimate}</span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                  Время ответа
+                  {translations.responseTime}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  Мы отвечаем на все заявки в течение 24 часов в рабочие дни.
+                  {translations.responseDescription}
                 </p>
                 <div className="text-sm text-gray-500 dark:text-gray-500">
-                  <p>🕐 Пн-Пт: 9:00 - 18:00 CET</p>
-                  <p>🌍 Европейское время</p>
+                  <p>{translations.workingHours}</p>
+                  <p>{translations.timezone}</p>
                 </div>
               </div>
             </div>

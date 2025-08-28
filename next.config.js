@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export for Cloudflare Pages
+  output: 'export',
+  
   // Disable image optimization for better compatibility
   images: {
     unoptimized: true

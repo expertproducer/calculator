@@ -6,6 +6,15 @@ import Pricing from '@/components/Pricing'
 import Contact from '@/components/Contact'
 import CookieConsent from '@/components/CookieConsent'
 
+// Генерируем статические страницы для всех локалей
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
+}
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'

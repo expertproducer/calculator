@@ -2,21 +2,15 @@ import { getContent } from '../../lib/i18n'
 import { PAGE_METADATA } from '@/lib/locales'
 import { Metadata } from 'next'
 import CookieConsent from '@/components/CookieConsent'
+import CookieSettingsButton from './CookieSettingsButton'
 
-function CookieSettingsButton({ text }: { text: string }) {
-  'use client'
-  
-  return (
-    <button
-      onClick={() => {
-        const event = new CustomEvent('openCookiePreferences')
-        window.dispatchEvent(event)
-      }}
-      className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
-    >
-      {text}
-    </button>
-  )
+// Генерируем статические страницы для всех локалей
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
 }
 
 export default async function CookiesPage({ params }: { params: Promise<{ locale: string }> }) {

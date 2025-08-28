@@ -4,11 +4,32 @@ const nextConfig = {
   output: 'standalone',
   
   // Настраиваем для Cloudflare Pages
-  trailingSlash: true,
+  trailingSlash: false,
   
   // Отключаем оптимизацию изображений для Cloudflare
   images: {
     unoptimized: true
+  },
+  
+  // Настройки для интернационализации
+  async redirects() {
+    return [
+      {
+        source: '/de',
+        destination: '/de/',
+        permanent: true,
+      },
+      {
+        source: '/fr', 
+        destination: '/fr/',
+        permanent: true,
+      },
+      {
+        source: '/en',
+        destination: '/en/',
+        permanent: true,
+      },
+    ]
   },
   
   // Исключаем большие файлы webpack и кэша

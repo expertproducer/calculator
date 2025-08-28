@@ -2,21 +2,15 @@ import { getContent } from '../../lib/i18n'
 import { PAGE_METADATA } from '@/lib/locales'
 import { Metadata } from 'next'
 import CookieConsent from '@/components/CookieConsent'
+import PrivacySettingsButton from './PrivacySettingsButton'
 
-function CookieSettingsButton({ text }: { text: string }) {
-  'use client'
-  
-  return (
-    <button
-      onClick={() => {
-        const event = new CustomEvent('openCookiePreferences')
-        window.dispatchEvent(event)
-      }}
-      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
-    >
-      {text}
-    </button>
-  )
+// Генерируем статические страницы для всех локалей
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -84,7 +78,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                localeTyped === 'fr' ? 'Cliquez sur le bouton ci-dessous pour gérer vos paramètres de cookies.' :
                'Click the button below to manage your cookie settings.'}
             </p>
-            <CookieSettingsButton 
+            <PrivacySettingsButton 
               text={localeTyped === 'de' ? 'Cookie-Einstellungen' :
                     localeTyped === 'fr' ? 'Paramètres des cookies' :
                     'Cookie Settings'}

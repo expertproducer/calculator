@@ -1,25 +1,28 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const locales = ['en', 'de', 'fr'];
+const defaultLocale = 'en';
+
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   
   // Проверяем, есть ли уже локаль в пути
-  const pathnameHasLocale = ['/en', '/de', '/fr'].some(
-    (locale) => pathname.startsWith(locale + '/') || pathname === locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) {
     return NextResponse.next();
   }
 
-  // Редирект с корня на локализованную версию
+  // Обработка корневого пути
   if (pathname === '/') {
     const cookie = req.cookies.get("NEXT_LOCALE")?.value;
     
     if (!cookie) {
       const acceptLang = req.headers.get("accept-language") || "";
-      let locale = 'en'; // по умолчанию английский
+      let locale = defaultLocale;
       
       if (acceptLang.startsWith("de")) {
         locale = 'de';
@@ -27,7 +30,7 @@ export function middleware(req: NextRequest) {
         locale = 'fr';
       }
       
-      if (locale !== 'en') {
+      if (locale !== defaultLocale) {
         const response = NextResponse.redirect(new URL(`/${locale}`, req.url));
         response.cookies.set("NEXT_LOCALE", locale, { 
           path: "/",
@@ -38,9 +41,15 @@ export function middleware(req: NextRequest) {
         });
         return response;
       }
-    } else if (cookie && cookie !== 'en') {
+    } else if (cookie && cookie !== defaultLocale) {
       return NextResponse.redirect(new URL(`/${cookie}`, req.url));
     }
+  }
+
+  // Редирект для старых путей без локали
+  if (pathname === '/cookies' || pathname === '/privacy') {
+    const cookie = req.cookies.get("NEXT_LOCALE")?.value || defaultLocale;
+    return NextResponse.redirect(new URL(`/${cookie}${pathname}`, req.url));
   }
 
   return NextResponse.next();

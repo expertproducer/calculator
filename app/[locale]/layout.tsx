@@ -9,6 +9,15 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
+// Генерируем статические layout'ы для всех локалей
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'de' },
+    { locale: 'fr' }
+  ]
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   

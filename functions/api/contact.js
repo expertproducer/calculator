@@ -1,6 +1,10 @@
 // Cloudflare Function для обработки контактной формы
 export async function onRequestPost(context) {
   try {
+    console.log('=== NEW VERSION LOADED ===');
+    console.log('Available env vars:', Object.keys(context.env));
+    console.log('CONTACT_SLACK_WEBHOOK value:', context.env.CONTACT_SLACK_WEBHOOK ? 'SET' : 'NOT SET');
+    
     // Получаем данные из запроса
     const body = await context.request.json()
     const { name, email, message, url, stack, regions, languages, preferredCmp, integrations, locale, timestamp, userAgent } = body

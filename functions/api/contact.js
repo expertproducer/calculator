@@ -45,7 +45,7 @@ export async function onRequestPost(context) {
     
     if (slackWebhookUrl) {
       try {
-        console.log('Sending Slack notification...');
+        console.log('Sending Slack notification...'); // Updated for deployment
         
         const slackMessage = {
           text: '🎯 *Новая заявка с сайта C&C CookieComply*',

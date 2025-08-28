@@ -1,7 +1,8 @@
-import NavbarEN from '@/components/NavbarEN'
+import Navbar from '@/components/Navbar'
 import FooterENStatic from '@/components/FooterENStatic'
 import HeroStatic from '@/components/HeroStatic'
-import { Problem, Services, Process, Deliverables, Benefits, Cases, FAQ, Contact } from '@/components/AllComponents'
+import { Problem, Services, Process, Deliverables, Benefits, Cases, FAQ } from '@/components/AllComponents'
+import Contact from '@/components/Contact'
 
 export default function RootPage() {
   // English content for root page
@@ -109,7 +110,7 @@ export default function RootPage() {
 
   return (
     <div>
-      <NavbarEN />
+      <Navbar locale="en" />
       <HeroStatic content={content.hero} />
       <Problem content={content.problem} />
       <Services content={content.services} />

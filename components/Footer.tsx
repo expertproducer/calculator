@@ -12,26 +12,26 @@ export default function Footer({ content, locale }: { content: any; locale: stri
   }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900/95 backdrop-blur-xl text-white border-t border-gray-800/50">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <Shield className="text-blue-400" size={32} />
-              <span className="text-2xl font-bold">C&C CookieComply</span>
+            <div className="flex items-center gap-3 mb-8">
+              <Shield className="text-gray-400" size={24} />
+              <span className="text-xl font-semibold tracking-tight">C&C CookieComply</span>
             </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-gray-300 mb-8 max-w-md leading-relaxed font-light">
               {content.footer.description}
             </p>
-            <div className="flex items-center gap-6 text-sm text-gray-400">
+            <div className="flex flex-col gap-3 text-sm text-gray-400">
               <div className="flex items-center gap-2">
-                <MapPin size={16} />
+                <MapPin className="text-gray-500" size={16} />
                 <span>{content.footer.location}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock size={16} />
+                <Clock className="text-gray-500" size={16} />
                 <span>{content.footer.workingHours}</span>
               </div>
             </div>
@@ -39,30 +39,30 @@ export default function Footer({ content, locale }: { content: any; locale: stri
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">{content.footer.quickLinks}</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-medium mb-6 text-gray-200 tracking-tight">{content.footer.quickLinks}</h3>
+            <ul className="space-y-4">
               <li>
-                <Link href={`/${locale}#services`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}#services`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.services}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#process`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}#process`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.process}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#pricing`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}#pricing`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.pricing}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#faq`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}#faq`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.faq}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#contact`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}#contact`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.contacts}
                 </Link>
               </li>
@@ -71,15 +71,15 @@ export default function Footer({ content, locale }: { content: any; locale: stri
 
           {/* Legal & Privacy */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">{content.footer.legalInfo}</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-medium mb-6 text-gray-200 tracking-tight">{content.footer.legalInfo}</h3>
+            <ul className="space-y-4">
               <li>
-                <Link href={`/${locale}/privacy`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}/privacy`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.privacyPolicy}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/cookies`} className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}/cookies`} className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
                   {content.footer.cookiePolicy}
                 </Link>
               </li>
@@ -90,9 +90,9 @@ export default function Footer({ content, locale }: { content: any; locale: stri
                     const event = new CustomEvent('openCookiePreferences')
                     window.dispatchEvent(event)
                   }}
-                  className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
+                  className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 text-sm"
                 >
-                  <Settings size={16} />
+                  <Settings className="text-gray-500" size={16} />
                   {content.footer.cookiePreferences}
                 </button>
               </li>
@@ -102,23 +102,29 @@ export default function Footer({ content, locale }: { content: any; locale: stri
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+      <div className="border-t border-gray-800/50">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-500 text-sm font-light">
               © {currentYear} C&C CookieComply by Cash & Clash. {content.footer.allRightsReserved}
             </p>
             
-            <div className="flex items-center gap-6 text-sm text-gray-400">
-              <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">
+            <div className="flex items-center gap-8 text-sm text-gray-500">
+              <Link href={`/${locale}/privacy`} className="hover:text-gray-300 transition-colors duration-300">
                 {content.footer.links[0]}
               </Link>
-              <Link href={`/${locale}/cookies`} className="hover:text-white transition-colors">
+              <Link href={`/${locale}/cookies`} className="hover:text-gray-300 transition-colors duration-300">
                 {content.footer.links[1]}
               </Link>
-              <Link href={`/${locale}#contact`} className="hover:text-white transition-colors">
-                {content.footer.links[2]}
-              </Link>
+              <button 
+                onClick={() => {
+                  const event = new CustomEvent('openCookiePreferences')
+                  window.dispatchEvent(event)
+                }}
+                className="hover:text-gray-300 transition-colors duration-300"
+              >
+                Cookie Preferences
+              </button>
             </div>
           </div>
         </div>

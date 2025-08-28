@@ -1,6 +1,6 @@
 import { getContent } from '../../lib/i18n'
 import Hero from '../../components/Hero'
-import { Problem, Services, Process, Deliverables, Benefits, Cases, Pricing, FAQ, Contact, Footer, Navbar } from '../../components/AllComponents'
+import { Problem, Services, Process, Deliverables, Benefits, Cases, Pricing, FAQ, Contact, FinalCTA, Footer, Navbar } from '../../components/AllComponents'
 import StructuredData from '../../components/StructuredData'
 import CookieConsent from '../../components/CookieConsent'
 
@@ -64,6 +64,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         
         <section id="contact">
           <Contact content={content.contact} locale={locale} />
+        </section>
+        
+        <section id="final-cta">
+          <FinalCTA />
         </section>
       </main>
       

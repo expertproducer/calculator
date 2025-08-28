@@ -2,23 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
-
 :root {
-  /* Colors */
-  --bg: #ffffff;
-  --fg: #0f172a;
-  --muted: #64748b;
-  --primary: #3b82f6;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
+  /* Apple-style Colors */
+  --bg: #F8F9FB;
+  --fg: #0B0D12;
+  --muted: #8D95A3;
+  --line: rgba(0,0,0,0.08);
+  --accent: #0A84FF;
+  --success: #30D158;
+  --warning: #FF9F0A;
+  --danger: #FF453A;
   
-  /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  /* Typography - Apple System Stack */
+  --font-sans: -apple-system, system-ui, 'SF Pro Text', 'Inter', sans-serif;
+  --font-display: -apple-system, system-ui, 'SF Pro Display', 'Inter', sans-serif;
   
-  /* Spacing */
+  /* Spacing - Apple rhythm */
   --container: 1200px;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -27,23 +26,28 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 7rem;
+  --spacing-6xl: 8rem;
   
-  /* Border radius */
-  --radius: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
+  /* Border radius - Apple style */
+  --radius: 1.25rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
   
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Shadows - Apple soft shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+  --shadow-glass: 0 8px 32px rgba(0,0,0,0.12);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f172a;
-    --fg: #f8fafc;
-    --muted: #94a3b8;
+    --bg: #0B0B0D;
+    --fg: #F2F4F7;
+    --muted: #8D95A3;
+    --line: rgba(255,255,255,0.08);
   }
 }
 
@@ -87,72 +91,107 @@ body {
   padding: 0 var(--spacing-md);
 }
 
-/* Typography */
+/* Typography - Apple sizes */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(3.5rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(2.25rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.375rem, 3vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-/* Buttons */
+body {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Buttons - Apple style */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: 0.875rem 1.75rem;
   border-radius: var(--radius);
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   border: none;
   font-size: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--accent);
   color: white;
+  box-shadow: var(--shadow);
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
-  transform: translateY(-1px);
+  background-color: #0066CC;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-outline {
   background-color: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--accent);
+  border: 1.5px solid var(--line);
+  backdrop-filter: blur(20px);
 }
 
 .btn-outline:hover {
-  background-color: var(--primary);
+  background-color: var(--accent);
   color: white;
+  border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
-/* Sections */
+/* Sections - Apple spacing */
 .section {
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-5xl) 0;
 }
 
 .section-alt {
-  background-color: #f8fafc;
+  background-color: rgba(248, 249, 251, 0.5);
+  backdrop-filter: blur(20px);
 }
 
 @media (prefers-color-scheme: dark) {
   .section-alt {
-    background-color: #1e293b;
+    background-color: rgba(17, 18, 20, 0.8);
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Glass effect cards */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-glass);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
   }
 }

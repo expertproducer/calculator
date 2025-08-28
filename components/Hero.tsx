@@ -23,34 +23,34 @@ interface HeroProps {
 export default function Hero({ content }: HeroProps) {
   return (
     <section 
-      className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
+      className="relative pt-32 pb-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 overflow-hidden"
       aria-labelledby="hero-title"
     >
-      {/* Background decoration */}
+      {/* Background decoration - Apple style */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-200 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-30" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-accent/10 to-primary-300/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-primary-200/10 to-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto">
           {/* Content */}
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Shield className="text-blue-600 dark:text-blue-400" size={32} />
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Shield className="text-accent" size={24} />
+              <span className="text-sm font-medium text-accent uppercase tracking-wider">
                 GDPR Compliance
               </span>
             </div>
 
             <h1 
               id="hero-title"
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+              className="text-6xl md:text-7xl lg:text-8xl font-semibold text-gray-900 dark:text-white mb-8 leading-none tracking-tight"
             >
               {content.title}
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
               {content.subtitle}
             </p>
 
@@ -72,14 +72,14 @@ export default function Hero({ content }: HeroProps) {
               </div>
             )}
 
-            {/* CTA Buttons - Static for SSR */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* CTA Buttons - Apple style */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <a
                 href="#contact"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl"
+                className="group relative inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-white font-medium rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-apple hover:shadow-apple-lg"
                 aria-label={`${content.cta.primary} - go to contact form`}
               >
-                <span>{content.cta.primary}</span>
+                <span className="text-lg">{content.cta.primary}</span>
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -87,29 +87,29 @@ export default function Hero({ content }: HeroProps) {
               
               <a
                 href="#services"
-                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="group inline-flex items-center gap-3 px-10 py-4 border border-gray-300/60 dark:border-gray-600/60 text-gray-700 dark:text-gray-300 hover:border-accent hover:text-accent bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl font-medium rounded-2xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 shadow-sm hover:shadow-apple"
                 aria-label={`${content.cta.secondary} - перейти к услугам`}
               >
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                <span>{content.cta.secondary}</span>
+                <span className="text-lg">{content.cta.secondary}</span>
               </a>
             </div>
 
-            {/* Trust indicators */}
-            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 dark:text-gray-400">
+            {/* Trust indicators - Apple style */}
+            <div className="pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
+              <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center gap-2">
-                  <Shield className="text-green-500" size={16} />
+                  <Shield className="text-gray-400 dark:text-gray-500" size={16} />
                   <span>GDPR Compliant</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="text-blue-500" size={16} />
+                  <CheckCircle className="text-gray-400 dark:text-gray-500" size={16} />
                   <span>24/7 Support</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Zap className="text-yellow-500" size={16} />
+                  <Zap className="text-gray-400 dark:text-gray-500" size={16} />
                   <span>Fast Setup</span>
                 </div>
               </div>

@@ -110,31 +110,31 @@ export default function Navbar({ locale }: { locale: string }) {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' 
-        : 'bg-white dark:bg-gray-900'
+        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-apple border-b border-gray-200/50 dark:border-gray-700/50' 
+        : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl'
     }`}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <Shield className="text-blue-600 dark:text-blue-400" size={32} />
-            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <Shield className="text-accent" size={28} />
+            <span className="text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
               C&C CookieComply
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group"
+                className="text-gray-600 dark:text-gray-300 hover:text-accent transition-colors duration-300 font-medium text-sm tracking-wide relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -148,7 +148,7 @@ export default function Navbar({ locale }: { locale: string }) {
                   console.log('Language switcher clicked!')
                   setShowLanguageMenu(!showLanguageMenu)
                 }}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 cursor-pointer bg-white dark:bg-gray-800 shadow-sm hover:shadow-md"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent transition-all duration-300 rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50 border border-gray-200/60 dark:border-gray-700/60 cursor-pointer bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl shadow-sm hover:shadow-apple"
                 style={{ minWidth: '60px' }}
                 type="button"
               >
@@ -158,14 +158,14 @@ export default function Navbar({ locale }: { locale: string }) {
               
               {/* Language Dropdown */}
               {showLanguageMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2 min-w-[140px] z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white/90 dark:bg-gray-800/90 border border-gray-200/60 dark:border-gray-700/60 rounded-xl shadow-glass backdrop-blur-xl py-2 min-w-[140px] z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                      className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-gray-100/70 dark:hover:bg-gray-700/70 transition-colors rounded-lg mx-1 ${
                         locale === lang.code 
-                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20' 
+                          ? 'text-accent bg-primary-50/50 dark:bg-primary-900/20' 
                           : 'text-gray-700 dark:text-gray-300'
                       }`}
                     >

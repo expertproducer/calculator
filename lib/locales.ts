@@ -4,7 +4,7 @@ export const DEFAULT_LOCALE: Locale = "en";
 
 // Основной домен и поддомен
 export const BASE_URL = "https://cashandclash.com";
-export const GDPR_SUBDOMAIN = "https://gdpr.cashandclash.com";
+export const GDPR_SUBDOMAIN = "https://cashandclash.com";
 
 // Для построения hreflang/каноникал по слагу
 export function pathFor(locale: Locale, slug = "/") {

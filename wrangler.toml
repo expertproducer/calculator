@@ -9,7 +9,6 @@ pages_build_output_dir = ".next/standalone"
 name = "calculator"
 [env.production.vars]
 ENVIRONMENT = "production"
-SLACK_WEBHOOK_URL = "placeholder"
 
 # Переменные окружения для превью
 [env.preview]
@@ -20,4 +19,3 @@ ENVIRONMENT = "preview"
 # Глобальные переменные окружения
 [vars]
 ENVIRONMENT = "development"
-SLACK_WEBHOOK_URL = "placeholder"

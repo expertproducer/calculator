@@ -1,42 +1,42 @@
-# Деплой на Cloudflare Pages
+# Deployment to Cloudflare Pages
 
-## Структура проекта
+## Project Structure
 
-- `out/` - папка со статическими файлами (создается Next.js)
-- `functions/` - Cloudflare Workers функции для API
+- `out/` - static files folder (created by Next.js)
+- `functions/` - Cloudflare Workers functions for API
 
-## Настройка переменных окружения
+## Environment Variables Setup
 
-В Cloudflare Pages Dashboard добавьте:
+In Cloudflare Pages Dashboard add:
 
 ```
 CONTACT_SLACK_WEBHOOK=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
 ```
 
-## Команды для деплоя
+## Deployment Commands
 
-1. **Сборка проекта:**
+1. **Build project:**
    ```bash
    npm run build
    ```
 
-2. **Деплой через Wrangler:**
+2. **Deploy via Wrangler:**
    ```bash
    npx wrangler pages deploy out
    ```
 
-3. **Или через Cloudflare Dashboard:**
-   - Подключите GitHub репозиторий
-   - Укажите команду сборки: `npm run build`
-   - Укажите папку вывода: `out`
+3. **Or via Cloudflare Dashboard:**
+   - Connect GitHub repository
+   - Set build command: `npm run build`
+   - Set output folder: `out`
 
-## Проверка работы
+## Verify Functionality
 
-После деплоя форма должна работать по адресу:
+After deployment, the form should work at:
 `https://your-domain.com/api/contact`
 
-## Устранение проблем
+## Troubleshooting
 
-- Убедитесь что папка `out` создается после `npm run build`
-- Проверьте что переменная `CONTACT_SLACK_WEBHOOK` установлена
-- В консоли браузера не должно быть ошибок CORS
+- Make sure the `out` folder is created after `npm run build`
+- Verify that `CONTACT_SLACK_WEBHOOK` variable is set
+- Browser console should not show CORS errors

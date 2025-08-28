@@ -22,7 +22,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div className="min-h-screen bg-white dark:bg-gray-900">
         <Navbar locale={locale} />
         
-        {/* Отступ для фиксированной навигации */}
+        {/* Spacing for fixed navigation */}
         <div className="pt-20"></div>
       
       <main>
@@ -67,7 +67,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       </main>
       
-      <Footer content={content.footer} locale={locale} />
+      <Footer content={content} locale={locale} />
       </div>
       <CookieConsent locale={locale} />
     </>

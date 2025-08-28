@@ -1,87 +1,87 @@
-# Деплой на Cloudflare Pages с функциями
+# Deployment to Cloudflare Pages with Functions
 
-Этот проект настроен для работы на Cloudflare Pages с использованием Cloudflare Functions для API.
+This project is configured to work on Cloudflare Pages using Cloudflare Functions for API.
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### 1. Установка Wrangler CLI
+### 1. Install Wrangler CLI
 ```bash
 npm install -g wrangler
 ```
 
-### 2. Авторизация в Cloudflare
+### 2. Authenticate with Cloudflare
 ```bash
 wrangler login
 ```
 
-### 3. Настройка переменных окружения
-Создайте файл `.env.local` в корне проекта:
+### 3. Environment Variables Setup
+Create `.env.local` file in project root:
 ```env
 SLACK_WEBHOOK_URL=your_slack_webhook_url_here
 ```
 
-### 4. Сборка и деплой
+### 4. Build and Deploy
 ```bash
-# Сборка проекта
+# Build project
 npm run build
 
-# Деплой на Cloudflare Pages
+# Deploy to Cloudflare Pages
 npx wrangler pages deploy .next --project-name calculator
 ```
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
-- **`.next/`** - папка сборки Next.js (используется для деплоя)
-- **`functions/`** - Cloudflare Functions (заменяют API роуты Next.js)
-- **`app/`** - страницы и компоненты Next.js
-- **`wrangler.toml`** - конфигурация Cloudflare
+- **`.next/`** - Next.js build folder (used for deployment)
+- **`functions/`** - Cloudflare Functions (replace Next.js API routes)
+- **`app/`** - Next.js pages and components
+- **`wrangler.toml`** - Cloudflare configuration
 
-## 🔧 Как это работает
+## 🔧 How It Works
 
-### Статические страницы
-- Next.js собирает статические страницы в папку `.next`
-- Cloudflare Pages раздает статический контент
+### Static Pages
+- Next.js builds static pages to `.next` folder
+- Cloudflare Pages serves static content
 
-### API функции
-- Вместо API роутов Next.js используются Cloudflare Functions
-- Функции находятся в папке `functions/`
-- Автоматически доступны по адресу `/api/*`
+### API Functions
+- Instead of Next.js API routes, Cloudflare Functions are used
+- Functions are located in `functions/` folder
+- Automatically available at `/api/*`
 
-### Контактная форма
-- Функция `functions/api/contact.ts` обрабатывает POST запросы
-- Отправляет уведомления в Slack
-- Использует переменную окружения `SLACK_WEBHOOK_URL`
+### Contact Form
+- Function `functions/api/contact.ts` handles POST requests
+- Sends notifications to Slack
+- Uses environment variable `SLACK_WEBHOOK_URL`
 
-## 🌐 Переменные окружения
+## 🌐 Environment Variables
 
-В Cloudflare Pages Dashboard настройте:
+In Cloudflare Pages Dashboard configure:
 
-- `SLACK_WEBHOOK_URL` - URL вебхука Slack для уведомлений
+- `SLACK_WEBHOOK_URL` - Slack webhook URL for notifications
 
-## 🚨 Важные моменты
+## 🚨 Important Points
 
-1. **НЕ используйте `output: 'export'`** в `next.config.js` - это отключает API
-2. **API роуты Next.js не работают** в статическом экспорте
-3. **Используйте Cloudflare Functions** для серверной логики
-4. **Папка `.next`** используется для деплоя, а не `out`
+1. **DO NOT use `output: 'export'`** in `next.config.js` - this disables API
+2. **Next.js API routes don't work** in static export
+3. **Use Cloudflare Functions** for server logic
+4. **`.next` folder** is used for deployment, not `out`
 
-## 🔍 Отладка
+## 🔍 Debugging
 
-### Логи функций
+### Function Logs
 ```bash
 wrangler pages deployment tail --project-name calculator
 ```
 
-### Локальная разработка
+### Local Development
 ```bash
-# Запуск Next.js
+# Run Next.js
 npm run dev
 
-# Запуск функций локально
+# Run functions locally
 wrangler pages dev .next --compatibility-date=2024-01-01
 ```
 
-## 📚 Полезные ссылки
+## 📚 Useful Links
 
 - [Cloudflare Pages Documentation](https://developers.cloudflare.com/pages/)
 - [Cloudflare Functions Documentation](https://developers.cloudflare.com/workers/)

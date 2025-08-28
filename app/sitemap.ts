@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
   
   return [
-    // Главные страницы
+    // Main pages
     {
       url: `${GDPR_SUBDOMAIN}/`,
       lastModified: currentDate,
@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     
-    // Страницы политик
+    // Policy pages
     {
       url: `${GDPR_SUBDOMAIN}/privacy`,
       lastModified: currentDate,

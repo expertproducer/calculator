@@ -1,33 +1,33 @@
 # OG Image Instructions
 
-## Создание OG изображения для соцсетей
+## Creating OG Image for Social Media
 
-### Требования:
-- **Размер:** 1200x630 пикселей (соотношение 1.91:1)
-- **Формат:** JPG или PNG
-- **Файл:** `public/og-image.jpg`
+### Requirements:
+- **Size:** 1200x630 pixels (1.91:1 ratio)
+- **Format:** JPG or PNG
+- **File:** `public/og-image.jpg`
 
-### Дизайн:
-1. **Фон:** Градиент от синего к фиолетовому (#667eea → #764ba2)
-2. **Логотип:** "C&C CookieComply" - крупный белый текст
-3. **Подзаголовок:** "GDPR CMP Setup & Cookie Banner Fixes"
-4. **Описание:** "Professional compliance solutions for businesses"
-5. **Бейджи:** CMP Setup, Cookie Banners, GDPR Compliance
+### Design:
+1. **Background:** Gradient from blue to purple (#667eea → #764ba2)
+2. **Logo:** "C&C CookieComply" - large white text
+3. **Subtitle:** "GDPR CMP Setup & Cookie Banner Fixes"
+4. **Description:** "Professional compliance solutions for businesses"
+5. **Badges:** CMP Setup, Cookie Banners, GDPR Compliance
 
-### Инструменты для создания:
-- **Figma** (бесплатно)
-- **Canva** (бесплатно)
-- **Photoshop** (платно)
-- **GIMP** (бесплатно)
+### Tools for creation:
+- **Figma** (free)
+- **Canva** (free)
+- **Photoshop** (paid)
+- **GIMP** (free)
 
-### Альтернатива:
-Можно использовать онлайн-генераторы OG изображений:
+### Alternative:
+You can use online OG image generators:
 - og-image.vercel.app
 - metatags.io
 - cards-dev.twitter.com
 
-### После создания:
-1. Сохранить как `og-image.jpg`
-2. Поместить в папку `public/`
-3. Перезапустить сервер разработки
-4. Проверить в Facebook Debugger и Twitter Card Validator
+### After creation:
+1. Save as `og-image.jpg`
+2. Place in `public/` folder
+3. Restart development server
+4. Test in Facebook Debugger and Twitter Card Validator

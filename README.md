@@ -1,87 +1,86 @@
 # C&C CookieComply - GDPR Compliance Solution
 
-## 🚀 Быстрое развертывание
+## 🚀 Quick Deployment
 
-### 1. Разработка
+### 1. Development
 ```bash
 npm run dev
 ```
 
-### 2. Сборка проекта
+### 2. Build Project
 ```bash
 npm run build
 ```
 
-### 3. Развертывание на Cloudflare Pages
+### 3. Deploy to Cloudflare Pages
 ```bash
-# Автоматический деплой через Wrangler
+# Automatic deployment via Wrangler
 npm run deploy
 
-# Или вручную
+# Or manually
 npx wrangler pages deploy .next --project-name calculator
 ```
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 Calculator/
-├── .next/                   # Папка сборки Next.js
+├── .next/                   # Next.js build folder
 ├── functions/              # Cloudflare Functions
-│   ├── _worker.js         # Основной worker для Cloudflare Pages
+│   ├── _worker.js         # Main worker for Cloudflare Pages
 │   └── api/
-│       └── contact.js     # API контактной формы
+│       └── contact.js     # Contact form API
 ├── app/                    # Next.js App Router
-├── components/             # React компоненты
-├── lib/                    # Утилиты и конфигурация
-├── next.config.js          # Конфигурация Next.js
-├── wrangler.toml           # Конфигурация Cloudflare
-└── package.json            # Зависимости и скрипты
+├── components/             # React components
+├── lib/                    # Utilities and configuration
+├── next.config.js          # Next.js configuration
+├── wrangler.toml           # Cloudflare configuration
+└── package.json            # Dependencies and scripts
 ```
 
-## 🔧 Технические детали
+## 🔧 Technical Details
 
 ### API Endpoint
 - **URL:** `/api/contact`
-- **Метод:** POST
-- **Формат:** JSON
-- **Обработчик:** Cloudflare Functions
+- **Method:** POST
+- **Format:** JSON
+- **Handler:** Cloudflare Functions
 
-### Обязательные поля формы
-- `name` - Имя
+### Required Form Fields
+- `name` - Name
 - `email` - Email
-- `url` - URL сайта
-- `message` - Сообщение
+- `url` - Website URL
+- `message` - Message
 
-### Опциональные поля
-- `stack` - Стек технологий
-- `regions` - Регионы
-- `languages` - Языки
-- `locale` - Локаль
+### Optional Fields
+- `stack` - Technology stack
+- `regions` - Regions
+- `languages` - Languages
+- `locale` - Locale
 
-## 🌐 Поддерживаемые языки
+## 🌐 Supported Languages
 
-- 🇷🇺 Русский (ru)
-- 🇺🇸 Английский (en)
-- 🇩🇪 Немецкий (de)
-- 🇫🇷 Французский (fr)
+- 🇺🇸 English (en)
+- 🇩🇪 German (de)
+- 🇫🇷 French (fr)
 
-## 📚 Документация
+## 📚 Documentation
 
-- [CLOUDFLARE_DEPLOY.md](./CLOUDFLARE_DEPLOY.md) - Подробная инструкция по развертыванию
-- [SETUP.md](./SETUP.md) - Настройка проекта
+- [CLOUDFLARE_DEPLOY.md](./CLOUDFLARE_DEPLOY.md) - Detailed deployment instructions
+- [SETUP.md](./SETUP.md) - Project setup
 
-## 🆘 Поддержка
+## 🆘 Support
 
-Если форма не работает:
-1. Проверьте логи в Cloudflare Dashboard
-2. Убедитесь, что Functions включены
-3. Проверьте, что все файлы загружены в проект
+If the form doesn't work:
+1. Check logs in Cloudflare Dashboard
+2. Make sure Functions are enabled
+3. Verify all files are uploaded to the project
 
-## 🎯 Что происходит при отправке формы
+## 🎯 What Happens When Form is Submitted
 
-1. **Фронтенд** отправляет JSON данные на `/api/contact`
-2. **Cloudflare Worker** (`_worker.js`) обрабатывает запрос
-3. **API функция** (`functions/api/contact.js`) валидирует данные
-4. **Ответ** возвращается пользователю
+1. **Frontend** sends JSON data to `/api/contact`
+2. **Cloudflare Worker** (`_worker.js`) processes the request
+3. **API function** (`functions/api/contact.js`) validates data
+4. **Response** is returned to user
 
-Теперь все должно работать без ошибок! 🎉 
+Now everything should work without errors! 🎉 

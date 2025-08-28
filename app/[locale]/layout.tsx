@@ -9,7 +9,7 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
-// Генерируем статические layout'ы для всех локалей
+// Generate static layouts for all locales
 export async function generateStaticParams() {
   return [
     { locale: 'en' },

@@ -1,21 +1,21 @@
-# Конфигурация для Cloudflare Pages
+# Configuration for Cloudflare Pages
 name = "calculator"
 
-# Указываем папку для сборки Pages (статический экспорт)
+# Specify build output directory for Pages (static export)
 pages_build_output_dir = "out"
 
-# Исключаем большие файлы из деплоя
+# Exclude large files from deployment
 [env.production]
 name = "calculator"
 [env.production.vars]
 ENVIRONMENT = "production"
 
-# Переменные окружения для превью
+# Environment variables for preview
 [env.preview]
 name = "calculator-preview"
 [env.preview.vars]
 ENVIRONMENT = "preview"
 
-# Глобальные переменные окружения
+# Global environment variables
 [vars]
 ENVIRONMENT = "development"

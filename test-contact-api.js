@@ -1,32 +1,32 @@
-// Скрипт для тестирования контактного API
-// Запустите: node test-contact-api.js
+// Script for testing contact API
+// Run: node test-contact-api.js
 
-// ⚠️ ВАЖНО: Замените 'your-domain.com' на ваш реальный домен
-// Например: https://your-project.pages.dev или https://yourdomain.com
+// ⚠️ IMPORTANT: Replace 'your-domain.com' with your actual domain
+// For example: https://your-project.pages.dev or https://yourdomain.com
 
 const testContactForm = async () => {
   const testData = {
-    name: 'Тестовое Имя',
+    name: 'Test Name',
     email: 'test@example.com',
-    message: 'Это тестовое сообщение для проверки работы API',
+    message: 'This is a test message to verify API functionality',
     url: 'https://example.com',
     stack: 'React, Next.js, TypeScript',
-    regions: 'Европа, США',
-    languages: 'Русский, Английский',
+    regions: 'Europe, USA',
+    languages: 'English, German',
     preferredCmp: 'OneTrust',
     integrations: 'Google Analytics, Facebook Pixel',
-    locale: 'ru',
+    locale: 'en',
     timestamp: new Date().toISOString(),
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
   };
 
   try {
-    console.log('Отправляем тестовые данные...');
-    console.log('Данные:', JSON.stringify(testData, null, 2));
+    console.log('Sending test data...');
+    console.log('Data:', JSON.stringify(testData, null, 2));
     
-    // 🔧 ЗАМЕНИТЕ НА ВАШ РЕАЛЬНЫЙ URL
+    // 🔧 REPLACE WITH YOUR ACTUAL URL
     const apiUrl = 'https://your-domain.com/api/contact';
-    console.log('Отправляем на:', apiUrl);
+    console.log('Sending to:', apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -38,23 +38,23 @@ const testContactForm = async () => {
 
     const result = await response.json();
     
-    console.log('Статус ответа:', response.status);
-    console.log('Ответ сервера:', result);
+    console.log('Response status:', response.status);
+    console.log('Server response:', result);
     
     if (response.ok) {
-      console.log('✅ API работает корректно!');
-      console.log('Проверьте Slack канал #leads - должно прийти уведомление');
+      console.log('✅ API working correctly!');
+      console.log('Check Slack channel #leads - notification should arrive');
     } else {
-      console.log('❌ Ошибка API:', result.message);
+      console.log('❌ API error:', result.message);
     }
   } catch (error) {
-    console.error('❌ Ошибка при отправке запроса:', error.message);
-    console.log('Возможные причины:');
-    console.log('1. Неправильный URL API');
-    console.log('2. API не развернут');
-    console.log('3. Проблемы с CORS');
+    console.error('❌ Error sending request:', error.message);
+    console.log('Possible causes:');
+    console.log('1. Incorrect API URL');
+    console.log('2. API not deployed');
+    console.log('3. CORS issues');
   }
 };
 
-// Запускаем тест
+// Run test
 testContactForm();

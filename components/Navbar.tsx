@@ -86,24 +86,24 @@ export default function Navbar({ locale }: { locale: string }) {
     console.log('Switching language to:', newLocale)
     console.log('Current pathname:', pathname)
     
-    // Определяем новый путь
+    // Determine new path
     let newPath = '/'
     
     if (pathname === '/' || pathname === '/en' || pathname === '/de' || pathname === '/fr') {
-      // Главная страница
+      // Main page
       newPath = newLocale === 'en' ? '/' : `/${newLocale}/`
     } else {
-      // Другие страницы (например /privacy, /cookies)
+      // Other pages (e.g. /privacy, /cookies)
       const pathWithoutLocale = pathname.replace(/^\/(en|de|fr)/, '') || '/'
       newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`
     }
     
     console.log('New path will be:', newPath)
     
-    // Сохраняем выбор языка в cookie
+    // Save language choice in cookie
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
     
-    // Переходим на новую страницу
+    // Navigate to new page
     console.log('Navigating to:', newPath)
     router.push(newPath)
     setShowLanguageMenu(false)

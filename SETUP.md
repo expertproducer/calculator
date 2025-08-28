@@ -1,55 +1,55 @@
-# Настройка проекта Calculator
+# Calculator Project Setup
 
-## Проблема с формой
+## Form Issue
 
-Если у вас возникает ошибка 404 при отправке формы, это связано с тем, что Next.js API routes не работают в статическом экспорте.
+If you get a 404 error when submitting the form, it's because Next.js API routes don't work in static export.
 
-## Решение 1: Убрать статический экспорт (рекомендуется)
+## Solution 1: Remove Static Export (Recommended)
 
-1. В файле `next.config.js` закомментируйте строку `output: 'export'`
-2. Перезапустите сервер разработки: `npm run dev`
+1. In `next.config.js` comment out the line `output: 'export'`
+2. Restart development server: `npm run dev`
 
-## Решение 2: Настройка переменных окружения
+## Solution 2: Environment Variables Setup
 
-1. Создайте файл `.env.local` в корне проекта
-2. Добавьте в него:
+1. Create `.env.local` file in project root
+2. Add to it:
 
 ```bash
 CONTACT_SLACK_WEBHOOK=your_slack_webhook_url_here
 ```
 
-### Как получить Slack Webhook URL:
+### How to Get Slack Webhook URL:
 
-1. Перейдите в Slack → Settings & administration → Manage apps
-2. Найдите или установите приложение "Incoming Webhooks"
-3. Создайте новый webhook для нужного канала
-4. Скопируйте URL и вставьте в переменную окружения
+1. Go to Slack → Settings & administration → Manage apps
+2. Find or install "Incoming Webhooks" app
+3. Create new webhook for desired channel
+4. Copy URL and paste into environment variable
 
-## Запуск проекта
+## Project Launch
 
 ```bash
-# Установка зависимостей
+# Install dependencies
 npm install
 
-# Запуск в режиме разработки
+# Run in development mode
 npm run dev
 
-# Сборка для продакшена
+# Build for production
 npm run build
 
-# Запуск продакшен версии
+# Run production version
 npm start
 ```
 
-## Проверка работы
+## Verify Functionality
 
-1. Откройте консоль браузера (F12)
-2. Заполните и отправьте форму
-3. Проверьте логи в консоли браузера и в терминале сервера
-4. Проверьте, пришло ли сообщение в Slack
+1. Open browser console (F12)
+2. Fill and submit the form
+3. Check logs in browser console and server terminal
+4. Check if message arrived in Slack
 
-## Возможные проблемы
+## Possible Issues
 
-- **404 ошибка**: API route не найден - проверьте настройки Next.js
-- **Slack не получает сообщения**: проверьте переменную окружения CONTACT_SLACK_WEBHOOK
-- **Ошибки валидации**: проверьте, что все обязательные поля заполнены
+- **404 error**: API route not found - check Next.js settings
+- **Slack not receiving messages**: check CONTACT_SLACK_WEBHOOK environment variable
+- **Validation errors**: check that all required fields are filled

@@ -1,37 +1,37 @@
-# Скрипт деплоя для Cloudflare Pages
-# Убедитесь что у вас установлен Wrangler CLI: npm install -g wrangler
+# Cloudflare Pages deployment script
+# Make sure you have Wrangler CLI installed: npm install -g wrangler
 
-Write-Host "🚀 Начинаем деплой на Cloudflare Pages..." -ForegroundColor Green
+Write-Host "🚀 Starting deployment to Cloudflare Pages..." -ForegroundColor Green
 
-# Очищаем предыдущие сборки
-Write-Host "🧹 Очищаем предыдущие сборки..." -ForegroundColor Yellow
+# Clean previous builds
+Write-Host "🧹 Cleaning previous builds..." -ForegroundColor Yellow
 if (Test-Path ".next") { Remove-Item -Recurse -Force ".next" }
 if (Test-Path "out") { Remove-Item -Recurse -Force "out" }
 
-# Устанавливаем зависимости
-Write-Host "📦 Устанавливаем зависимости..." -ForegroundColor Yellow
+# Install dependencies
+Write-Host "📦 Installing dependencies..." -ForegroundColor Yellow
 npm install
 
-# Собираем проект
-Write-Host "🔨 Собираем проект..." -ForegroundColor Yellow
+# Build project
+Write-Host "🔨 Building project..." -ForegroundColor Yellow
 npm run build
 
-# Проверяем что сборка прошла успешно
+# Check if build was successful
 if (-not (Test-Path ".next")) {
-    Write-Host "❌ Ошибка: папка .next не найдена после сборки" -ForegroundColor Red
+    Write-Host "❌ Error: .next folder not found after build" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "✅ Сборка завершена успешно!" -ForegroundColor Green
+Write-Host "✅ Build completed successfully!" -ForegroundColor Green
 
-# Деплоим на Cloudflare Pages
-Write-Host "🚀 Деплоим на Cloudflare Pages..." -ForegroundColor Yellow
+# Deploy to Cloudflare Pages
+Write-Host "🚀 Deploying to Cloudflare Pages..." -ForegroundColor Yellow
 npx wrangler pages deploy .next --project-name calculator
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "🎉 Деплой завершен успешно!" -ForegroundColor Green
-    Write-Host "🌐 Ваш сайт доступен на Cloudflare Pages" -ForegroundColor Cyan
+    Write-Host "🎉 Deployment completed successfully!" -ForegroundColor Green
+    Write-Host "🌐 Your site is available on Cloudflare Pages" -ForegroundColor Cyan
 } else {
-    Write-Host "❌ Ошибка при деплое" -ForegroundColor Red
+    Write-Host "❌ Error during deployment" -ForegroundColor Red
     exit 1
 }

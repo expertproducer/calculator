@@ -1,5 +1,41 @@
 export type Locale = 'en' | 'de' | 'fr'
 
+// Content types
+interface PrivacyContent {
+  title: string
+  content: string[]
+  manageCookieSettings: string
+  manageCookieDescription: string
+  cookieSettings: string
+}
+
+interface CookiesContent {
+  title: string
+  content: string[]
+  manageCookieSettings: string
+  manageCookieDescription: string
+  cookieSettings: string
+}
+
+interface FooterContent {
+  copyright: string
+  links: string[]
+  description: string
+  location: string
+  workingHours: string
+  quickLinks: string
+  services: string
+  process: string
+  pricing: string
+  faq: string
+  contacts: string
+  legalInfo: string
+  privacyPolicy: string
+  cookiePolicy: string
+  cookiePreferences: string
+  allRightsReserved: string
+}
+
 // Simple content loading - in real app you'd load from JSON files
 export function getContent(locale: Locale) {
   const content = {
@@ -137,7 +173,49 @@ export function getContent(locale: Locale) {
       },
       footer: {
         copyright: '© 2024 C&C CookieComply by Cash & Clash',
-        links: ['Privacy Policy', 'Cookie Policy', 'Contact']
+        links: ['Privacy Policy', 'Cookie Policy', 'Contact'],
+        description: 'Professional GDPR compliance solutions. We configure CMP, fix cookie banners and ensure proper logging of consents.',
+        location: 'European Union',
+        workingHours: 'CET 9:00-18:00',
+        quickLinks: 'Quick Links',
+        services: 'Services',
+        process: 'Work Process',
+        pricing: 'Pricing',
+        faq: 'FAQ',
+        contacts: 'Contacts',
+        legalInfo: 'Legal Information',
+        privacyPolicy: 'Privacy Policy',
+        cookiePolicy: 'Cookie Policy',
+        cookiePreferences: 'Cookie Preferences',
+        allRightsReserved: 'All rights reserved.'
+      },
+      privacy: {
+        title: 'Privacy Policy',
+        content: [
+          'We protect your personal information and comply with all GDPR requirements. Your data is used only to provide services and is never shared with third parties without your consent.',
+          'We collect only the information necessary to provide our services: name, email, website URL, and technical project details.',
+          'All data is stored securely and deleted upon your request or upon contract expiration. You have the right to access, modify, or delete your data at any time.',
+          'We use cookies and similar technologies to improve website functionality and analyze traffic. You can manage your cookie preferences using the settings below.'
+        ],
+        manageCookieSettings: 'Manage Cookie Settings',
+        manageCookieDescription: 'Click the button below to manage your cookie settings.',
+        cookieSettings: 'Cookie Settings'
+      },
+      cookies: {
+        title: 'Cookie Policy',
+        content: [
+          'We use cookies to improve website functionality and analyze traffic. By continuing to use the site, you agree to our cookie policy.',
+          'Cookies are small text files stored on your device that help us improve user experience and provide personalized content.',
+          'We use the following types of cookies:',
+          '• Essential cookies: Required for basic site functionality',
+          '• Analytics cookies: Help us understand how visitors use our site',
+          '• Marketing cookies: Used to deliver relevant advertisements',
+          '• Functional cookies: Enable enhanced functionality and personalization',
+          'You can disable cookies in your browser settings, but this may affect website functionality. Use the settings below to manage your preferences.'
+        ],
+        manageCookieSettings: 'Manage Cookie Settings',
+        manageCookieDescription: 'Click the button below to manage your cookie settings.',
+        cookieSettings: 'Cookie Settings'
       }
     },
     de: {
@@ -274,7 +352,49 @@ export function getContent(locale: Locale) {
       },
       footer: {
         copyright: '© 2024 C&C CookieComply von Cash & Clash',
-        links: ['Datenschutzrichtlinie', 'Cookie-Richtlinie', 'Kontakt']
+        links: ['Datenschutzrichtlinie', 'Cookie-Richtlinie', 'Kontakt'],
+        description: 'Professionelle GDPR-Compliance-Lösungen. Wir konfigurieren CMP, reparieren Cookie-Banner und stellen ordnungsgemäße Protokollierung von Zustimmungen sicher.',
+        location: 'Europäische Union',
+        workingHours: 'CET 9:00-18:00',
+        quickLinks: 'Schnelllinks',
+        services: 'Dienstleistungen',
+        process: 'Arbeitsprozess',
+        pricing: 'Preise',
+        faq: 'FAQ',
+        contacts: 'Kontakte',
+        legalInfo: 'Rechtliche Informationen',
+        privacyPolicy: 'Datenschutzrichtlinie',
+        cookiePolicy: 'Cookie-Richtlinie',
+        cookiePreferences: 'Cookie-Einstellungen',
+        allRightsReserved: 'Alle Rechte vorbehalten.'
+      },
+      privacy: {
+        title: 'Datenschutzerklärung',
+        content: [
+          'Wir schützen Ihre persönlichen Daten und erfüllen alle GDPR-Anforderungen. Ihre Daten werden nur zur Erbringung von Dienstleistungen verwendet und niemals ohne Ihre Zustimmung an Dritte weitergegeben.',
+          'Wir sammeln nur die Informationen, die zur Erbringung unserer Dienstleistungen erforderlich sind: Name, E-Mail, Website-URL und technische Projektdetails.',
+          'Alle Daten werden sicher gespeichert und auf Ihre Anfrage oder bei Vertragsende gelöscht. Sie haben jederzeit das Recht, auf Ihre Daten zuzugreifen, sie zu ändern oder zu löschen.',
+          'Wir verwenden Cookies und ähnliche Technologien, um die Website-Funktionalität zu verbessern und den Verkehr zu analysieren. Sie können Ihre Cookie-Einstellungen über die nachstehenden Einstellungen verwalten.'
+        ],
+        manageCookieSettings: 'Cookie-Einstellungen verwalten',
+        manageCookieDescription: 'Klicken Sie auf die Schaltfläche unten, um Ihre Cookie-Einstellungen zu verwalten.',
+        cookieSettings: 'Cookie-Einstellungen'
+      },
+      cookies: {
+        title: 'Cookie-Richtlinie',
+        content: [
+          'Wir verwenden Cookies, um die Website-Funktionalität zu verbessern und den Verkehr zu analysieren. Durch die weitere Nutzung der Website stimmen Sie unserer Cookie-Richtlinie zu.',
+          'Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden und uns helfen, die Benutzererfahrung zu verbessern und personalisierte Inhalte bereitzustellen.',
+          'Wir verwenden die folgenden Arten von Cookies:',
+          '• Wesentliche Cookies: Erforderlich für grundlegende Website-Funktionalität',
+          '• Analytics-Cookies: Helfen uns zu verstehen, wie Besucher unsere Website nutzen',
+          '• Marketing-Cookies: Werden verwendet, um relevante Werbung zu liefern',
+          '• Funktionale Cookies: Ermöglichen erweiterte Funktionalität und Personalisierung',
+          'Sie können Cookies in Ihren Browser-Einstellungen deaktivieren, aber dies kann die Website-Funktionalität beeinträchtigen. Verwenden Sie die nachstehenden Einstellungen, um Ihre Präferenzen zu verwalten.'
+        ],
+        manageCookieSettings: 'Cookie-Einstellungen verwalten',
+        manageCookieDescription: 'Klicken Sie auf die Schaltfläche unten, um Ihre Cookie-Einstellungen zu verwalten.',
+        cookieSettings: 'Cookie-Einstellungen'
       }
     },
     fr: {
@@ -411,7 +531,49 @@ export function getContent(locale: Locale) {
       },
       footer: {
         copyright: '© 2024 C&C CookieComply par Cash & Clash',
-        links: ['Politique de confidentialité', 'Politique des cookies', 'Contact']
+        links: ['Politique de confidentialité', 'Politique des cookies', 'Contact'],
+        description: 'Solutions professionnelles de conformité GDPR. Nous configurons CMP, corrigeons les bannières de cookies et assurons une journalisation appropriée des consentements.',
+        location: 'Union Européenne',
+        workingHours: 'CET 9:00-18:00',
+        quickLinks: 'Liens rapides',
+        services: 'Services',
+        process: 'Processus de travail',
+        pricing: 'Tarifs',
+        faq: 'FAQ',
+        contacts: 'Contacts',
+        legalInfo: 'Informations légales',
+        privacyPolicy: 'Politique de confidentialité',
+        cookiePolicy: 'Politique des cookies',
+        cookiePreferences: 'Préférences de cookies',
+        allRightsReserved: 'Tous droits réservés.'
+      },
+      privacy: {
+        title: 'Politique de Confidentialité',
+        content: [
+          'Nous protégeons vos informations personnelles et respectons toutes les exigences GDPR. Vos données sont utilisées uniquement pour fournir des services et ne sont jamais partagées avec des tiers sans votre consentement.',
+          'Nous collectons uniquement les informations nécessaires pour fournir nos services : nom, email, URL du site web et détails techniques du projet.',
+          'Toutes les données sont stockées de manière sécurisée et supprimées sur votre demande ou à l\'expiration du contrat. Vous avez le droit d\'accéder, de modifier ou de supprimer vos données à tout moment.',
+          'Nous utilisons des cookies et des technologies similaires pour améliorer la fonctionnalité du site web et analyser le trafic. Vous pouvez gérer vos préférences de cookies en utilisant les paramètres ci-dessous.'
+        ],
+        manageCookieSettings: 'Gérer les paramètres des cookies',
+        manageCookieDescription: 'Cliquez sur le bouton ci-dessous pour gérer vos paramètres de cookies.',
+        cookieSettings: 'Paramètres des cookies'
+      },
+      cookies: {
+        title: 'Politique des Cookies',
+        content: [
+          'Nous utilisons des cookies pour améliorer la fonctionnalité du site web et analyser le trafic. En continuant à utiliser le site, vous acceptez notre politique de cookies.',
+          'Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à améliorer l\'expérience utilisateur et à fournir du contenu personnalisé.',
+          'Nous utilisons les types de cookies suivants :',
+          '• Cookies essentiels : Requis pour la fonctionnalité de base du site',
+          '• Cookies analytiques : Nous aident à comprendre comment les visiteurs utilisent notre site',
+          '• Cookies marketing : Utilisés pour diffuser des publicités pertinentes',
+          '• Cookies fonctionnels : Permettent une fonctionnalité améliorée et la personnalisation',
+          'Vous pouvez désactiver les cookies dans les paramètres de votre navigateur, mais cela peut affecter la fonctionnalité du site web. Utilisez les paramètres ci-dessous pour gérer vos préférences.'
+        ],
+        manageCookieSettings: 'Gérer les paramètres des cookies',
+        manageCookieDescription: 'Cliquez sur le bouton ci-dessous pour gérer vos paramètres de cookies.',
+        cookieSettings: 'Paramètres des cookies'
       }
     }
   }

@@ -2,11 +2,11 @@ export const LOCALES = ["en", "de", "fr"] as const;
 export type Locale = typeof LOCALES[number];
 export const DEFAULT_LOCALE: Locale = "en";
 
-// Основной домен и поддомен
+// Main domain and subdomain
 export const BASE_URL = "https://cashandclash.com";
 export const GDPR_SUBDOMAIN = "https://cashandclash.com";
 
-// Для построения hreflang/каноникал по слагу
+// For building hreflang/canonical by slug
 export function pathFor(locale: Locale, slug = "/") {
   const norm = slug.startsWith("/") ? slug : `/${slug}`;
   return locale === "en" ? `${norm}` : `/${locale}${norm}`;
@@ -24,12 +24,12 @@ export function canonicalFor(locale: Locale, slug = "/") {
   return `${GDPR_SUBDOMAIN}${languagesAlternates(slug)[locale]}`;
 }
 
-// Полные URL для sitemap
+// Full URLs for sitemap
 export function fullUrlFor(locale: Locale, slug = "/") {
   return `${GDPR_SUBDOMAIN}${languagesAlternates(slug)[locale]}`;
 }
 
-// Метаданные для разных страниц
+// Metadata for different pages
 export const PAGE_METADATA = {
   home: {
     en: {

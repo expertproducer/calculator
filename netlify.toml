@@ -5,19 +5,19 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Обработка API запросов
+# API request handling
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
 
-# SPA роуты
+# SPA routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Заголовки безопасности
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]

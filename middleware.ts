@@ -7,7 +7,7 @@ const defaultLocale = 'en';
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   
-  // Пропускаем статические файлы, API и Next.js внутренние пути
+  // Skip static files, API and Next.js internal paths
   if (
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/api/') ||
@@ -18,25 +18,25 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
   
-  // Проверяем, есть ли уже локаль в пути
+  // Check if locale is already in path
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}`) && (pathname === `/${locale}` || pathname.startsWith(`/${locale}/`))
   );
 
-  // Если локаль уже есть, продолжаем
+  // If locale is already present, continue
   if (pathnameHasLocale) {
     return NextResponse.next();
   }
 
-  // Для корневого пути и путей без локали - добавляем локаль
+  // For root path and paths without locale - add locale
   let locale = defaultLocale;
   
-  // Проверяем cookie
+  // Check cookie
   const cookieLocale = req.cookies.get("NEXT_LOCALE")?.value;
   if (cookieLocale && locales.includes(cookieLocale)) {
     locale = cookieLocale;
   } else {
-    // Определяем локаль по заголовку Accept-Language
+    // Determine locale by Accept-Language header
     const acceptLanguage = req.headers.get("accept-language");
     if (acceptLanguage) {
       if (acceptLanguage.includes('de')) {
@@ -47,13 +47,13 @@ export function middleware(req: NextRequest) {
     }
   }
   
-  // Создаем новый URL с локалью
+  // Create new URL with locale
   const newPathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`;
   const newUrl = new URL(newPathname, req.url);
   
   const response = NextResponse.redirect(newUrl);
   
-  // Устанавливаем cookie с локалью
+  // Set cookie with locale
   response.cookies.set("NEXT_LOCALE", locale, { 
     path: "/",
     maxAge: 60 * 60 * 24 * 365,

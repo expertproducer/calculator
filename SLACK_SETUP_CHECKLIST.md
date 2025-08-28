@@ -1,72 +1,72 @@
-# Чек-лист настройки Slack Bot API
+# Slack Bot API Setup Checklist
 
-## ✅ Что нужно сделать:
+## ✅ What needs to be done:
 
-### 1. Создание Slack приложения
-- [ ] Перейти на https://api.slack.com/apps
-- [ ] Создать новое приложение "From scratch"
-- [ ] Дать имя приложению (например, "CookieComply Notifications")
-- [ ] Выбрать workspace
+### 1. Create Slack App
+- [ ] Go to https://api.slack.com/apps
+- [ ] Create new app "From scratch"
+- [ ] Give app name (e.g., "CookieComply Notifications")
+- [ ] Select workspace
 
-### 2. Настройка Bot Permissions
-- [ ] Перейти в "OAuth & Permissions"
-- [ ] Добавить scope: `chat:write`
-- [ ] Добавить scope: `chat:write.public` (если нужны публичные каналы)
-- [ ] Сохранить изменения
+### 2. Configure Bot Permissions
+- [ ] Go to "OAuth & Permissions"
+- [ ] Add scope: `chat:write`
+- [ ] Add scope: `chat:write.public` (if public channels needed)
+- [ ] Save changes
 
-### 3. Установка в workspace
-- [ ] Нажать "Install to Workspace"
-- [ ] Подтвердить установку
-- [ ] Скопировать Bot User OAuth Token (начинается с `xoxb-`)
+### 3. Install to workspace
+- [ ] Click "Install to Workspace"
+- [ ] Confirm installation
+- [ ] Copy Bot User OAuth Token (starts with `xoxb-`)
 
-### 4. Добавление бота в канал
-- [ ] Перейти в нужный канал (например, #leads)
-- [ ] Написать: `/invite @имя_вашего_бота`
-- [ ] Или добавить через настройки канала
+### 4. Add bot to channel
+- [ ] Go to desired channel (e.g., #leads)
+- [ ] Write: `/invite @your_bot_name`
+- [ ] Or add through channel settings
 
-### 5. Настройка Cloudflare
-- [ ] Перейти в Cloudflare Dashboard
-- [ ] Выбрать Workers & Pages проект
-- [ ] Перейти в Settings → Environment variables
-- [ ] Добавить переменную: `SLACK_BOT_TOKEN=xoxb-your-token`
-- [ ] Добавить переменную: `SLACK_CHANNEL=#leads`
+### 5. Cloudflare Setup
+- [ ] Go to Cloudflare Dashboard
+- [ ] Select Workers & Pages project
+- [ ] Go to Settings → Environment variables
+- [ ] Add variable: `SLACK_BOT_TOKEN=xoxb-your-token`
+- [ ] Add variable: `SLACK_CHANNEL=#leads`
 
-### 6. Тестирование
-- [ ] Запустить тестовый скрипт: `node test-contact-api.js`
-- [ ] Проверить логи в Cloudflare Dashboard
-- [ ] Проверить Slack канал - должно прийти уведомление
+### 6. Testing
+- [ ] Run test script: `node test-contact-api.js`
+- [ ] Check logs in Cloudflare Dashboard
+- [ ] Check Slack channel - notification should arrive
 
-## 🔍 Проверка работы:
+## 🔍 Functionality Check:
 
-### В Cloudflare Dashboard:
-- [ ] Логи показывают "Sending Slack notification via Bot API..."
-- [ ] Нет ошибок "Slack API error"
-- [ ] Статус "Slack notification sent successfully!"
+### In Cloudflare Dashboard:
+- [ ] Logs show "Sending Slack notification via Bot API..."
+- [ ] No "Slack API error" errors
+- [ ] Status "Slack notification sent successfully!"
 
-### В Slack:
-- [ ] Бот добавлен в канал
-- [ ] Приходит красивое уведомление с данными формы
-- [ ] Нет ошибок доступа
+### In Slack:
+- [ ] Bot added to channel
+- [ ] Beautiful notification with form data arrives
+- [ ] No access errors
 
-## 🚨 Частые проблемы:
+## 🚨 Common Issues:
 
-### Бот не может писать в канал:
-- Проверьте scope `chat:write`
-- Убедитесь, что бот добавлен в канал
-- Проверьте права канала (приватный/публичный)
+### Bot can't write to channel:
+- Check `chat:write` scope
+- Make sure bot is added to channel
+- Check channel permissions (private/public)
 
-### Ошибка "invalid_auth":
-- Проверьте правильность Bot Token
-- Убедитесь, что приложение установлено в workspace
+### "invalid_auth" error:
+- Check Bot Token correctness
+- Make sure app is installed in workspace
 
-### Ошибка "channel_not_found":
-- Проверьте правильность названия канала
-- Убедитесь, что канал существует
-- Проверьте, что бот добавлен в канал
+### "channel_not_found" error:
+- Check channel name correctness
+- Make sure channel exists
+- Check that bot is added to channel
 
-## 📞 Если ничего не работает:
+## 📞 If nothing works:
 
-1. Проверьте логи в Cloudflare Dashboard
-2. Убедитесь, что все переменные окружения настроены
-3. Проверьте, что бот имеет нужные права
-4. Попробуйте простой webhook как альтернативу
+1. Check logs in Cloudflare Dashboard
+2. Make sure all environment variables are configured
+3. Check that bot has needed permissions
+4. Try simple webhook as alternative

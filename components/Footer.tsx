@@ -6,6 +6,11 @@ import { Shield, Mail, MapPin, Clock, Settings } from 'lucide-react'
 export default function Footer({ content, locale }: { content: any; locale: string }) {
   const currentYear = new Date().getFullYear()
 
+  // Защита от undefined content
+  if (!content || !content.footer) {
+    return null
+  }
+
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
@@ -18,48 +23,47 @@ export default function Footer({ content, locale }: { content: any; locale: stri
               <span className="text-2xl font-bold">C&C CookieComply</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Профессиональные решения для GDPR-совместимости. Настраиваем CMP, 
-              исправляем cookie баннеры и обеспечиваем правильное логирование согласий.
+              {content.footer.description}
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <MapPin size={16} />
-                <span>Европейский Союз</span>
+                <span>{content.footer.location}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock size={16} />
-                <span>CET 9:00-18:00</span>
+                <span>{content.footer.workingHours}</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Быстрые ссылки</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">{content.footer.quickLinks}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}#services`} className="text-gray-300 hover:text-white transition-colors">
-                  Услуги
+                  {content.footer.services}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}#process`} className="text-gray-300 hover:text-white transition-colors">
-                  Процесс работы
+                  {content.footer.process}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}#pricing`} className="text-gray-300 hover:text-white transition-colors">
-                  Цены
+                  {content.footer.pricing}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}#faq`} className="text-gray-300 hover:text-white transition-colors">
-                  FAQ
+                  {content.footer.faq}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}#contact`} className="text-gray-300 hover:text-white transition-colors">
-                  Контакты
+                  {content.footer.contacts}
                 </Link>
               </li>
             </ul>
@@ -67,16 +71,16 @@ export default function Footer({ content, locale }: { content: any; locale: stri
 
           {/* Legal & Privacy */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Правовая информация</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">{content.footer.legalInfo}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/privacy`} className="text-gray-300 hover:text-white transition-colors">
-                  Политика конфиденциальности
+                  {content.footer.privacyPolicy}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/cookies`} className="text-gray-300 hover:text-white transition-colors">
-                  Политика cookies
+                  {content.footer.cookiePolicy}
                 </Link>
               </li>
               <li>
@@ -89,7 +93,7 @@ export default function Footer({ content, locale }: { content: any; locale: stri
                   className="text-gray-300 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <Settings size={16} />
-                  Cookie Preferences
+                  {content.footer.cookiePreferences}
                 </button>
               </li>
             </ul>
@@ -102,18 +106,18 @@ export default function Footer({ content, locale }: { content: any; locale: stri
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} C&C CookieComply by Cash & Clash. Все права защищены.
+              © {currentYear} C&C CookieComply by Cash & Clash. {content.footer.allRightsReserved}
             </p>
             
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">
-                Privacy Policy
+                {content.footer.links[0]}
               </Link>
               <Link href={`/${locale}/cookies`} className="hover:text-white transition-colors">
-                Cookie Policy
+                {content.footer.links[1]}
               </Link>
               <Link href={`/${locale}#contact`} className="hover:text-white transition-colors">
-                Contact
+                {content.footer.links[2]}
               </Link>
             </div>
           </div>

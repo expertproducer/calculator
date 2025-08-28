@@ -1,20 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Включаем статическую генерацию для Cloudflare Pages
-  output: 'export',
-  
-  // Настраиваем для Cloudflare Pages
-  trailingSlash: true,
-  
-  // Отключаем оптимизацию изображений для Cloudflare
+  // Disable image optimization for better compatibility
   images: {
     unoptimized: true
   },
   
-  // Исключаем большие файлы webpack и кэша
+  // SEO optimizations
+  trailingSlash: false,
+  
+  // Webpack optimizations
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // Исключаем серверные файлы из клиентской сборки
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
@@ -23,19 +19,18 @@ const nextConfig = {
       };
     }
     
-    // Ограничиваем размер чанков
-    config.optimization.splitChunks = {
-      ...config.optimization.splitChunks,
-      maxSize: 244000, // ~240KB
-    };
-    
     return config;
   },
   
-  // Очищаем кэш после сборки
+  // Performance optimizations
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
+  },
+
+  // Enable experimental features for better SEO
+  experimental: {
+    optimizeCss: true,
   }
 }
 

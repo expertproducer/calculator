@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Shield, CheckCircle, Zap } from 'lucide-react'
 import OptimizedImage from './OptimizedImage'
 

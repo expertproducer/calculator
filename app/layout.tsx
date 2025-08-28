@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${GDPR_SUBDOMAIN}/og-image.jpg`,
+        url: `${GDPR_SUBDOMAIN}/og-image.html`,
         width: 1200,
         height: 630,
         alt: 'C&C CookieComply - GDPR Compliance Solutions'
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: PAGE_METADATA.home.en.title,
     description: PAGE_METADATA.home.en.description,
-    images: [`${GDPR_SUBDOMAIN}/og-image.jpg`],
+    images: [`${GDPR_SUBDOMAIN}/og-image.html`],
     creator: '@cashandclash',
     site: '@cashandclash'
   },

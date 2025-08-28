@@ -1,10 +1,26 @@
-import { Problem, Services, Process, Deliverables, Benefits, Cases, FAQ } from '@/components/AllComponents'
-import FooterEN from '@/components/FooterEN'
 import NavbarEN from '@/components/NavbarEN'
+import FooterENStatic from '@/components/FooterENStatic'
+import HeroStatic from '@/components/HeroStatic'
+import { Problem, Services, Process, Deliverables, Benefits, Cases, FAQ, Contact } from '@/components/AllComponents'
 
 export default function RootPage() {
   // English content for root page
   const content = {
+    hero: {
+      title: "GDPR CMP Setup & Cookie Banner Fixes",
+      subtitle: "Professional GDPR compliance solutions for businesses",
+      description: "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.",
+      cta: {
+        primary: "Get Started",
+        secondary: "Learn More"
+      },
+      features: [
+        "CMP setup and configuration",
+        "Cookie banner compliance",
+        "Prior consent blocking",
+        "Proper consent logging"
+      ]
+    },
     problem: {
       title: "Cookie Compliance Issues",
       points: [
@@ -53,13 +69,23 @@ export default function RootPage() {
     },
     cases: {
       title: "Case Studies",
-      items: [
-        "E-commerce platform",
-        "News website",
-        "Banking service",
-        "Medical portal"
-      ],
-      note: "All projects successfully passed compliance checks"
+      cards: [
+        {
+          title: "E-commerce Platform",
+          before: "GDPR violations, cookie consent issues",
+          after: "Fully compliant, proper consent logging"
+        },
+        {
+          title: "News Website",
+          before: "Tracking without consent, legal risks",
+          after: "CMP setup, prior consent blocking"
+        },
+        {
+          title: "Banking Service",
+          before: "Non-compliant cookie banners",
+          after: "Professional consent management"
+        }
+      ]
     },
     faq: {
       title: "Frequently Asked Questions",
@@ -73,12 +99,18 @@ export default function RootPage() {
           answer: "GDPR, CCPA, LGPD and other international regulations"
         }
       ]
+    },
+    contact: {
+      title: "Get Started Today",
+      subtitle: "Ready to make your website GDPR compliant?",
+      description: "Contact us for a free consultation and quote."
     }
   }
 
   return (
     <div>
       <NavbarEN />
+      <HeroStatic content={content.hero} />
       <Problem content={content.problem} />
       <Services content={content.services} />
       <Process content={content.process} />
@@ -86,7 +118,8 @@ export default function RootPage() {
       <Benefits content={content.benefits} />
       <Cases content={content.cases} />
       <FAQ content={content.faq} />
-      <FooterEN />
+      <Contact content={content.contact} locale="en" />
+      <FooterENStatic />
     </div>
   )
 }

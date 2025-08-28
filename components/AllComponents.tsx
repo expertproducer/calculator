@@ -1,7 +1,7 @@
 // Problem Component
 export function Problem({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section id="problem" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -19,7 +19,7 @@ export function Problem({ content }: { content: any }) {
 // Services Component
 export function Services({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -37,7 +37,7 @@ export function Services({ content }: { content: any }) {
 // Process Component
 export function Process({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section id="process" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-5 gap-8">
@@ -58,7 +58,7 @@ export function Process({ content }: { content: any }) {
 // Deliverables Component
 export function Deliverables({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="deliverables" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -76,7 +76,7 @@ export function Deliverables({ content }: { content: any }) {
 // Benefits Component
 export function Benefits({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section id="benefits" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -94,7 +94,7 @@ export function Benefits({ content }: { content: any }) {
 // Cases Component
 export function Cases({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="cases" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -144,7 +144,7 @@ export function Pricing({ content }: { content: any }) {
 // FAQ Component
 export function FAQ({ content }: { content: any }) {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="faq" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">{content.title}</h2>
         <div className="max-w-3xl mx-auto space-y-6">
@@ -154,6 +154,27 @@ export function FAQ({ content }: { content: any }) {
               <p className="text-gray-600 dark:text-gray-400">{item.answer}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Contact Component
+export function Contact({ content, locale }: { content: any; locale: string }) {
+  return (
+    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-4">{content.title}</h2>
+        <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12">{content.subtitle}</p>
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-8">{content.description}</p>
+        <div className="max-w-2xl mx-auto text-center">
+          <a 
+            href="mailto:contact@cashandclash.com" 
+            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
+            Contact Us
+          </a>
         </div>
       </div>
     </section>

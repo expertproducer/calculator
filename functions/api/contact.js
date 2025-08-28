@@ -1,9 +1,10 @@
 // Cloudflare Function для обработки контактной формы
 export async function onRequestPost(context) {
   try {
-    console.log('=== NEW VERSION LOADED ===');
+    console.log('=== SLACK BOT API VERSION LOADED ===');
     console.log('Available env vars:', Object.keys(context.env));
-    console.log('CONTACT_SLACK_WEBHOOK value:', context.env.CONTACT_SLACK_WEBHOOK ? 'SET' : 'NOT SET');
+    console.log('SLACK_BOT_TOKEN value:', context.env.SLACK_BOT_TOKEN ? 'SET' : 'NOT SET');
+    console.log('SLACK_CHANNEL value:', context.env.SLACK_CHANNEL || '#leads');
     
     // Получаем данные из запроса
     const body = await context.request.json()
@@ -44,16 +45,25 @@ export async function onRequestPost(context) {
       userAgent 
     })
 
-    // Отправляем уведомление в Slack
-    const slackWebhookUrl = context.env.CONTACT_SLACK_WEBHOOK;
+    // Отправляем уведомление в Slack через Bot API
+    const slackBotToken = context.env.SLACK_BOT_TOKEN;
+    const slackChannel = context.env.SLACK_CHANNEL || '#leads';
     
-    if (slackWebhookUrl) {
+    if (slackBotToken) {
       try {
-        console.log('Sending Slack notification...'); // Updated for deployment
+        console.log('Sending Slack notification via Bot API...');
         
         const slackMessage = {
-          text: '🎯 *Новая заявка с сайта C&C CookieComply*',
+          channel: slackChannel,
+          text: '🎯 Новая заявка с сайта C&C CookieComply',
           blocks: [
+            {
+              type: 'header',
+              text: {
+                type: 'plain_text',
+                text: '🎯 Новая заявка с сайта C&C CookieComply'
+              }
+            },
             {
               type: 'section',
               fields: [
@@ -88,28 +98,77 @@ export async function onRequestPost(context) {
           ]
         };
 
-        const slackResponse = await fetch(slackWebhookUrl, {
+        const slackResponse = await fetch('https://slack.com/api/chat.postMessage', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${slackBotToken}`
+          },
           body: JSON.stringify(slackMessage)
         });
 
-        if (slackResponse.ok) {
+        const slackResult = await slackResponse.json();
+        
+        if (slackResult.ok) {
           console.log('Slack notification sent successfully!');
         } else {
-          console.error('Slack webhook error:', slackResponse.status, slackResponse.statusText);
+          console.error('Slack API error:', slackResult.error);
         }
       } catch (slackError) {
         console.error('Slack notification failed:', slackError);
         // Не прерываем выполнение, если Slack недоступен
       }
     } else {
-      console.warn('CONTACT_SLACK_WEBHOOK не настроен');
+      console.warn('SLACK_BOT_TOKEN не настроен');
     }
 
     // Здесь можно добавить логику отправки email
     // Например, через SendGrid, Mailgun или другие сервисы
     
+    // Резервный вариант: отправка через EmailJS или подобный сервис
+    const emailjsUrl = context.env.EMAILJS_URL;
+    const emailjsTemplate = context.env.EMAILJS_TEMPLATE;
+    const emailjsUserId = context.env.EMAILJS_USER_ID;
+    
+    if (emailjsUrl && emailjsTemplate && emailjsUserId) {
+      try {
+        console.log('Sending email notification...');
+        
+        const emailData = {
+          user_id: emailjsUserId,
+          template_id: emailjsTemplate,
+          template_params: {
+            to_email: context.env.ADMIN_EMAIL || 'admin@example.com',
+            from_name: name,
+            from_email: email,
+            message: message,
+            website: url || 'Не указан',
+            stack: stack || 'Не указан',
+            regions: regions || 'Не указаны',
+            languages: languages || 'Не указаны',
+            preferred_cmp: preferredCmp || 'Не указан',
+            integrations: integrations || 'Не указаны',
+            locale: locale || 'Не указан',
+            timestamp: timestamp || new Date().toISOString()
+          }
+        };
+
+        const emailResponse = await fetch(emailjsUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(emailData)
+        });
+
+        if (emailResponse.ok) {
+          console.log('Email notification sent successfully!');
+        } else {
+          console.error('Email service error:', emailResponse.status, emailResponse.statusText);
+        }
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError);
+      }
+    }
+
     // Пока просто возвращаем успех
     return new Response(
       JSON.stringify({ 

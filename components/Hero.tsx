@@ -33,11 +33,47 @@ export default function Hero({ content }: HeroProps) {
                   className="relative h-screen pt-16 pb-24 overflow-hidden"
                   aria-labelledby="hero-title"
                 >
-                  {/* Черный фон */}
-                  <div className="absolute inset-0 bg-black"></div>
+                  {/* Видео на заднем фоне */}
+                  <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 1 }}>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                      poster="/images/banners/demo/modern-banner-example.png"
+                      style={{
+                        willChange: 'transform',
+                        backfaceVisibility: 'hidden',
+                        transform: 'translateZ(0)',
+                        filter: 'blur(0px)',
+                      }}
+                      onLoadedMetadata={(e) => {
+                        // Устанавливаем скорость 0.75x для более плавного воспроизведения
+                        e.currentTarget.playbackRate = 0.75;
+                        // Устанавливаем качество рендеринга
+                        e.currentTarget.style.imageRendering = 'auto';
+                      }}
+                      onError={(e) => {
+                        console.log('Ошибка загрузки видео:', e);
+                      }}
+                    >
+                      <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
+                      <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
+                      {/* Fallback для браузеров, которые не поддерживают видео */}
+                      <img 
+                        src="/images/banners/demo/modern-banner-example.png" 
+                        alt="Hero background" 
+                        className="w-full h-full object-cover"
+                      />
+                    </video>
+                  </div>
+                  
+                  {/* Черный фон с прозрачностью поверх видео */}
+                  <div className="absolute inset-0 bg-black/60" style={{ zIndex: 2 }}></div>
                   
                   {/* Красивая анимированная волна сверху */}
-                  <div className="absolute top-0 left-0 w-full h-48 overflow-hidden transform rotate-180">
+                  <div className="absolute top-0 left-0 w-full h-48 overflow-hidden transform rotate-180" style={{ zIndex: 3 }}>
                     <svg className="w-full h-full" viewBox="0 0 1200 180" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="waveGradientTop" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -69,7 +105,7 @@ export default function Hero({ content }: HeroProps) {
                   </div>
                   
                   {/* Красивая анимированная волна */}
-                  <div className="absolute bottom-0 left-0 w-full h-48 overflow-hidden">
+                  <div className="absolute bottom-0 left-0 w-full h-48 overflow-hidden" style={{ zIndex: 3 }}>
                     <svg className="w-full h-full" viewBox="0 0 1200 180" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -100,7 +136,7 @@ export default function Hero({ content }: HeroProps) {
                     </svg>
                   </div>
       {/* Cookie & GDPR Themed Animated Background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 0 }}>
+      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 4 }}>
         {/* Cookie-themed animated elements */}
         <div className="absolute inset-0">
           
@@ -175,7 +211,7 @@ export default function Hero({ content }: HeroProps) {
       </div>
 
       {/* Overlay для лучшей читаемости текста - на весь блок */}
-      <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
+      <div className="absolute inset-0 bg-black/20" style={{ zIndex: 5 }} />
 
       {/* Content поверх Spline сцены */}
       <div className="container mx-auto px-6 relative flex items-center h-screen" style={{ zIndex: 10 }}>

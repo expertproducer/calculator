@@ -27,12 +27,12 @@ export interface ServiceContent {
 
 export interface ProcessContent {
   title: string
-  subtitle: string
+  subtitle?: string
+  leadText?: string
   steps: Array<{
-    number: number
     title: string
     description: string
-  }>
+  }> | string[]
 }
 
 export interface DeliverablesContent {

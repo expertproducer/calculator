@@ -1,9 +1,5 @@
 interface ServicesStructuredDataProps {
   locale: string
-  faq: Array<{
-    question: string
-    answer: string
-  }>
 }
 
 export default function ServicesStructuredData({ locale, faq }: ServicesStructuredDataProps) {
@@ -31,28 +27,11 @@ export default function ServicesStructuredData({ locale, faq }: ServicesStructur
     }
   }
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer.replace(/\*\*(.*?)\*\*/g, '$1') // Убираем markdown форматирование для JSON-LD
-      }
-    }))
-  }
-
   return (
     <>
       <script 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

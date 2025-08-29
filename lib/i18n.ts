@@ -69,113 +69,86 @@ export function getContent(locale: Locale) {
         description: 'Our expertise bridges the gap between legal requirements and technical implementation, ensuring your website not only meets current standards but also provides meaningful, privacy-respecting insights into user behavior.'
       },
       services: {
-        title: 'Услуги GDPR: настройка CMP и исправление баннеров cookie',
-        subtitle: 'Комплексные решения для полного соответствия GDPR',
-        leadText: 'Cookie-согласие — это не «баннер ради баннера», а управляемый процесс: CMP (Cookiebot / Iubenda / Usercentrics / Termly) выводит первый слой с равноправными кнопками Accept / Decline / Preferences, а затем по вашему выбору включает только те категории тегов, на которые дано разрешение; так блокируются все не-essential скрипты до согласия и исчезают «самостарты» аналитики и рекламы.',
+        title: 'GDPR Services: CMP Setup & Cookie Banner Fixes',
+        subtitle: 'Comprehensive solutions for full GDPR compliance',
+        leadText: 'Cookie consent is not just a "banner for the sake of a banner", but a managed process: CMP (Cookiebot / Iubenda / Usercentrics / Termly) displays the first layer with equal Accept / Decline / Preferences buttons, and then according to your choice, only those tag categories for which permission has been granted are enabled; thus all non-essential scripts are blocked before consent and "self-starting" analytics and advertising disappear. Preference Center gives users transparent category descriptions and the ability to change their choice at any time, while providing stable consent events for technology: we pass signals to GTM/GA4/Ads/Meta so that triggers fire strictly after permission and data in reports remains legally clean. In parallel, we organize Privacy/Cookie Policy, add a permanent "Cookie Preferences" link in the footer, configure languages and geo-rules (one domain - several locales without duplicating tags). If you have multiple sites, we include cross-domain consent consolidation so users don\'t see repeated requests unnecessarily. All actions are recorded in consent logs with export capability for DPO/audit, and quality is ensured through testing of key scenarios: first visit, consent change and withdrawal, settings restoration. The result is predictable banner behavior, correct blocking before consent, clean marketing tool data, and clear reliance on documentation and logs.',
         sections: [
           {
-            title: 'Когда согласие обязательно и что именно требуется',
+            title: 'When consent is mandatory and what exactly is required',
             content: [
-              'Перед любым чтением/записью информации на устройство (cookie, localStorage, SDK) требуется **предварительное** согласие, за исключением строго необходимых cookie. Это следует из ст. 5(3) ePrivacy Directive; критерии действительного согласия — по GDPR и руководству EDPB.',
-              'Принцип **accountability**: оператор обязан уметь **доказать** соответствие и факт согласия.',
-              'Во Франции регулятор CNIL требует, чтобы отказ был **так же прост**, как согласие (кнопка «Reject all»/«Продолжить без принятия» на первом слое).',
-              'За нарушения возможны существенные штрафы по ст. 83 GDPR: до **20 млн € или 4 %** мирового оборота (что больше).'
+              'Before any reading/writing of information on the device (cookie, localStorage, SDK), **prior** consent is required, except for strictly necessary cookies. This follows from Art. 5(3) ePrivacy Directive; criteria for valid consent - according to GDPR and EDPB guidelines.',
+              'The **accountability** principle: the operator must be able to **prove** compliance and the fact of consent.',
+              'In France, the CNIL regulator requires that refusal be **as simple** as consent (button "Reject all"/"Continue without acceptance" on the first layer).',
+              'For violations, substantial fines under Art. 83 GDPR are possible: up to **€20 million or 4%** of global turnover (whichever is greater).'
             ]
           },
           {
-            title: 'Что мы делаем',
+            title: 'What we do',
             subsections: [
               {
-                title: 'CMP и баннер',
+                title: 'CMP and banner',
                 items: [
-                  'Выбор и развёртывание CMP: **Cookiebot, Iubenda, Usercentrics, Termly**',
-                  'Первый слой: **Accept / Decline / Preferences** без «тёмных паттернов»',
-                  'Preference Center: категории, описания, ссылка «Cookie Preferences» в футере',
-                  'Гео/языки: правила загрузки по регионам (EN/DE/FR и др.)'
+                  'Selection and deployment of CMP: **Cookiebot, Iubenda, Usercentrics, Termly**',
+                  'First layer: **Accept / Decline / Preferences** without "dark patterns"',
+                  'Preference Center: categories, descriptions, "Cookie Preferences" link in footer',
+                  'Geo/languages: loading rules by regions (EN/DE/FR and others)'
                 ]
               },
               {
-                title: 'Блокировка до согласия',
+                title: 'Blocking before consent',
                 items: [
-                  'Отключаем все не-essential теги до consent-ивента',
-                  'Для GTM: настраиваем `triggers`/`variables` и пробрасываем события согласия по категориям',
-                  'Для «сырого» кода: оборачиваем вызовы/SDK в защитные гейты'
+                  'We disable all non-essential tags before consent event',
+                  'For GTM: we configure `triggers`/`variables` and pass consent events by categories',
+                  'For "raw" code: we wrap calls/SDK in protective gates'
                 ]
               },
               {
-                title: 'Политики и журналы',
+                title: 'Policies and logs',
                 items: [
-                  'Cookie/Privacy Policy (страницы + ссылки из баннера)',
-                  'Consent logs: источник в CMP + экспорт по требованию (DPO/аудит)',
-                  'Инвентаризация тегов/куков, отчёт «до/после»'
+                  'Cookie/Privacy Policy (pages + links from banner)',
+                  'Consent logs: source in CMP + export on demand (DPO/audit)',
+                  'Tag/cookie inventory, "before/after" report'
                 ]
               }
             ]
           },
+
           {
-            title: 'Процесс: от аудита до валидации',
-            steps: [
-              'Аудит — скан домена/поддоменов, инвентарь cookie/скриптов',
-              'Архитектура — выбор CMP/категорий, карта событий, языки/гео',
-              'Имплементация — баннер, блокировки, GTM, Preference Center',
-              'Копирайтинг — тексты баннера/политик, локализации',
-              'Тесты и валидация — сценарии «новый пользователь», GTM-логика, отчёт «до/после»',
-              'Передача — гайд по поддержке, доступы, экспорт шаблонов'
-            ]
-          },
-          {
-            title: 'Что вы получите',
+            title: 'What you get',
             items: [
-              'Корректно настроенный CMP и баннер с **Accept / Decline / Preferences**',
-              'Жёсткая блокировка не-essential до согласия',
-              'Связка с GTM/аналитикой и события согласия по категориям',
-              'Обновлённые **Privacy/Cookie Policy** и постоянная ссылка «Cookie Preferences»',
-              'Отчёты: инвентарь тегов/куков, сканы «до/после», чек-лист аудита',
-              'Гайд по поддержке и экспорт логов согласий'
+              'Properly configured CMP and banner with **Accept / Decline / Preferences**',
+              'Hard blocking of non-essential before consent',
+              'Integration with GTM/analytics and consent events by categories',
+              'Updated **Privacy/Cookie Policy** and permanent "Cookie Preferences" link',
+              'Reports: tag/cookie inventory, "before/after" scans, audit checklist',
+              'Support guide and consent log export'
             ]
           },
           {
-            title: 'Интеграции',
-            content: '**GTM / gtag.js / Meta Pixel / GA4 / Hotjar / LinkedIn / TikTok** — через consent-триггеры. Серверные шины событий/CRM — прокидываем флаги согласия.'
+            title: 'Integrations',
+            content: '**GTM / gtag.js / Meta Pixel / GA4 / Hotjar / LinkedIn / TikTok** - through consent triggers. Server event buses/CRM - we pass consent flags.'
           }
         ],
         packages: [
           {
             name: 'Basic',
-            description: 'фикс баннера + базовая блокировка + копирайтинг'
+            description: 'banner fix + basic blocking + copywriting'
           },
           {
             name: 'Pro', 
-            description: 'полноценный CMP, GTM-триггеры, скан «до/после», политики'
+            description: 'full CMP, GTM triggers, before/after scan, policies'
           },
           {
             name: 'Business',
-            description: 'мультидомен/мульти-локаль, кастомные ивенты, white-label отчёты'
+            description: 'multi-domain/multi-locale, custom events, white-label reports'
           }
         ],
-        note: 'точные цены и SLA — после экспресс-диагностики',
-        faq: [
-          {
-            question: 'Чем CMP отличается от «просто баннера»?',
-            answer: 'CMP фиксирует действительное согласие по категориям, управляет загрузкой скриптов до согласия и обеспечивает доказуемость (accountability).'
-          },
-          {
-            question: 'Нужна ли кнопка «Отказать» на первом слое?',
-            answer: 'В ряде юрисдикций (например, позиция CNIL) отказ должен быть так же прост, как согласие — «Reject all»/«Продолжить без принятия».'
-          },
-          {
-            question: 'Какие cookie можно ставить без согласия?',
-            answer: 'Строго необходимые для запрошенной услуги/сессии; все прочие требуют **предварительного** согласия.'
-          },
-          {
-            question: 'Какие риски при несоблюдении?',
-            answer: 'Штрафы до 20 млн € или 4 % глобального оборота, плюс предписания DPA.'
-          }
-        ]
+        note: 'exact pricing and SLA - after express diagnostics'
       },
       process: {
         title: 'Implementation Process: From Audit to Validation',
         subtitle: 'Our systematic 5-step approach ensures seamless CMP deployment with minimal disruption to your business operations.',
+        leadText: 'Our **implementation methodology** is designed to minimize business disruption while ensuring comprehensive GDPR compliance. We begin with a thorough **legal requirements analysis** to understand your specific regulatory landscape, then proceed through **phased deployment** that allows for testing and validation at each stage. The process includes **stakeholder collaboration** with your legal, marketing, and technical teams, ensuring alignment across all departments. We implement **consent blocking** before any user interaction, configure **GTM triggers** based on granular consent categories, and provide **comprehensive documentation** for ongoing maintenance. Our approach guarantees that your CMP deployment is not only compliant but also optimized for user experience and data quality.',
         steps: [
           {
             title: 'Legal Requirements Analysis',
@@ -434,26 +407,107 @@ export function getContent(locale: Locale) {
         description: 'Unsere Expertise überbrückt die Lücke zwischen rechtlichen Anforderungen und technischer Umsetzung und stellt sicher, dass Ihre Website nicht nur aktuellen Standards entspricht, sondern auch bedeutsame, datenschutzrechtlich konforme Einblicke in das Benutzerverhalten bietet.'
       },
       services: {
-        title: 'DSGVO Dienstleistungen: CMP Einrichtung & Cookie-Banner Reparaturen',
-        items: [
-          'CMP-Einrichtung (Cookiebot, Iubenda, Usercentrics, Termly)',
-          'Cookie-Banner-Reparaturen',
-          'Skript-Blockierung vor der Zustimmung',
-          'GTM-Integration',
-          'Mehrsprachige Unterstützung',
-          'Richtlinien-Seiten',
-          'Zustimmungsprotokollierung',
-          'QA & Validierung'
-        ]
+        title: 'DSGVO Services: CMP Einrichtung & Cookie-Banner Reparaturen',
+        subtitle: 'Umfassende Lösungen für vollständige DSGVO-Compliance',
+        leadText: 'Cookie-Zustimmung ist nicht nur ein "Banner um des Banners willen", sondern ein verwalteter Prozess: CMP (Cookiebot / Iubenda / Usercentrics / Termly) zeigt die erste Ebene mit gleichberechtigten Accept / Decline / Preferences Schaltflächen an, und dann werden je nach Ihrer Wahl nur die Tag-Kategorien aktiviert, für die eine Erlaubnis erteilt wurde; dadurch werden alle nicht-essentiellen Skripte vor der Zustimmung blockiert und "selbststartende" Analysen und Werbung verschwinden. Das Preference Center gibt Benutzern transparente Kategoriebeschreibungen und die Möglichkeit, ihre Wahl jederzeit zu ändern, während es der Technik stabile Zustimmungsereignisse liefert: Wir leiten Signale an GTM/GA4/Ads/Meta weiter, damit Trigger streng nach der Erlaubnis ausgelöst werden und Daten in Berichten rechtlich sauber bleiben. Parallel dazu organisieren wir Privacy/Cookie Policy, fügen einen permanenten "Cookie Preferences" Link im Footer hinzu, konfigurieren Sprachen und Geo-Regeln (eine Domain - mehrere Lokalisierungen ohne Duplizierung von Tags). Wenn Sie mehrere Websites haben, schließen wir die domänenübergreifende Zustimmungskonsolidierung ein, damit Benutzer keine wiederholten Anfragen unnötigerweise sehen. Alle Aktionen werden in Zustimmungsprotokollen mit Exportmöglichkeit für DPO/Audit aufgezeichnet, und die Qualität wird durch Tests von Schlüsselszenarien sichergestellt: erster Besuch, Zustimmungsänderung und -widerruf, Einstellungs-Wiederherstellung. Das Ergebnis ist vorhersagbares Banner-Verhalten, korrekte Blockierung vor der Zustimmung, saubere Marketing-Tool-Daten und klare Abhängigkeit von Dokumentation und Protokollen.',
+        sections: [
+          {
+            title: 'Wann Zustimmung obligatorisch ist und was genau erforderlich ist',
+            content: [
+              'Vor jedem Lesen/Schreiben von Informationen auf dem Gerät (Cookie, localStorage, SDK) ist eine **vorherige** Zustimmung erforderlich, außer für streng notwendige Cookies. Dies folgt aus Art. 5(3) ePrivacy-Richtlinie; Kriterien für gültige Zustimmung - gemäß DSGVO und EDPB-Richtlinien.',
+              'Das **Accountability**-Prinzip: Der Betreiber muss in der Lage sein, Compliance und die Tatsache der Zustimmung zu **beweisen**.',
+              'In Frankreich verlangt der CNIL-Regulator, dass die Ablehnung **genauso einfach** ist wie die Zustimmung (Schaltfläche "Alle ablehnen"/"Ohne Annahme fortfahren" auf der ersten Ebene).',
+              'Bei Verstößen sind erhebliche Geldstrafen nach Art. 83 DSGVO möglich: bis zu **20 Millionen € oder 4%** des weltweiten Umsatzes (je nachdem, was höher ist).'
+            ]
+          },
+          {
+            title: 'Was wir tun',
+            subsections: [
+              {
+                title: 'CMP und Banner',
+                items: [
+                  'Auswahl und Bereitstellung von CMP: **Cookiebot, Iubenda, Usercentrics, Termly**',
+                  'Erste Ebene: **Accept / Decline / Preferences** ohne "Dark Patterns"',
+                  'Preference Center: Kategorien, Beschreibungen, "Cookie Preferences" Link im Footer',
+                  'Geo/Sprachen: Lade-Regeln nach Regionen (EN/DE/FR und andere)'
+                ]
+              },
+              {
+                title: 'Blockierung vor Zustimmung',
+                items: [
+                  'Wir deaktivieren alle nicht-essentiellen Tags vor dem Consent-Event',
+                  'Für GTM: Wir konfigurieren `triggers`/`variables` und leiten Consent-Events nach Kategorien weiter',
+                  'Für "Roh"-Code: Wir wickeln Aufrufe/SDK in Schutz-Gates ein'
+                ]
+              },
+              {
+                title: 'Richtlinien und Protokolle',
+                items: [
+                  'Cookie/Privacy Policy (Seiten + Links vom Banner)',
+                  'Consent-Logs: Quelle in CMP + Export auf Anfrage (DPO/Audit)',
+                  'Tag/Cookie-Inventar, "Vorher/Nachher"-Bericht'
+                ]
+              }
+            ]
+          },
+
+          {
+            title: 'Was Sie bekommen',
+            items: [
+              'Korrekt konfiguriertes CMP und Banner mit **Accept / Decline / Preferences**',
+              'Harte Blockierung von Nicht-Essentiellem vor der Zustimmung',
+              'Integration mit GTM/Analytics und Consent-Events nach Kategorien',
+              'Aktualisierte **Privacy/Cookie Policy** und permanenter "Cookie Preferences" Link',
+              'Berichte: Tag/Cookie-Inventar, "Vorher/Nachher"-Scans, Audit-Checkliste',
+              'Support-Anleitung und Consent-Log-Export'
+            ]
+          },
+          {
+            title: 'Integrationen',
+            content: '**GTM / gtag.js / Meta Pixel / GA4 / Hotjar / LinkedIn / TikTok** - über Consent-Trigger. Server-Event-Busse/CRM - wir leiten Consent-Flags weiter.'
+          }
+        ],
+        packages: [
+          {
+            name: 'Basic',
+            description: 'Banner-Reparatur + grundlegende Blockierung + Copywriting'
+          },
+          {
+            name: 'Pro', 
+            description: 'vollständiges CMP, GTM-Trigger, Vorher/Nachher-Scan, Richtlinien'
+          },
+          {
+            name: 'Business',
+            description: 'Multi-Domain/Multi-Locale, benutzerdefinierte Events, White-Label-Berichte'
+          }
+        ],
+        note: 'genaue Preise und SLA - nach Express-Diagnose'
       },
       process: {
         title: 'Implementierungsprozess: Vom Audit zur Validierung',
+        subtitle: 'Unser systematischer 5-Schritt-Ansatz gewährleistet eine nahtlose CMP-Bereitstellung mit minimalen Störungen für Ihre Geschäftsabläufe.',
+        leadText: 'Unsere **Implementierungsmethodik** ist darauf ausgelegt, Geschäftsstörungen zu minimieren und gleichzeitig umfassende DSGVO-Compliance zu gewährleisten. Wir beginnen mit einer gründlichen **Rechtsanforderungsanalyse**, um Ihre spezifische regulatorische Landschaft zu verstehen, und gehen dann durch **schrittweise Bereitstellung**, die Tests und Validierung in jeder Phase ermöglicht. Der Prozess umfasst **Stakeholder-Zusammenarbeit** mit Ihren Rechts-, Marketing- und Technikteams, um die Ausrichtung aller Abteilungen sicherzustellen. Wir implementieren **Zustimmungsblockierung** vor jeder Benutzerinteraktion, konfigurieren **GTM-Trigger** basierend auf granularen Zustimmungskategorien und stellen **umfassende Dokumentation** für laufende Wartung bereit. Unser Ansatz garantiert, dass Ihre CMP-Bereitstellung nicht nur konform ist, sondern auch für Benutzererfahrung und Datenqualität optimiert ist.',
         steps: [
-          'Website-Audit & Bestandsaufnahme',
-          'CMP-Architektur-Design',
-          'Technische Einrichtung',
-          'Banner-Anpassung',
-          'Tests & Validierung'
+          {
+            title: 'Rechtsanforderungsanalyse',
+            description: 'Wir arbeiten mit Ihrem Rechtsteam zusammen, um anwendbare Datenschutzvorschriften zu identifizieren und die optimale Zustimmungsmodus-Konfiguration für Ihre spezifischen Compliance-Anforderungen zu bestimmen.'
+          },
+          {
+            title: 'CMP-Skript-Bereitstellung',
+            description: 'Zusammen mit Ihrem Marketing-Team stellen wir CMP-Skripte in einer Testumgebung bereit und bieten Beratung zur Lösung technischer Engpässe.'
+          },
+          {
+            title: 'GTM-Integration & Konfiguration',
+            description: 'Wir konfigurieren Google Tag Manager, um sicherzustellen, dass alle Tags entsprechend den Benutzerpräferenzen ausgelöst werden, während wir hartcodierte Pixel identifizieren, die eine Migration erfordern.'
+          },
+          {
+            title: 'Produktionsbereitstellung',
+            description: 'Nach umfassenden Tests unterstützen wir die Bereitstellung von CMP- und GTM-Konfigurationen in Ihrer Live-Umgebung mit minimalen Störungen der Website.'
+          },
+          {
+            title: 'Datenauswirkungsanalyse',
+            description: 'Wir quantifizieren potenzielle Datenverluste durch die Zustimmungsimplementierung und geben Optimierungsempfehlungen, um die Auswirkungen auf Ihre Analytics- und Marketing-Bemühungen zu minimieren.'
+          }
         ]
       },
       deliverables: {
@@ -692,25 +746,106 @@ export function getContent(locale: Locale) {
       },
       services: {
         title: 'Services RGPD: Configuration CMP & Corrections de Bannières',
-        items: [
-          'Configuration CMP (Cookiebot, Iubenda, Usercentrics, Termly)',
-          'Corrections de bannières de cookies',
-          'Blocage de scripts avant consentement',
-          'Intégration GTM',
-          'Support multilingue',
-          'Pages de politique',
-          'Journalisation du consentement',
-          'QA & validation'
-        ]
+        subtitle: 'Solutions complètes pour une conformité RGPD totale',
+        leadText: 'Le consentement aux cookies n\'est pas juste une "bannière pour la bannière", mais un processus géré : CMP (Cookiebot / Iubenda / Usercentrics / Termly) affiche la première couche avec des boutons Accept / Decline / Preferences égaux, et ensuite selon votre choix, seules les catégories de tags pour lesquelles l\'autorisation a été accordée sont activées ; ainsi tous les scripts non-essentiels sont bloqués avant le consentement et les analyses et publicités "auto-démarrage" disparaissent. Le Centre de Préférences donne aux utilisateurs des descriptions transparentes des catégories et la possibilité de changer leur choix à tout moment, tout en fournissant des événements de consentement stables pour la technologie : nous transmettons des signaux à GTM/GA4/Ads/Meta pour que les déclencheurs se déclenchent strictement après autorisation et que les données dans les rapports restent juridiquement propres. En parallèle, nous organisons la Politique de Confidentialité/Cookies, ajoutons un lien permanent "Préférences de Cookies" dans le pied de page, configurons les langues et règles géographiques (un domaine - plusieurs localisations sans duplication de tags). Si vous avez plusieurs sites, nous incluons la consolidation du consentement inter-domaines pour que les utilisateurs ne voient pas de demandes répétées inutilement. Toutes les actions sont enregistrées dans les journaux de consentement avec capacité d\'export pour DPO/audit, et la qualité est assurée par des tests de scénarios clés : première visite, changement et retrait du consentement, restauration des paramètres. Le résultat est un comportement de bannière prévisible, un blocage correct avant consentement, des données d\'outils marketing propres et une dépendance claire à la documentation et aux journaux.',
+        sections: [
+          {
+            title: 'Quand le consentement est obligatoire et ce qui est exactement requis',
+            content: [
+              'Avant toute lecture/écriture d\'informations sur l\'appareil (cookie, localStorage, SDK), un consentement **préalable** est requis, sauf pour les cookies strictement nécessaires. Cela découle de l\'Art. 5(3) Directive ePrivacy ; critères pour un consentement valide - selon RGPD et lignes directrices EDPB.',
+              'Le principe **d\'accountability** : l\'opérateur doit être en mesure de **prouver** la conformité et le fait du consentement.',
+              'En France, le régulateur CNIL exige que le refus soit **aussi simple** que le consentement (bouton "Rejeter tout"/"Continuer sans accepter" sur la première couche).',
+              'Pour les violations, des amendes substantielles sous l\'Art. 83 RGPD sont possibles : jusqu\'à **20 millions € ou 4%** du chiffre d\'affaires mondial (selon ce qui est le plus élevé).'
+            ]
+          },
+          {
+            title: 'Ce que nous faisons',
+            subsections: [
+              {
+                title: 'CMP et bannière',
+                items: [
+                  'Sélection et déploiement de CMP : **Cookiebot, Iubenda, Usercentrics, Termly**',
+                  'Première couche : **Accept / Decline / Preferences** sans "dark patterns"',
+                  'Centre de Préférences : catégories, descriptions, lien "Préférences de Cookies" dans le pied de page',
+                  'Géo/langues : règles de chargement par régions (EN/DE/FR et autres)'
+                ]
+              },
+              {
+                title: 'Blocage avant consentement',
+                items: [
+                  'Nous désactivons tous les tags non-essentiels avant l\'événement de consentement',
+                  'Pour GTM : nous configurons `triggers`/`variables` et transmettons les événements de consentement par catégories',
+                  'Pour le code "brut" : nous enveloppons les appels/SDK dans des portes de protection'
+                ]
+              },
+              {
+                title: 'Politiques et journaux',
+                items: [
+                  'Politique de Cookies/Confidentialité (pages + liens de la bannière)',
+                  'Journaux de consentement : source dans CMP + export à la demande (DPO/audit)',
+                  'Inventaire des tags/cookies, rapport "avant/après"'
+                ]
+              }
+            ]
+          },
+
+          {
+            title: 'Ce que vous obtenez',
+            items: [
+              'CMP et bannière correctement configurés avec **Accept / Decline / Preferences**',
+              'Blocage dur du non-essentiel avant consentement',
+              'Intégration avec GTM/analytics et événements de consentement par catégories',
+              '**Politique de Confidentialité/Cookies** mise à jour et lien permanent "Préférences de Cookies"',
+              'Rapports : inventaire des tags/cookies, scans "avant/après", liste de contrôle d\'audit',
+              'Guide de support et export des journaux de consentement'
+            ]
+          },
+          {
+            title: 'Intégrations',
+            content: '**GTM / gtag.js / Meta Pixel / GA4 / Hotjar / LinkedIn / TikTok** - via des déclencheurs de consentement. Bus d\'événements serveur/CRM - nous transmettons les drapeaux de consentement.'
+          }
+        ],
+        packages: [
+          {
+            name: 'Basic',
+            description: 'correction de bannière + blocage de base + rédaction'
+          },
+          {
+            name: 'Pro', 
+            description: 'CMP complet, déclencheurs GTM, scan avant/après, politiques'
+          },
+          {
+            name: 'Business',
+            description: 'multi-domaines/multi-localisations, événements personnalisés, rapports white-label'
+          }
+        ],
+        note: 'prix et SLA exacts - après diagnostic express'
       },
       process: {
         title: 'Processus d\'implémentation: De l\'audit à la validation',
+        subtitle: 'Notre approche systématique en 5 étapes assure un déploiement CMP transparent avec une perturbation minimale de vos opérations commerciales.',
+        leadText: 'Notre **méthodologie d\'implémentation** est conçue pour minimiser les perturbations commerciales tout en assurant une conformité RGPD complète. Nous commençons par une **analyse approfondie des exigences légales** pour comprendre votre paysage réglementaire spécifique, puis procédons par **déploiement par phases** qui permet des tests et une validation à chaque étape. Le processus inclut une **collaboration des parties prenantes** avec vos équipes juridiques, marketing et techniques, assurant l\'alignement de tous les départements. Nous implémentons le **blocage du consentement** avant toute interaction utilisateur, configurons les **déclencheurs GTM** basés sur des catégories de consentement granulaires, et fournissons une **documentation complète** pour la maintenance continue. Notre approche garantit que votre déploiement CMP est non seulement conforme, mais aussi optimisé pour l\'expérience utilisateur et la qualité des données.',
         steps: [
-          'Audit du site & inventaire',
-          'Conception de l\'architecture CMP',
-          'Configuration technique',
-          'Personnalisation de la bannière',
-          'Tests & validation'
+          {
+            title: 'Analyse des exigences légales',
+            description: 'Nous collaborons avec votre équipe juridique pour identifier les réglementations de confidentialité applicables et déterminer la configuration optimale du mode de consentement pour vos besoins de conformité spécifiques.'
+          },
+          {
+            title: 'Déploiement des scripts CMP',
+            description: 'En collaboration avec votre équipe marketing, nous déployons les scripts de la plateforme de gestion des cookies dans un environnement de test, fournissant une consultation pour résoudre tout goulot d\'étranglement technique.'
+          },
+          {
+            title: 'Intégration et configuration GTM',
+            description: 'Nous configurons Google Tag Manager pour garantir que tous les tags se déclenchent de manière appropriée selon les préférences de consentement des utilisateurs, tout en identifiant les pixels codés en dur nécessitant une migration.'
+          },
+          {
+            title: 'Déploiement en production',
+            description: 'Après des tests complets, nous soutenons le déploiement des configurations CMP et GTM dans votre environnement de production avec une perturbation minimale du site.'
+          },
+          {
+            title: 'Analyse de l\'impact sur les données',
+            description: 'Nous quantifions les pertes de données potentielles de l\'implémentation du consentement et fournissons des recommandations d\'optimisation pour minimiser l\'impact sur vos efforts d\'analyse et de marketing.'
+          }
         ]
       },
       deliverables: {

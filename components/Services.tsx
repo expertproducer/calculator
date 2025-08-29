@@ -1,5 +1,6 @@
-import { Settings, Shield, Zap, FileText, BarChart3, CheckCircle, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react'
-import { useState } from 'react'
+"use client"
+
+import { Settings, Shield, Zap, FileText, BarChart3, CheckCircle, ArrowRight } from 'lucide-react'
 
 interface ServicesProps {
   content: {
@@ -8,7 +9,7 @@ interface ServicesProps {
     leadText: string
     sections: Array<{
       title: string
-      content?: string[]
+      content?: string[] | string
       items?: string[]
       steps?: string[]
       subsections?: Array<{
@@ -21,10 +22,6 @@ interface ServicesProps {
       description: string
     }>
     note: string
-    faq: Array<{
-      question: string
-      answer: string
-    }>
   }
 }
 
@@ -37,11 +34,6 @@ const formatText = (text: string) => {
 }
 
 export default function Services({ content }: ServicesProps) {
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index)
-  }
 
   return (
     <section id="services" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
@@ -73,18 +65,25 @@ export default function Services({ content }: ServicesProps) {
                 {section.title}
               </h2>
 
-              {/* Контент секции */}
-              {section.content && (
-                <div className="space-y-4 mb-6">
-                  {section.content.map((paragraph, pIndex) => (
-                    <p 
-                      key={pIndex} 
-                      className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: formatText(paragraph) }}
-                    />
-                  ))}
-                </div>
-              )}
+                             {/* Контент секции */}
+               {section.content && (
+                 <div className="space-y-4 mb-6">
+                   {Array.isArray(section.content) ? (
+                     section.content.map((paragraph, pIndex) => (
+                       <p 
+                         key={pIndex} 
+                         className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                         dangerouslySetInnerHTML={{ __html: formatText(paragraph) }}
+                       />
+                     ))
+                   ) : (
+                     <p 
+                       className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                       dangerouslySetInnerHTML={{ __html: formatText(section.content) }}
+                     />
+                   )}
+                 </div>
+               )}
 
               {/* Подсекции */}
               {section.subsections && (
@@ -152,10 +151,10 @@ export default function Services({ content }: ServicesProps) {
           ))}
         </div>
 
-        {/* Пакеты услуг */}
+        {/* Service Packages */}
         <div className="mt-16 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700/30 rounded-3xl p-8 shadow-sm">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
-            Пакеты и ориентиры по срокам
+            Service Packages & Timeline Estimates
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6 mb-6">
@@ -184,54 +183,18 @@ export default function Services({ content }: ServicesProps) {
           </p>
         </div>
 
-        {/* FAQ */}
-        <div className="mt-16 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700/30 rounded-3xl p-8 shadow-sm">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
-            FAQ (коротко по делу)
-          </h2>
-          
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {content.faq.map((faqItem, faqIndex) => (
-              <div key={faqIndex} className="bg-white/60 dark:bg-gray-900/60 border border-gray-200/40 dark:border-gray-700/40 rounded-2xl overflow-hidden">
-                <button
-                  onClick={() => toggleFaq(faqIndex)}
-                  className="w-full text-left p-6 flex items-center justify-between hover:bg-white/80 dark:hover:bg-gray-800/80 transition-colors duration-200"
-                >
-                  <h3 className="font-semibold text-gray-900 dark:text-white pr-4">
-                    {faqItem.question}
-                  </h3>
-                  {openFaq === faqIndex ? (
-                    <ChevronUp className="text-blue-600 dark:text-blue-400 flex-shrink-0" size={20} />
-                  ) : (
-                    <ChevronDown className="text-blue-600 dark:text-blue-400 flex-shrink-0" size={20} />
-                  )}
-                </button>
-                
-                {openFaq === faqIndex && (
-                  <div className="px-6 pb-6">
-                    <div className="pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
-                      <p 
-                        className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: formatText(faqItem.answer) }}
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+
 
         {/* CTA */}
         <div className="text-center mt-16">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            Готовы исправить баннер?
+            Ready to fix your banner?
           </h2>
           <a
             href="/contact"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
           >
-            <span>Получить бесплатную диагностику</span>
+            <span>Get free diagnostics</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>

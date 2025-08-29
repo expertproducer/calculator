@@ -1,4 +1,4 @@
-import { Shield, AlertTriangle, Users, TrendingUp } from 'lucide-react'
+import { Shield, AlertTriangle, Users, TrendingUp, Star } from 'lucide-react'
 
 interface WhyImportantProps {
   content: {
@@ -13,9 +13,13 @@ export default function WhyImportant({ content }: WhyImportantProps) {
   const icons = [Shield, AlertTriangle, Users, TrendingUp]
 
   return (
-    <section id="why-important" className="py-24 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-gray-800/50 dark:to-gray-900/50">
+    <section id="why-important" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100/80 dark:bg-green-900/30 rounded-full mb-6">
+            <Star className="text-green-600 dark:text-green-400 w-4 h-4" />
+            <span className="text-sm font-medium text-green-600 dark:text-green-400">Why Important</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
             {content.title}
           </h2>
@@ -27,15 +31,22 @@ export default function WhyImportant({ content }: WhyImportantProps) {
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
           {content.points.map((point, index) => {
             const IconComponent = icons[index % icons.length]
+            const colors = [
+              'from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40',
+              'from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40',
+              'from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40',
+              'from-yellow-100 to-yellow-200 dark:from-yellow-900/40 dark:to-yellow-800/40'
+            ]
+            const color = colors[index % colors.length]
             
             return (
               <div 
                 key={index}
-                className="group glass-card p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-xl"
+                className="group bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-xl"
               >
                 <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0 p-4 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl group-hover:bg-blue-200/80 dark:group-hover:bg-blue-800/40 group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300" size={28} />
+                  <div className={`flex-shrink-0 p-4 bg-gradient-to-br ${color} rounded-xl group-hover:scale-110 transition-all duration-300`}>
+                    <IconComponent className="text-gray-700 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-200" size={28} />
                   </div>
                   <div className="flex-1">
                     <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed font-medium">
@@ -49,7 +60,10 @@ export default function WhyImportant({ content }: WhyImportantProps) {
         </div>
 
         <div className="text-center max-w-4xl mx-auto">
-          <div className="glass-card p-8 border-l-4 border-blue-500">
+          <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
+            <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">
+              <Shield className="text-blue-600 dark:text-blue-400 w-6 h-6" />
+            </div>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               {content.description}
             </p>

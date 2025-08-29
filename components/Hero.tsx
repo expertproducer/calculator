@@ -116,6 +116,10 @@ export default function Hero({ content }: HeroProps) {
                   <Zap className="text-yellow-500 group-hover:scale-110 transition-transform duration-300" size={16} />
                   <span>Fast Setup</span>
                 </div>
+                <div className="flex items-center gap-2 group hover:text-red-500 transition-colors duration-300 p-2 rounded-lg bg-red-100/50 dark:bg-red-900/20">
+                  <AlertTriangle className="text-red-500 group-hover:scale-110 transition-transform duration-300" size={16} />
+                  <span>Common Issues</span>
+                </div>
               </div>
             </div>
           </div>

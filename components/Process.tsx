@@ -1,4 +1,4 @@
-import { Search, Ruler, Laptop, Paintbrush, TestTube, ArrowRight, Star, Shield, Calculator, Clock, Zap, Settings, FileText, Info, HelpCircle } from 'lucide-react'
+import { Search, Ruler, Laptop, Paintbrush, TestTube, ArrowRight, Star, Shield, Calculator, Clock, Zap, Settings, FileText, Info, HelpCircle, Code } from 'lucide-react'
 
 interface ProcessProps {
   content: {
@@ -21,8 +21,6 @@ const formatText = (text: string) => {
 }
 
 export default function Process({ content }: ProcessProps) {
-  const icons = [Search, Ruler, Laptop, Paintbrush, TestTube]
-
   return (
     <section id="process" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-6">
@@ -44,9 +42,6 @@ export default function Process({ content }: ProcessProps) {
           <div className="mb-16">
             <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm max-w-5xl mx-auto">
               <div className="text-center mb-6">
-                <div className="inline-flex p-4 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-2xl mb-4">
-                  <Search className="text-blue-600 dark:text-blue-400 w-8 h-8" />
-                </div>
                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
                   Our Implementation Approach
                 </h2>
@@ -121,46 +116,54 @@ export default function Process({ content }: ProcessProps) {
         {/* Вертикальная временная шкала для всех устройств */}
         <div className="max-w-4xl mx-auto space-y-8 mb-20">
           {content.steps.map((step, index) => {
-            const IconComponent = icons[index % icons.length]
             const stepTitle = typeof step === 'string' ? step : step.title
             const stepDescription = typeof step === 'string' ? step : step.description
             
+            // Выбираем иконку по смыслу шага
+            const getStepIcon = (index: number) => {
+              const stepTitleLower = stepTitle.toLowerCase()
+              if (stepTitleLower.includes('legal') || stepTitleLower.includes('analysis') || stepTitleLower.includes('requirements')) {
+                return Search
+              } else if (stepTitleLower.includes('deployment') || stepTitleLower.includes('script') || stepTitleLower.includes('platform')) {
+                return Code
+              } else if (stepTitleLower.includes('gtm') || stepTitleLower.includes('integration') || stepTitleLower.includes('configuration')) {
+                return Settings
+              } else if (stepTitleLower.includes('production') || stepTitleLower.includes('launch')) {
+                return Zap
+              }
+              // По умолчанию возвращаем иконку по индексу
+              const defaultIcons = [Search, Code, Settings, Zap, Star]
+              return defaultIcons[index % defaultIcons.length]
+            }
+            
+            const StepIcon = getStepIcon(index)
+            
             return (
               <div key={index} className="flex items-start gap-6 group">
-                {/* Номер шага и линия */}
+                {/* Номер шага */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 relative overflow-hidden flex-shrink-0 mt-14">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative overflow-hidden flex-shrink-0 mt-14">
                     {/* Крутая фишка: внутренний светящийся круг */}
                     <div className="absolute inset-1 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
                     {/* Крутая фишка: анимированная граница */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin-slow"></div>
                     {/* Крутая фишка: пульсирующий эффект */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-400/30 animate-pulse"></div>
-                    {/* Номер поверх всего */}
-                    <span className="relative z-10">{index + 1}</span>
+                    {/* Иконка поверх всего */}
+                    <StepIcon className="relative z-10 w-7 h-7" />
                   </div>
-                  {index < content.steps.length - 1 && (
-                    <div className="w-0.5 h-20 bg-gradient-to-b from-blue-500 to-blue-300 mt-4"></div>
-                  )}
                 </div>
                 
                 {/* Контент шага */}
                 <div className="flex-1 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50 group-hover:-translate-y-1 transition-all duration-300 hover:shadow-xl">
-                  <div className="flex items-start gap-6">
-                    <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-xl flex-shrink-0 shadow-sm">
-                      <IconComponent className="text-blue-600 dark:text-blue-400" size={28} />
-                    </div>
-                    <div className="flex-1">
-                      {typeof step === 'object' && (
-                        <h3 className="text-gray-900 dark:text-white text-xl font-semibold mb-4 leading-tight">
-                          {stepTitle}
-                        </h3>
-                      )}
-                      <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                        {stepDescription}
-                      </p>
-                    </div>
-                  </div>
+                  {typeof step === 'object' && (
+                    <h3 className="text-gray-900 dark:text-white text-xl font-semibold mb-4 leading-tight">
+                      {stepTitle}
+                    </h3>
+                  )}
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                    {stepDescription}
+                  </p>
                 </div>
               </div>
             )

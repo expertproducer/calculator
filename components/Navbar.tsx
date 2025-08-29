@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X, Shield, Globe } from 'lucide-react'
+import { Menu, X, Shield, Globe, Star } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
 
 export default function Navbar({ locale }: { locale: string }) {
@@ -107,7 +107,7 @@ export default function Navbar({ locale }: { locale: string }) {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-apple border-b border-gray-200/50 dark:border-gray-700/50' 
+        ? 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-700/50' 
         : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl'
     }`}>
       <div className="container mx-auto px-6 py-4">
@@ -118,9 +118,11 @@ export default function Navbar({ locale }: { locale: string }) {
               const basePath = locale === 'en' ? '/' : `/${locale}`
               router.push(basePath)
             }}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+            className="flex items-center gap-3 hover:opacity-80 transition-all duration-300 group"
           >
-            <Shield className="text-accent" size={28} />
+            <div className="p-2 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-xl group-hover:scale-110 transition-transform duration-300">
+              <Shield className="text-blue-600 dark:text-blue-400" size={24} />
+            </div>
             <span className="text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
               C&C CookieComply
             </span>
@@ -132,10 +134,10 @@ export default function Navbar({ locale }: { locale: string }) {
               <button
                 key={item.id}
                 onClick={() => navigateToPage(item.id)}
-                className="text-gray-600 dark:text-gray-300 hover:text-accent transition-colors duration-300 font-medium text-sm tracking-wide relative group"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium text-sm tracking-wide relative group px-3 py-2 rounded-lg hover:bg-blue-50/50 dark:hover:bg-blue-900/20"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -149,24 +151,26 @@ export default function Navbar({ locale }: { locale: string }) {
                   console.log('Language switcher clicked!')
                   setShowLanguageMenu(!showLanguageMenu)
                 }}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent transition-all duration-300 rounded-xl hover:bg-gray-100/50 dark:hover:bg-gray-800/50 border border-gray-200/60 dark:border-gray-700/60 cursor-pointer bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl shadow-sm hover:shadow-apple"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 rounded-xl hover:bg-blue-50/50 dark:hover:bg-blue-900/20 border border-gray-200/60 dark:border-gray-700/60 cursor-pointer bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl shadow-sm hover:shadow-md"
                 style={{ minWidth: '60px' }}
                 type="button"
               >
-                <Globe size={16} />
+                <div className="p-1 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-lg">
+                  <Globe size={14} className="text-blue-600 dark:text-blue-400" />
+                </div>
                 <span>{locale.toUpperCase()}</span>
               </button>
               
               {/* Language Dropdown */}
               {showLanguageMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-white/90 dark:bg-gray-800/90 border border-gray-200/60 dark:border-gray-700/60 rounded-xl shadow-glass backdrop-blur-xl py-2 min-w-[140px] z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white/90 dark:bg-gray-800/90 border border-gray-200/60 dark:border-gray-700/60 rounded-xl shadow-lg backdrop-blur-xl py-2 min-w-[140px] z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-gray-100/70 dark:hover:bg-gray-700/70 transition-colors rounded-lg mx-1 ${
+                      className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-colors rounded-lg mx-1 ${
                         locale === lang.code 
-                          ? 'text-accent bg-primary-50/50 dark:bg-primary-900/20' 
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-100/50 dark:bg-blue-900/30' 
                           : 'text-gray-700 dark:text-gray-300'
                       }`}
                     >
@@ -181,7 +185,7 @@ export default function Navbar({ locale }: { locale: string }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-blue-50/50 dark:hover:bg-blue-900/20"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -190,21 +194,24 @@ export default function Navbar({ locale }: { locale: string }) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200/50 dark:border-gray-700/50">
             <div className="pt-4 space-y-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => navigateToPage(item.id)}
-                  className="block w-full text-left px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors font-medium"
+                  className="block w-full text-left px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300 font-medium"
                 >
                   {item.label}
                 </button>
               ))}
               
               {/* Mobile Language Switcher */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
-                <div className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+              <div className="border-t border-gray-200/50 dark:border-gray-700/50 pt-4 mt-4">
+                <div className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                  <div className="p-1 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-lg">
+                    <Globe size={14} className="text-blue-600 dark:text-blue-400" />
+                  </div>
                   Language / Sprache / Langue
                 </div>
                 <div className="space-y-1">
@@ -212,10 +219,10 @@ export default function Navbar({ locale }: { locale: string }) {
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className={`w-full px-4 py-3 text-left flex items-center gap-3 rounded-lg transition-colors ${
+                      className={`w-full px-4 py-3 text-left flex items-center gap-3 rounded-lg transition-all duration-300 ${
                         locale === lang.code 
-                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20' 
-                          : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-100/50 dark:bg-blue-900/30' 
+                          : 'text-gray-600 dark:text-gray-300 hover:bg-blue-50/50 dark:hover:bg-blue-900/20'
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>

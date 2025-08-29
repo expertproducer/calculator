@@ -129,8 +129,15 @@ export default function Process({ content }: ProcessProps) {
               <div key={index} className="flex items-start gap-6 group">
                 {/* Номер шага и линия */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300">
-                    {index + 1}
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 relative overflow-hidden flex-shrink-0 mt-14">
+                    {/* Крутая фишка: внутренний светящийся круг */}
+                    <div className="absolute inset-1 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
+                    {/* Крутая фишка: анимированная граница */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin-slow"></div>
+                    {/* Крутая фишка: пульсирующий эффект */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-400/30 animate-pulse"></div>
+                    {/* Номер поверх всего */}
+                    <span className="relative z-10">{index + 1}</span>
                   </div>
                   {index < content.steps.length - 1 && (
                     <div className="w-0.5 h-20 bg-gradient-to-b from-blue-500 to-blue-300 mt-4"></div>

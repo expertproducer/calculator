@@ -212,6 +212,75 @@ body {
   animation: spin-slow 3s linear infinite;
 }
 
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(12deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+.animate-float-reverse {
+  animation: float-reverse 8s ease-in-out infinite reverse;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes line-grow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 8rem;
+    opacity: 0;
+  }
+}
+
+.animate-line-grow {
+  animation: line-grow 3s ease-in-out infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
 /* Hover effects for process steps */
 .process-step:hover .process-number {
   transform: scale(1.1) rotate(5deg);
@@ -222,4 +291,226 @@ body {
   backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Анимированные градиенты */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 4s ease-in-out infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes gradient-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-gradient-pulse {
+  animation: gradient-pulse 3s ease-in-out infinite;
+}
+
+@keyframes gradient-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+.animate-gradient-float {
+  animation: gradient-float 5s ease-in-out infinite;
+}
+
+/* Анимация волны */
+@keyframes wave-float {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  25% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(-5px) translateY(-10px);
+  }
+  75% {
+    transform: translateX(-15px) translateY(-3px);
+  }
+}
+
+.animate-wave-float {
+  animation: wave-float 8s ease-in-out infinite;
+}
+
+/* 3D анимации для заголовка */
+@keyframes title-float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(5deg);
+  }
+}
+
+@keyframes title-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #00ff88,
+      0 0 10px #00ff88,
+      0 0 15px #00ff88,
+      0 0 20px #00ff88;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px #00ff88,
+      0 0 20px #00ff88,
+      0 0 30px #00ff88,
+      0 0 40px #00ff88;
+  }
+}
+
+@keyframes title-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+/* Анимация для щита в верхнем правом углу */
+@keyframes shield-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5) rotate(-45deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-20px) scale(0.8) rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes shield-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+@keyframes shield-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.9)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.4));
+  }
+}
+
+/* Анимации для кнопок в стиле щита */
+@keyframes button-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes button-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes button-glow-green {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.9)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.4));
+  }
+}
+
+@keyframes button-glow-blue {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.9)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
+  }
+}
+
+.animate-shield-appear {
+  animation: shield-appear 1.5s ease-out forwards;
+}
+
+.animate-shield-float {
+  animation: shield-float 4s ease-in-out infinite;
+}
+
+.animate-shield-glow {
+  animation: shield-glow 3s ease-in-out infinite;
+}
+
+.animate-button-appear {
+  animation: button-appear 1.5s ease-out forwards;
+}
+
+.animate-button-float {
+  animation: button-float 4s ease-in-out infinite;
+}
+
+.animate-button-glow-green {
+  animation: button-glow-green 3s ease-in-out infinite;
+}
+
+.animate-button-glow-blue {
+  animation: button-glow-blue 3s ease-in-out infinite;
+}
+
+.animate-title-float {
+  animation: title-float 6s ease-in-out infinite;
+}
+
+.animate-title-glow {
+  animation: title-glow 3s ease-in-out infinite;
+}
+
+.animate-title-pulse {
+  animation: title-pulse 4s ease-in-out infinite;
 }

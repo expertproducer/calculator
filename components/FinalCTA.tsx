@@ -1,6 +1,15 @@
-import { ArrowRight, Clock, Star } from 'lucide-react'
+import { ArrowRight, Clock, Star, Zap } from 'lucide-react'
 
-export default function FinalCTA() {
+interface FinalCTAProps {
+  content?: {
+    cta: {
+      primary: string
+      secondary: string
+    }
+  }
+}
+
+export default function FinalCTA({ content }: FinalCTAProps) {
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
       {/* Background decoration */}
@@ -31,15 +40,16 @@ export default function FinalCTA() {
               href="#contact"
               className="group inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:ring-offset-2 shadow-lg hover:shadow-xl text-lg"
             >
-              <span>Fix my banner</span>
+              <span>{content?.cta?.primary || 'Fix my banner'}</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             
             <a
               href="#services"
-              className="group inline-flex items-center gap-3 px-12 py-5 border border-gray-300/60 dark:border-gray-600/60 text-gray-700 dark:text-gray-300 hover:border-green-500 hover:text-green-600 bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl font-medium rounded-2xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:ring-offset-2 shadow-sm hover:shadow-lg text-lg"
+              className="group inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 shadow-lg hover:shadow-xl text-lg"
             >
-              <span>Free quick check</span>
+              <span>{content?.cta?.secondary || 'Free quick check'}</span>
+              <Zap className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
             </a>
           </div>
           

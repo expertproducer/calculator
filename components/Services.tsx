@@ -36,38 +36,40 @@ const formatText = (text: string) => {
 export default function Services({ content }: ServicesProps) {
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-6">
+    <section id="services" className="relative py-24 bg-black">
+      {/* Overlay для лучшей читаемости */}
+      <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
+      
+      <div className="container mx-auto px-6 relative" style={{ zIndex: 10 }}>
         {/* Hero секция */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/80 dark:bg-blue-900/30 rounded-full mb-6">
-            <Star className="text-blue-600 dark:text-blue-400 w-4 h-4" />
-            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">Services Section</span>
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-blue-500/20 rounded-full mb-6 border border-blue-400/30">
+            <span className="text-sm font-medium text-blue-400">Services Section</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight drop-shadow-2xl">
             {content.title}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
+          <p className="text-xl text-cyan-100 max-w-3xl mx-auto font-light drop-shadow-lg">
             {content.subtitle}
           </p>
         </div>
 
         {/* Лид-абзац в рамке */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-sm">
             <div className="text-center mb-6">
               <div className="inline-flex p-4 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-2xl mb-4">
                 <Shield className="text-blue-600 dark:text-blue-400 w-8 h-8" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-2xl font-semibold text-white mb-4 drop-shadow-lg">
                 Our Service Approach
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <p className="text-cyan-100 max-w-3xl mx-auto drop-shadow-lg">
                 We provide comprehensive CMP implementation services with a focus on compliance and performance
               </p>
             </div>
             <div className="bg-gradient-to-r from-blue-50/80 to-green-50/80 dark:from-blue-900/20 dark:to-green-900/20 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50">
-              <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 text-center">
+              <p className="text-lg leading-relaxed text-white/90 text-center drop-shadow-lg">
                 <span dangerouslySetInnerHTML={{ __html: formatText(content.leadText) }} />
               </p>
             </div>
@@ -90,12 +92,12 @@ export default function Services({ content }: ServicesProps) {
             const sectionColor = sectionColors[sectionIndex % sectionColors.length]
             
             return (
-              <div key={sectionIndex} className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition-all duration-300">
+              <div key={sectionIndex} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-200/50 dark:border-gray-700/50">
                   <div className={`inline-flex p-3 bg-gradient-to-br ${sectionColor} rounded-xl`}>
                     <SectionIcon className="text-gray-700 dark:text-gray-300 w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-white drop-shadow-lg">
                     {section.title}
                   </h2>
                 </div>
@@ -107,13 +109,13 @@ export default function Services({ content }: ServicesProps) {
                       section.content.map((paragraph, pIndex) => (
                         <p 
                           key={pIndex} 
-                          className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+                          className="text-white/90 leading-relaxed text-lg drop-shadow-lg"
                           dangerouslySetInnerHTML={{ __html: formatText(paragraph) }}
                         />
                       ))
                     ) : (
                       <p 
-                        className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+                        className="text-white/90 leading-relaxed text-lg drop-shadow-lg"
                         dangerouslySetInnerHTML={{ __html: formatText(section.content) }}
                       />
                     )}
@@ -134,12 +136,12 @@ export default function Services({ content }: ServicesProps) {
                       const subColor = subColors[subIndex % subColors.length]
                       
                       return (
-                        <div key={subIndex} className="bg-white/80 dark:bg-gray-900/80 border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 hover:shadow-md transition-all duration-300">
+                        <div key={subIndex} className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6 hover:shadow-md hover:shadow-cyan-500/20 transition-all duration-300">
                           <div className="flex items-center gap-3 mb-4">
                             <div className={`p-3 ${subColor} rounded-xl`}>
                               <SubIcon className="text-gray-700 dark:text-gray-300" size={20} />
                             </div>
-                            <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
+                            <h3 className="font-semibold text-white text-lg drop-shadow-lg">
                               {subsection.title}
                             </h3>
                           </div>
@@ -147,7 +149,7 @@ export default function Services({ content }: ServicesProps) {
                             {subsection.items.map((item, itemIndex) => (
                               <li 
                                 key={itemIndex} 
-                                className="flex items-start gap-3 text-gray-600 dark:text-gray-400 leading-relaxed"
+                                className="flex items-start gap-3 text-white/80 leading-relaxed"
                               >
                                 <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={16} />
                                 <span dangerouslySetInnerHTML={{ __html: formatText(item) }} />
@@ -168,7 +170,7 @@ export default function Services({ content }: ServicesProps) {
                         <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-sm font-semibold shadow-sm">
                           {stepIndex + 1}
                         </div>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <p className="text-white/90 leading-relaxed drop-shadow-lg">
                           {step}
                         </p>
                       </div>
@@ -183,7 +185,7 @@ export default function Services({ content }: ServicesProps) {
                       <div key={itemIndex} className="flex items-start gap-3 p-4 bg-gradient-to-r from-gray-50/50 to-blue-50/50 dark:from-gray-900/20 dark:to-blue-900/20 rounded-xl border border-gray-200/30 dark:border-gray-700/30 hover:shadow-sm transition-all duration-300">
                         <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={18} />
                         <span 
-                          className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                          className="text-white/90 leading-relaxed drop-shadow-lg"
                           dangerouslySetInnerHTML={{ __html: formatText(item) }}
                         />
                       </div>
@@ -197,15 +199,15 @@ export default function Services({ content }: ServicesProps) {
 
         {/* Service Packages */}
         <div className="max-w-6xl mx-auto mb-20">
-          <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-sm">
             <div className="text-center mb-8">
               <div className="inline-flex p-4 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40 rounded-2xl mb-4">
                 <Briefcase className="text-purple-600 dark:text-purple-400 w-8 h-8" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 drop-shadow-lg">
                 Service Packages & Timeline Estimates
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-cyan-100 max-w-2xl mx-auto drop-shadow-lg">
                 Choose the package that best fits your implementation needs and timeline
               </p>
             </div>
@@ -221,10 +223,10 @@ export default function Services({ content }: ServicesProps) {
                 
                 return (
                   <div key={pkgIndex} className={`p-6 rounded-2xl border ${packageColor} hover:shadow-md transition-all duration-300`}>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-3 text-lg">
+                    <h3 className="font-semibold text-white mb-3 text-lg drop-shadow-lg">
                       {pkg.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-white/90 leading-relaxed drop-shadow-lg">
                       {pkg.description}
                     </p>
                   </div>
@@ -236,7 +238,7 @@ export default function Services({ content }: ServicesProps) {
               <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">
                 <Info className="text-blue-600 dark:text-blue-400 w-5 h-5" />
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm italic">
+              <p className="text-white/80 text-sm italic drop-shadow-lg">
                 {content.note}
               </p>
             </div>
@@ -245,14 +247,14 @@ export default function Services({ content }: ServicesProps) {
 
         {/* CTA секция */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-8 max-w-2xl mx-auto shadow-sm">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-2xl mx-auto shadow-sm">
             <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">
               <CheckCircle className="text-blue-600 dark:text-blue-400 w-6 h-6" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 drop-shadow-2xl">
               Ready to fix your banner?
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-cyan-100 max-w-2xl mx-auto mb-8 drop-shadow-lg">
               Let's start with a free consultation to understand your specific needs and create a tailored solution.
             </p>
             <a

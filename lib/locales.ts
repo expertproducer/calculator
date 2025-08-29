@@ -33,17 +33,17 @@ export function fullUrlFor(locale: Locale, slug = "/") {
 export const PAGE_METADATA = {
   home: {
     en: {
-      title: "GDPR Cookie Banner & CMP Setup — C&C CookieComply (EU/EEA)",
+      title: "CMP Setup\nC&C CookieComply",
       description: "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly. Professional GDPR compliance solutions for businesses.",
       keywords: ["GDPR compliance", "CMP setup", "cookie banner", "consent management", "privacy compliance"]
     },
     de: {
-      title: "DSGVO Cookie-Banner & CMP Einrichtung — C&C CookieComply (EU/EWR)",
+      title: "CMP Einrichtung\nC&C CookieComply",
       description: "Wir richten CMP ein, reparieren Cookie-Banner, blockieren Tracker vor der Zustimmung und protokollieren die Zustimmung ordnungsgemäß. Professionelle DSGVO-Compliance-Lösungen für Unternehmen.",
       keywords: ["DSGVO Compliance", "CMP Einrichtung", "Cookie-Banner", "Consent Management", "Datenschutz-Compliance"]
     },
     fr: {
-      title: "Mise en place CMP & bannières cookies RGPD — C&C CookieComply (UE/EEE)",
+      title: "Mise en place CMP\nC&C CookieComply",
       description: "Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement. Solutions professionnelles de conformité RGPD pour les entreprises.",
       keywords: ["Conformité RGPD", "Configuration CMP", "Bannière cookies", "Gestion consentement", "Conformité confidentialité"]
     }

@@ -35,8 +35,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div className="min-h-screen bg-white dark:bg-gray-900">
         <Navbar locale={locale} />
         
-        {/* Spacing for fixed navigation */}
-        <div className="pt-20"></div>
+
       
       <main>
         <section id="hero">
@@ -84,7 +83,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
         
         <section id="final-cta">
-          <FinalCTA />
+          <FinalCTA content={{ cta: content.hero.cta }} />
         </section>
       </main>
       

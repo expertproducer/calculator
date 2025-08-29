@@ -41,7 +41,7 @@ export function getContent(locale: Locale) {
   const content = {
     en: {
       hero: {
-        title: 'GDPR Cookie Banner & CMP Setup — C&C CookieComply (EU/EEA)',
+        title: 'CMP Setup\nC&C CookieComply',
         subtitle: 'We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.',
         cta: {
           primary: 'Fix my banner',
@@ -379,7 +379,7 @@ export function getContent(locale: Locale) {
     },
     de: {
       hero: {
-        title: 'DSGVO Cookie-Banner & CMP Einrichtung — C&C CookieComply (EU/EWR)',
+        title: 'CMP Einrichtung\nC&C CookieComply',
         subtitle: 'Wir richten CMP ein, reparieren Cookie-Banner und blockieren Tracker vor der Zustimmung.',
         cta: {
           primary: 'Meinen Banner reparieren',
@@ -717,7 +717,7 @@ export function getContent(locale: Locale) {
     },
     fr: {
       hero: {
-        title: 'Mise en place CMP & bannières cookies RGPD — C&C CookieComply (UE/EEE)',
+        title: 'Mise en place CMP\nC&C CookieComply',
         subtitle: 'Nous configurons CMP et corrigeons les bannières de cookies.',
         cta: {
           primary: 'Corriger ma bannière',

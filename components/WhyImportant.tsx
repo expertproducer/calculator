@@ -13,17 +13,19 @@ export default function WhyImportant({ content }: WhyImportantProps) {
   const icons = [Shield, AlertTriangle, Users, TrendingUp]
 
   return (
-    <section id="why-important" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-6">
+    <section id="why-important" className="relative py-24 bg-black">
+      {/* Overlay для лучшей читаемости */}
+      <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
+      
+      <div className="container mx-auto px-6 relative" style={{ zIndex: 10 }}>
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100/80 dark:bg-green-900/30 rounded-full mb-6">
-            <Star className="text-green-600 dark:text-green-400 w-4 h-4" />
-            <span className="text-sm font-medium text-green-600 dark:text-green-400">Why Important</span>
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-green-500/20 rounded-full mb-6 border border-green-400/30">
+            <span className="text-sm font-medium text-green-400">Why Important</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight drop-shadow-2xl">
             {content.title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-xl text-cyan-100 max-w-4xl mx-auto font-light leading-relaxed drop-shadow-lg">
             {content.subtitle}
           </p>
         </div>
@@ -42,14 +44,14 @@ export default function WhyImportant({ content }: WhyImportantProps) {
             return (
               <div 
                 key={index}
-                className="group bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-xl"
+                className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-xl hover:shadow-cyan-500/20"
               >
                 <div className="flex items-start gap-6">
-                  <div className={`flex-shrink-0 p-4 bg-gradient-to-br ${color} rounded-xl group-hover:scale-110 transition-all duration-300`}>
-                    <IconComponent className="text-gray-700 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-200" size={28} />
+                  <div className={`flex-shrink-0 p-4 bg-gradient-to-br ${color} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                    <IconComponent className="text-white" size={28} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed font-medium">
+                    <p className="text-white/90 text-lg leading-relaxed font-medium drop-shadow-lg">
                       {point}
                     </p>
                   </div>
@@ -60,11 +62,11 @@ export default function WhyImportant({ content }: WhyImportantProps) {
         </div>
 
         <div className="text-center max-w-4xl mx-auto">
-          <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
-            <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">
-              <Shield className="text-blue-600 dark:text-blue-400 w-6 h-6" />
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-sm">
+            <div className="inline-flex p-3 bg-blue-500/20 rounded-xl mb-4 border border-blue-400/30">
+              <Shield className="text-blue-400 w-6 h-6" />
             </div>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed drop-shadow-lg">
               {content.description}
             </p>
           </div>

@@ -210,12 +210,28 @@ export function getContent(locale: Locale) {
       },
       benefits: {
         title: 'Why Choose Us',
+        subtitle: 'Clear advantages for your business',
         items: [
-          'End-to-end solution',
-          'No dark patterns',
-          'Proper GTM integration',
-          'Multilingual support',
-          'Consent logs & exports'
+          {
+            title: 'End-to-end solution',
+            description: 'Complete setup from audit to implementation'
+          },
+          {
+            title: 'No dark patterns',
+            description: 'Transparent banners that respect user choice'
+          },
+          {
+            title: 'Proper GTM integration',
+            description: 'Correct trigger and variable configuration'
+          },
+          {
+            title: 'Multilingual support',
+            description: 'Setup for multiple languages and regions'
+          },
+          {
+            title: 'Consent logs & exports',
+            description: 'Complete audit trail and compliance documentation'
+          }
         ]
       },
       platforms: {
@@ -611,12 +627,28 @@ export function getContent(locale: Locale) {
       },
       benefits: {
         title: 'Warum uns wählen',
+        subtitle: 'Klare Vorteile für Ihr Unternehmen',
         items: [
-          'End-to-End-Lösung',
-          'Keine Dark Patterns',
-          'Proper GTM-Integration',
-          'Mehrsprachige Unterstützung',
-          'Zustimmungsprotokolle & Exporte'
+          {
+            title: 'End-to-End-Lösung',
+            description: 'Komplette Einrichtung von der Prüfung bis zur Implementierung'
+          },
+          {
+            title: 'Keine Dark Patterns',
+            description: 'Transparente Banner, die die Benutzerwahl respektieren'
+          },
+          {
+            title: 'Proper GTM-Integration',
+            description: 'Korrekte Trigger- und Variablenkonfiguration'
+          },
+          {
+            title: 'Mehrsprachige Unterstützung',
+            description: 'Einrichtung für mehrere Sprachen und Regionen'
+          },
+          {
+            title: 'Zustimmungsprotokolle & Exporte',
+            description: 'Vollständiger Audit-Trail und Compliance-Dokumentation'
+          }
         ]
       },
       platforms: {
@@ -1050,12 +1082,28 @@ export function getContent(locale: Locale) {
       },
       benefits: {
         title: 'Pourquoi nous choisir',
+        subtitle: 'Avantages clairs pour votre entreprise',
         items: [
-          'Solution de bout en bout',
-          'Pas de dark patterns',
-          'Intégration GTM appropriée',
-          'Support multilingue',
-          'Journaux de consentement & exports'
+          {
+            title: 'Solution de bout en bout',
+            description: 'Configuration complète de l\'audit à l\'implémentation'
+          },
+          {
+            title: 'Pas de dark patterns',
+            description: 'Bannières transparentes qui respectent le choix de l\'utilisateur'
+          },
+          {
+            title: 'Intégration GTM appropriée',
+            description: 'Configuration correcte des déclencheurs et variables'
+          },
+          {
+            title: 'Support multilingue',
+            description: 'Configuration pour plusieurs langues et régions'
+          },
+          {
+            title: 'Journaux de consentement & exports',
+            description: 'Piste d\'audit complète et documentation de conformité'
+          }
         ]
       },
       platforms: {

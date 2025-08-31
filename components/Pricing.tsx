@@ -39,7 +39,7 @@ export default function Pricing({ content }: PricingProps) {
         
         {/* Header - StoryBrand style */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
             {content.badge || '💰 Transparent Pricing'}
           </div>
           
@@ -52,80 +52,32 @@ export default function Pricing({ content }: PricingProps) {
           </p>
         </div>
 
-        {/* Pricing explanation */}
-        <div className="max-w-5xl mx-auto mb-20">
-          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200">
-            <div className="text-center mb-8">
-              <div className="inline-flex p-4 bg-blue-600 rounded-2xl mb-6">
-                <Calculator className="text-white w-8 h-8" />
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {content.howItWorksTitle || 'How Our Pricing Works'}
-              </h2>
-              
-              <p className="text-lg text-gray-600">
-                {content.howItWorksSubtitle || 'No hidden fees, no ongoing charges. Just transparent, one-time implementation costs.'}
+        {/* Simple pricing explanation */}
+        <div className="max-w-4xl mx-auto mb-20 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {content.howItWorksTitle || 'How Our Pricing Works'}
+          </h2>
+          
+          <p className="text-lg text-gray-600 mb-8">
+            {content.howItWorksSubtitle || 'No hidden fees, no ongoing charges. Just transparent, one-time implementation costs.'}
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {content.implementationTitle || 'Implementation Fee Only'}
+              </h3>
+              <p className="text-gray-600">
+                {content.implementationDesc || 'We charge only for our technical work: CMP setup, GTM integration, and configuration. No ongoing fees.'}
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-green-600 rounded-xl flex-shrink-0">
-                    <Check className="text-white w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.implementationTitle || 'Implementation Fee Only'}</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      {content.implementationDesc || 'We charge only for our technical work: CMP setup, GTM integration, and configuration. No ongoing fees.'}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue-600 rounded-xl flex-shrink-0">
-                    <Shield className="text-white w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.chooseCmpTitle || 'Choose Your CMP'}</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      {content.chooseCmpDesc || 'You select and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.).'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-600 rounded-xl flex-shrink-0">
-                    <Info className="text-white w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.transparentTitle || 'Transparent Costs'}</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      {content.transparentDesc || 'Everything included in one price. No surprises, no additional charges later.'}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-orange-600 rounded-xl flex-shrink-0">
-                    <Star className="text-white w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.flexibleTitle || 'Flexible Options'}</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      {content.flexibleDesc || 'Choose Basic, Pro, or Business implementation based on your needs.'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-200">
-              <p className="text-blue-800 text-center text-lg">
-                <strong>{content.whyModelTitle || 'Why this model?'}</strong> {content.whyModelDesc || 'It gives you full control over your CMP costs while ensuring professional implementation quality. Pay us once for setup, then manage your CMP subscription directly.'}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {content.chooseCmpTitle || 'Choose Your CMP'}
+              </h3>
+              <p className="text-gray-600">
+                {content.chooseCmpDesc || 'You select and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.).'}
               </p>
             </div>
           </div>
@@ -146,45 +98,37 @@ export default function Pricing({ content }: PricingProps) {
             {content.plans.map((plan: any, index: number) => {
               const icons = [Home, Star, Briefcase]
               const IconComponent = icons[index % icons.length]
-              const colors = ['border-blue-200 bg-blue-50', 'border-green-200 bg-green-50', 'border-purple-200 bg-purple-50']
-              const badgeColors = ['bg-blue-600', 'bg-green-600', 'bg-purple-600']
+              const colors = ['border-blue-200 bg-blue-50', 'border-gray-200 bg-gray-50', 'border-blue-200 bg-blue-50']
+              const badgeColors = ['bg-blue-600', 'bg-gray-700', 'bg-blue-600']
               const popular = index === 1 // Pro plan is popular
               
               return (
-                <div 
-                  key={index} 
-                  className={`relative p-8 rounded-2xl border-2 ${colors[index]} hover:shadow-lg transition-all duration-300 ${popular ? 'scale-105 shadow-lg' : ''}`}
-                >
+                <div key={index} className={`p-6 ${popular ? 'border-2 border-blue-600' : 'border border-gray-200'} rounded-lg`}>
                   {popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                    <div className="text-center mb-4">
+                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                         Most Popular
-                      </div>
+                      </span>
                     </div>
                   )}
                   
                   <div className="text-center mb-6">
-                    <div className={`inline-flex p-4 ${badgeColors[index]} rounded-2xl mb-4`}>
-                      <IconComponent className="text-white w-8 h-8" />
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
                       {plan.name}
                     </h3>
                   </div>
                   
-                  <div className="space-y-4 mb-8">
+                  <div className="space-y-3 mb-6">
                     {plan.features.map((feature: string, fIndex: number) => (
-                      <div key={fIndex} className="flex items-start gap-3">
-                        <Check className="text-green-600 w-5 h-5 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 leading-relaxed">{feature}</span>
+                      <div key={fIndex} className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">✓</span>
+                        <span className="text-gray-700 text-sm">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <button className={`w-full py-3 px-6 ${badgeColors[index]} text-white font-semibold rounded-xl hover:opacity-90 transition-opacity duration-300 flex items-center justify-center gap-2`}>
+                  <button className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition-colors">
                     Get Started
-                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               )
@@ -192,23 +136,19 @@ export default function Pricing({ content }: PricingProps) {
           </div>
         </div>
         
-        {/* Additional information */}
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Need a Custom Solution?
-            </h3>
-            
-            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              {content.note}
-            </p>
-            
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <Calculator className="w-5 h-5" />
-              <span className="font-semibold">Get Custom Quote</span>
-              <ArrowRight className="w-5 h-5" />
-            </div>
-          </div>
+        {/* Simple CTA */}
+        <div className="text-center max-w-2xl mx-auto">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">
+            Need a Custom Solution?
+          </h3>
+          
+          <p className="text-gray-600 mb-6">
+            {content.note}
+          </p>
+          
+          <a href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+            Get Custom Quote
+          </a>
         </div>
       </div>
     </section>

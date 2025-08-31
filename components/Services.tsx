@@ -84,11 +84,11 @@ export default function Services({ content }: ServicesProps) {
             const SectionIcon = sectionIcons[sectionIndex % sectionIcons.length]
             const colors = [
               'bg-blue-600',
-              'bg-green-600', 
-              'bg-purple-600',
-              'bg-orange-600',
-              'bg-red-600',
-              'bg-indigo-600'
+              'bg-gray-700', 
+              'bg-blue-700',
+              'bg-gray-600',
+              'bg-blue-800',
+              'bg-gray-800'
             ]
             
             return (
@@ -138,7 +138,7 @@ export default function Services({ content }: ServicesProps) {
                           <ul className="space-y-2">
                             {subsection.items.map((item, itemIndex) => (
                               <li key={itemIndex} className="flex items-start gap-2">
-                                <CheckCircle className="text-green-600 w-4 h-4 mt-1 flex-shrink-0" />
+                                <CheckCircle className="text-blue-600 w-4 h-4 mt-1 flex-shrink-0" />
                                 <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                               </li>
                             ))}
@@ -153,7 +153,7 @@ export default function Services({ content }: ServicesProps) {
                     <div className="grid md:grid-cols-2 gap-4">
                       {section.items.map((item, itemIndex) => (
                         <div key={itemIndex} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                          <CheckCircle className="text-green-600 w-5 h-5 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="text-blue-600 w-5 h-5 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                         </div>
                       ))}
@@ -178,8 +178,8 @@ export default function Services({ content }: ServicesProps) {
           
           <div className="grid md:grid-cols-3 gap-6">
             {content.packages.map((pkg, index) => {
-              const packageColors = ['border-blue-200 bg-blue-50', 'border-green-200 bg-green-50', 'border-purple-200 bg-purple-50']
-              const badgeColors = ['bg-blue-600', 'bg-green-600', 'bg-purple-600']
+              const packageColors = ['border-blue-200 bg-blue-50', 'border-gray-200 bg-gray-50', 'border-blue-200 bg-blue-50']
+              const badgeColors = ['bg-blue-600', 'bg-gray-700', 'bg-blue-600']
               
               return (
                 <div key={index} className={`p-6 rounded-2xl border-2 ${packageColors[index % packageColors.length]} hover:shadow-lg transition-all duration-300`}>
@@ -203,7 +203,7 @@ export default function Services({ content }: ServicesProps) {
 
         {/* CTA section */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200">
             <Briefcase className="w-5 h-5" />
             <span className="font-semibold">{content.ctaText || 'Ready to get started?'}</span>
             <ArrowRight className="w-5 h-5" />

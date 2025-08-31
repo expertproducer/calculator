@@ -44,117 +44,93 @@ export default function Hero({ content }: HeroProps) {
         className="relative min-h-screen bg-white overflow-hidden"
         aria-labelledby="hero-title"
       >
-        {/* Background Pattern - subtle */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-50"></div>
+        {/* Full Screen Video Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            poster="/images/banners/demo/modern-banner-example.png"
+            onLoadedMetadata={(e) => {
+              e.currentTarget.playbackRate = 0.75;
+            }}
+          >
+            <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
+            <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
+            <img 
+              src="/images/banners/demo/modern-banner-example.png" 
+              alt="Cookie compliance demo" 
+              className="w-full h-full object-cover"
+            />
+          </video>
+          
+          {/* Video Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
         
         {/* Main Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-16">
           
-          {/* Hero Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          {/* Hero Content - Centered */}
+          <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
             
-            {/* Left Column - Text Content */}
-            <div className="space-y-8">
-              {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                {content.badge || '✓ GDPR Compliance Made Simple'}
-              </div>
-              
-              {/* Main Headline - StoryBrand Style */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
-                {content.headline || 'Every Business Needs'} 
-                <span className="text-blue-600 block">{content.headlineBlue || 'Cookie Compliance'}</span>
-                <span className="text-gray-600 block text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
-                  {content.headlineGray || 'That Actually Works!'}
-                </span>
-              </h1>
-              
-              {/* Subtitle - Clear Value Prop */}
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                {content.subtitle}
-              </p>
-              
-              {/* CTA Buttons - Enhanced */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a
-                  href="/contact"
-                  className="btn-storybrand-primary"
-                >
-                  <span className="relative z-10">{content.cta.primary}</span>
-                </a>
-                
-                <a
-                  href="/services"
-                  className="btn-storybrand-secondary"
-                >
-                  {content.cta.secondary}
-                </a>
-              </div>
-              
-              {/* Trust Indicators */}
-              <div className="flex items-center gap-6 pt-6">
-                <div className="text-sm text-gray-600">
-                  <div className="font-semibold text-gray-900">1M+</div>
-                  <div>{content.stats?.websites || 'Websites Protected'}</div>
-                </div>
-                <div className="text-sm text-gray-600">
-                  <div className="font-semibold text-gray-900">24/7</div>
-                  <div>{content.stats?.support || 'Expert Support'}</div>
-                </div>
-                <div className="text-sm text-gray-600">
-                  <div className="font-semibold text-gray-900">99%</div>
-                  <div>{content.stats?.success || 'Success Rate'}</div>
-                </div>
-              </div>
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-8">
+              {content.badge || '✓ GDPR Compliance Made Simple'}
             </div>
             
-            {/* Right Column - Video */}
-            <div className="relative">
-              {/* Video Container with StoryBrand styling */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
-                <div className="relative rounded-xl overflow-hidden bg-gray-900">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full aspect-video object-cover"
-                    poster="/images/banners/demo/modern-banner-example.png"
-                    onLoadedMetadata={(e) => {
-                      e.currentTarget.playbackRate = 0.75;
-                    }}
-                  >
-                    <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
-                    <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
-                    <img 
-                      src="/images/banners/demo/modern-banner-example.png" 
-                      alt="Cookie compliance demo" 
-                      className="w-full aspect-video object-cover"
-                    />
-                  </video>
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                      <svg className="w-6 h-6 text-blue-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Main Headline - StoryBrand Style */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-8">
+              {content.headline || 'Every Business Needs'} 
+              <span className="text-blue-300 block">{content.headlineBlue || 'Cookie Compliance'}</span>
+              <span className="text-gray-200 block text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
+                {content.headlineGray || 'That Actually Works!'}
+              </span>
+            </h1>
+            
+            {/* Subtitle - Clear Value Prop */}
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mb-12">
+              {content.subtitle}
+            </p>
+            
+            {/* CTA Buttons - Enhanced */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a
+                href="/contact"
+                className="btn-storybrand-primary"
+              >
+                <span className="relative z-10">{content.cta.primary}</span>
+              </a>
               
-              {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
-                <CheckCircle className="w-6 h-6 text-white" />
+              <a
+                href="/services"
+                className="btn-storybrand-secondary"
+              >
+                {content.cta.secondary}
+              </a>
+            </div>
+            
+            {/* Trust Indicators */}
+            <div className="flex items-center gap-6 pt-6">
+              <div className="text-sm text-gray-200">
+                <div className="font-semibold text-white">1M+</div>
+                <div>{content.stats?.websites || 'Websites Protected'}</div>
               </div>
-              
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="text-sm text-gray-200">
+                <div className="font-semibold text-white">24/7</div>
+                <div>{content.stats?.support || 'Expert Support'}</div>
+              </div>
+              <div className="text-sm text-gray-200">
+                <div className="font-semibold text-white">99%</div>
+                <div>{content.stats?.success || 'Success Rate'}</div>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Убираем лишние декоративные элементы для чистоты */}
       </section>
 
       {/* Problems Section - Clean StoryBrand Style */}
@@ -177,36 +153,21 @@ export default function Hero({ content }: HeroProps) {
               </p>
             </div>
             
-            {/* Problems Grid */}
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {content.problem.points.map((point, index) => {
-                const icons = [AlertTriangle, Unlock, FileX, Frown]
-                const IconComponent = icons[index % icons.length]
-                const colors = [
-                  'bg-red-500',
-                  'bg-orange-500', 
-                  'bg-pink-500',
-                  'bg-purple-500'
-                ]
-                
-                return (
-                  <div key={index} className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className={`flex-shrink-0 w-12 h-12 ${colors[index]} rounded-xl flex items-center justify-center`}>
-                      <IconComponent className="text-white" size={20} />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-gray-900 font-semibold leading-relaxed">
-                        {point}
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
+            {/* Simple Problems List */}
+            <div className="max-w-3xl mx-auto">
+              <ul className="space-y-4">
+                {content.problem.points.map((point, index) => (
+                  <li key={index} className="flex items-start gap-3 text-lg">
+                    <span className="text-red-600 font-bold text-xl">×</span>
+                    <span className="text-gray-700">{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
             
             {/* Call to Action */}
             <div className="text-center mt-12">
-              <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200">
                 <ShieldCheck className="w-5 h-5" />
                 <span className="font-semibold">{content.solutionText || 'We solve all these problems'}</span>
               </div>

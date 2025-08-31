@@ -23,7 +23,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
   }
 
   return (
-    <section id="testimonials" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+    <section id="testimonials" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
@@ -41,7 +41,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
           {content.items.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
+              className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-200 relative"
             >
               {/* Quote Icon */}
               <div className="absolute -top-4 left-8 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
@@ -51,7 +51,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
               {/* Rating */}
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-5 h-5 text-blue-500 fill-current" />
                 ))}
               </div>
               
@@ -72,7 +72,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
               
               {/* Author Info */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                   {testimonial.avatar ? (
                     <img 
                       src={testimonial.avatar} 

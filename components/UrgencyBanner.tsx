@@ -19,12 +19,12 @@ export default function UrgencyBanner({ content }: UrgencyBannerProps) {
   }
 
   return (
-    <section className="py-12 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+    <section className="py-12 bg-red-600 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center">
           {/* Urgency Icon */}
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center animate-pulse">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
               <Flame className="w-8 h-8 text-white" />
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function UrgencyBanner({ content }: UrgencyBannerProps) {
                 <div className="text-lg">
                   <span className="line-through opacity-75">{content.originalPrice}</span>
                   <span className="ml-2 text-2xl font-bold">{content.finalPrice}</span>
-                  <span className="ml-2 bg-yellow-400 text-red-600 px-2 py-1 rounded text-sm font-bold">
+                  <span className="ml-2 bg-white text-red-600 px-2 py-1 rounded text-sm font-bold">
                     {content.discount} OFF
                   </span>
                 </div>

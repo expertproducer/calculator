@@ -6,7 +6,6 @@ import { HelpCircle, ChevronDown, ChevronUp, Search, Shield, Calculator, Info, C
 interface FAQProps {
   content: {
     title: string
-    badge?: string
     items: Array<{
       question: string
       answer: string
@@ -21,11 +20,6 @@ interface FAQProps {
     knowledgeDescription?: string
     cantFindAnswer?: string
     teamReadyToHelp?: string
-    stillHaveQuestions?: string
-    expertsHelp?: string
-    contactExperts?: string
-    proTip?: string
-    proTipText?: string
   }
 }
 
@@ -261,7 +255,7 @@ export default function FAQ({ content }: FAQProps) {
                             </div>
                             <div>
                               <p className="text-sm text-gray-600 dark:text-gray-400">
-                                <strong>{content.proTip || 'Pro Tip:'}</strong> {content.proTipText || 'This information is based on current GDPR regulations and best practices. For specific implementation details, consider consulting with our compliance experts.'}
+                                <strong>Pro Tip:</strong> This information is based on current GDPR regulations and best practices. For specific implementation details, consider consulting with our compliance experts.
                               </p>
                             </div>
                           </div>
@@ -282,16 +276,16 @@ export default function FAQ({ content }: FAQProps) {
               <HelpCircle className="text-blue-600 dark:text-blue-400 w-6 h-6" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              {content.stillHaveQuestions || 'Still Have Questions?'}
+              Still Have Questions?
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              {content.expertsHelp || 'Our GDPR compliance experts are here to help you with any specific questions about your implementation.'}
+              Our GDPR compliance experts are here to help you with any specific questions about your implementation.
             </p>
             <a
               href="/contact"
               className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
-              <span>{content.contactExperts || 'Contact Our Experts'}</span>
+              <span>Contact Our Experts</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

@@ -1,0 +1,40 @@
+{
+  "project": {
+    "name": "Calculator",
+    "description": "Многоязычный калькулятор с современным UI, построенный на Next.js с поддержкой Cloudflare Pages",
+    "type": "web-application",
+    "framework": "next.js",
+    "deployment": "cloudflare-pages"
+  },
+  "structure": {
+    "app": "Next.js App Router - основные страницы и компоненты",
+    "components": "React компоненты для UI",
+    "lib": "Утилиты и конфигурации (i18n, типы, схемы)",
+    "public": "Статические файлы (изображения, иконки)",
+    "functions": "Cloudflare Functions для API",
+    "out": "Собранные файлы для деплоя"
+  },
+  "languages": {
+    "primary": "typescript",
+    "styling": "tailwindcss",
+    "markup": "jsx"
+  },
+  "features": {
+    "internationalization": "Поддержка множественных языков (ru, en, de, fr)",
+    "responsive": "Адаптивный дизайн",
+    "seo": "SEO оптимизация с structured data",
+    "performance": "Оптимизация производительности",
+    "accessibility": "Доступность (a11y)"
+  },
+  "conventions": {
+    "naming": "English-Only Identifiers",
+    "ui_text": "Russian language in UI strings",
+    "comments": "Russian comments allowed",
+    "files": "English file names"
+  },
+  "deployment": {
+    "platform": "cloudflare-pages",
+    "build_command": "npm run build",
+    "output_directory": "out"
+  }
+}

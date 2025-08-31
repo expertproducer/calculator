@@ -1,4 +1,4 @@
-export const LOCALES = ["en", "de", "fr"] as const;
+export const LOCALES = ["en", "de", "fr", "es"] as const;
 export type Locale = typeof LOCALES[number];
 export const DEFAULT_LOCALE: Locale = "en";
 
@@ -17,6 +17,7 @@ export function languagesAlternates(slug = "/") {
     en: pathFor("en", slug),
     de: pathFor("de", slug),
     fr: pathFor("fr", slug),
+    es: pathFor("es", slug),
   };
 }
 
@@ -46,6 +47,11 @@ export const PAGE_METADATA = {
       title: "Mise en place CMP\nC&C CookieComply",
       description: "Nous configurons CMP, corrigeons les bannières de cookies, bloquons les trackers avant le consentement et enregistrons le consentement correctement. Solutions professionnelles de conformité RGPD pour les entreprises.",
       keywords: ["Conformité RGPD", "Configuration CMP", "Bannière cookies", "Gestion consentement", "Conformité confidentialité"]
+    },
+    es: {
+      title: "Configuración CMP\nC&C CookieComply",
+      description: "Configuramos CMP, arreglamos banners de cookies, bloqueamos rastreadores antes del consentimiento y registramos el consentimiento correctamente. Soluciones profesionales de cumplimiento RGPD para empresas.",
+      keywords: ["Cumplimiento RGPD", "Configuración CMP", "Banner cookies", "Gestión consentimiento", "Cumplimiento privacidad"]
     }
   },
   privacy: {
@@ -60,6 +66,10 @@ export const PAGE_METADATA = {
     fr: {
       title: "Politique de Confidentialité — C&C CookieComply",
       description: "Notre politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles conformément aux réglementations GDPR."
+    },
+    es: {
+      title: "Política de Privacidad — C&C CookieComply",
+      description: "Nuestra política de privacidad explica cómo recopilamos, usamos y protegemos su información personal en cumplimiento con las regulaciones RGPD."
     }
   },
   cookies: {
@@ -74,6 +84,10 @@ export const PAGE_METADATA = {
     fr: {
       title: "Politique des Cookies — C&C CookieComply",
       description: "Découvrez comment nous utilisons les cookies et technologies similaires sur notre site et comment vous pouvez gérer vos préférences."
+    },
+    es: {
+      title: "Política de Cookies — C&C CookieComply",
+      description: "Aprenda sobre cómo usamos cookies y tecnologías similares en nuestro sitio web, y cómo puede gestionar sus preferencias."
     }
   }
 };

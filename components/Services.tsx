@@ -25,11 +25,11 @@ interface ServicesProps {
   }
 }
 
-// Функция для обработки markdown-подобного форматирования
+// Function to handle markdown-like formatting
 const formatText = (text: string) => {
-  // Заменяем **текст** на <strong>текст</strong>
+  // Replace **text** with <strong>text</strong>
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    // Заменяем `код` на <code>код</code>
+    // Replace `code` with <code>code</code>
     .replace(/`([^`]+)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
 }
 
@@ -37,11 +37,11 @@ export default function Services({ content }: ServicesProps) {
 
   return (
     <section id="services" className="relative py-24 bg-black">
-      {/* Overlay для лучшей читаемости */}
+      {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
       
       <div className="container mx-auto px-6 relative" style={{ zIndex: 10 }}>
-        {/* Hero секция */}
+        {/* Hero section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center px-4 py-2 bg-primary-500/20 rounded-full mb-6 border border-primary-400/30">
             <span className="text-sm font-medium text-primary-400">Services Section</span>
@@ -54,7 +54,7 @@ export default function Services({ content }: ServicesProps) {
           </p>
         </div>
 
-        {/* Лид-абзац в рамке */}
+        {/* Lead paragraph in frame */}
         <div className="max-w-5xl mx-auto mb-20">
           <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-[2rem] p-12 shadow-glass hover:shadow-apple-lg hover:bg-white/10 transition-all duration-700 hover:scale-[1.02]">
             <div className="text-center mb-12">
@@ -78,7 +78,7 @@ export default function Services({ content }: ServicesProps) {
           </div>
         </div>
 
-        {/* Основные секции */}
+        {/* Main sections */}
         <div className="max-w-6xl mx-auto space-y-16 mb-20">
           {content.sections.map((section, sectionIndex) => {
             const sectionIcons = [Search, Code, Settings, Shield, Zap, FileText]
@@ -113,7 +113,7 @@ export default function Services({ content }: ServicesProps) {
                   </h2>
                 </div>
 
-                {/* Контент секции */}
+                {/* Section content */}
                 {section.content && (
                   <div className="space-y-4 mb-8">
                     {Array.isArray(section.content) ? (
@@ -133,7 +133,7 @@ export default function Services({ content }: ServicesProps) {
                   </div>
                 )}
 
-                {/* Подсекции */}
+                {/* Subsections */}
                 {section.subsections && (
                   <div className="grid md:grid-cols-3 gap-6 mb-8">
                     {section.subsections.map((subsection, subIndex) => {
@@ -179,7 +179,7 @@ export default function Services({ content }: ServicesProps) {
                   </div>
                 )}
 
-                {/* Шаги процесса */}
+                {/* Process steps */}
                 {section.steps && (
                   <div className="space-y-4">
                     {section.steps.map((step, stepIndex) => (
@@ -195,7 +195,7 @@ export default function Services({ content }: ServicesProps) {
                   </div>
                 )}
 
-                {/* Список элементов */}
+                {/* Items list */}
                 {section.items && (
                   <div className="grid md:grid-cols-2 gap-4">
                     {section.items.map((item, itemIndex) => (
@@ -262,7 +262,7 @@ export default function Services({ content }: ServicesProps) {
           </div>
         </div>
 
-        {/* CTA секция */}
+        {/* CTA section */}
         <div className="text-center">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto shadow-glass">
             <div className="inline-flex p-3 bg-primary-500/20 rounded-xl mb-4 border border-primary-400/20">

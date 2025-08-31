@@ -14,7 +14,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
 
   return (
     <section id="why-important" className="relative py-24 bg-black">
-      {/* Overlay для лучшей читаемости */}
+      {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
       
       <div className="container mx-auto px-6 relative" style={{ zIndex: 10 }}>

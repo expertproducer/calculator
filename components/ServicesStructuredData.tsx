@@ -12,7 +12,7 @@ export default function ServicesStructuredData({ locale, faq }: ServicesStructur
     "name": locale === 'en' ? "Cookie Consent & CMP Implementation — GDPR Services" : 
             locale === 'de' ? "Cookie-Zustimmung & CMP-Implementierung — DSGVO-Services" :
             locale === 'fr' ? "Consentement aux cookies & Implémentation CMP — Services RGPD" :
-            "Внедрение CMP и настройка баннеров cookie (GDPR)",
+            "CMP Implementation and Cookie Banner Setup (GDPR)",
     "provider": {
       "@type": "Organization",
       "name": "C&C CookieComply",

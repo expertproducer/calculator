@@ -84,7 +84,7 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
   }[localeTyped]
 
   useEffect(() => {
-    // Проверяем, есть ли уже согласие
+    // Check if consent already exists
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
       setShowBanner(true)
@@ -94,7 +94,7 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
       applyConsent(savedPrefs)
     }
 
-    // Слушаем событие открытия настроек cookies из футера
+    // Listen for cookie settings open event from footer
     const handleOpenPreferences = () => {
       setShowPreferences(true)
     }
@@ -107,14 +107,14 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
   }, [])
 
   const applyConsent = (prefs: CookiePreferences) => {
-    // Essential cookies всегда активны
+    // Essential cookies are always active
     
-    // Инициализируем GTM только после получения согласия
+    // Initialize GTM only after getting consent
     if (prefs.analytics || prefs.marketing || prefs.functional) {
       initializeGTM(prefs)
     }
     
-    // Отправляем событие согласия
+    // Send consent event
     sendConsentEvent(prefs)
   }
 
@@ -154,7 +154,7 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
   }
 
   const handlePreferencesChange = (type: keyof CookiePreferences) => {
-    if (type === 'essential') return // Essential всегда true
+    if (type === 'essential') return // Essential always true
     setPreferences(prev => ({
       ...prev,
       [type]: !prev[type]

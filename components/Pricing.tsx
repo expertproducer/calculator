@@ -13,7 +13,7 @@ export default function Pricing({ content }: { content: any }) {
           </p>
         </div>
 
-        {/* Объяснение ценообразования */}
+        {/* Pricing explanation */}
         <div className="max-w-4xl mx-auto mb-20">
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
             <div className="text-center mb-8">
@@ -88,7 +88,7 @@ export default function Pricing({ content }: { content: any }) {
           </div>
         </div>
         
-        {/* Тарифные планы */}
+        {/* Pricing plans */}
         <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
           {content.plans.map((plan: any, index: number) => {
             const icons = [Home, Star, Briefcase]
@@ -143,7 +143,7 @@ export default function Pricing({ content }: { content: any }) {
           })}
         </div>
         
-        {/* Дополнительная информация */}
+        {/* Additional information */}
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700/30 rounded-2xl p-6">
             <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">

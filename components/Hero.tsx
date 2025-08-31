@@ -26,304 +26,164 @@ interface HeroProps {
 }
 
 export default function Hero({ content }: HeroProps) {
-
   return (
     <>
       <section 
-                  className="relative h-screen pt-16 pb-24 overflow-hidden"
-                  aria-labelledby="hero-title"
-                >
-                  {/* Видео на заднем фоне */}
-                  <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 1 }}>
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                      poster="/images/banners/demo/modern-banner-example.png"
-                      style={{
-                        willChange: 'transform',
-                        backfaceVisibility: 'hidden',
-                        transform: 'translateZ(0)',
-                        filter: 'blur(0px)',
-                      }}
-                      onLoadedMetadata={(e) => {
-                        // Устанавливаем скорость 0.75x для более плавного воспроизведения
-                        e.currentTarget.playbackRate = 0.75;
-                        // Устанавливаем качество рендеринга
-                        e.currentTarget.style.imageRendering = 'auto';
-                      }}
-                      onError={(e) => {
-                        console.log('Ошибка загрузки видео:', e);
-                      }}
-                    >
-                      <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
-                      <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
-                      {/* Fallback для браузеров, которые не поддерживают видео */}
-                      <img 
-                        src="/images/banners/demo/modern-banner-example.png" 
-                        alt="Hero background" 
-                        className="w-full h-full object-cover"
-                      />
-                    </video>
-                  </div>
-                  
-                  {/* Черный фон с прозрачностью поверх видео */}
-                  <div className="absolute inset-0 bg-black/60" style={{ zIndex: 2 }}></div>
-                  
-                  {/* Красивая анимированная волна сверху */}
-                  <div className="absolute top-0 left-0 w-full h-48 overflow-hidden transform rotate-180" style={{ zIndex: 3 }}>
-                    <svg className="w-full h-full" viewBox="0 0 1200 180" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="waveGradientTop" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#1e40af" stopOpacity="0.3"/>
-                          <stop offset="25%" stopColor="#7c3aed" stopOpacity="0.4"/>
-                          <stop offset="50%" stopColor="#059669" stopOpacity="0.3"/>
-                          <stop offset="75%" stopColor="#dc2626" stopOpacity="0.4"/>
-                          <stop offset="100%" stopColor="#1e40af" stopOpacity="0.3"/>
-                        </linearGradient>
-                      </defs>
-                      
-                      {/* Первая волна */}
-                      <path d="M0,180 C200,120 400,140 600,100 C800,60 1000,80 1200,60 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradientTop)" 
-                            className="animate-wave-float"/>
-                      
-                      {/* Вторая волна */}
-                      <path d="M0,180 C300,130 500,150 700,110 C900,70 1100,90 1200,70 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradientTop)" 
-                            opacity="0.6"
-                            className="animate-wave-float animation-delay-1000"/>
-                      
-                      {/* Третья волна */}
-                      <path d="M0,180 C100,140 400,160 600,120 C800,80 1000,100 1200,80 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradientTop)" 
-                            opacity="0.4"
-                            className="animate-wave-float animation-delay-2000"/>
-                    </svg>
-                  </div>
-                  
-                  {/* Красивая анимированная волна */}
-                  <div className="absolute bottom-0 left-0 w-full h-48 overflow-hidden" style={{ zIndex: 3 }}>
-                    <svg className="w-full h-full" viewBox="0 0 1200 180" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#1e40af" stopOpacity="0.3"/>
-                          <stop offset="25%" stopColor="#7c3aed" stopOpacity="0.4"/>
-                          <stop offset="50%" stopColor="#059669" stopOpacity="0.3"/>
-                          <stop offset="75%" stopColor="#dc2626" stopOpacity="0.4"/>
-                          <stop offset="100%" stopColor="#1e40af" stopOpacity="0.3"/>
-                        </linearGradient>
-                      </defs>
-                      
-                      {/* Первая волна */}
-                      <path d="M0,180 C200,120 400,140 600,100 C800,60 1000,80 1200,60 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradient)" 
-                            className="animate-wave-float"/>
-                      
-                      {/* Вторая волна */}
-                      <path d="M0,180 C300,130 500,150 700,110 C900,70 1100,90 1200,70 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradient)" 
-                            opacity="0.6"
-                            className="animate-wave-float animation-delay-1000"/>
-                      
-                      {/* Третья волна */}
-                      <path d="M0,180 C100,140 400,160 600,120 C800,80 1000,100 1200,80 L1200,180 L0,180 Z" 
-                            fill="url(#waveGradient)" 
-                            opacity="0.4"
-                            className="animate-wave-float animation-delay-2000"/>
-                    </svg>
-                  </div>
-      {/* Cookie & GDPR Themed Animated Background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ zIndex: 4 }}>
-        {/* Cookie-themed animated elements */}
-        <div className="absolute inset-0">
-          
-          
-                      {/* 3D GDPR shield with checkmark - перемещен в верхний правый угол */}
-            <div className="absolute top-16 right-8 w-24 h-24 animate-shield-appear animate-shield-float animate-shield-glow drop-shadow-2xl transform transition-all duration-1000 hover:scale-110 hover:rotate-12">
-              <svg viewBox="0 0 24 24" className="w-full h-full drop-shadow-2xl">
-                {/* Основной щит с градиентом в теме сайта */}
-                <defs>
-                  <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#10b981" stopOpacity="0.9"/>
-                    <stop offset="50%" stopColor="#059669" stopOpacity="0.8"/>
-                    <stop offset="100%" stopColor="#047857" stopOpacity="0.9"/>
-                  </linearGradient>
-                  <linearGradient id="shieldHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4"/>
-                    <stop offset="50%" stopColor="#ffffff" stopOpacity="0.2"/>
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.4"/>
-                  </linearGradient>
-                  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.4"/>
-                  </filter>
-                </defs>
-                
-                {/* Тень щита */}
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" 
-                      fill="#000000" opacity="0.3" transform="translate(1, 1)" filter="url(#shadow)"/>
-                
-                {/* Основной щит */}
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" 
-                      fill="url(#shieldGradient)" stroke="#ffffff" strokeWidth="0.5" opacity="0.9"/>
-                
-                {/* Блики для 3D эффекта */}
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" 
-                      fill="url(#shieldHighlight)" opacity="0.6"/>
-                
-                {/* Галочка с объемом */}
-                <path d="M8 13l3 3 5-5" 
-                      stroke="#ffffff" strokeWidth="2" fill="none" 
-                      strokeLinecap="round" strokeLinejoin="round"
-                      filter="url(#shadow)"/>
-                
-                {/* Дополнительная тень для галочки */}
-                <path d="M8 13l3 3 5-5" 
-                      stroke="#000000" strokeWidth="2" fill="none" 
-                      strokeLinecap="round" strokeLinejoin="round"
-                      opacity="0.3" transform="translate(0.5, 0.5)"/>
-              </svg>
-            </div>
-
-
-          
-
-
-          
-          {/* Дополнительные замки */}
-
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-
-
-        </div>
-      </div>
-
-      {/* Overlay для лучшей читаемости текста - на весь блок */}
-      <div className="absolute inset-0 bg-black/20" style={{ zIndex: 5 }} />
-
-      {/* Content поверх Spline сцены */}
-      <div className="container mx-auto px-6 relative flex items-center h-screen" style={{ zIndex: 10 }}>
-        <div className="max-w-5xl mx-auto w-full">
-          {/* Content */}
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight animate-title-pulse">
-              <div className="flex flex-col items-center">
-                <span className="bg-gradient-to-r from-cyan-400 via-green-400 to-blue-400 bg-clip-text text-transparent drop-shadow-2xl">
-                  CMP Setup
-                </span>
-                <span className="bg-gradient-to-r from-cyan-400 via-green-400 to-blue-400 bg-clip-text text-transparent drop-shadow-2xl">
-                  C&C Cookie Comply
-                </span>
-              </div>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-cyan-100 mb-8 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-2xl animate-pulse">
-              {content.subtitle}
-            </p>
-
-
-
-            {content.description && (
-              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto drop-shadow-lg">
-                {content.description}
-              </p>
-            )}
-
-            {/* Features list */}
-            {content.features && (
-              <div className="mb-8 space-y-3">
-                {content.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 justify-center">
-                    <CheckCircle className="text-green-400 flex-shrink-0 drop-shadow-lg" size={20} />
-                    <span className="text-white/90 drop-shadow-lg">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* CTA Buttons - Updated style */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <a
-                href="/contact"
-                className="group relative inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 shadow-lg hover:shadow-xl animate-button-appear animate-button-float animate-button-glow-green border-2 border-white/80"
-                aria-label={`${content.cta.primary} - go to contact form`}
-                style={{ animationDelay: '0.5s' }}
-              >
-                <span className="text-lg text-white font-bold drop-shadow-lg">{content.cta.primary}</span>
-                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              
-              <a
-                href="/services"
-                className="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 shadow-lg hover:shadow-xl animate-button-appear animate-button-float animate-button-glow-blue border-2 border-white/80"
-                aria-label={`${content.cta.secondary} - go to services`}
-                style={{ animationDelay: '0.8s' }}
-              >
-                <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span className="text-lg text-white font-bold drop-shadow-lg">{content.cta.secondary}</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Clean Problems Section - отдельная секция после Hero */}
-    {content.problem && (
-      <section className="relative bg-black py-20">
-        {/* Overlay для лучшей читаемости */}
-        <div className="absolute inset-0 bg-black/10" style={{ zIndex: 5 }} />
+        className="relative min-h-screen bg-white overflow-hidden"
+        aria-labelledby="hero-title"
+      >
+        {/* Background Pattern - subtle */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-50"></div>
         
-        <div className="container mx-auto px-6 relative" style={{ zIndex: 10 }}>
-          <div className="text-center mb-16">
-                          <div className="inline-flex items-center justify-center px-4 py-2 bg-red-500/20 rounded-full mb-6 border border-red-400/30">
-                <span className="text-sm font-medium text-red-400">Частые проблемы</span>
-              </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight drop-shadow-2xl">
-              {content.problem.title}
-            </h2>
-            <p className="text-lg text-cyan-100 max-w-2xl mx-auto drop-shadow-lg">
-              Мы исправляем эти проблемы быстро и качественно
-            </p>
-          </div>
+        {/* Main Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-16">
           
-          {/* Simple Problems Grid */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+          {/* Hero Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+            
+            {/* Left Column - Text Content */}
+            <div className="space-y-8">
+              {/* Badge */}
+              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                ✓ GDPR Compliance Made Simple
+              </div>
+              
+              {/* Main Headline - StoryBrand Style */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
+                Every Business Needs 
+                <span className="text-blue-600 block">Cookie Compliance</span>
+                <span className="text-gray-600 block text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
+                  That Actually Works!
+                </span>
+              </h1>
+              
+              {/* Subtitle - Clear Value Prop */}
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl">
+                {content.subtitle}
+              </p>
+              
+              {/* CTA Buttons - StoryBrand Style */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="/contact"
+                  className="btn btn-orange text-lg px-8 py-4 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  {content.cta.primary}
+                </a>
+                
+                <a
+                  href="/services"
+                  className="btn btn-outline text-lg px-8 py-4 rounded-lg font-semibold border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+                >
+                  {content.cta.secondary}
+                </a>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="flex items-center gap-6 pt-6">
+                <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-gray-900">1M+</div>
+                  <div>Websites Protected</div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-gray-900">24/7</div>
+                  <div>Expert Support</div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-gray-900">99%</div>
+                  <div>Success Rate</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Video */}
+            <div className="relative">
+              {/* Video Container with StoryBrand styling */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
+                <div className="relative rounded-xl overflow-hidden bg-gray-900">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full aspect-video object-cover"
+                    poster="/images/banners/demo/modern-banner-example.png"
+                    onLoadedMetadata={(e) => {
+                      e.currentTarget.playbackRate = 0.75;
+                    }}
+                  >
+                    <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
+                    <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
+                    <img 
+                      src="/images/banners/demo/modern-banner-example.png" 
+                      alt="Cookie compliance demo" 
+                      className="w-full aspect-video object-cover"
+                    />
+                  </video>
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 text-blue-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                <CheckCircle className="w-6 h-6 text-white" />
+              </div>
+              
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problems Section - Clean StoryBrand Style */}
+      {content.problem && (
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-6">
+            
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+                ⚠️ Common Problems
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+                {content.problem.title}
+              </h2>
+              
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                We fix these problems quickly and professionally
+              </p>
+            </div>
+            
+            {/* Problems Grid */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {content.problem.points.map((point, index) => {
                 const icons = [AlertTriangle, Unlock, FileX, Frown]
                 const IconComponent = icons[index % icons.length]
                 const colors = [
-                  'from-red-400 to-red-600',
-                  'from-orange-400 to-orange-600', 
-                  'from-pink-400 to-pink-600',
-                  'from-purple-400 to-purple-600'
+                  'bg-red-500',
+                  'bg-orange-500', 
+                  'bg-pink-500',
+                  'bg-purple-500'
                 ]
                 
                 return (
-                  <div key={index} className="group flex items-start gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/20">
-                    <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${colors[index]} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <div key={index} className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className={`flex-shrink-0 w-12 h-12 ${colors[index]} rounded-xl flex items-center justify-center`}>
                       <IconComponent className="text-white" size={20} />
                     </div>
                     <div className="flex-1">
-                      <p className="text-white/90 font-medium leading-relaxed drop-shadow-lg">
+                      <p className="text-gray-900 font-semibold leading-relaxed">
                         {point}
                       </p>
                     </div>
@@ -334,15 +194,14 @@ export default function Hero({ content }: HeroProps) {
             
             {/* Call to Action */}
             <div className="text-center mt-12">
-              <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-white/20">
-                <ShieldCheck className="text-white w-5 h-5" />
-                <span className="text-white font-semibold drop-shadow-lg">Мы решим все эти проблемы</span>
+              <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <ShieldCheck className="w-5 h-5" />
+                <span className="font-semibold">We solve all these problems</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    )}
+        </section>
+      )}
     </>
   )
 }

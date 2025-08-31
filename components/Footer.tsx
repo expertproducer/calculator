@@ -6,7 +6,7 @@ import { Shield, MapPin, Clock, Settings, Star } from 'lucide-react'
 export default function Footer({ content, locale }: { content: any; locale: string }) {
   const currentYear = new Date().getFullYear()
 
-  // Защита от undefined content
+  // Protection from undefined content
   if (!content || !content.footer) {
     return null
   }
@@ -102,7 +102,7 @@ export default function Footer({ content, locale }: { content: any; locale: stri
               <li>
                 <button 
                   onClick={() => {
-                    // Открываем настройки cookies
+                    // Open cookie settings
                     const event = new CustomEvent('openCookiePreferences')
                     window.dispatchEvent(event)
                   }}

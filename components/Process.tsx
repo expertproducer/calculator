@@ -12,11 +12,11 @@ interface ProcessProps {
   }
 }
 
-// Функция для обработки markdown-подобного форматирования
+// Function to handle markdown-like formatting
 const formatText = (text: string) => {
-  // Заменяем **текст** на <strong>текст</strong>
+  // Replace **text** with <strong>text</strong>
   return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    // Заменяем `код` на <code>код</code>
+    // Replace `code` with <code>code</code>
     .replace(/`([^`]+)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
 }
 
@@ -37,7 +37,7 @@ export default function Process({ content }: ProcessProps) {
           </p>
         </div>
 
-        {/* Лид-абзац в рамке */}
+        {/* Lead paragraph in frame */}
         {content.leadText && (
           <div className="mb-16">
             <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm max-w-5xl mx-auto">
@@ -58,7 +58,7 @@ export default function Process({ content }: ProcessProps) {
           </div>
         )}
 
-        {/* Информационный блок о процессе */}
+        {/* Process information block */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
             <div className="text-center mb-8">
@@ -113,13 +113,13 @@ export default function Process({ content }: ProcessProps) {
           </div>
         </div>
 
-        {/* Вертикальная временная шкала для всех устройств */}
+        {/* Vertical timeline for all devices */}
         <div className="max-w-4xl mx-auto space-y-8 mb-20">
           {content.steps.map((step, index) => {
             const stepTitle = typeof step === 'string' ? step : step.title
             const stepDescription = typeof step === 'string' ? step : step.description
             
-            // Выбираем иконку по смыслу шага
+            // Select icon based on step meaning
             const getStepIcon = (index: number) => {
               const stepTitleLower = stepTitle.toLowerCase()
               if (stepTitleLower.includes('legal') || stepTitleLower.includes('analysis') || stepTitleLower.includes('requirements')) {
@@ -131,7 +131,7 @@ export default function Process({ content }: ProcessProps) {
               } else if (stepTitleLower.includes('production') || stepTitleLower.includes('launch')) {
                 return Zap
               }
-              // По умолчанию возвращаем иконку по индексу
+              // Default return icon by index
               const defaultIcons = [Search, Code, Settings, Zap, Star]
               return defaultIcons[index % defaultIcons.length]
             }
@@ -140,21 +140,21 @@ export default function Process({ content }: ProcessProps) {
             
             return (
               <div key={index} className="flex items-start gap-6 group">
-                {/* Номер шага */}
+                {/* Step number */}
                 <div className="flex flex-col items-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 relative overflow-hidden flex-shrink-0 mt-14">
-                    {/* Крутая фишка: внутренний светящийся круг */}
+                    {/* Cool feature: inner glowing circle */}
                     <div className="absolute inset-1 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
-                    {/* Крутая фишка: анимированная граница */}
+                    {/* Cool feature: animated border */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin-slow"></div>
-                    {/* Крутая фишка: пульсирующий эффект */}
+                    {/* Cool feature: pulsing effect */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-400/30 animate-pulse"></div>
-                    {/* Иконка поверх всего */}
+                    {/* Icon on top of everything */}
                     <StepIcon className="relative z-10 w-7 h-7" />
                   </div>
                 </div>
                 
-                {/* Контент шага */}
+                {/* Step content */}
                 <div className="flex-1 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50 group-hover:-translate-y-1 transition-all duration-300 hover:shadow-xl">
                   {typeof step === 'object' && (
                     <h3 className="text-gray-900 dark:text-white text-xl font-semibold mb-4 leading-tight">
@@ -170,7 +170,7 @@ export default function Process({ content }: ProcessProps) {
           })}
         </div>
 
-        {/* CTA секция */}
+        {/* CTA section */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-8 max-w-2xl mx-auto shadow-sm">
             <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">

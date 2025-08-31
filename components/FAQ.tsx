@@ -20,7 +20,7 @@ export default function FAQ({ content }: FAQProps) {
     setOpenIndex(openIndex === index ? null : index)
   }
 
-  // Функция для определения категории вопроса по ключевым словам
+  // Function to determine question category by keywords
   const getQuestionCategory = (question: string) => {
     const lowerQuestion = question.toLowerCase()
     
@@ -84,7 +84,7 @@ export default function FAQ({ content }: FAQProps) {
         label: 'Legal'
       }
     } 
-    // General - остальные вопросы
+    // General - other questions
     else {
       return { 
         icon: Info, 
@@ -112,7 +112,7 @@ export default function FAQ({ content }: FAQProps) {
           </p>
         </div>
 
-        {/* Информационный блок */}
+        {/* Information block */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
             <div className="text-center mb-8">
@@ -173,7 +173,7 @@ export default function FAQ({ content }: FAQProps) {
           </div>
         </div>
 
-        {/* FAQ аккордеон */}
+        {/* FAQ accordion */}
         <div className="max-w-4xl mx-auto space-y-6">
           {content.items.map((item, index) => {
             const category = getQuestionCategory(item.question)
@@ -184,7 +184,7 @@ export default function FAQ({ content }: FAQProps) {
                 key={index}
                 className="group"
               >
-                {/* Основная карточка вопроса */}
+                {/* Main question card */}
                 <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
                   <button
                     onClick={() => toggleItem(index)}
@@ -222,7 +222,7 @@ export default function FAQ({ content }: FAQProps) {
                   </button>
                 </div>
                 
-                {/* Раскрытый ответ */}
+                {/* Expanded answer */}
                 {openIndex === index && (
                   <div className="mt-4 bg-gradient-to-r from-blue-50/80 to-green-50/80 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-6 backdrop-blur-sm shadow-sm">
                     <div className="flex items-start gap-4">
@@ -259,7 +259,7 @@ export default function FAQ({ content }: FAQProps) {
           })}
         </div>
 
-        {/* CTA секция */}
+        {/* CTA section */}
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-8 max-w-2xl mx-auto shadow-sm">
             <div className="inline-flex p-3 bg-blue-100/80 dark:bg-blue-900/30 rounded-xl mb-4">

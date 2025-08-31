@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'de' | 'fr'
+export type Locale = 'en' | 'de' | 'fr' | 'es'
 
 // Content types
 interface PrivacyContent {
@@ -1052,6 +1052,34 @@ export function getContent(locale: Locale) {
         manageCookieDescription: 'Cliquez sur le bouton ci-dessous pour gérer vos paramètres de cookies.',
         cookieSettings: 'Paramètres des cookies'
       }
+    },
+    es: {
+      hero: {
+        title: 'Configuración CMP\nC&C CookieComply',
+        subtitle: 'Configuramos CMP y arreglamos banners de cookies.',
+        cta: {
+          primary: 'Arreglar mi banner',
+          secondary: 'Verificación gratuita'
+        }
+      },
+      footer: {
+        copyright: '© 2024 C&C CookieComply por Cash & Clash',
+        links: ['Política de privacidad', 'Política de cookies', 'Contacto'],
+        description: 'Soluciones profesionales de cumplimiento GDPR.',
+        location: 'Unión Europea',
+        workingHours: 'CET 9:00-18:00',
+        quickLinks: 'Enlaces rápidos',
+        services: 'Servicios',
+        process: 'Proceso de trabajo',
+        pricing: 'Precios',
+        faq: 'FAQ',
+        contacts: 'Contactos',
+        legalInfo: 'Información legal',
+        privacyPolicy: 'Política de privacidad',
+        cookiePolicy: 'Política de cookies',
+        cookiePreferences: 'Preferencias de cookies',
+        allRightsReserved: 'Todos los derechos reservados.'
+      }
     }
   }
   
@@ -1061,5 +1089,6 @@ export function getContent(locale: Locale) {
 export function getLocaleFromPath(pathname: string): Locale {
   if (pathname.startsWith('/de')) return 'de'
   if (pathname.startsWith('/fr')) return 'fr'
+  if (pathname.startsWith('/es')) return 'es'
   return 'en'
 }

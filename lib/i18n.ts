@@ -518,18 +518,18 @@ export function getContent(locale: Locale) {
               {
                 title: 'CMP und Banner',
                 items: [
-                  '**Auswahl und Bereitstellung** von CMP: **Cookiebot, Iubenda, Usercentrics, Termly**',
-                  '**Erste Ebene**: **Accept / Decline / Preferences** ohne "Dark Patterns"',
-                  '**Preference Center**: Kategorien, Beschreibungen, "Cookie Preferences" Link im Footer',
-                  '**Geo/Sprachen**: Lade-Regeln nach Regionen (EN/DE/FR und andere)'
+                  'Auswahl und Bereitstellung von CMP: **Cookiebot, Iubenda, Usercentrics, Termly**',
+                  'Erste Ebene: **Accept / Decline / Preferences** ohne "Dark Patterns"',
+                  'Preference Center: Kategorien, Beschreibungen, "Cookie Preferences" Link im Footer',
+                  'Geo/Sprachen: Lade-Regeln nach Regionen (EN/DE/FR und andere)'
                 ]
               },
               {
                 title: 'Blockierung vor Zustimmung',
                 items: [
-                  'Wir deaktivieren alle **nicht-essentiellen Tags** vor dem **Consent-Event**',
-                  'Für **GTM**: Wir konfigurieren `triggers`/`variables` und leiten **Consent-Events** nach Kategorien weiter',
-                  'Für "Roh"-Code: Wir wickeln Aufrufe/SDK in **Schutz-Gates** ein'
+                  'Wir deaktivieren alle nicht-essentiellen Tags vor dem Consent-Event',
+                  'Für GTM: Wir konfigurieren `triggers`/`variables` und leiten Consent-Events nach Kategorien weiter',
+                  'Für "Roh"-Code: Wir wickeln Aufrufe/SDK in Schutz-Gates ein'
                 ]
               },
               {

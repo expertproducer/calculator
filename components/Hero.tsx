@@ -42,7 +42,7 @@ export default function Hero({ content }: HeroProps) {
   return (
     <>
       <section 
-        className="relative min-h-screen bg-white overflow-hidden"
+        className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden"
         aria-labelledby="hero-title"
       >
         {/* Full Screen Video Background */}
@@ -68,7 +68,7 @@ export default function Hero({ content }: HeroProps) {
           </video>
           
           {/* Video Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
         {/* Main Content Container */}
@@ -77,55 +77,50 @@ export default function Hero({ content }: HeroProps) {
           {/* Hero Content - Centered */}
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
             
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-8">
-              {content.badge || '✓ GDPR Compliance Made Simple'}
-            </div>
-            
-            {/* Main Headline - StoryBrand Style */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-8">
+            {/* Main Headline - Enhanced Process Page Style */}
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight mb-16 drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_40%)]">
               {content.headline || 'Every Business Needs'} 
-              <span className="text-blue-300 block">{content.headlineBlue || 'Cookie Compliance'}</span>
-              <span className="text-gray-200 block text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
+              <span className="text-blue-300 block drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.headlineBlue || 'Cookie Compliance'}</span>
+              <span className="text-gray-200 block text-5xl md:text-6xl lg:text-7xl font-black mt-6 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
                 {content.headlineGray || 'That Actually Works!'}
               </span>
             </h1>
             
-            {/* Subtitle - Clear Value Prop */}
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mb-12">
+            {/* Subtitle - Enhanced Value Prop */}
+            <p className="text-3xl md:text-4xl text-gray-200 leading-relaxed max-w-5xl mb-20 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)] font-black">
               <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
             </p>
             
             {/* CTA Buttons - Enhanced */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-8 mb-20">
               <a
                 href="/contact"
-                className="btn-storybrand-primary"
+                className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]"
               >
                 <span className="relative z-10">{content.cta.primary}</span>
               </a>
               
               <a
                 href="/services"
-                className="btn-storybrand-secondary"
+                className="inline-flex items-center gap-4 px-12 py-6 bg-white text-gray-900 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]"
               >
                 {content.cta.secondary}
               </a>
             </div>
             
             {/* Trust Indicators */}
-            <div className="flex items-center gap-6 pt-6">
-              <div className="text-sm text-gray-200">
-                <div className="font-semibold text-white">1M+</div>
-                <div>{content.stats?.websites || 'Websites Protected'}</div>
+            <div className="flex items-center gap-10 pt-10">
+              <div className="text-xl text-gray-200 drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
+                <div className="font-black text-white text-3xl drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">1M+</div>
+                <div className="font-bold">{content.stats?.websites || 'Websites Protected'}</div>
               </div>
-              <div className="text-sm text-gray-200">
-                <div className="font-semibold text-white">24/7</div>
-                <div>{content.stats?.support || 'Expert Support'}</div>
+              <div className="text-xl text-gray-200 drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
+                <div className="font-black text-white text-3xl drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">24/7</div>
+                <div className="font-bold">{content.stats?.support || 'Expert Support'}</div>
               </div>
-              <div className="text-sm text-gray-200">
-                <div className="font-semibold text-white">99%</div>
-                <div>{content.stats?.success || 'Success Rate'}</div>
+              <div className="text-xl text-gray-200 drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
+                <div className="font-black text-white text-3xl drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">99%</div>
+                <div className="font-bold">{content.stats?.success || 'Success Rate'}</div>
               </div>
             </div>
           </div>
@@ -134,43 +129,39 @@ export default function Hero({ content }: HeroProps) {
         {/* Убираем лишние декоративные элементы для чистоты */}
       </section>
 
-      {/* Problems Section - Clean StoryBrand Style */}
+      {/* Problems Section - Process Page Style */}
       {content.problem && (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
           <div className="max-w-7xl mx-auto px-6">
             
             {/* Section Header */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-                {content.commonProblems || '⚠️ Common Problems'}
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">
                 {content.problem.title}
               </h2>
               
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-3xl text-gray-600 max-w-5xl mx-auto font-black drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
                 {content.problemsDesc || 'We fix these problems quickly and professionally'}
               </p>
             </div>
             
             {/* Simple Problems List */}
-            <div className="max-w-3xl mx-auto">
-              <ul className="space-y-4">
+            <div className="max-w-5xl mx-auto">
+              <ul className="space-y-8">
                 {content.problem.points.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3 text-lg">
-                    <span className="text-red-600 font-bold text-xl">×</span>
-                    <span className="text-gray-700">{point}</span>
+                  <li key={index} className="flex items-start gap-6 text-2xl font-bold bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+                    <span className="text-red-600 font-black text-3xl drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">×</span>
+                    <span className="text-gray-700 drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">{point}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
             {/* Call to Action */}
-            <div className="text-center mt-12">
-              <div className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200">
-                <ShieldCheck className="w-5 h-5" />
-                <span className="font-semibold">{content.solutionText || 'We solve all these problems'}</span>
+            <div className="text-center mt-20">
+              <div className="inline-flex items-center gap-6 px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
+                <ShieldCheck className="w-8 h-8 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]" />
+                <span className="drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">{content.solutionText || 'We solve all these problems'}</span>
               </div>
             </div>
           </div>

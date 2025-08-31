@@ -35,10 +35,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <Navbar locale={locale} />
         
-
+        {/* Spacing for fixed navigation */}
+        <div className="pt-20"></div>
       
       <main>
         <section id="hero">
@@ -51,7 +52,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
         
         {content.whyImportant && (
-          <section id="why-important">
+          <section id="why-important" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
             <WhyImportant content={content.whyImportant} />
           </section>
         )}
@@ -64,22 +65,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Process content={content.process} />
         </section> */}
         
-        <section id="benefits">
+        <section id="benefits" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
           <Benefits content={content.benefits} />
         </section>
         
         {content.platforms && (
-          <section id="platforms">
+          <section id="platforms" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
             <Platforms content={content.platforms} />
           </section>
         )}
         
-        <section id="case-studies">
+        <section id="case-studies" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
           <CaseStudies content={content.cases} />
         </section>
         
         {/* Testimonials - New */}
-        <section id="testimonials">
+        <section id="testimonials" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
           <Testimonials content={content.testimonials} />
         </section>
         
@@ -91,11 +92,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <FAQ content={content.faq} />
         </section> */}
         
-        <section id="contact">
+        <section id="contact" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
           <Contact content={content.contact} />
         </section>
         
-        <section id="final-cta">
+        <section id="final-cta" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
           <FinalCTA content={content.finalCTA} />
         </section>
       </main>

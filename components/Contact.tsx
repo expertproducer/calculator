@@ -65,38 +65,34 @@ export default function Contact({ content }: ContactProps) {
   }
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Header - StoryBrand style */}
+        {/* Header - Process Page style */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
-            {content.badge || '🚀 Ready to Get Started?'}
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title}
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed mb-12 font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
           
-          {/* What you get - StoryBrand benefit */}
-          <div className="bg-blue-50 rounded-2xl p-8 max-w-4xl mx-auto border border-blue-200">
-            <div className="inline-flex p-4 bg-blue-600 rounded-2xl mb-6">
-              <Rocket className="text-white w-8 h-8" />
+          {/* What you get - Process Page benefit */}
+          <div className="bg-white rounded-2xl p-8 max-w-5xl mx-auto border border-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
+            <div className="inline-flex p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-8 shadow-2xl">
+              <Rocket className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
             </div>
             
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">
+            <h3 className="text-3xl font-bold text-blue-900 mb-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
               {content.contactInfo.whatYouGet.title}
             </h3>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {content.contactInfo.whatYouGet.items.map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-blue-800">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  <span className="font-medium">{item}</span>
+                <div key={index} className="flex items-center gap-3 text-blue-800">
+                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+                  <span className="font-bold text-lg drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{item}</span>
                 </div>
               ))}
             </div>
@@ -105,13 +101,13 @@ export default function Contact({ content }: ContactProps) {
 
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           
-          {/* Contact Form - StoryBrand style */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          {/* Contact Form - Process Page style */}
+          <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                 {content.formTitle || 'Tell Us About Your Project'}
               </h2>
-              <p className="text-gray-600">
+              <p className="text-lg font-medium text-gray-600 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                 {content.formDescription || 'Fill out the form below and we\'ll get back to you within 24 hours'}
               </p>
             </div>
@@ -120,7 +116,7 @@ export default function Contact({ content }: ContactProps) {
               {/* Basic Information */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.name} *
                   </label>
                   <input
@@ -129,13 +125,13 @@ export default function Contact({ content }: ContactProps) {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                     placeholder="Your full name"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.email} *
                   </label>
                   <input
@@ -144,7 +140,7 @@ export default function Contact({ content }: ContactProps) {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -152,7 +148,7 @@ export default function Contact({ content }: ContactProps) {
 
               {/* Website URL */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                   {content.fields.url} *
                 </label>
                 <input
@@ -161,7 +157,7 @@ export default function Contact({ content }: ContactProps) {
                   required
                   value={formData.url}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                   placeholder="https://yourwebsite.com"
                 />
               </div>
@@ -169,7 +165,7 @@ export default function Contact({ content }: ContactProps) {
               {/* Technical Details */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.stack}
                   </label>
                   <input
@@ -177,13 +173,13 @@ export default function Contact({ content }: ContactProps) {
                     name="stack"
                     value={formData.stack}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                     placeholder="WordPress, React, etc."
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.regions}
                   </label>
                   <input
@@ -191,7 +187,7 @@ export default function Contact({ content }: ContactProps) {
                     name="regions"
                     value={formData.regions}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                     placeholder="EU, US, Global"
                   />
                 </div>
@@ -199,7 +195,7 @@ export default function Contact({ content }: ContactProps) {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.languages}
                   </label>
                   <input
@@ -207,20 +203,20 @@ export default function Contact({ content }: ContactProps) {
                     name="languages"
                     value={formData.languages}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                     placeholder="EN, DE, FR, ES"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {content.fields.cmp}
                   </label>
                   <select
                     name="cmp"
                     value={formData.cmp}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                   >
                     <option value="">Select CMP</option>
                     <option value="cookiebot">Cookiebot</option>
@@ -235,7 +231,7 @@ export default function Contact({ content }: ContactProps) {
 
               {/* Integrations */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                   {content.fields.integrations}
                 </label>
                 <input
@@ -243,14 +239,14 @@ export default function Contact({ content }: ContactProps) {
                   name="integrations"
                   value={formData.integrations}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors shadow-lg"
                   placeholder="GTM, GA4, Meta Pixel, etc."
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                   {content.fields.message}
                 </label>
                 <textarea
@@ -258,7 +254,7 @@ export default function Contact({ content }: ContactProps) {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none shadow-lg"
                   placeholder="Tell us about your project, current issues, or specific requirements..."
                 />
               </div>
@@ -266,66 +262,66 @@ export default function Contact({ content }: ContactProps) {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="btn-storybrand-primary w-full"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)] w-full justify-center"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                 {content.submit}
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
               </button>
             </form>
           </div>
 
-          {/* Contact Information - StoryBrand style */}
+          {/* Contact Information - Process Page style */}
           <div className="space-y-8">
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                 {content.contactInfo.title}
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue-600 rounded-xl flex-shrink-0">
-                    <Mail className="text-white w-6 h-6" />
+                  <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex-shrink-0 shadow-2xl">
+                    <Mail className="text-white w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{content.contactInfo.email}</h3>
-                    <p className="text-gray-600">info@cashandclash.com</p>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.contactInfo.email}</h3>
+                    <p className="text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">info@cashandclash.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-green-600 rounded-xl flex-shrink-0">
-                    <Clock className="text-white w-6 h-6" />
+                  <div className="p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex-shrink-0 shadow-2xl">
+                    <Clock className="text-white w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{content.contactInfo.workingHours}</h3>
-                    <p className="text-gray-600">CET 9:00-18:00</p>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.contactInfo.workingHours}</h3>
+                    <p className="text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">CET 9:00-18:00</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-600 rounded-xl flex-shrink-0">
-                    <MapPin className="text-white w-6 h-6" />
+                  <div className="p-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex-shrink-0 shadow-2xl">
+                    <MapPin className="text-white w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{content.contactInfo.location}</h3>
-                    <p className="text-gray-600">European Union</p>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.contactInfo.location}</h3>
+                    <p className="text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">European Union</p>
                   </div>
                 </div>
               </div>
             </div>
             
             {/* Response Time */}
-            <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
-              <div className="inline-flex p-4 bg-green-600 rounded-2xl mb-6">
-                <Rocket className="text-white w-8 h-8" />
+            <div className="bg-green-50 rounded-2xl p-8 border border-green-200 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
+              <div className="inline-flex p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-8 shadow-2xl">
+                <Rocket className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
               </div>
               
-              <h3 className="text-2xl font-bold text-green-900 mb-4">
+              <h3 className="text-3xl font-bold text-green-900 mb-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                 {content.contactInfo.responseTime}
               </h3>
               
-              <p className="text-green-800 leading-relaxed">
+              <p className="text-green-800 leading-relaxed text-lg font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                 {content.contactInfo.responseDescription}
               </p>
             </div>

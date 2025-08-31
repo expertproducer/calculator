@@ -18,16 +18,13 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
   const typeIcons = [ShoppingCart, Newspaper, Cloud]
 
   return (
-    <section id="cases" className="py-20 bg-white">
+    <section id="cases" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
-            📊 Case Studies
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
@@ -36,43 +33,43 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
           {content.items.map((caseItem, index) => {
             const TypeIcon = typeIcons[index % typeIcons.length]
             const colors = [
-              'bg-purple-600',
-              'bg-blue-600',
-              'bg-green-600'
+              'bg-gradient-to-br from-purple-500 to-purple-600',
+              'bg-gradient-to-br from-blue-500 to-blue-600',
+              'bg-gradient-to-br from-green-500 to-green-600'
             ]
             const color = colors[index % colors.length]
             
             return (
               <div 
                 key={index}
-                className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
               >
                 {/* Case Type Icon */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-3 ${color} rounded-xl shadow-lg`}>
-                    <TypeIcon className="text-white" size={24} />
+                <div className="flex items-center gap-4 mb-8">
+                  <div className={`p-4 ${color} rounded-2xl shadow-2xl`}>
+                    <TypeIcon className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 tracking-tight">
+                  <h3 className="text-2xl font-bold text-gray-900 tracking-tight drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {caseItem.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <div className="mb-6">
-                  <p className="text-gray-600 leading-relaxed">
+                <div className="mb-8">
+                  <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                     <span dangerouslySetInnerHTML={{ __html: formatSimpleText(caseItem.description) }} />
                   </p>
                 </div>
 
                 {/* Result */}
-                <div className="bg-green-50 rounded-xl p-6 border border-green-200">
-                  <div className="flex items-start gap-3 mb-3">
-                    <ArrowUp className="text-green-600 flex-shrink-0 mt-1" size={20} />
-                    <h4 className="font-bold text-green-800 text-sm">
+                <div className="bg-green-50 rounded-2xl p-6 border border-green-200 shadow-lg">
+                  <div className="flex items-start gap-4 mb-4">
+                    <ArrowUp className="text-green-600 flex-shrink-0 mt-1 w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+                    <h4 className="font-bold text-green-800 text-lg drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                       Resultado
                     </h4>
                   </div>
-                  <p className="text-green-700 text-sm leading-relaxed">
+                  <p className="text-green-700 text-lg leading-relaxed font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                     {caseItem.result}
                   </p>
                 </div>
@@ -81,24 +78,24 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
           })}
         </div>
 
-        <div className="text-center mt-12">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="text-center mt-16">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="/contact"
-                className="btn-storybrand-primary"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
               >
                 <span>{content.cta || 'Get Your Case Study'}</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
               
               <a
                 href="/services"
-                className="btn-storybrand-secondary"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-white text-gray-900 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
               >
                 <span>Learn More</span>
-                <ArrowUp className="w-5 h-5" />
+                <ArrowUp className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
               </a>
             </div>
         </div>

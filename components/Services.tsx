@@ -1,6 +1,7 @@
 "use client"
 
 import { Settings, Shield, Zap, FileText, BarChart3, CheckCircle, ArrowRight, Star, Calculator, Clock, Code, Search, Check, Info, Briefcase, Users, Target, Award, TrendingUp } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface ServicesProps {
   content: {
@@ -205,7 +206,7 @@ export default function Services({ content }: ServicesProps) {
               {content.packagesTitle || 'Service Packages'}
             </h2>
             <p className="text-lg font-medium text-gray-600 max-w-3xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              {content.packagesSubtitle || 'Choose the right solution for your business'}
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.packagesSubtitle || 'Choose the **right solution** for your business') }} />
             </p>
           </div>
           
@@ -220,7 +221,7 @@ export default function Services({ content }: ServicesProps) {
                     {pkg.name}
                   </div>
                   <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-                    {pkg.description}
+                    <span dangerouslySetInnerHTML={{ __html: formatSimpleText(pkg.description) }} />
                   </p>
                 </div>
               )
@@ -229,7 +230,7 @@ export default function Services({ content }: ServicesProps) {
           
           <div className="text-center mt-12">
             <p className="text-lg font-medium text-gray-600 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              {content.note}
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.note) }} />
             </p>
           </div>
         </div>
@@ -241,7 +242,7 @@ export default function Services({ content }: ServicesProps) {
               Ready to Get Started?
             </h3>
             <p className="text-lg font-medium text-gray-600 mb-8 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              Join hundreds of businesses that trust our services
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText('Join **hundreds of businesses** that trust our services') }} />
             </p>
           </div>
           

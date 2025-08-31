@@ -24,16 +24,13 @@ export default function Testimonials({ content }: TestimonialsProps) {
   }
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section id="testimonials" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-            ⭐ Customer Success Stories
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title || 'What Our Clients Say'}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle || 'Real results from real businesses') }} />
           </p>
         </div>
@@ -42,30 +39,30 @@ export default function Testimonials({ content }: TestimonialsProps) {
           {content.items.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-200 relative"
+              className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 relative"
             >
               {/* Quote Icon */}
-              <div className="absolute -top-4 left-8 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <Quote className="w-4 h-4 text-white" />
+              <div className="absolute -top-4 left-8 w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-2xl">
+                <Quote className="w-5 h-5 text-white drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
               </div>
               
               {/* Rating */}
-              <div className="flex items-center gap-1 mb-4">
+              <div className="flex items-center gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-blue-500 fill-current" />
+                  <Star key={i} className="w-6 h-6 text-blue-500 fill-current drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                 ))}
               </div>
               
               {/* Testimonial Text */}
-              <blockquote className="text-gray-700 leading-relaxed mb-6 italic">
+              <blockquote className="text-gray-700 leading-relaxed mb-8 italic text-lg font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                 "<span dangerouslySetInnerHTML={{ __html: formatSimpleText(testimonial.testimonial) }} />"
               </blockquote>
               
               {/* Result if available */}
               {testimonial.result && (
-                <div className="flex items-center gap-2 mb-6 p-3 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span className="text-sm font-semibold text-green-800">
+                <div className="flex items-center gap-3 mb-8 p-4 bg-green-50 rounded-2xl border border-green-200 shadow-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+                  <span className="text-lg font-bold text-green-800 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                     {testimonial.result}
                   </span>
                 </div>
@@ -73,7 +70,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
               
               {/* Author Info */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-2xl">
                   {testimonial.avatar ? (
                     <img 
                       src={testimonial.avatar} 
@@ -85,9 +82,9 @@ export default function Testimonials({ content }: TestimonialsProps) {
                   )}
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  <div className="text-sm text-blue-600 font-medium">{testimonial.company}</div>
+                  <div className="font-bold text-gray-900 text-lg drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{testimonial.name}</div>
+                  <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{testimonial.role}</div>
+                  <div className="text-lg text-blue-600 font-bold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{testimonial.company}</div>
                 </div>
               </div>
             </div>
@@ -95,23 +92,23 @@ export default function Testimonials({ content }: TestimonialsProps) {
         </div>
         
         {/* Trust Indicators */}
-        <div className="mt-16 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">500+</div>
-              <div className="text-sm text-gray-600">Happy Clients</div>
+        <div className="mt-20 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">500+</div>
+              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Happy Clients</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">4.9/5</div>
-              <div className="text-sm text-gray-600">Average Rating</div>
+            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">4.9/5</div>
+              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Average Rating</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">99%</div>
-              <div className="text-sm text-gray-600">Success Rate</div>
+            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">99%</div>
+              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Success Rate</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">24/7</div>
-              <div className="text-sm text-gray-600">Support</div>
+            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">24/7</div>
+              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Support</div>
             </div>
           </div>
         </div>

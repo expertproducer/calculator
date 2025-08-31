@@ -7,6 +7,11 @@ interface HeroProps {
     title: string
     subtitle: string
     description?: string
+    badge?: string
+    headline?: string
+    headlineBlue?: string
+    headlineGray?: string
+    solutionText?: string
     cta: {
       primary: string
       secondary: string
@@ -45,15 +50,15 @@ export default function Hero({ content }: HeroProps) {
             <div className="space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                ✓ GDPR Compliance Made Simple
+                {content.badge || '✓ GDPR Compliance Made Simple'}
               </div>
               
               {/* Main Headline - StoryBrand Style */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
-                Every Business Needs 
-                <span className="text-blue-600 block">Cookie Compliance</span>
+                {content.headline || 'Every Business Needs'} 
+                <span className="text-blue-600 block">{content.headlineBlue || 'Cookie Compliance'}</span>
                 <span className="text-gray-600 block text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
-                  That Actually Works!
+                  {content.headlineGray || 'That Actually Works!'}
                 </span>
               </h1>
               
@@ -196,7 +201,7 @@ export default function Hero({ content }: HeroProps) {
             <div className="text-center mt-12">
               <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <ShieldCheck className="w-5 h-5" />
-                <span className="font-semibold">We solve all these problems</span>
+                <span className="font-semibold">{content.solutionText || 'We solve all these problems'}</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,24 @@
 import { Home, Star, Briefcase, Check, Info, Calculator, Shield, ArrowRight } from 'lucide-react'
 
-export default function Pricing({ content }: { content: any }) {
+interface PricingProps {
+  content: {
+    title: string
+    subtitle?: string
+    badge?: string
+    plans: Array<{
+      name: string
+      features: string[]
+    }>
+    note: string
+  }
+}
+
+export default function Pricing({ content }: PricingProps) {
+  // Safety check
+  if (!content) {
+    return null
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -8,15 +26,15 @@ export default function Pricing({ content }: { content: any }) {
         {/* Header - StoryBrand style */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
-            💰 Transparent Pricing
+            {content.badge || '💰 Transparent Pricing'}
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
-            {content.title}
+            {content.title || 'Pricing'}
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Simple, transparent pricing. We charge only for implementation, you choose your CMP service plan.
+            {content.subtitle || 'Simple, transparent pricing. We charge only for implementation, you choose your CMP service plan.'}
           </p>
         </div>
 

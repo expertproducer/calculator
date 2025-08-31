@@ -31,6 +31,9 @@ interface ContactProps {
         items: string[]
       }
     }
+    badge: string
+    formTitle: string
+    formDescription: string
   }
 }
 
@@ -67,7 +70,7 @@ export default function Contact({ content }: ContactProps) {
         {/* Header - StoryBrand style */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
-            🚀 Ready to Get Started?
+            {content.badge || '🚀 Ready to Get Started?'}
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
@@ -105,10 +108,10 @@ export default function Contact({ content }: ContactProps) {
           <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Tell Us About Your Project
+                {content.formTitle || 'Tell Us About Your Project'}
               </h2>
               <p className="text-gray-600">
-                Fill out the form below and we'll get back to you within 24 hours
+                {content.formDescription || 'Fill out the form below and we\'ll get back to you within 24 hours'}
               </p>
             </div>
             

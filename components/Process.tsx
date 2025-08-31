@@ -5,6 +5,10 @@ interface ProcessProps {
     title: string
     subtitle?: string
     leadText?: string
+    badge?: string
+    methodologyTitle?: string
+    methodologySubtitle?: string
+    whyWorksTitle?: string
     steps: Array<{
       title: string
       description: string
@@ -21,6 +25,11 @@ const formatText = (text: string) => {
 }
 
 export default function Process({ content }: ProcessProps) {
+  // Safety check
+  if (!content) {
+    return null
+  }
+
   return (
     <section id="process" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -28,11 +37,11 @@ export default function Process({ content }: ProcessProps) {
         {/* Header - StoryBrand style */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-            ⚡ Our Process
+            {content.badge || '⚡ Our Process'}
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
-            {content.title}
+            {content.title || 'Our Process'}
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -50,11 +59,11 @@ export default function Process({ content }: ProcessProps) {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our Implementation Methodology
+                  {content.methodologyTitle || 'Our Implementation Methodology'}
                 </h2>
                 
                 <p className="text-lg text-gray-600 mb-6">
-                  Designed to minimize business disruption while ensuring comprehensive GDPR compliance
+                  {content.methodologySubtitle || 'Designed to minimize business disruption while ensuring comprehensive GDPR compliance'}
                 </p>
               </div>
               
@@ -69,7 +78,7 @@ export default function Process({ content }: ProcessProps) {
         <div className="max-w-4xl mx-auto mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Our Process Works
+              {content.whyWorksTitle || 'Why Our Process Works'}
             </h2>
             <p className="text-xl text-gray-600">
               Structured approach that guarantees success and compliance

@@ -21,7 +21,7 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
     functional: false
   })
 
-  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'
+  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as 'en' | 'de' | 'fr' | 'es'
   
   const translations = {
     en: {
@@ -42,6 +42,25 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
       analyticsDesc: "Help us understand how visitors interact with our website by collecting and reporting information anonymously.",
       marketingDesc: "Used to track visitors across websites to display relevant and engaging advertisements.",
       functionalDesc: "Enable enhanced functionality and personalization such as chat support and social media integration."
+    },
+    es: {
+      title: "Usamos cookies para mejorar tu experiencia",
+      description: "Usamos cookies y tecnologías similares para personalizar contenido, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre tu uso del sitio con nuestros socios de redes sociales, publicidad y análisis.",
+      acceptAll: "Aceptar Todo",
+      decline: "Rechazar",
+      preferences: "Preferencias",
+      preferencesTitle: "Preferencias de Cookies",
+      essential: "Cookies Esenciales",
+      analytics: "Cookies Analíticas",
+      marketing: "Cookies de Marketing",
+      functional: "Cookies Funcionales",
+      alwaysActive: "Siempre Activas",
+      savePreferences: "Guardar Preferencias",
+      cancel: "Cancelar",
+      essentialDesc: "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
+      analyticsDesc: "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando y reportando información de forma anónima.",
+      marketingDesc: "Se usan para rastrear visitantes en sitios web para mostrar anuncios relevantes y atractivos.",
+      functionalDesc: "Permiten funcionalidad mejorada y personalización como soporte de chat e integración de redes sociales."
     },
     de: {
       title: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern",

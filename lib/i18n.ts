@@ -43,6 +43,11 @@ export function getContent(locale: Locale) {
       hero: {
         title: 'CMP Setup\nC&C CookieComply',
         subtitle: 'We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.',
+        badge: '✓ GDPR Compliance Made Simple',
+        headline: 'Every Business Needs',
+        headlineBlue: 'Cookie Compliance',
+        headlineGray: 'That Actually Works!',
+        solutionText: 'We solve all these problems',
         cta: {
           primary: 'Fix my banner',
           secondary: 'Free quick check'
@@ -60,6 +65,7 @@ export function getContent(locale: Locale) {
       whyImportant: {
         title: 'Why Cookie Consent Management Matters',
         subtitle: 'As global privacy regulations become more stringent, businesses face challenges in maintaining compliance while delivering exceptional user experiences.',
+        expertiseTitle: 'Our Expertise Makes the Difference',
         points: [
           'Comprehensive compliance with GDPR, CCPA, and emerging privacy laws',
           'Risk mitigation and penalty avoidance through proactive measures',
@@ -71,6 +77,7 @@ export function getContent(locale: Locale) {
       services: {
         title: 'GDPR Services: CMP Setup & Cookie Banner Fixes',
         subtitle: 'Comprehensive solutions for full GDPR compliance',
+        approachTitle: 'Our Approach',
         leadText: 'Cookie consent is not just a "banner for the sake of a banner", but a managed process: CMP (Cookiebot / Iubenda / Usercentrics / Termly) displays the first layer with equal Accept / Decline / Preferences buttons, and then according to your choice, only those tag categories for which permission has been granted are enabled; thus all non-essential scripts are blocked before consent and "self-starting" analytics and advertising disappear. Preference Center gives users transparent category descriptions and the ability to change their choice at any time, while providing stable consent events for technology: we pass signals to GTM/GA4/Ads/Meta so that triggers fire strictly after permission and data in reports remains legally clean. In parallel, we organize Privacy/Cookie Policy, add a permanent "Cookie Preferences" link in the footer, configure languages and geo-rules (one domain - several locales without duplicating tags). If you have multiple sites, we include cross-domain consent consolidation so users don\'t see repeated requests unnecessarily. All actions are recorded in consent logs with export capability for DPO/audit, and quality is ensured through testing of key scenarios: first visit, consent change and withdrawal, settings restoration. The result is predictable banner behavior, correct blocking before consent, clean marketing tool data, and clear reliance on documentation and logs.',
         sections: [
           {
@@ -148,6 +155,9 @@ export function getContent(locale: Locale) {
       process: {
         title: 'Implementation Process: From Audit to Validation',
         subtitle: 'Our systematic 5-step approach ensures seamless CMP deployment with minimal disruption to your business operations.',
+        methodologyTitle: 'Our Implementation Methodology',
+        methodologySubtitle: 'Designed to minimize business disruption while ensuring comprehensive GDPR compliance',
+        whyWorksTitle: 'Why Our Process Works',
         leadText: 'Our **implementation methodology** is designed to minimize business disruption while ensuring comprehensive GDPR compliance. We begin with a thorough **legal requirements analysis** to understand your specific regulatory landscape, then proceed through **phased deployment** that allows for testing and validation at each stage. The process includes **stakeholder collaboration** with your legal, marketing, and technical teams, ensuring alignment across all departments. We implement **consent blocking** before any user interaction, configure **GTM triggers** based on granular consent categories, and provide **comprehensive documentation** for ongoing maintenance. Our approach guarantees that your CMP deployment is not only compliant but also optimized for user experience and data quality.',
         steps: [
           {
@@ -196,51 +206,40 @@ export function getContent(locale: Locale) {
         title: 'Supported Cookie Management Platforms',
         subtitle: 'We work with all major CMP providers to deliver the best solution for your specific needs.',
         items: [
-          {
-            name: 'Cookiebot',
-            description: 'Enterprise-grade solution with advanced consent modes and comprehensive compliance features'
-          },
-          {
-            name: 'OneTrust',
-            description: 'Industry-leading platform for complex multi-regional compliance requirements'
-          },
-          {
-            name: 'Iubenda',
-            description: 'User-friendly platform ideal for small to medium-sized businesses'
-          },
-          {
-            name: 'Usercentrics',
-            description: 'European-focused solution with strong GDPR compliance capabilities'
-          },
-          {
-            name: 'Termly',
-            description: 'Cost-effective option with automated scanning and policy generation'
-          },
-          {
-            name: 'CookieYes',
-            description: 'Flexible platform with extensive customization options'
-          }
-        ]
+          'WordPress',
+          'Shopify',
+          'Wix',
+          'Squarespace',
+          'React',
+          'Vue.js',
+          'Angular',
+          'Laravel',
+          'Django',
+          'Node.js'
+        ],
+        note: 'Don\'t see your preferred CMP? We can work with any Cookie Management Platform to ensure your compliance needs are met.'
       },
       cases: {
         title: 'Case Studies',
-        cards: [
+        subtitle: 'Real results from our clients',
+        items: [
           {
             title: 'E-commerce Audit (DE)',
-            before: 'Accept-only banner, scripts loaded immediately',
-            after: 'Accept/Decline/Preferences, strict blocking, improved conversion'
+            description: 'Accept-only banner, scripts loaded immediately',
+            result: 'Accept/Decline/Preferences, strict blocking, improved conversion'
           },
           {
             title: 'Media Compliance (FR)',
-            before: 'Third-party cookies before consent, no preference center',
-            after: 'Auto-blocking, preference center, FR/EN localization'
+            description: 'Third-party cookies before consent, no preference center',
+            result: 'Auto-blocking, preference center, FR/EN localization'
           },
           {
             title: 'SaaS Platform (EU)',
-            before: 'Inconsistent logic across subdomains',
-            after: 'Unified CMP, consistent categories, centralized logging'
+            description: 'Inconsistent logic across subdomains',
+            result: 'Unified CMP, consistent categories, centralized logging'
           }
-        ]
+        ],
+        cta: 'Get Your Case Study'
       },
       pricing: {
         title: 'Pricing Plans',
@@ -381,6 +380,11 @@ export function getContent(locale: Locale) {
       hero: {
         title: 'CMP Einrichtung\nC&C CookieComply',
         subtitle: 'Wir richten CMP ein, reparieren Cookie-Banner und blockieren Tracker vor der Zustimmung.',
+        badge: '✓ DSGVO-Compliance Einfach Gemacht',
+        headline: 'Jedes Unternehmen Braucht',
+        headlineBlue: 'Cookie-Compliance',
+        headlineGray: 'Die Wirklich Funktioniert!',
+        solutionText: 'Wir lösen all diese Probleme',
         cta: {
           primary: 'Meinen Banner reparieren',
           secondary: 'Kostenlose Schnellprüfung'
@@ -398,6 +402,7 @@ export function getContent(locale: Locale) {
       whyImportant: {
         title: 'Warum Cookie-Zustimmungsmanagement wichtig ist',
         subtitle: 'Da globale Datenschutzbestimmungen strenger werden, stehen Unternehmen vor Herausforderungen bei der Einhaltung der Compliance und der Bereitstellung außergewöhnlicher Benutzererfahrungen.',
+        expertiseTitle: 'Unsere Expertise macht den Unterschied',
         points: [
           'Umfassende Compliance mit DSGVO, CCPA und neuen Datenschutzgesetzen',
           'Risikominimierung und Vermeidung von Strafen durch proaktive Maßnahmen',
@@ -409,12 +414,13 @@ export function getContent(locale: Locale) {
       services: {
         title: 'DSGVO Services: CMP Einrichtung & Cookie-Banner Reparaturen',
         subtitle: 'Umfassende Lösungen für vollständige DSGVO-Compliance',
+        approachTitle: 'Unser Ansatz',
         leadText: 'Cookie-Zustimmung ist nicht nur ein "Banner um des Banners willen", sondern ein verwalteter Prozess: CMP (Cookiebot / Iubenda / Usercentrics / Termly) zeigt die erste Ebene mit gleichberechtigten Accept / Decline / Preferences Schaltflächen an, und dann werden je nach Ihrer Wahl nur die Tag-Kategorien aktiviert, für die eine Erlaubnis erteilt wurde; dadurch werden alle nicht-essentiellen Skripte vor der Zustimmung blockiert und "selbststartende" Analysen und Werbung verschwinden. Das Preference Center gibt Benutzern transparente Kategoriebeschreibungen und die Möglichkeit, ihre Wahl jederzeit zu ändern, während es der Technik stabile Zustimmungsereignisse liefert: Wir leiten Signale an GTM/GA4/Ads/Meta weiter, damit Trigger streng nach der Erlaubnis ausgelöst werden und Daten in Berichten rechtlich sauber bleiben. Parallel dazu organisieren wir Privacy/Cookie Policy, fügen einen permanenten "Cookie Preferences" Link im Footer hinzu, konfigurieren Sprachen und Geo-Regeln (eine Domain - mehrere Lokalisierungen ohne Duplizierung von Tags). Wenn Sie mehrere Websites haben, schließen wir die domänenübergreifende Zustimmungskonsolidierung ein, damit Benutzer keine wiederholten Anfragen unnötigerweise sehen. Alle Aktionen werden in Zustimmungsprotokollen mit Exportmöglichkeit für DPO/Audit aufgezeichnet, und die Qualität wird durch Tests von Schlüsselszenarien sichergestellt: erster Besuch, Zustimmungsänderung und -widerruf, Einstellungs-Wiederherstellung. Das Ergebnis ist vorhersagbares Banner-Verhalten, korrekte Blockierung vor der Zustimmung, saubere Marketing-Tool-Daten und klare Abhängigkeit von Dokumentation und Protokollen.',
         sections: [
           {
             title: 'Wann Zustimmung obligatorisch ist und was genau erforderlich ist',
             content: [
-              'Vor jedem Lesen/Schreiben von Informationen auf dem Gerät (Cookie, localStorage, SDK) ist eine **vorherige** Zustimmung erforderlich, außer für streng notwendige Cookies. Dies folgt aus Art. 5(3) ePrivacy-Richtlinie; Kriterien für gültige Zustimmung - gemäß DSGVO und EDPB-Richtlinien.',
+              'Vor jedem Lesen/Schreiben von Informationen auf dem Gerät (cookie, localStorage, SDK) ist eine **vorherige** Zustimmung erforderlich, außer für streng notwendige Cookies. Dies folgt aus Art. 5(3) ePrivacy-Richtlinie; Kriterien für gültige Zustimmung - gemäß DSGVO und EDPB-Richtlinien.',
               'Das **Accountability**-Prinzip: Der Betreiber muss in der Lage sein, Compliance und die Tatsache der Zustimmung zu **beweisen**.',
               'In Frankreich verlangt der CNIL-Regulator, dass die Ablehnung **genauso einfach** ist wie die Zustimmung (Schaltfläche "Alle ablehnen"/"Ohne Annahme fortfahren" auf der ersten Ebene).',
               'Bei Verstößen sind erhebliche Geldstrafen nach Art. 83 DSGVO möglich: bis zu **20 Millionen € oder 4%** des weltweiten Umsatzes (je nachdem, was höher ist).'
@@ -486,6 +492,9 @@ export function getContent(locale: Locale) {
       process: {
         title: 'Implementierungsprozess: Vom Audit zur Validierung',
         subtitle: 'Unser systematischer 5-Schritt-Ansatz gewährleistet eine nahtlose CMP-Bereitstellung mit minimalen Störungen für Ihre Geschäftsabläufe.',
+        methodologyTitle: 'Unsere Implementierungsmethodik',
+        methodologySubtitle: 'Darauf ausgelegt, Geschäftsstörungen zu minimieren und gleichzeitig umfassende DSGVO-Compliance zu gewährleisten',
+        whyWorksTitle: 'Warum unser Prozess funktioniert',
         leadText: 'Unsere **Implementierungsmethodik** ist darauf ausgelegt, Geschäftsstörungen zu minimieren und gleichzeitig umfassende DSGVO-Compliance zu gewährleisten. Wir beginnen mit einer gründlichen **Rechtsanforderungsanalyse**, um Ihre spezifische regulatorische Landschaft zu verstehen, und gehen dann durch **schrittweise Bereitstellung**, die Tests und Validierung in jeder Phase ermöglicht. Der Prozess umfasst **Stakeholder-Zusammenarbeit** mit Ihren Rechts-, Marketing- und Technikteams, um die Ausrichtung aller Abteilungen sicherzustellen. Wir implementieren **Zustimmungsblockierung** vor jeder Benutzerinteraktion, konfigurieren **GTM-Trigger** basierend auf granularen Zustimmungskategorien und stellen **umfassende Dokumentation** für laufende Wartung bereit. Unser Ansatz garantiert, dass Ihre CMP-Bereitstellung nicht nur konform ist, sondern auch für Benutzererfahrung und Datenqualität optimiert ist.',
         steps: [
           {
@@ -562,23 +571,25 @@ export function getContent(locale: Locale) {
       },
       cases: {
         title: 'Fallstudien',
-        cards: [
+        subtitle: 'Echte Ergebnisse unserer Kunden',
+        items: [
           {
             title: 'E-Commerce Audit (DE)',
-            before: 'Nur-Akzeptieren-Banner, Skripte sofort geladen',
-            after: 'Akzeptieren/Ablehnen/Einstellungen, strikte Blockierung, verbesserte Konversion'
+            description: 'Nur-Akzeptieren-Banner, Skripte sofort geladen',
+            result: 'Akzeptieren/Ablehnen/Einstellungen, strikte Blockierung, verbesserte Konversion'
           },
           {
             title: 'Medien Compliance (DE)',
-            before: 'Third-Party-Cookies vor Zustimmung, kein Einstellungszentrum',
-            after: 'Auto-Blockierung, Einstellungszentrum, DE/EN-Lokalisierung'
+            description: 'Third-Party-Cookies vor Zustimmung, kein Einstellungszentrum',
+            result: 'Auto-Blockierung, Einstellungszentrum, DE/EN-Lokalisierung'
           },
           {
             title: 'SaaS Plattform (EU)',
-            before: 'Inkonsistente Logik über Subdomains',
-            after: 'Einheitliches CMP, konsistente Kategorien, zentrale Protokollierung'
+            description: 'Inkonsistente Logik über Subdomains',
+            result: 'Einheitliches CMP, konsistente Kategorien, zentrale Protokollierung'
           }
-        ]
+        ],
+        cta: 'Holen Sie sich Ihre Fallstudie'
       },
       pricing: {
         title: 'Preispläne',
@@ -719,6 +730,11 @@ export function getContent(locale: Locale) {
       hero: {
         title: 'Mise en place CMP\nC&C CookieComply',
         subtitle: 'Nous configurons CMP et corrigeons les bannières de cookies.',
+        badge: '✓ Conformité RGPD Simplifiée',
+        headline: 'Chaque Entreprise A Besoin',
+        headlineBlue: 'Conformité Cookies',
+        headlineGray: 'Qui Fonctionne Vraiment!',
+        solutionText: 'Nous résolvons tous ces problèmes',
         cta: {
           primary: 'Corriger ma bannière',
           secondary: 'Vérification gratuite'
@@ -736,6 +752,7 @@ export function getContent(locale: Locale) {
       whyImportant: {
         title: 'Pourquoi la gestion du consentement aux cookies est importante',
         subtitle: 'Alors que les réglementations mondiales de confidentialité deviennent plus strictes, les entreprises font face à des défis pour maintenir la conformité tout en offrant des expériences utilisateur exceptionnelles.',
+        expertiseTitle: 'Notre Expertise fait la Différence',
         points: [
           'Conformité complète avec RGPD, CCPA et nouvelles lois de confidentialité',
           'Atténuation des risques et évitement des pénalités par des mesures proactives',
@@ -747,6 +764,7 @@ export function getContent(locale: Locale) {
       services: {
         title: 'Services RGPD: Configuration CMP & Corrections de Bannières',
         subtitle: 'Solutions complètes pour une conformité RGPD totale',
+        approachTitle: 'Notre Approche',
         leadText: 'Le consentement aux cookies n\'est pas juste une "bannière pour la bannière", mais un processus géré : CMP (Cookiebot / Iubenda / Usercentrics / Termly) affiche la première couche avec des boutons Accept / Decline / Preferences égaux, et ensuite selon votre choix, seules les catégories de tags pour lesquelles l\'autorisation a été accordée sont activées ; ainsi tous les scripts non-essentiels sont bloqués avant le consentement et les analyses et publicités "auto-démarrage" disparaissent. Le Centre de Préférences donne aux utilisateurs des descriptions transparentes des catégories et la possibilité de changer leur choix à tout moment, tout en fournissant des événements de consentement stables pour la technologie : nous transmettons des signaux à GTM/GA4/Ads/Meta pour que les déclencheurs se déclenchent strictement après autorisation et que les données dans les rapports restent juridiquement propres. En parallèle, nous organisons la Politique de Confidentialité/Cookies, ajoutons un lien permanent "Préférences de Cookies" dans le pied de page, configurons les langues et règles géographiques (un domaine - plusieurs localisations sans duplication de tags). Si vous avez plusieurs sites, nous incluons la consolidation du consentement inter-domaines pour que les utilisateurs ne voient pas de demandes répétées inutilement. Toutes les actions sont enregistrées dans les journaux de consentement avec capacité d\'export pour DPO/audit, et la qualité est assurée par des tests de scénarios clés : première visite, changement et retrait du consentement, restauration des paramètres. Le résultat est un comportement de bannière prévisible, un blocage correct avant consentement, des données d\'outils marketing propres et une dépendance claire à la documentation et aux journaux.',
         sections: [
           {
@@ -824,6 +842,9 @@ export function getContent(locale: Locale) {
       process: {
         title: 'Processus d\'implémentation: De l\'audit à la validation',
         subtitle: 'Notre approche systématique en 5 étapes assure un déploiement CMP transparent avec une perturbation minimale de vos opérations commerciales.',
+        methodologyTitle: 'Notre Méthodologie d\'Implémentation',
+        methodologySubtitle: 'Conçue pour minimiser les perturbations commerciales tout en assurant une conformité RGPD complète',
+        whyWorksTitle: 'Pourquoi notre processus fonctionne',
         leadText: 'Notre **méthodologie d\'implémentation** est conçue pour minimiser les perturbations commerciales tout en assurant une conformité RGPD complète. Nous commençons par une **analyse approfondie des exigences légales** pour comprendre votre paysage réglementaire spécifique, puis procédons par **déploiement par phases** qui permet des tests et une validation à chaque étape. Le processus inclut une **collaboration des parties prenantes** avec vos équipes juridiques, marketing et techniques, assurant l\'alignement de tous les départements. Nous implémentons le **blocage du consentement** avant toute interaction utilisateur, configurons les **déclencheurs GTM** basés sur des catégories de consentement granulaires, et fournissons une **documentation complète** pour la maintenance continue. Notre approche garantit que votre déploiement CMP est non seulement conforme, mais aussi optimisé pour l\'expérience utilisateur et la qualité des données.',
         steps: [
           {
@@ -872,51 +893,40 @@ export function getContent(locale: Locale) {
         title: 'Plateformes de gestion des cookies supportées',
         subtitle: 'Nous travaillons avec tous les principaux fournisseurs CMP pour offrir la meilleure solution pour vos besoins spécifiques.',
         items: [
-          {
-            name: 'Cookiebot',
-            description: 'Solution de niveau entreprise avec modes de consentement avancés et fonctionnalités de conformité complètes'
-          },
-          {
-            name: 'OneTrust',
-            description: 'Plateforme leader de l\'industrie pour les exigences de conformité multi-régionales complexes'
-          },
-          {
-            name: 'Iubenda',
-            description: 'Plateforme conviviale idéale pour les petites et moyennes entreprises'
-          },
-          {
-            name: 'Usercentrics',
-            description: 'Solution axée sur l\'Europe avec de fortes capacités de conformité RGPD'
-          },
-          {
-            name: 'Termly',
-            description: 'Option rentable avec scan automatisé et génération de politiques'
-          },
-          {
-            name: 'CookieYes',
-            description: 'Plateforme flexible avec de nombreuses options de personnalisation'
-          }
-        ]
+          'WordPress',
+          'Shopify',
+          'Wix',
+          'Squarespace',
+          'React',
+          'Vue.js',
+          'Angular',
+          'Laravel',
+          'Django',
+          'Node.js'
+        ],
+        note: 'Vous ne voyez pas votre CMP préféré ? Nous pouvons travailler avec n\'importe quelle plateforme de gestion des cookies pour assurer que vos besoins de conformité sont satisfaits.'
       },
       cases: {
         title: 'Études de cas',
-        cards: [
+        subtitle: 'Résultats réels de nos clients',
+        items: [
           {
             title: 'Audit E-commerce (FR)',
-            before: 'Bannière acceptation uniquement, scripts chargés immédiatement',
-            after: 'Accepter/Refuser/Préférences, blocage strict, conversion améliorée'
+            description: 'Bannière acceptation uniquement, scripts chargés immédiatement',
+            result: 'Accepter/Refuser/Préférences, blocage strict, conversion améliorée'
           },
           {
             title: 'Conformité Médias (FR)',
-            before: 'Cookies tiers avant consentement, pas de centre de préférences',
-            after: 'Blocage automatique, centre de préférences, localisation FR/EN'
+            description: 'Cookies tiers avant consentement, pas de centre de préférences',
+            result: 'Blocage automatique, centre de préférences, localisation FR/EN'
           },
           {
             title: 'Plateforme SaaS (UE)',
-            before: 'Logique incohérente sur les sous-domaines',
-            after: 'CMP unifié, catégories cohérentes, journalisation centralisée'
+            description: 'Logique incohérente sur les sous-domaines',
+            result: 'CMP unifié, catégories cohérentes, journalisation centralisée'
           }
-        ]
+        ],
+        cta: 'Obtenez votre étude de cas'
       },
       pricing: {
         title: 'Plans tarifaires',
@@ -1057,9 +1067,271 @@ export function getContent(locale: Locale) {
       hero: {
         title: 'Configuración CMP\nC&C CookieComply',
         subtitle: 'Configuramos CMP y arreglamos banners de cookies.',
+        badge: '✓ Cumplimiento GDPR Simplificado',
+        headline: 'Todo Negocio Necesita',
+        headlineBlue: 'Cumplimiento de Cookies',
+        headlineGray: '¡Que Realmente Funcione!',
+        solutionText: 'Resolvemos todos estos problemas',
         cta: {
           primary: 'Arreglar mi banner',
           secondary: 'Verificación gratuita'
+        }
+      },
+      problem: {
+        title: 'Problemas Comunes GDPR y Banners de Cookies',
+        points: [
+          'Banners de cookies no conformes',
+          'Scripts cargando antes del consentimiento',
+          'Registros de consentimiento faltantes',
+          'Mala experiencia de usuario'
+        ]
+      },
+      whyImportant: {
+        title: 'Por Qué Importa la Gestión del Consentimiento de Cookies',
+        subtitle: 'A medida que las regulaciones de privacidad global se vuelven más estrictas, las empresas enfrentan desafíos para mantener el cumplimiento mientras brindan experiencias excepcionales a los usuarios.',
+        badge: '⚡ Por Qué Importa',
+        expertiseTitle: 'Nuestra Experiencia Marca la Diferencia',
+        points: [
+          'Cumplimiento integral con GDPR, CCPA y leyes de privacidad emergentes',
+          'Mitigación de riesgos y evitación de sanciones a través de medidas proactivas',
+          'Mayor confianza del usuario y transparencia en el manejo de datos',
+          'Funcionalidad del sitio web mantenida sin sacrificar análisis'
+        ],
+        description: 'Nuestra experiencia cierra la brecha entre los requisitos legales y la implementación técnica, asegurando que su sitio web no solo cumpla con los estándares actuales sino que también proporcione información significativa y respetuosa de la privacidad sobre el comportamiento del usuario.'
+      },
+      services: {
+        title: 'Servicios GDPR: Configuración CMP y Reparación de Banners de Cookies',
+        subtitle: 'Soluciones integrales para cumplimiento completo de GDPR',
+        badge: '⚙️ Nuestros Servicios',
+        approachTitle: 'Nuestro Enfoque',
+        leadText: 'El consentimiento de cookies no es solo un "banner por el bien del banner", sino un proceso gestionado: CMP (Cookiebot / Iubenda / Usercentrics / Termly) muestra la primera capa con botones iguales de Aceptar / Rechazar / Preferencias, y luego según su elección, solo se habilitan aquellas categorías de tags para las que se ha otorgado permiso.',
+        sections: [
+          {
+            title: 'Cuándo el consentimiento es obligatorio y qué se requiere exactamente',
+            content: [
+              'Antes de cualquier lectura/escritura de información en el dispositivo (cookie, localStorage, SDK), se requiere consentimiento **previo**, excepto para cookies estrictamente necesarias.',
+              'El principio de **responsabilidad**: el operador debe poder **probar** la conformidad y el hecho del consentimiento.',
+              'En Francia, el regulador CNIL exige que la negativa sea **tan simple** que el consentimiento (botón "Rechazar todo"/"Continuar sin aceptación" en la primera capa).',
+              'Para violaciones, son posibles sanciones sustanciales bajo Art. 83 GDPR: hasta **20 millones € o 4%** del chiffre d\'affaires mundial (lo que sea mayor).'
+            ]
+          }
+        ],
+        packages: [
+          {
+            name: 'Básico',
+            description: 'reparación de banner + bloqueo básico + redacción'
+          },
+          {
+            name: 'Pro', 
+            description: 'CMP completo, disparadores GTM, escaneo antes/después, políticas'
+          },
+          {
+            name: 'Negocio',
+            description: 'multi-dominios/multi-localizaciones, eventos personalizados, informes white-label'
+          }
+        ],
+        note: 'precios y SLA exactos - después del diagnóstico expreso'
+      },
+      process: {
+        title: 'Nuestro Proceso de Implementación',
+        subtitle: 'Implementación rápida y profesional en 4 pasos',
+        badge: '⚡ Nuestro Proceso',
+        methodologyTitle: 'Nuestra Metodología de Implementación',
+        methodologySubtitle: 'Diseñada para minimizar la interrupción del negocio mientras garantiza el cumplimiento integral de GDPR',
+        whyWorksTitle: 'Por Qué Nuestro Proceso Funciona',
+        leadText: 'Nuestro proceso sistemático garantiza una implementación fluida con mínima interrupción.',
+        steps: [
+          {
+            title: 'Auditoría',
+            description: 'Análisis completo de su sitio web y configuración actual'
+          },
+          {
+            title: 'Configuración',
+            description: 'Implementación de CMP y configuración de bloqueo'
+          },
+          {
+            title: 'Pruebas',
+            description: 'Verificación exhaustiva de todos los escenarios'
+          },
+          {
+            title: 'Lanzamiento',
+            description: 'Despliegue en producción y capacitación del equipo'
+          }
+        ]
+      },
+      deliverables: {
+        title: 'Qué Recibirá',
+        items: [
+          'CMP completamente configurado',
+          'Banner de cookies conforme',
+          'Centro de preferencias',
+          'Páginas de política',
+          'Guía de mantenimiento'
+        ]
+      },
+      benefits: {
+        title: 'Por Qué Elegirnos',
+        subtitle: 'Ventajas claras para su negocio',
+        badge: '⭐ Beneficios',
+        items: [
+          {
+            title: 'Solución de extremo a extremo',
+            description: 'Configuración completa desde la auditoría hasta la implementación'
+          },
+          {
+            title: 'Sin patrones oscuros',
+            description: 'Banners transparentes que respetan la elección del usuario'
+          },
+          {
+            title: 'Integración GTM apropiada',
+            description: 'Configuración correcta de triggers y variables'
+          },
+          {
+            title: 'Soporte multilingüe',
+            description: 'Configuración para múltiples idiomas y regiones'
+          }
+        ]
+      },
+      pricing: {
+        title: 'Precios Transparentes',
+        subtitle: 'Precios simples y transparentes. Solo cobramos por la implementación, usted elige su plan de servicio CMP.',
+        badge: '💰 Precios Transparentes',
+        plans: [
+          {
+            name: 'Plan Básico',
+            features: ['Reparación de banner', 'Optimización de copia', 'Bloqueo básico']
+          },
+          {
+            name: 'Plan Pro',
+            features: ['Configuración CMP', 'Integración GTM', 'Informe de escaneo', 'Páginas de política']
+          },
+          {
+            name: 'Plan de Negocio',
+            features: ['Multi-dominios', 'Migración', 'Eventos personalizados', 'Informe white-label']
+          }
+        ],
+        note: 'Precios y plazos por solicitud (dependen de la stack, del tráfico, de las regiones)'
+      },
+      finalCTA: {
+        badge: '🚀 ¿Listo para Empezar?',
+        title: '¿Listo para cumplir?',
+        subtitle: 'Transforme sus banners de cookies de responsabilidad legal en cumplimiento amigable para el usuario. Sin patrones oscuros, solo implementación limpia.',
+        cta: {
+          primary: 'Arreglar mi banner',
+          secondary: 'Verificación gratuita'
+        },
+        responseTime: 'Respondemos en 24 horas'
+      },
+      platforms: {
+        title: 'Plataformas Soportadas',
+        subtitle: 'Trabajamos con todas las tecnologías principales',
+        items: [
+          'WordPress',
+          'Shopify',
+          'Wix',
+          'Squarespace',
+          'React',
+          'Vue.js',
+          'Angular',
+          'Laravel',
+          'Django',
+          'Node.js'
+        ],
+        note: '¿No ve su CMP preferido? Podemos trabajar con cualquier plataforma de gestión de cookies para asegurar que se cumplan sus necesidades de cumplimiento.'
+      },
+      cases: {
+        title: 'Casos de Estudio',
+        subtitle: 'Proyectos exitosos de nuestros clientes',
+        items: [
+          {
+            title: 'E-commerce Europeo',
+            description: 'Implementación CMP para tienda online con 100k+ visitantes mensuales',
+            result: 'Cumplimiento GDPR completo, 0 sanciones'
+          },
+          {
+            title: 'SaaS B2B',
+            description: 'Migración de banner simple a CMP completo',
+            result: 'Mejora del 40% en tasas de consentimiento'
+          },
+          {
+            title: 'Medios Digitales',
+            description: 'Configuración multi-dominio para red de sitios web',
+            result: 'Consentimiento consolidado, UX mejorada'
+          }
+        ],
+        cta: 'Obtener Su Caso de Estudio'
+      },
+      faq: {
+        title: 'Preguntas Frecuentes',
+        subtitle: 'Respuestas a las preguntas más comunes',
+        badge: '❓ FAQ',
+        whyQuestionsTitle: 'Por Qué Importan Estas Preguntas',
+        whyQuestionsDescription: 'Entender las preguntas correctas le ayuda a tomar decisiones informadas sobre su estrategia de cumplimiento GDPR',
+        complianceTitle: 'Cumplimiento',
+        complianceDescription: 'Entender los requisitos GDPR y evitar sanciones',
+        implementationTitle: 'Implementación',
+        implementationDescription: 'Configuración técnica y mejores prácticas de integración',
+        knowledgeTitle: 'Conocimiento',
+        knowledgeDescription: 'Tomar decisiones informadas sobre su estrategia CMP',
+        cantFindAnswer: '¿No encuentra su respuesta?',
+        teamReadyToHelp: 'Nuestro equipo está listo para ayudar con cualquier pregunta específica sobre sus necesidades de cumplimiento GDPR.',
+        items: [
+          {
+            question: '¿Cuánto tiempo toma la implementación?',
+            answer: 'Típicamente 2-4 semanas dependiendo de la complejidad y las integraciones requeridas.'
+          },
+          {
+            question: '¿Puedo mantener mi diseño actual de banner?',
+            answer: 'Sí, adaptamos los widgets CMP a sus pautas de marca mientras mantenemos el cumplimiento.'
+          },
+          {
+            question: '¿Qué pasa si no implemento gestión de consentimiento?',
+            answer: 'La no conformidad puede resultar en sanciones de hasta €20 millones o 4% del volumen de negocios anual global bajo GDPR.'
+          },
+          {
+            question: '¿Ofrecen soporte continuo después de la implementación?',
+            answer: 'Sí, ofrecemos servicios de mantenimiento, actualizaciones y monitoreo de cumplimiento.'
+          },
+          {
+            question: '¿Cómo se diferencia un CMP de un banner simple?',
+            answer: 'Un CMP registra consentimiento por categoría y controla la carga de scripts antes del consentimiento, asegurando cumplimiento GDPR.'
+          }
+        ]
+      },
+      contact: {
+        title: '¿Listo para Empezar?',
+        subtitle: 'Contáctenos para una consulta gratuita y propuesta personalizada',
+        badge: '🚀 ¿Listo para Empezar?',
+        formTitle: 'Cuéntenos Sobre Su Proyecto',
+        formDescription: 'Complete el formulario a continuación y le responderemos en 24 horas',
+        fields: {
+          name: 'Nombre',
+          email: 'Email',
+          url: 'URL del sitio web',
+          stack: 'Stack tecnológico',
+          regions: 'Regiones objetivo',
+          languages: 'Idiomas',
+          cmp: 'CMP actual',
+          integrations: 'Integraciones',
+          message: 'Mensaje'
+        },
+        submit: 'Enviar solicitud',
+        contactInfo: {
+          title: 'Información de Contacto',
+          email: 'Email',
+          workingHours: 'Horario de trabajo',
+          location: 'Ubicación',
+          responseTime: 'Tiempo de respuesta',
+          responseDescription: 'Respuesta rápida en días laborables. Fines de semana - lunes.',
+          whatYouGet: {
+            title: 'Lo que obtendrá:',
+            items: [
+              'Consulta gratuita',
+              'Auditoría técnica',
+              'Propuesta personalizada',
+              'Cronograma y estimación de costos'
+            ]
+          }
         }
       },
       footer: {
@@ -1079,6 +1351,34 @@ export function getContent(locale: Locale) {
         cookiePolicy: 'Política de cookies',
         cookiePreferences: 'Preferencias de cookies',
         allRightsReserved: 'Todos los derechos reservados.'
+      },
+      privacy: {
+        title: 'Política de Privacidad',
+        content: [
+          'Protegemos sus datos personales y cumplimos con todas las exigencias GDPR. Sus datos se utilizan únicamente para proporcionar nuestros servicios y nunca se comparten con terceros sin su consentimiento.',
+          'Solo recopilamos la información necesaria para proporcionar nuestros servicios: nombre, email, URL del sitio web y detalles técnicos del proyecto.',
+          'Todos los datos se almacenan de forma segura y se eliminan al finalizar el contrato o al cumplirse la solicitud. Tiene el derecho de acceder, modificar o eliminar sus datos en cualquier momento.',
+          'Utilizamos cookies y tecnologías similares para mejorar la funcionalidad del sitio web y analizar el tráfico. Puede gestionar sus preferencias de cookies utilizando los parámetros que se indican a continuación.'
+        ],
+        manageCookieSettings: 'Gestionar ajustes de cookies',
+        manageCookieDescription: 'Haga clic en el botón de abajo para gestionar sus ajustes de cookies.',
+        cookieSettings: 'Ajustes de cookies'
+      },
+      cookies: {
+        title: 'Política de Cookies',
+        content: [
+          'Utilizamos cookies para mejorar la funcionalidad del sitio web y analizar el tráfico. Al continuar utilizando el sitio, acepta nuestra política de cookies.',
+          'Las cookies son pequeños archivos de texto almacenados en su dispositivo que nos ayudan a mejorar la experiencia del usuario y proporcionar contenido personalizado.',
+          'Utilizamos los siguientes tipos de cookies:',
+          '• Cookies esenciales: Requeridos para la funcionalidad básica del sitio',
+          '• Cookies analíticas: Nos ayudan a entender cómo los visitantes utilizan nuestro sitio',
+          '• Cookies de marketing: Utilizados para difundir anuncios relevantes',
+          '• Cookies funcionales: Permiten una funcionalidad mejorada y la personalización',
+          'Puede desactivar las cookies en las configuraciones de su navegador, pero esto puede afectar la funcionalidad del sitio web. Utilice los parámetros que se indican a continuación para gestionar sus preferencias.'
+        ],
+        manageCookieSettings: 'Gestionar ajustes de cookies',
+        manageCookieDescription: 'Haga clic en el botón de abajo para gestionar sus ajustes de cookies.',
+        cookieSettings: 'Ajustes de cookies'
       }
     }
   }

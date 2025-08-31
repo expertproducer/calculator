@@ -92,15 +92,25 @@ export default function Navbar({ locale }: { locale: string }) {
     // Determine new path
     let newPath = '/'
     
+    // Extract the current page path without locale
+    let currentPagePath = '/'
+    
     if (pathname === '/' || pathname === '/en' || pathname === '/de' || pathname === '/fr' || pathname === '/es') {
       // Main page
-      newPath = newLocale === 'en' ? '/' : `/${newLocale}/`
+      currentPagePath = '/'
     } else {
-      // Other pages (e.g. /privacy, /cookies)
-      const pathWithoutLocale = pathname.replace(/^\/(en|de|fr|es)/, '') || '/'
-      newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`
+      // Other pages - remove locale prefix
+      currentPagePath = pathname.replace(/^\/(en|de|fr|es)/, '') || '/'
     }
     
+    // Build new path
+    if (newLocale === 'en') {
+      newPath = currentPagePath
+    } else {
+      newPath = `/${newLocale}${currentPagePath}`
+    }
+    
+    console.log('Current page path:', currentPagePath)
     console.log('New path will be:', newPath)
     
     // Save language choice in cookie

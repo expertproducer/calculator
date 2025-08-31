@@ -7,6 +7,8 @@ interface ServicesProps {
     title: string
     subtitle: string
     leadText: string
+    badge?: string
+    approachTitle?: string
     sections: Array<{
       title: string
       content?: string[] | string
@@ -22,6 +24,9 @@ interface ServicesProps {
       description: string
     }>
     note: string
+    packagesTitle?: string
+    packagesSubtitle?: string
+    ctaText?: string
   }
 }
 
@@ -41,7 +46,7 @@ export default function Services({ content }: ServicesProps) {
         {/* Hero section - StoryBrand style */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-            ⚙️ Our Services
+            {content.badge || '⚙️ Our Services'}
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
@@ -62,7 +67,7 @@ export default function Services({ content }: ServicesProps) {
               </div>
               
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Approach
+                {content.approachTitle || 'Our Approach'}
               </h2>
             </div>
             
@@ -164,10 +169,10 @@ export default function Services({ content }: ServicesProps) {
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Service Packages
+              {content.packagesTitle || 'Service Packages'}
             </h2>
             <p className="text-xl text-gray-600">
-              Choose the right solution for your business
+              {content.packagesSubtitle || 'Choose the right solution for your business'}
             </p>
           </div>
           
@@ -200,7 +205,7 @@ export default function Services({ content }: ServicesProps) {
         <div className="text-center">
           <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
             <Briefcase className="w-5 h-5" />
-            <span className="font-semibold">Ready to get started?</span>
+            <span className="font-semibold">{content.ctaText || 'Ready to get started?'}</span>
             <ArrowRight className="w-5 h-5" />
           </div>
         </div>

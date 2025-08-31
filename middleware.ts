@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const locales = ['en', 'de', 'fr'];
+const locales = ['en', 'de', 'fr', 'es'];
 const defaultLocale = 'en';
 
 export function middleware(req: NextRequest) {
@@ -16,6 +16,18 @@ export function middleware(req: NextRequest) {
     pathname.startsWith('/favicon')
   ) {
     return NextResponse.next();
+  }
+  
+  // Check for duplicate locales (e.g., /en/es, /de/fr, etc.)
+  const duplicateLocaleMatch = pathname.match(/^\/([a-z]{2})\/([a-z]{2})/);
+  if (duplicateLocaleMatch) {
+    const [, firstLocale, secondLocale] = duplicateLocaleMatch;
+    if (locales.includes(firstLocale) && locales.includes(secondLocale)) {
+      // Redirect to the second locale path
+      const newPathname = pathname.replace(`/${firstLocale}/${secondLocale}`, `/${secondLocale}`);
+      const newUrl = new URL(newPathname, req.url);
+      return NextResponse.redirect(newUrl);
+    }
   }
   
   // Check if locale is already in path
@@ -43,6 +55,8 @@ export function middleware(req: NextRequest) {
         locale = 'de';
       } else if (acceptLanguage.includes('fr')) {
         locale = 'fr';
+      } else if (acceptLanguage.includes('es')) {
+        locale = 'es';
       }
     }
   }

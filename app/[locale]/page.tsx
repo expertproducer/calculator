@@ -84,7 +84,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
         
         <section id="final-cta">
-          <FinalCTA content={{ cta: content.hero.cta }} />
+          <FinalCTA content={content.finalCTA} />
         </section>
       </main>
       

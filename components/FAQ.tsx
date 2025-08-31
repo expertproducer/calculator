@@ -10,6 +10,16 @@ interface FAQProps {
       question: string
       answer: string
     }>
+    whyQuestionsTitle?: string
+    whyQuestionsDescription?: string
+    complianceTitle?: string
+    complianceDescription?: string
+    implementationTitle?: string
+    implementationDescription?: string
+    knowledgeTitle?: string
+    knowledgeDescription?: string
+    cantFindAnswer?: string
+    teamReadyToHelp?: string
   }
 }
 
@@ -102,7 +112,7 @@ export default function FAQ({ content }: FAQProps) {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/80 dark:bg-blue-900/30 rounded-full mb-6">
             <Star className="text-blue-600 dark:text-blue-400 w-4 h-4" />
-            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">FAQ Section</span>
+            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">{content.badge || 'FAQ Section'}</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
             {content.title}
@@ -120,10 +130,10 @@ export default function FAQ({ content }: FAQProps) {
                 <Search className="text-blue-600 dark:text-blue-400 w-8 h-8" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                Why These Questions Matter
+                {content.whyQuestionsTitle || 'Why These Questions Matter'}
               </h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Understanding the right questions helps you make informed decisions about your GDPR compliance strategy
+                {content.whyQuestionsDescription || 'Understanding the right questions helps you make informed decisions about your GDPR compliance strategy'}
               </p>
             </div>
             
@@ -133,10 +143,10 @@ export default function FAQ({ content }: FAQProps) {
                   <Shield className="text-green-600 dark:text-green-400 w-6 h-6" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                  Compliance
+                  {content.complianceTitle || 'Compliance'}
                 </h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Understanding GDPR requirements and avoiding penalties
+                  {content.complianceDescription || 'Understanding GDPR requirements and avoiding penalties'}
                 </p>
               </div>
               
@@ -145,10 +155,10 @@ export default function FAQ({ content }: FAQProps) {
                   <Calculator className="text-blue-600 dark:text-blue-400 w-6 h-6" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                  Implementation
+                  {content.implementationTitle || 'Implementation'}
                 </h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Technical setup and integration best practices
+                  {content.implementationDescription || 'Technical setup and integration best practices'}
                 </p>
               </div>
               
@@ -157,17 +167,17 @@ export default function FAQ({ content }: FAQProps) {
                   <Info className="text-purple-600 dark:text-purple-400 w-6 h-6" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                  Knowledge
+                  {content.knowledgeTitle || 'Knowledge'}
                 </h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Making informed decisions about your CMP strategy
+                  {content.knowledgeDescription || 'Making informed decisions about your CMP strategy'}
                 </p>
               </div>
             </div>
             
             <div className="mt-8 p-4 bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-2xl border border-blue-200/50 dark:border-blue-700/50">
               <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
-                <strong>💡 Can't find your answer?</strong> Our team is ready to help with any specific questions about your GDPR compliance needs.
+                <strong>💡 {content.cantFindAnswer || "Can't find your answer?"}</strong> {content.teamReadyToHelp || 'Our team is ready to help with any specific questions about your GDPR compliance needs.'}
               </p>
             </div>
           </div>

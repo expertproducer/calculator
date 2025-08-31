@@ -1,4 +1,5 @@
 import { Shield, AlertTriangle, Users, TrendingUp, Star, CheckCircle } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface WhyImportantProps {
   content: {
@@ -29,7 +30,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
 
@@ -56,7 +57,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
                   </div>
                   <div className="flex-1">
                     <p className="text-gray-900 text-lg leading-relaxed font-medium">
-                      {point}
+                      <span dangerouslySetInnerHTML={{ __html: formatSimpleText(point) }} />
                     </p>
                   </div>
                 </div>
@@ -77,7 +78,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
             </h3>
             
             <p className="text-lg text-gray-700 leading-relaxed">
-              {content.description}
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.description) }} />
             </p>
           </div>
         </div>

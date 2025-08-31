@@ -1,6 +1,7 @@
 "use client"
 
 import { Shield, CheckCircle, Zap, Clock, AlertTriangle, Unlock, FileX, Frown, ShieldCheck } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface HeroProps {
   content: {
@@ -92,7 +93,7 @@ export default function Hero({ content }: HeroProps) {
             
             {/* Subtitle - Clear Value Prop */}
             <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mb-12">
-              {content.subtitle}
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
             </p>
             
             {/* CTA Buttons - Enhanced */}

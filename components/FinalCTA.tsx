@@ -1,4 +1,5 @@
 import { ArrowRight, Clock, Star, Zap } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface FinalCTAProps {
   content?: {
@@ -27,7 +28,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {content?.subtitle || 'Transform your cookie banners from legal liability into user-friendly compliance. No dark patterns, just clean implementation.'}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content?.subtitle || 'Transform your cookie banners from legal liability into user-friendly compliance. No dark patterns, just clean implementation.') }} />
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">

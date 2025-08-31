@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowUp, ShoppingCart, Newspaper, Cloud, Star } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface CaseStudiesProps {
   content: {
@@ -27,7 +28,7 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
             {content.title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
 
@@ -59,7 +60,7 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
                 {/* Description */}
                 <div className="mb-6">
                   <p className="text-gray-600 leading-relaxed">
-                    {caseItem.description}
+                    <span dangerouslySetInnerHTML={{ __html: formatSimpleText(caseItem.description) }} />
                   </p>
                 </div>
 

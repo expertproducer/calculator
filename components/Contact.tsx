@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Mail, Clock, MapPin, Rocket, Send, Star, CheckCircle, ArrowRight, User, Globe, Code } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface ContactProps {
   content: {
@@ -78,7 +79,7 @@ export default function Contact({ content }: ContactProps) {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-            {content.subtitle}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
           
           {/* What you get - StoryBrand benefit */}

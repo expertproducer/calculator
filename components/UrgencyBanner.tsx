@@ -1,4 +1,5 @@
 import { Clock, AlertTriangle, Flame } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface UrgencyBannerProps {
   content?: {
@@ -35,7 +36,7 @@ export default function UrgencyBanner({ content }: UrgencyBannerProps) {
           </h2>
           
           <p className="text-xl mb-6 max-w-3xl mx-auto">
-            {content.subtitle || 'Don\'t wait until you get fined. Get GDPR compliant today!'}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle || 'Don\'t wait until you get fined. Get GDPR compliant today!') }} />
           </p>
           
           {/* Offer Details */}

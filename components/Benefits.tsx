@@ -1,4 +1,5 @@
 import { RefreshCw, Lightbulb, Link, Languages, Database, Star } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface BenefitsProps {
   content: {
@@ -31,7 +32,7 @@ export default function Benefits({ content }: BenefitsProps) {
             {content.title || 'Benefits'}
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
 
@@ -45,10 +46,10 @@ export default function Benefits({ content }: BenefitsProps) {
                   <IconComponent className="text-white w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {item.title}
+                  <span dangerouslySetInnerHTML={{ __html: formatSimpleText(item.title) }} />
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  {item.description}
+                  <span dangerouslySetInnerHTML={{ __html: formatSimpleText(item.description) }} />
                 </p>
               </div>
             )

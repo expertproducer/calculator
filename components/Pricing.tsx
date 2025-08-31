@@ -1,4 +1,5 @@
 import { Home, Star, Briefcase, Check, Info, Calculator, Shield, ArrowRight } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface PricingProps {
   content: {

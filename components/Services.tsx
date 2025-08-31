@@ -1,6 +1,6 @@
 "use client"
 
-import { Settings, Shield, Zap, FileText, BarChart3, CheckCircle, ArrowRight, Star, Calculator, Clock, Code, Search, Check, Info, Briefcase } from 'lucide-react'
+import { Settings, Shield, Zap, FileText, BarChart3, CheckCircle, ArrowRight, Star, Calculator, Clock, Code, Search, Check, Info, Briefcase, Users, Target, Award, TrendingUp } from 'lucide-react'
 
 interface ServicesProps {
   content: {
@@ -32,77 +32,110 @@ interface ServicesProps {
 
 // Function to handle markdown-like formatting
 const formatText = (text: string) => {
-  // Replace **text** with <strong>text</strong>
-  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  // For single items (not paragraphs), just format the text directly
+  if (!text.includes('\n\n') && text.length < 200) {
+    // Replace **text** with <strong>text</strong>
+    let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     // Replace `code` with <code>code</code>
-    .replace(/`([^`]+)`/g, '<code class="bg-blue-100 px-2 py-1 rounded text-sm font-mono text-blue-800">$1</code>')
+    formatted = formatted.replace(/`([^`]+)`/g, '<code class="bg-blue-100 px-2 py-1 rounded text-sm font-mono text-blue-800">$1</code>')
+    console.log('formatText short:', { original: text, formatted })
+    return formatted
+  }
+  
+  // Split text into paragraphs and wrap each in <p> tags
+  let paragraphs = text.split('\n\n').filter(p => p.trim())
+  
+  // If no paragraphs found, split by sentence length
+  if (paragraphs.length <= 1) {
+    const sentences = text.split('. ').filter(s => s.trim())
+    paragraphs = []
+    let currentParagraph = ''
+    
+    sentences.forEach((sentence, index) => {
+      currentParagraph += sentence + (sentence.endsWith('.') ? '' : '. ')
+      
+      // Create new paragraph every 2-3 sentences or if paragraph is getting too long
+      if ((index + 1) % 3 === 0 || currentParagraph.length > 300) {
+        paragraphs.push(currentParagraph.trim())
+        currentParagraph = ''
+      }
+    })
+    
+    // Add remaining text as last paragraph
+    if (currentParagraph.trim()) {
+      paragraphs.push(currentParagraph.trim())
+    }
+  }
+  
+  const formattedParagraphs = paragraphs.map(p => {
+    // Replace **text** with <strong>text</strong>
+    let formatted = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Replace `code` with <code>code</code>
+    formatted = formatted.replace(/`([^`]+)`/g, '<code class="bg-blue-100 px-2 py-1 rounded text-sm font-mono text-blue-800">$1</code>')
+    console.log('formatText long:', { original: p, formatted })
+    return `<p style="margin-bottom: 2rem; font-size: 1.25rem; font-weight: bold; color: #374151; line-height: 1.75;">${formatted}</p>`
+  })
+  return formattedParagraphs.join('')
 }
 
 export default function Services({ content }: ServicesProps) {
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Hero section - StoryBrand style */}
+        {/* Header - Enhanced with better visual hierarchy */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-            {content.badge || '⚙️ Our Services'}
-          </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title}
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-2xl md:text-3xl font-semibold text-gray-700 max-w-4xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             {content.subtitle}
           </p>
         </div>
 
-        {/* Lead paragraph - StoryBrand style */}
-        <div className="max-w-5xl mx-auto mb-20">
-          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200">
-            <div className="text-center mb-8">
-              <div className="inline-flex p-4 bg-blue-600 rounded-2xl mb-6">
-                <Shield className="text-white w-8 h-8" />
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {content.approachTitle || 'Our Approach'}
-              </h2>
-            </div>
-            
-            <div className="prose prose-lg max-w-none text-gray-700 text-center">
+        {/* Lead paragraph - Enhanced visual design */}
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
+              {content.approachTitle || 'Our Approach'}
+            </h2>
+          </div>
+          
+          <div className="max-w-5xl mx-auto">
+            <div className="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed [&_p]:mb-8 [&_p]:last:mb-0 [&_p]:text-xl [&_p]:md:text-2xl [&_p]:font-bold [&_p]:text-gray-800 [&_p]:leading-relaxed [&_p]:block [&_p]:w-full [&_p]:drop-shadow-lg [&_p]:[text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
               <div dangerouslySetInnerHTML={{ __html: formatText(content.leadText) }} />
             </div>
           </div>
         </div>
 
-        {/* Main sections - Clean StoryBrand cards */}
+        {/* Main sections - Enhanced with better visual design */}
         <div className="max-w-6xl mx-auto space-y-12 mb-20">
           {content.sections.map((section, sectionIndex) => {
             const sectionIcons = [Search, Code, Settings, Shield, Zap, FileText]
             const SectionIcon = sectionIcons[sectionIndex % sectionIcons.length]
             const colors = [
-              'bg-blue-600',
-              'bg-gray-700', 
-              'bg-blue-700',
-              'bg-gray-600',
-              'bg-blue-800',
-              'bg-gray-800'
+              'from-blue-500 to-blue-600',
+              'from-gray-600 to-gray-700', 
+              'from-blue-600 to-blue-700',
+              'from-gray-500 to-gray-600',
+              'from-blue-700 to-blue-800',
+              'from-gray-700 to-gray-800'
             ]
             
             return (
-              <div key={sectionIndex} className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+              <div key={sectionIndex} className="bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:scale-105">
                 
                 {/* Section header */}
-                <div className="bg-gray-50 px-8 py-6 border-b border-gray-200">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 ${colors[sectionIndex % colors.length]} rounded-xl`}>
-                      <SectionIcon className="text-white w-6 h-6" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {section.title}
-                    </h3>
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200">
+                  <div className="flex items-center gap-6">
+                                          <div className={`p-4 bg-gradient-to-br ${colors[sectionIndex % colors.length]} rounded-2xl shadow-2xl`}>
+                        <SectionIcon className="text-white w-7 h-7 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+                      </div>
+                                <h3 className="text-2xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+              {section.title}
+            </h3>
                   </div>
                 </div>
                 
@@ -110,17 +143,17 @@ export default function Services({ content }: ServicesProps) {
                 <div className="p-8">
                   {/* Content paragraphs */}
                   {section.content && (
-                    <div className="mb-6">
+                    <div className="mb-8">
                       {Array.isArray(section.content) ? (
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                           {section.content.map((paragraph, pIndex) => (
-                            <p key={pIndex} className="text-gray-700 leading-relaxed">
+                            <p key={pIndex} className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                               <span dangerouslySetInnerHTML={{ __html: formatText(paragraph) }} />
                             </p>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-gray-700 leading-relaxed">
+                        <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                           <span dangerouslySetInnerHTML={{ __html: formatText(section.content) }} />
                         </p>
                       )}
@@ -129,17 +162,17 @@ export default function Services({ content }: ServicesProps) {
                   
                   {/* Subsections */}
                   {section.subsections && (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                       {section.subsections.map((subsection, subIndex) => (
-                        <div key={subIndex} className="bg-gray-50 rounded-xl p-6">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                        <div key={subIndex} className="bg-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                          <h4 className="text-xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
                             {subsection.title}
                           </h4>
-                          <ul className="space-y-2">
+                          <ul className="space-y-3">
                             {subsection.items.map((item, itemIndex) => (
-                              <li key={itemIndex} className="flex items-start gap-2">
-                                <CheckCircle className="text-blue-600 w-4 h-4 mt-1 flex-shrink-0" />
-                                <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
+                              <li key={itemIndex} className="flex items-start gap-3">
+                                <CheckCircle className="text-blue-600 w-5 h-5 mt-1 flex-shrink-0" />
+                                <span className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                               </li>
                             ))}
                           </ul>
@@ -150,11 +183,11 @@ export default function Services({ content }: ServicesProps) {
                   
                   {/* Items list */}
                   {section.items && (
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid md:grid-cols-2 gap-6">
                       {section.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
-                          <CheckCircle className="text-blue-600 w-5 h-5 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
+                                                  <div key={itemIndex} className="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                          <CheckCircle className="text-blue-600 w-6 h-6 mt-1 flex-shrink-0" />
+                          <span className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                         </div>
                       ))}
                     </div>
@@ -165,28 +198,28 @@ export default function Services({ content }: ServicesProps) {
           })}
         </div>
 
-        {/* Packages - StoryBrand style */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        {/* Packages - Enhanced with better visual design */}
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
               {content.packagesTitle || 'Service Packages'}
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg font-medium text-gray-600 max-w-3xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
               {content.packagesSubtitle || 'Choose the right solution for your business'}
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {content.packages.map((pkg, index) => {
               const packageColors = ['border-blue-200 bg-blue-50', 'border-gray-200 bg-gray-50', 'border-blue-200 bg-blue-50']
-              const badgeColors = ['bg-blue-600', 'bg-gray-700', 'bg-blue-600']
+              const badgeColors = ['from-blue-500 to-blue-600', 'from-gray-600 to-gray-700', 'from-blue-600 to-blue-700']
               
               return (
-                <div key={index} className={`p-6 rounded-2xl border-2 ${packageColors[index % packageColors.length]} hover:shadow-lg transition-all duration-300`}>
-                  <div className={`inline-flex px-3 py-1 ${badgeColors[index % badgeColors.length]} text-white text-sm font-semibold rounded-full mb-4`}>
+                <div key={index} className={`p-8 rounded-2xl border-2 ${packageColors[index % packageColors.length]} hover:shadow-3xl transition-all duration-300 shadow-2xl transform hover:scale-105`}>
+                  <div className={`inline-flex px-4 py-2 bg-gradient-to-r ${badgeColors[index % badgeColors.length]} text-white text-lg font-bold rounded-full mb-6 shadow-2xl drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]`}>
                     {pkg.name}
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                     {pkg.description}
                   </p>
                 </div>
@@ -194,19 +227,41 @@ export default function Services({ content }: ServicesProps) {
             })}
           </div>
           
-          <div className="text-center mt-8">
-            <p className="text-gray-600 text-sm">
+          <div className="text-center mt-12">
+            <p className="text-lg font-medium text-gray-600 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
               {content.note}
             </p>
           </div>
         </div>
 
-        {/* CTA section */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200">
-            <Briefcase className="w-5 h-5" />
-            <span className="font-semibold">{content.ctaText || 'Ready to get started?'}</span>
-            <ArrowRight className="w-5 h-5" />
+        {/* Enhanced CTA section with social proof */}
+        <div className="text-center bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 max-w-4xl mx-auto transform hover:scale-105 transition-all duration-300">
+          <div className="mb-8">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+              Ready to Get Started?
+            </h3>
+            <p className="text-lg font-medium text-gray-600 mb-8 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
+              Join hundreds of businesses that trust our services
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex items-center gap-2 text-gray-600">
+              <Users className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
+              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">500+</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Businesses Served</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600">
+              <Target className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
+              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">100%</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Success Rate</span>
+            </div>
+          </div>
+          
+          <div className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg transform hover:scale-105">
+            <Briefcase className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ctaText || 'Start Your Implementation'}</span>
+            <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
           </div>
         </div>
       </div>

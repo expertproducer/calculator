@@ -1,4 +1,5 @@
 import { Star, Quote, CheckCircle } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface TestimonialsProps {
   content?: {
@@ -33,7 +34,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
             {content.title || 'What Our Clients Say'}
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle || 'Real results from real businesses'}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle || 'Real results from real businesses') }} />
           </p>
         </div>
 
@@ -57,7 +58,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
               
               {/* Testimonial Text */}
               <blockquote className="text-gray-700 leading-relaxed mb-6 italic">
-                "{testimonial.testimonial}"
+                "<span dangerouslySetInnerHTML={{ __html: formatSimpleText(testimonial.testimonial) }} />"
               </blockquote>
               
               {/* Result if available */}

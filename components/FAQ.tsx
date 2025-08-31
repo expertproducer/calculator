@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { HelpCircle, ChevronDown, ChevronUp, Search, Shield, Calculator, Info, ChevronRight, CheckCircle, AlertCircle, Clock, Users, Zap, Settings, FileText, Star, ArrowRight } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface FAQProps {
   content: {

@@ -1,4 +1,5 @@
 import { CheckCircle, Star } from 'lucide-react'
+import { formatSimpleText } from '../lib/textFormatting'
 
 interface PlatformsProps {
   content: {
@@ -22,7 +23,7 @@ export default function Platforms({ content }: PlatformsProps) {
             {content.title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle}
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
 

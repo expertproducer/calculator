@@ -1,4 +1,4 @@
-import { RefreshCw, Lightbulb, Link, Languages, Database, Star } from 'lucide-react'
+import { RefreshCw, Lightbulb, Link, Languages, Database, Star, Clock, DollarSign } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
 
 interface BenefitsProps {
@@ -14,7 +14,7 @@ interface BenefitsProps {
 }
 
 export default function Benefits({ content }: BenefitsProps) {
-  const icons = [RefreshCw, Lightbulb, Link, Languages, Database]
+  const icons = [RefreshCw, Lightbulb, Link, Languages, Database, Star, Clock, DollarSign]
 
   // Safety check
   if (!content) {
@@ -33,26 +33,30 @@ export default function Benefits({ content }: BenefitsProps) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
           {content.items.map((item, index) => {
             const IconComponent = icons[index % icons.length]
             const colors = [
               'bg-gradient-to-br from-blue-500 to-blue-600',
               'bg-gradient-to-br from-green-500 to-green-600',
               'bg-gradient-to-br from-purple-500 to-purple-600',
-              'bg-gradient-to-br from-orange-500 to-orange-600'
+              'bg-gradient-to-br from-orange-500 to-orange-600',
+              'bg-gradient-to-br from-indigo-500 to-indigo-600',
+              'bg-gradient-to-br from-pink-500 to-pink-600',
+              'bg-gradient-to-br from-teal-500 to-teal-600',
+              'bg-gradient-to-br from-emerald-500 to-emerald-600'
             ]
             const color = colors[index % colors.length]
             
             return (
-              <div key={index} className="text-center bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
-                <div className={`inline-flex p-4 ${color} rounded-2xl mb-6 shadow-2xl`}>
-                  <IconComponent className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+              <div key={index} className="flex-1 min-w-[280px] max-w-[320px] text-center bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
+                <div className={`inline-flex p-3 ${color} rounded-xl mb-4 shadow-lg`}>
+                  <IconComponent className="text-white w-6 h-6 drop-shadow-md" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 drop-shadow-md">
                   <span dangerouslySetInnerHTML={{ __html: formatSimpleText(item.title) }} />
                 </h3>
-                <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
+                <p className="text-sm font-medium text-gray-600 leading-relaxed">
                   <span dangerouslySetInnerHTML={{ __html: formatSimpleText(item.description) }} />
                 </p>
               </div>

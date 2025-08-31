@@ -42,7 +42,7 @@ export default function Hero({ content }: HeroProps) {
   return (
     <>
       <section 
-        className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden"
+        className="relative min-h-screen overflow-hidden"
         aria-labelledby="hero-title"
       >
         {/* Full Screen Video Background */}

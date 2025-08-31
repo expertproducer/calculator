@@ -35,7 +35,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}
@@ -52,7 +52,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
         
         {content.whyImportant && (
-          <section id="why-important" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
+          <section id="why-important">
             <WhyImportant content={content.whyImportant} />
           </section>
         )}
@@ -65,22 +65,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Process content={content.process} />
         </section> */}
         
-        <section id="benefits" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <section id="benefits">
           <Benefits content={content.benefits} />
         </section>
         
         {content.platforms && (
-          <section id="platforms" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
+          <section id="platforms">
             <Platforms content={content.platforms} />
           </section>
         )}
         
-        <section id="case-studies" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <section id="case-studies">
           <CaseStudies content={content.cases} />
         </section>
         
         {/* Testimonials - New */}
-        <section id="testimonials" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
+        <section id="testimonials">
           <Testimonials content={content.testimonials} />
         </section>
         
@@ -92,11 +92,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <FAQ content={content.faq} />
         </section> */}
         
-        <section id="contact" className="bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <section id="contact">
           <Contact content={content.contact} />
         </section>
         
-        <section id="final-cta" className="bg-gradient-to-tl from-gray-50 via-white to-blue-50">
+        <section id="final-cta">
           <FinalCTA content={content.finalCTA} />
         </section>
       </main>

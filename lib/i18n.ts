@@ -231,6 +231,18 @@ export function getContent(locale: Locale) {
           {
             title: '**Consent logs & exports**',
             description: 'Complete **audit trail and compliance documentation**'
+          },
+          {
+            title: '**24/7 Support**',
+            description: '**Expert assistance** whenever you need it'
+          },
+          {
+            title: '**Fast Implementation**',
+            description: '**Quick setup** without disrupting your business'
+          },
+          {
+            title: '**Cost Effective**',
+            description: '**Affordable solutions** that fit your budget'
           }
         ]
       },
@@ -246,8 +258,7 @@ export function getContent(locale: Locale) {
           'Vue.js',
           'Angular',
           'Laravel',
-          'Django',
-          'Node.js'
+          'Django'
         ],
         note: 'Don\'t see your preferred CMP? We can work with any Cookie Management Platform to ensure your compliance needs are met.'
       },
@@ -1103,6 +1114,18 @@ export function getContent(locale: Locale) {
           {
             title: 'Journaux de consentement & exports',
             description: 'Piste d\'audit complète et documentation de conformité'
+          },
+          {
+            title: 'Support 24/7',
+            description: 'Assistance experte quand vous en avez besoin'
+          },
+          {
+            title: 'Implémentation rapide',
+            description: 'Configuration rapide sans perturber votre entreprise'
+          },
+          {
+            title: 'Rentable',
+            description: 'Solutions abordables qui correspondent à votre budget'
           }
         ]
       },
@@ -1118,8 +1141,7 @@ export function getContent(locale: Locale) {
           'Vue.js',
           'Angular',
           'Laravel',
-          'Django',
-          'Node.js'
+          'Django'
         ],
         note: 'Vous ne voyez pas votre CMP préféré ? Nous pouvons travailler avec n\'importe quelle plateforme de gestion des cookies pour assurer que vos besoins de conformité sont satisfaits.'
       },
@@ -1462,6 +1484,22 @@ export function getContent(locale: Locale) {
           {
             title: 'Soporte multilingüe',
             description: 'Configuración para múltiples idiomas y regiones'
+          },
+          {
+            title: 'Registros de consentimiento y exportaciones',
+            description: 'Rastro de auditoría completo y documentación de cumplimiento'
+          },
+          {
+            title: 'Soporte 24/7',
+            description: 'Asistencia experta cuando la necesite'
+          },
+          {
+            title: 'Implementación rápida',
+            description: 'Configuración rápida sin interrumpir su negocio'
+          },
+          {
+            title: 'Rentable',
+            description: 'Soluciones asequibles que se ajustan a su presupuesto'
           }
         ]
       },
@@ -1522,8 +1560,7 @@ export function getContent(locale: Locale) {
           'Vue.js',
           'Angular',
           'Laravel',
-          'Django',
-          'Node.js'
+          'Django'
         ],
         note: '¿No ve su CMP preferido? Podemos trabajar con cualquier plataforma de gestión de cookies para asegurar que se cumplan sus necesidades de cumplimiento.'
       },

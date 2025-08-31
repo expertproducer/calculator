@@ -37,7 +37,7 @@ export default function Navbar({ locale }: { locale: string }) {
     setIsMenuOpen(false)
   }
 
-  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : 'en') as 'en' | 'de' | 'fr'
+  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as 'en' | 'de' | 'fr' | 'es'
   
   const translations = {
     en: {
@@ -60,6 +60,13 @@ export default function Navbar({ locale }: { locale: string }) {
       pricing: 'Tarifs',
       faq: 'FAQ', 
       contact: 'Contact'
+    },
+    es: {
+      services: 'Servicios',
+      process: 'Proceso',
+      pricing: 'Precios',
+      faq: 'FAQ',
+      contact: 'Contacto'
     }
   }[localeTyped]
 
@@ -74,7 +81,8 @@ export default function Navbar({ locale }: { locale: string }) {
   const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' }
   ]
 
   const switchLanguage = (newLocale: string) => {
@@ -84,12 +92,12 @@ export default function Navbar({ locale }: { locale: string }) {
     // Determine new path
     let newPath = '/'
     
-    if (pathname === '/' || pathname === '/en' || pathname === '/de' || pathname === '/fr') {
+    if (pathname === '/' || pathname === '/en' || pathname === '/de' || pathname === '/fr' || pathname === '/es') {
       // Main page
       newPath = newLocale === 'en' ? '/' : `/${newLocale}/`
     } else {
       // Other pages (e.g. /privacy, /cookies)
-      const pathWithoutLocale = pathname.replace(/^\/(en|de|fr)/, '') || '/'
+      const pathWithoutLocale = pathname.replace(/^\/(en|de|fr|es)/, '') || '/'
       newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`
     }
     
@@ -105,12 +113,12 @@ export default function Navbar({ locale }: { locale: string }) {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-transparent' 
-        : 'bg-transparent'
+        ? 'bg-white shadow-lg border-b border-gray-200' 
+        : 'bg-white/95 backdrop-blur-sm'
     }`}>
-      <div className="container mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <button 
@@ -120,21 +128,24 @@ export default function Navbar({ locale }: { locale: string }) {
             }}
             className="flex items-center gap-3 hover:opacity-80 transition-all duration-300 group"
           >
-            <span className="text-xl font-bold text-white tracking-tight drop-shadow-lg">
-              C&C
+            <div className="p-2 bg-blue-600 rounded-lg">
+              <Shield className="text-white w-6 h-6" />
+            </div>
+            <span className="text-xl font-bold text-gray-900 tracking-tight">
+              C&C CookieComply
             </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => navigateToPage(item.id)}
-                className="text-white hover:text-cyan-400 transition-all duration-300 font-medium text-sm tracking-wide relative group px-3 py-2 rounded-lg hover:bg-cyan-400/10"
+                className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium text-sm tracking-wide relative group px-4 py-2 rounded-lg hover:bg-blue-50"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -148,28 +159,26 @@ export default function Navbar({ locale }: { locale: string }) {
                   console.log('Language switcher clicked!')
                   setShowLanguageMenu(!showLanguageMenu)
                 }}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 transition-all duration-300 rounded-xl hover:bg-cyan-400/10 cursor-pointer bg-transparent shadow-sm hover:shadow-md"
-                style={{ minWidth: '60px' }}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-lg hover:bg-blue-50 cursor-pointer border border-gray-200 hover:border-blue-300"
+                style={{ minWidth: '70px' }}
                 type="button"
               >
-                <div className="p-1 bg-transparent rounded-lg">
-                  <Globe size={14} className="text-cyan-400" />
-                </div>
+                <Globe size={16} className="text-blue-600" />
                 <span>{locale.toUpperCase()}</span>
               </button>
               
               {/* Language Dropdown */}
               {showLanguageMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-transparent border border-cyan-400/30 rounded-xl shadow-lg py-2 min-w-[140px] z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-xl shadow-lg py-2 min-w-[160px] z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                                             className={`w-full px-4 py-2 text-left text-sm flex items-center gap-3 hover:bg-cyan-400/10 transition-colors rounded-lg mx-1 ${
-                         locale === lang.code 
-                           ? 'text-cyan-400 bg-cyan-400/20' 
-                           : 'text-white'
-                       }`}
+                      className={`w-full px-4 py-3 text-left text-sm flex items-center gap-3 hover:bg-blue-50 transition-colors rounded-lg mx-1 ${
+                        locale === lang.code 
+                          ? 'text-blue-600 bg-blue-50' 
+                          : 'text-gray-700'
+                      }`}
                     >
                       <span className="text-base">{lang.flag}</span>
                       <span>{lang.name}</span>
@@ -182,7 +191,7 @@ export default function Navbar({ locale }: { locale: string }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-                             className="md:hidden p-2 text-white hover:text-cyan-400 transition-colors rounded-lg hover:bg-cyan-400/10"
+              className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -191,36 +200,34 @@ export default function Navbar({ locale }: { locale: string }) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200/50 dark:border-gray-700/50">
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="pt-4 space-y-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => navigateToPage(item.id)}
-                                     className="block w-full text-left px-4 py-3 text-white hover:text-cyan-400 hover:bg-cyan-400/10 rounded-lg transition-all duration-300 font-medium"
+                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300 font-medium"
                 >
                   {item.label}
                 </button>
               ))}
               
               {/* Mobile Language Switcher */}
-                             <div className="border-t border-cyan-400/30 pt-4 mt-4">
-                 <div className="px-4 py-2 text-sm font-medium text-cyan-300 flex items-center gap-2">
-                   <div className="p-1 bg-transparent rounded-lg">
-                     <Globe size={14} className="text-cyan-400" />
-                   </div>
-                   Language / Sprache / Langue
-                 </div>
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <div className="px-4 py-2 text-sm font-medium text-gray-600 flex items-center gap-2">
+                  <Globe size={16} className="text-blue-600" />
+                  Language / Sprache / Langue / Idioma
+                </div>
                 <div className="space-y-1">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                                             className={`w-full px-4 py-3 text-left flex items-center gap-3 rounded-lg transition-all duration-300 ${
-                         locale === lang.code 
-                           ? 'text-cyan-400 bg-cyan-400/20' 
-                           : 'text-white hover:bg-cyan-400/10'
-                       }`}
+                      className={`w-full px-4 py-3 text-left flex items-center gap-3 rounded-lg transition-all duration-300 ${
+                        locale === lang.code 
+                          ? 'text-blue-600 bg-blue-50' 
+                          : 'text-gray-700 hover:bg-blue-50'
+                      }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
                       <span className="font-medium">{lang.name}</span>

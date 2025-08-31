@@ -14,7 +14,8 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: meta.description,
       url: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/' : `/${locale}/`}`,
       siteName: 'C&C CookieComply',
-      locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : 'fr_FR',
+      locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : locale === 'fr' ? 'fr_FR' : 'es_ES',
       type: 'website',
       images: [
         {
@@ -71,6 +72,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'en': `${GDPR_SUBDOMAIN}/`,
         'de': `${GDPR_SUBDOMAIN}/de/`,
         'fr': `${GDPR_SUBDOMAIN}/fr/`,
+        'es': `${GDPR_SUBDOMAIN}/es/`,
         'x-default': `${GDPR_SUBDOMAIN}/`
       },
     },
@@ -91,7 +93,7 @@ export default async function LocaleLayout({
   const { locale } = await params
   
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <>
       <head>
         <link rel="manifest" href="/manifest.json?v=2.0.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -117,6 +119,7 @@ export default async function LocaleLayout({
         <link rel="alternate" href={`${GDPR_SUBDOMAIN}/`} hrefLang="en" />
         <link rel="alternate" href={`${GDPR_SUBDOMAIN}/de/`} hrefLang="de" />
         <link rel="alternate" href={`${GDPR_SUBDOMAIN}/fr/`} hrefLang="fr" />
+        <link rel="alternate" href={`${GDPR_SUBDOMAIN}/es/`} hrefLang="es" />
         <link rel="alternate" href={`${GDPR_SUBDOMAIN}/`} hrefLang="x-default" />
         
         {/* DNS prefetch */}
@@ -155,6 +158,6 @@ export default async function LocaleLayout({
       <body className={`${inter.className} ${inter.variable}`} suppressHydrationWarning>
         {children}
       </body>
-    </html>
+    </>
   )
 }

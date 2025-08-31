@@ -1,173 +1,181 @@
-import { Home, Star, Briefcase, Check, Info, Calculator, Shield } from 'lucide-react'
+import { Home, Star, Briefcase, Check, Info, Calculator, Shield, ArrowRight } from 'lucide-react'
 
 export default function Pricing({ content }: { content: any }) {
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Header - StoryBrand style */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
+            💰 Transparent Pricing
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
             {content.title}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
-            Transparent pricing model: we charge only for implementation, you choose your preferred CMP service plan
+          
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Simple, transparent pricing. We charge only for implementation, you choose your CMP service plan.
           </p>
         </div>
 
         {/* Pricing explanation */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-3xl p-8 shadow-sm">
+        <div className="max-w-5xl mx-auto mb-20">
+          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200">
             <div className="text-center mb-8">
-              <div className="inline-flex p-4 bg-blue-100/80 dark:bg-blue-900/30 rounded-2xl mb-4">
-                <Calculator className="text-blue-600 dark:text-blue-400 w-8 h-8" />
+              <div className="inline-flex p-4 bg-blue-600 rounded-2xl mb-6">
+                <Calculator className="text-white w-8 h-8" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 How Our Pricing Works
               </h2>
+              
+              <p className="text-lg text-gray-600">
+                No hidden fees, no ongoing charges. Just transparent, one-time implementation costs.
+              </p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                    <Check className="text-green-600 dark:text-green-400 w-5 h-5" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-600 rounded-xl flex-shrink-0">
+                    <Check className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Implementation Fee Only</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      We charge only for our technical work: CMP setup, GTM integration, and configuration
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Implementation Fee Only</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      We charge only for our technical work: CMP setup, GTM integration, and configuration. No ongoing fees.
                     </p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <Shield className="text-blue-600 dark:text-blue-400 w-5 h-5" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-blue-600 rounded-xl flex-shrink-0">
+                    <Shield className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">CMP Service Plans</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      You choose and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.)
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Choose Your CMP</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      You select and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.).
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                    <Info className="text-purple-600 dark:text-purple-400 w-5 h-5" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-purple-600 rounded-xl flex-shrink-0">
+                    <Info className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Transparent Costs</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      No hidden fees or ongoing charges. One-time implementation fee covers everything
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Transparent Costs</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Everything included in one price. No surprises, no additional charges later.
                     </p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
-                    <Star className="text-yellow-600 dark:text-yellow-400 w-5 h-5" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-orange-600 rounded-xl flex-shrink-0">
+                    <Star className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Flexible Options</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Choose Basic, Pro, or Business implementation based on your complexity needs
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Flexible Options</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Choose Basic, Pro, or Business implementation based on your needs.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-200/50 dark:border-blue-700/50">
-              <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
+            <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-200">
+              <p className="text-blue-800 text-center text-lg">
                 <strong>Why this model?</strong> It gives you full control over your CMP costs while ensuring professional implementation quality. 
-                You pay us once for setup, then manage your CMP subscription directly with providers.
+                Pay us once for setup, then manage your CMP subscription directly.
               </p>
             </div>
           </div>
         </div>
         
-        {/* Pricing plans */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
-          {content.plans.map((plan: any, index: number) => {
-            const icons = [Home, Star, Briefcase]
-            const IconComponent = icons[index % icons.length]
-            const colors = ['text-blue-500', 'text-yellow-500', 'text-purple-500']
-            const bgColors = ['bg-blue-100 dark:bg-blue-900/30', 'bg-yellow-100 dark:bg-yellow-900/30', 'bg-purple-100 dark:bg-purple-900/30']
-            
-            return (
-              <div 
-                key={index} 
-                className={`glass-card p-8 hover:-translate-y-2 transition-all duration-500 relative ${
-                  index === 1 ? 'ring-2 ring-accent/20 scale-105' : ''
-                }`}
-              >
-                {index === 1 && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-yellow-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <div className={`inline-flex p-4 rounded-2xl ${bgColors[index]} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className={`${colors[index]} w-8 h-8`} />
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white tracking-tight">
-                    {plan.name}
-                  </h3>
-                  <div className="text-4xl font-bold text-accent mb-2">
-                    Contact Us
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Implementation fee
-                  </p>
-                </div>
-                
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature: string, fIndex: number) => (
-                    <li key={fIndex} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
-                      <Check className="text-green-500 flex-shrink-0 mt-0.5" size={16} />
-                      <span className="text-sm leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className="w-full py-3 px-6 bg-accent hover:bg-accent-light text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 shadow-apple hover:shadow-apple-lg">
-                  Get Started
-                </button>
-              </div>
-            )
-          })}
-        </div>
-        
-        {/* Additional information */}
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700/30 rounded-2xl p-6">
-            <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-              {content.note}
+        {/* Pricing plans - StoryBrand cards */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Implementation Packages
+            </h2>
+            <p className="text-xl text-gray-600">
+              Choose the right level of service for your business
             </p>
           </div>
           
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200/50 dark:border-blue-700/50 rounded-2xl p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-              What's Included in Implementation Fee?
+          <div className="grid md:grid-cols-3 gap-8">
+            {content.plans.map((plan: any, index: number) => {
+              const icons = [Home, Star, Briefcase]
+              const IconComponent = icons[index % icons.length]
+              const colors = ['border-blue-200 bg-blue-50', 'border-green-200 bg-green-50', 'border-purple-200 bg-purple-50']
+              const badgeColors = ['bg-blue-600', 'bg-green-600', 'bg-purple-600']
+              const popular = index === 1 // Pro plan is popular
+              
+              return (
+                <div 
+                  key={index} 
+                  className={`relative p-8 rounded-2xl border-2 ${colors[index]} hover:shadow-lg transition-all duration-300 ${popular ? 'scale-105 shadow-lg' : ''}`}
+                >
+                  {popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                        Most Popular
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="text-center mb-6">
+                    <div className={`inline-flex p-4 ${badgeColors[index]} rounded-2xl mb-4`}>
+                      <IconComponent className="text-white w-8 h-8" />
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {plan.name}
+                    </h3>
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    {plan.features.map((feature: string, fIndex: number) => (
+                      <div key={fIndex} className="flex items-start gap-3">
+                        <Check className="text-green-600 w-5 h-5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700 leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <button className={`w-full py-3 px-6 ${badgeColors[index]} text-white font-semibold rounded-xl hover:opacity-90 transition-opacity duration-300 flex items-center justify-center gap-2`}>
+                    Get Started
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        
+        {/* Additional information */}
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Need a Custom Solution?
             </h3>
-            <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-400">
-              <div className="text-left space-y-2">
-                <p>• CMP script deployment & configuration</p>
-                <p>• GTM integration & consent triggers</p>
-                <p>• Cookie banner customization</p>
-                <p>• Testing & validation</p>
-              </div>
-              <div className="text-left space-y-2">
-                <p>• Policy page setup</p>
-                <p>• Consent logging configuration</p>
-                <p>• Documentation & training</p>
-                <p>• Post-launch support</p>
-              </div>
+            
+            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+              {content.note}
+            </p>
+            
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <Calculator className="w-5 h-5" />
+              <span className="font-semibold">Get Custom Quote</span>
+              <ArrowRight className="w-5 h-5" />
             </div>
           </div>
         </div>

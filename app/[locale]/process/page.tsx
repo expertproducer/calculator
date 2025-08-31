@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
@@ -29,6 +30,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: {
       title: 'Processus d\'implémentation: De l\'audit à la validation | C&C CookieComply',
       description: 'Notre approche systématique en 5 étapes assure un déploiement CMP transparent avec une perturbation minimale. Analyse juridique, configuration CMP, intégration GTM, déploiement en production et analyse de l\'impact sur les données.'
+    },
+    es: {
+      title: 'Proceso de implementación: Del auditoría a la validación | C&C CookieComply',
+      description: 'Nuestro enfoque sistemático de 5 pasos asegura un despliegue CMP sin problemas con mínima interrupción. Análisis legal, configuración CMP, integración GTM, despliegue en producción y análisis de impacto de datos.'
     }
   }
   
@@ -44,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'en': 'https://www.cashandclash.com/en/process/',
         'de': 'https://www.cashandclash.com/de/process/',
         'fr': 'https://www.cashandclash.com/fr/process/',
+        'es': 'https://www.cashandclash.com/es/process/',
         'x-default': 'https://www.cashandclash.com/en/process/'
       }
     },
@@ -53,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: canonicalUrl,
       type: 'website',
       locale: locale,
-      alternateLocale: ['en', 'de', 'fr'].filter(l => l !== locale)
+      alternateLocale: ['en', 'de', 'fr', 'es'].filter(l => l !== locale)
     },
     twitter: {
       card: 'summary_large_image',
@@ -65,13 +71,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function ProcessPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr')
+  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr'} />
+      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
       <ProcessStructuredData locale={locale} />
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}

@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
@@ -65,13 +66,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr')
+  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr'} />
+      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
       <FAQStructuredData locale={locale} faqItems={content.faq.items} />
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}

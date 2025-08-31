@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
@@ -29,6 +30,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: {
       title: 'Plans tarifaires transparents | Services d\'implémentation CMP | C&C CookieComply',
       description: 'Modèle de prix clair: nous facturons uniquement l\'implémentation, vous choisissez votre plan de service CMP. Forfaits Basic, Pro et Business avec des coûts transparents.'
+    },
+    es: {
+      title: 'Planes de precios transparentes | Servicios de implementación CMP | C&C CookieComply',
+      description: 'Modelo de precios claro: solo cobramos por la implementación, usted elige su plan de servicio CMP. Paquetes Básico, Pro y Business con costos transparentes.'
     }
   }
   
@@ -44,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'en': 'https://www.cashandclash.com/en/pricing/',
         'de': 'https://www.cashandclash.com/de/pricing/',
         'fr': 'https://www.cashandclash.com/fr/pricing/',
+        'es': 'https://www.cashandclash.com/es/pricing/',
         'x-default': 'https://www.cashandclash.com/en/pricing/'
       }
     },
@@ -53,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: canonicalUrl,
       type: 'website',
       locale: locale,
-      alternateLocale: ['en', 'de', 'fr'].filter(l => l !== locale)
+      alternateLocale: ['en', 'de', 'fr', 'es'].filter(l => l !== locale)
     },
     twitter: {
       card: 'summary_large_image',
@@ -65,13 +71,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr')
+  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr'} />
+      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
       <PricingStructuredData locale={locale} />
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}

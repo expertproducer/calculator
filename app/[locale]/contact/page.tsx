@@ -8,18 +8,19 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr')
+  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr'} />
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}

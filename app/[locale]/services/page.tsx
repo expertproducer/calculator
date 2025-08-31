@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   return [
     { locale: 'en' },
     { locale: 'de' },
-    { locale: 'fr' }
+    { locale: 'fr' },
+    { locale: 'es' }
   ]
 }
 
@@ -30,9 +31,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: 'Consentement aux cookies & Implémentation CMP — Services RGPD | C&C CookieComply',
       description: 'Configuration CMP professionnelle, corrections de bannières cookies, blocage de scripts avant consentement et journalisation appropriée des consentements.'
     },
-    ru: {
-      title: 'Внедрение CMP и настройка баннеров cookie — Услуги GDPR | C&C CookieComply',
-      description: 'Внедряем CMP, настраиваем cookie-баннеры, блокируем трекеры до согласия и ведём корректные журналы согласий. Cookiebot, Iubenda, Usercentrics, Termly.'
+    es: {
+      title: 'Consentimiento de cookies e implementación CMP — Servicios RGPD | C&C CookieComply',
+      description: 'Configuración CMP profesional, correcciones de banners de cookies, bloqueo de scripts antes del consentimiento y registro adecuado de consentimientos.'
     }
   }
   
@@ -48,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'en': 'https://www.cashandclash.com/en/services/',
         'de': 'https://www.cashandclash.com/de/services/',
         'fr': 'https://www.cashandclash.com/fr/services/',
+        'es': 'https://www.cashandclash.com/es/services/',
         'x-default': 'https://www.cashandclash.com/en/services/'
       }
     },
@@ -57,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: canonicalUrl,
       type: 'website',
       locale: locale,
-      alternateLocale: ['en', 'de', 'fr'].filter(l => l !== locale)
+      alternateLocale: ['en', 'de', 'fr', 'es'].filter(l => l !== locale)
     },
     twitter: {
       card: 'summary_large_image',
@@ -69,13 +71,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr')
+  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr'} />
+      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
       <ServicesStructuredData locale={locale} />
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         
         {/* Spacing for fixed navigation */}

@@ -265,7 +265,7 @@ export default function Contact({ content }: ContactProps) {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-4 px-8 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
+                className="btn-storybrand-primary w-full"
               >
                 <Send className="w-5 h-5" />
                 {content.submit}

@@ -6,6 +6,10 @@ export { default as CaseStudies } from './CaseStudies'
 export { default as WhyImportant } from './WhyImportant'
 export { default as Platforms } from './Platforms'
 
+// New selling components
+export { default as Testimonials } from './Testimonials'
+export { default as UrgencyBanner } from './UrgencyBanner'
+
 // Pricing Component - Re-export from the main Pricing component
 export { default as Pricing } from './Pricing'
 

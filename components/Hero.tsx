@@ -74,18 +74,18 @@ export default function Hero({ content }: HeroProps) {
                 {content.subtitle}
               </p>
               
-              {/* CTA Buttons - StoryBrand Style */}
+              {/* CTA Buttons - Enhanced */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="/contact"
-                  className="btn btn-orange text-lg px-8 py-4 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="btn-storybrand-primary"
                 >
-                  {content.cta.primary}
+                  <span className="relative z-10">{content.cta.primary}</span>
                 </a>
                 
                 <a
                   href="/services"
-                  className="btn btn-outline text-lg px-8 py-4 rounded-lg font-semibold border-2 border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+                  className="btn-storybrand-secondary"
                 >
                   {content.cta.secondary}
                 </a>

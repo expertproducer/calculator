@@ -7,6 +7,8 @@ import {
   Benefits, 
   Platforms, 
   CaseStudies, 
+  Testimonials,
+  UrgencyBanner,
   // Pricing, 
   // FAQ, 
   Contact, 
@@ -43,6 +45,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Hero content={{...content.hero, problem: content.problem}} />
         </section>
         
+        {/* Urgency Banner - New */}
+        <section id="urgency">
+          <UrgencyBanner content={content.urgency} />
+        </section>
+        
         {content.whyImportant && (
           <section id="why-important">
             <WhyImportant content={content.whyImportant} />
@@ -69,6 +76,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         
         <section id="case-studies">
           <CaseStudies content={content.cases} />
+        </section>
+        
+        {/* Testimonials - New */}
+        <section id="testimonials">
+          <Testimonials content={content.testimonials} />
         </section>
         
         {/* <section id="pricing">

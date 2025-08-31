@@ -33,7 +33,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 shadow-lg hover:shadow-xl text-lg"
+              className="btn-storybrand-primary"
             >
               <span>{content?.cta?.primary || 'Fix my banner'}</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -41,7 +41,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
             
             <a
               href="#services"
-              className="group inline-flex items-center gap-3 px-12 py-5 bg-white border-2 border-gray-300 hover:border-blue-300 text-gray-700 hover:text-blue-600 font-bold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 shadow-lg hover:shadow-xl text-lg"
+              className="btn-storybrand-secondary"
             >
               <span>{content?.cta?.secondary || 'Free quick check'}</span>
               <Zap className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />

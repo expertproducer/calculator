@@ -390,6 +390,53 @@ export function getContent(locale: Locale) {
         manageCookieSettings: 'Manage Cookie Settings',
         manageCookieDescription: 'Click the button below to manage your cookie settings.',
         cookieSettings: 'Cookie Settings'
+      },
+      urgency: {
+        title: '⚠️ GDPR Fines Up to €20M - Don\'t Wait!',
+        subtitle: 'Get compliant today and avoid massive penalties. Limited time offer for new clients.',
+        offer: 'Free GDPR Audit + 50% Off Setup',
+        deadline: 'December 31, 2024',
+        discount: '50%',
+        originalPrice: '€2,000',
+        finalPrice: '€1,000'
+      },
+      testimonials: {
+        title: 'What Our Clients Say',
+        subtitle: 'Real results from real businesses who trusted us with their GDPR compliance',
+        items: [
+          {
+            name: 'Sarah Johnson',
+            company: 'TechStart Inc.',
+            role: 'CTO',
+            testimonial: 'C&C CookieComply saved us from a potential €500K fine. Their expertise in GDPR compliance is unmatched. The setup was smooth and their support is incredible.',
+            rating: 5,
+            result: 'Avoided €500K fine, 100% compliant'
+          },
+          {
+            name: 'Michael Chen',
+            company: 'E-commerce Solutions',
+            role: 'CEO',
+            testimonial: 'We were struggling with cookie compliance for months. C&C fixed everything in just 2 weeks. Our analytics are now clean and we\'re fully compliant.',
+            rating: 5,
+            result: 'Fixed in 2 weeks, analytics restored'
+          },
+          {
+            name: 'Emma Rodriguez',
+            company: 'Digital Marketing Agency',
+            role: 'Operations Director',
+            testimonial: 'The team at C&C is professional, knowledgeable, and responsive. They not only fixed our compliance issues but also educated our team on best practices.',
+            rating: 5,
+            result: 'Full compliance + team training'
+          }
+        ]
+      },
+      finalCTA: {
+        title: 'Ready to Get GDPR Compliant?',
+        subtitle: 'Don\'t wait until you get fined. Start your compliance journey today.',
+        cta: {
+          primary: 'Get Started Now',
+          secondary: 'Free Consultation'
+        }
       }
     },
     de: {
@@ -791,6 +838,45 @@ export function getContent(locale: Locale) {
         manageCookieSettings: 'Cookie-Einstellungen verwalten',
         manageCookieDescription: 'Klicken Sie auf die Schaltfläche unten, um Ihre Cookie-Einstellungen zu verwalten.',
         cookieSettings: 'Cookie-Einstellungen'
+      },
+      urgency: {
+        title: '⚠️ DSGVO-Strafen bis zu 20M € - Nicht warten!',
+        subtitle: 'Werden Sie heute konform und vermeiden Sie massive Strafen. Begrenztes Angebot für neue Kunden.',
+        offer: 'Kostenlose DSGVO-Prüfung + 50% Rabatt auf Einrichtung',
+        deadline: '31. Dezember 2024',
+        discount: '50%',
+        originalPrice: '2.000 €',
+        finalPrice: '1.000 €'
+      },
+      testimonials: {
+        title: 'Was unsere Kunden sagen',
+        subtitle: 'Echte Ergebnisse von echten Unternehmen, die uns ihre DSGVO-Compliance anvertraut haben',
+        items: [
+          {
+            name: 'Sarah Johnson',
+            company: 'TechStart Inc.',
+            role: 'CTO',
+            testimonial: 'C&C CookieComply hat uns vor einer potenziellen Strafe von 500.000 € gerettet. Ihre Expertise in DSGVO-Compliance ist unübertroffen. Die Einrichtung war reibungslos und ihr Support ist unglaublich.',
+            rating: 5,
+            result: '500.000 € Strafe vermieden, 100% konform'
+          },
+          {
+            name: 'Michael Chen',
+            company: 'E-commerce Solutions',
+            role: 'CEO',
+            testimonial: 'Wir hatten monatelang Probleme mit der Cookie-Compliance. C&C hat alles in nur 2 Wochen repariert. Unsere Analytics sind jetzt sauber und wir sind vollständig konform.',
+            rating: 5,
+            result: 'In 2 Wochen repariert, Analytics wiederhergestellt'
+          },
+          {
+            name: 'Emma Rodriguez',
+            company: 'Digital Marketing Agency',
+            role: 'Operations Director',
+            testimonial: 'Das Team bei C&C ist professionell, sachkundig und reaktionsschnell. Sie haben nicht nur unsere Compliance-Probleme behoben, sondern auch unser Team in Best Practices geschult.',
+            rating: 5,
+            result: 'Vollständige Compliance + Team-Schulung'
+          }
+        ]
       }
     },
     fr: {
@@ -1144,6 +1230,45 @@ export function getContent(locale: Locale) {
         manageCookieSettings: 'Gérer les paramètres des cookies',
         manageCookieDescription: 'Cliquez sur le bouton ci-dessous pour gérer vos paramètres de cookies.',
         cookieSettings: 'Paramètres des cookies'
+      },
+      urgency: {
+        title: '⚠️ Amendes RGPD jusqu\'à 20M € - N\'attendez pas !',
+        subtitle: 'Soyez conforme aujourd\'hui et évitez les amendes massives. Offre limitée pour les nouveaux clients.',
+        offer: 'Audit RGPD gratuit + 50% de réduction sur la configuration',
+        deadline: '31 décembre 2024',
+        discount: '50%',
+        originalPrice: '2 000 €',
+        finalPrice: '1 000 €'
+      },
+      testimonials: {
+        title: 'Ce que disent nos clients',
+        subtitle: 'Vrais résultats d\'entreprises réelles qui nous ont fait confiance pour leur conformité RGPD',
+        items: [
+          {
+            name: 'Sarah Johnson',
+            company: 'TechStart Inc.',
+            role: 'CTO',
+            testimonial: 'C&C CookieComply nous a sauvés d\'une amende potentielle de 500 000 €. Leur expertise en conformité RGPD est inégalée. La configuration était fluide et leur support est incroyable.',
+            rating: 5,
+            result: 'Évité une amende de 500 000 €, 100% conforme'
+          },
+          {
+            name: 'Michael Chen',
+            company: 'E-commerce Solutions',
+            role: 'CEO',
+            testimonial: 'Nous avions des problèmes de conformité des cookies depuis des mois. C&C a tout réparé en seulement 2 semaines. Nos analyses sont maintenant propres et nous sommes entièrement conformes.',
+            rating: 5,
+            result: 'Réparé en 2 semaines, analyses restaurées'
+          },
+          {
+            name: 'Emma Rodriguez',
+            company: 'Digital Marketing Agency',
+            role: 'Operations Director',
+            testimonial: 'L\'équipe chez C&C est professionnelle, compétente et réactive. Ils ont non seulement résolu nos problèmes de conformité mais ont aussi formé notre équipe aux meilleures pratiques.',
+            rating: 5,
+            result: 'Conformité complète + formation de l\'équipe'
+          }
+        ]
       }
     },
     es: {
@@ -1418,6 +1543,53 @@ export function getContent(locale: Locale) {
           }
         ]
       },
+      urgency: {
+        title: '⚠️ GDPR Fines Up to €20M - Don\'t Wait!',
+        subtitle: 'Get compliant today and avoid massive penalties. Limited time offer for new clients.',
+        offer: 'Free GDPR Audit + 50% Off Setup',
+        deadline: 'December 31, 2024',
+        discount: '50%',
+        originalPrice: '€2,000',
+        finalPrice: '€1,000'
+      },
+      testimonials: {
+        title: 'What Our Clients Say',
+        subtitle: 'Real results from real businesses who trusted us with their GDPR compliance',
+        items: [
+          {
+            name: 'Sarah Johnson',
+            company: 'TechStart Inc.',
+            role: 'CTO',
+            testimonial: 'C&C CookieComply saved us from a potential €500K fine. Their expertise in GDPR compliance is unmatched. The setup was smooth and their support is incredible.',
+            rating: 5,
+            result: 'Avoided €500K fine, 100% compliant'
+          },
+          {
+            name: 'Michael Chen',
+            company: 'E-commerce Solutions',
+            role: 'CEO',
+            testimonial: 'We were struggling with cookie compliance for months. C&C fixed everything in just 2 weeks. Our analytics are now clean and we\'re fully compliant.',
+            rating: 5,
+            result: 'Fixed in 2 weeks, analytics restored'
+          },
+          {
+            name: 'Emma Rodriguez',
+            company: 'Digital Marketing Agency',
+            role: 'Operations Director',
+            testimonial: 'The team at C&C is professional, knowledgeable, and responsive. They not only fixed our compliance issues but also educated our team on best practices.',
+            rating: 5,
+            result: 'Full compliance + team training'
+          }
+        ]
+      },
+      finalCTA: {
+        title: 'Ready to Get GDPR Compliant?',
+        subtitle: 'Don\'t wait until you get fined. Start your compliance journey today.',
+        cta: {
+          primary: 'Get Started Now',
+          secondary: 'Free Consultation'
+        }
+      },
       contact: {
         title: '¿Listo para Empezar?',
         subtitle: 'Contáctenos para una consulta gratuita y propuesta personalizada',
@@ -1499,6 +1671,45 @@ export function getContent(locale: Locale) {
         manageCookieSettings: 'Gestionar ajustes de cookies',
         manageCookieDescription: 'Haga clic en el botón de abajo para gestionar sus ajustes de cookies.',
         cookieSettings: 'Ajustes de cookies'
+      },
+      urgency: {
+        title: '⚠️ Multas GDPR hasta 20M € - ¡No espere!',
+        subtitle: 'Sea conforme hoy y evite multas masivas. Oferta limitada para nuevos clientes.',
+        offer: 'Auditoría GDPR gratuita + 50% de descuento en configuración',
+        deadline: '31 de diciembre de 2024',
+        discount: '50%',
+        originalPrice: '2.000 €',
+        finalPrice: '1.000 €'
+      },
+      testimonials: {
+        title: 'Lo que dicen nuestros clientes',
+        subtitle: 'Resultados reales de empresas reales que confiaron en nosotros para su cumplimiento GDPR',
+        items: [
+          {
+            name: 'Sarah Johnson',
+            company: 'TechStart Inc.',
+            role: 'CTO',
+            testimonial: 'C&C CookieComply nos salvó de una multa potencial de 500.000 €. Su experiencia en cumplimiento GDPR es inigualable. La configuración fue fluida y su soporte es increíble.',
+            rating: 5,
+            result: 'Evitó multa de 500.000 €, 100% conforme'
+          },
+          {
+            name: 'Michael Chen',
+            company: 'E-commerce Solutions',
+            role: 'CEO',
+            testimonial: 'Teníamos problemas de cumplimiento de cookies durante meses. C&C arregló todo en solo 2 semanas. Nuestros análisis están ahora limpios y estamos completamente conformes.',
+            rating: 5,
+            result: 'Arreglado en 2 semanas, análisis restaurados'
+          },
+          {
+            name: 'Emma Rodriguez',
+            company: 'Digital Marketing Agency',
+            role: 'Operations Director',
+            testimonial: 'El equipo en C&C es profesional, conocedor y receptivo. No solo arreglaron nuestros problemas de cumplimiento sino que también educaron a nuestro equipo en mejores prácticas.',
+            rating: 5,
+            result: 'Cumplimiento completo + entrenamiento del equipo'
+          }
+        ]
       }
     }
   }

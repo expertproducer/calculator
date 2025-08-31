@@ -48,6 +48,13 @@ export function getContent(locale: Locale) {
         headlineBlue: 'Cookie Compliance',
         headlineGray: 'That Actually Works!',
         solutionText: 'We solve all these problems',
+        commonProblems: '⚠️ Common Problems',
+        problemsDesc: 'We fix these problems quickly and professionally',
+        stats: {
+          websites: 'Websites Protected',
+          support: 'Expert Support',
+          success: 'Success Rate'
+        },
         cta: {
           primary: 'Fix my banner',
           secondary: 'Free quick check'
@@ -158,6 +165,15 @@ export function getContent(locale: Locale) {
         methodologyTitle: 'Our Implementation Methodology',
         methodologySubtitle: 'Designed to minimize business disruption while ensuring comprehensive GDPR compliance',
         whyWorksTitle: 'Why Our Process Works',
+        whyWorksSubtitle: 'Structured approach that guarantees success and compliance',
+        systematicTitle: 'Systematic',
+        systematicDesc: 'Step-by-step approach ensures nothing is missed',
+        efficientTitle: 'Efficient',
+        efficientDesc: 'Optimized workflow saves time and resources',
+        compliantTitle: 'Compliant',
+        compliantDesc: 'Ensures full GDPR and privacy law compliance',
+        ctaText: 'Start Your Implementation',
+        stepsTitle: 'Implementation Steps',
         leadText: 'Our **implementation methodology** is designed to minimize business disruption while ensuring comprehensive GDPR compliance. We begin with a thorough **legal requirements analysis** to understand your specific regulatory landscape, then proceed through **phased deployment** that allows for testing and validation at each stage. The process includes **stakeholder collaboration** with your legal, marketing, and technical teams, ensuring alignment across all departments. We implement **consent blocking** before any user interaction, configure **GTM triggers** based on granular consent categories, and provide **comprehensive documentation** for ongoing maintenance. Our approach guarantees that your CMP deployment is not only compliant but also optimized for user experience and data quality.',
         steps: [
           {
@@ -385,6 +401,13 @@ export function getContent(locale: Locale) {
         headlineBlue: 'Cookie-Compliance',
         headlineGray: 'Die Wirklich Funktioniert!',
         solutionText: 'Wir lösen all diese Probleme',
+        commonProblems: '⚠️ Häufige Probleme',
+        problemsDesc: 'Wir lösen diese Probleme schnell und professionell',
+        stats: {
+          websites: 'Geschützte Websites',
+          support: 'Experten-Support',
+          success: 'Erfolgsrate'
+        },
         cta: {
           primary: 'Meinen Banner reparieren',
           secondary: 'Kostenlose Schnellprüfung'
@@ -487,7 +510,8 @@ export function getContent(locale: Locale) {
             description: 'Multi-Domain/Multi-Locale, benutzerdefinierte Events, White-Label-Berichte'
           }
         ],
-        note: 'genaue Preise und SLA - nach Express-Diagnose'
+        note: 'genaue Preise und SLA - nach Express-Diagnose',
+        ctaText: 'Bereit loszulegen'
       },
       process: {
         title: 'Implementierungsprozess: Vom Audit zur Validierung',
@@ -495,6 +519,15 @@ export function getContent(locale: Locale) {
         methodologyTitle: 'Unsere Implementierungsmethodik',
         methodologySubtitle: 'Darauf ausgelegt, Geschäftsstörungen zu minimieren und gleichzeitig umfassende DSGVO-Compliance zu gewährleisten',
         whyWorksTitle: 'Warum unser Prozess funktioniert',
+        whyWorksSubtitle: 'Strukturierter Ansatz, der Erfolg und Compliance garantiert',
+        systematicTitle: 'Systematisch',
+        systematicDesc: 'Schritt-für-Schritt-Ansatz stellt sicher, dass nichts übersehen wird',
+        efficientTitle: 'Effizient',
+        efficientDesc: 'Optimierter Workflow spart Zeit und Ressourcen',
+        compliantTitle: 'Konform',
+        compliantDesc: 'Gewährleistet vollständige DSGVO- und Datenschutzgesetzes-Compliance',
+        ctaText: 'Ihre Implementierung Starten',
+        stepsTitle: 'Implementierungsschritte',
         leadText: 'Unsere **Implementierungsmethodik** ist darauf ausgelegt, Geschäftsstörungen zu minimieren und gleichzeitig umfassende DSGVO-Compliance zu gewährleisten. Wir beginnen mit einer gründlichen **Rechtsanforderungsanalyse**, um Ihre spezifische regulatorische Landschaft zu verstehen, und gehen dann durch **schrittweise Bereitstellung**, die Tests und Validierung in jeder Phase ermöglicht. Der Prozess umfasst **Stakeholder-Zusammenarbeit** mit Ihren Rechts-, Marketing- und Technikteams, um die Ausrichtung aller Abteilungen sicherzustellen. Wir implementieren **Zustimmungsblockierung** vor jeder Benutzerinteraktion, konfigurieren **GTM-Trigger** basierend auf granularen Zustimmungskategorien und stellen **umfassende Dokumentation** für laufende Wartung bereit. Unser Ansatz garantiert, dass Ihre CMP-Bereitstellung nicht nur konform ist, sondern auch für Benutzererfahrung und Datenqualität optimiert ist.',
         steps: [
           {
@@ -567,7 +600,8 @@ export function getContent(locale: Locale) {
             name: 'CookieYes',
             description: 'Flexible Plattform mit umfangreichen Anpassungsoptionen'
           }
-        ]
+        ],
+        note: 'Sie sehen Ihre bevorzugte CMP nicht? Wir können mit jeder Cookie-Management-Plattform arbeiten, um sicherzustellen, dass Ihre Compliance-Anforderungen erfüllt werden.'
       },
       cases: {
         title: 'Fallstudien',
@@ -592,7 +626,23 @@ export function getContent(locale: Locale) {
         cta: 'Holen Sie sich Ihre Fallstudie'
       },
       pricing: {
-        title: 'Preispläne',
+        title: 'Transparente Preise',
+        subtitle: 'Einfache, transparente Preise. Wir berechnen nur die Implementierung, Sie wählen Ihren CMP-Serviceplan.',
+        badge: '💰 Transparente Preise',
+        howItWorksTitle: 'Wie Unsere Preise Funktionieren',
+        howItWorksSubtitle: 'Keine versteckten Gebühren, keine laufenden Kosten. Nur transparente, einmalige Implementierungskosten.',
+        implementationTitle: 'Nur Implementierungsgebühr',
+        implementationDesc: 'Wir berechnen nur unsere technische Arbeit: CMP-Setup, GTM-Integration und Konfiguration. Keine laufenden Gebühren.',
+        chooseCmpTitle: 'Wählen Sie Ihr CMP',
+        chooseCmpDesc: 'Sie wählen und bezahlen direkt an Ihren bevorzugten CMP-Anbieter (Cookiebot, Iubenda, etc.).',
+        transparentTitle: 'Transparente Kosten',
+        transparentDesc: 'Alles in einem Preis enthalten. Keine Überraschungen, keine zusätzlichen Kosten später.',
+        flexibleTitle: 'Flexible Optionen',
+        flexibleDesc: 'Wählen Sie Basic-, Pro- oder Business-Implementierung je nach Ihren Bedürfnissen.',
+        whyModelTitle: 'Warum dieses Modell?',
+        whyModelDesc: 'Es gibt Ihnen die volle Kontrolle über Ihre CMP-Kosten und gewährleistet gleichzeitig professionelle Implementierungsqualität. Bezahlen Sie uns einmal für das Setup, dann verwalten Sie Ihr CMP-Abonnement direkt.',
+        packagesTitle: 'Implementierungspakete',
+        packagesSubtitle: 'Wählen Sie das richtige Service-Level für Ihr Unternehmen',
         plans: [
           {
             name: 'Basic Plan',
@@ -611,6 +661,23 @@ export function getContent(locale: Locale) {
       },
       faq: {
         title: 'Häufig gestellte Fragen',
+        subtitle: 'Antworten auf die häufigsten Fragen',
+        badge: '❓ FAQ',
+        whyQuestionsTitle: 'Warum Diese Fragen Wichtig Sind',
+        whyQuestionsDescription: 'Das Verstehen der richtigen Fragen hilft Ihnen, informierte Entscheidungen über Ihre DSGVO-Compliance-Strategie zu treffen',
+        complianceTitle: 'Compliance',
+        complianceDescription: 'DSGVO-Anforderungen verstehen und Strafen vermeiden',
+        implementationTitle: 'Implementierung',
+        implementationDescription: 'Technische Konfiguration und bewährte Integrationspraktiken',
+        knowledgeTitle: 'Wissen',
+        knowledgeDescription: 'Informierte Entscheidungen über Ihre CMP-Strategie treffen',
+        cantFindAnswer: 'Können Sie Ihre Antwort nicht finden?',
+        teamReadyToHelp: 'Unser Team ist bereit, bei spezifischen Fragen zu Ihren DSGVO-Compliance-Bedürfnissen zu helfen.',
+        stillHaveQuestions: 'Haben Sie Noch Fragen?',
+        expertsHelp: 'Unsere DSGVO-Compliance-Experten sind hier, um Ihnen bei spezifischen Fragen zu Ihrer Implementierung zu helfen.',
+        contactExperts: 'Unsere Experten Kontaktieren',
+        proTip: 'Profi-Tipp:',
+        proTipText: 'Diese Informationen basieren auf aktuellen DSGVO-Bestimmungen und bewährten Praktiken. Für spezifische Implementierungsdetails sollten Sie unsere Compliance-Experten konsultieren.',
         items: [
           {
             question: 'Was ist ein Cookie-Zustimmungstool und warum brauche ich es?',
@@ -735,6 +802,13 @@ export function getContent(locale: Locale) {
         headlineBlue: 'Conformité Cookies',
         headlineGray: 'Qui Fonctionne Vraiment!',
         solutionText: 'Nous résolvons tous ces problèmes',
+        commonProblems: '⚠️ Problèmes Courants',
+        problemsDesc: 'Nous résolvons ces problèmes rapidement et professionnellement',
+        stats: {
+          websites: 'Sites Web Protégés',
+          support: 'Support Expert',
+          success: 'Taux de Réussite'
+        },
         cta: {
           primary: 'Corriger ma bannière',
           secondary: 'Vérification gratuite'
@@ -845,6 +919,15 @@ export function getContent(locale: Locale) {
         methodologyTitle: 'Notre Méthodologie d\'Implémentation',
         methodologySubtitle: 'Conçue pour minimiser les perturbations commerciales tout en assurant une conformité RGPD complète',
         whyWorksTitle: 'Pourquoi notre processus fonctionne',
+        whyWorksSubtitle: 'Approche structurée qui garantit le succès et la conformité',
+        systematicTitle: 'Systématique',
+        systematicDesc: 'Approche étape par étape assure que rien n\'est manqué',
+        efficientTitle: 'Efficace',
+        efficientDesc: 'Flux de travail optimisé économise temps et ressources',
+        compliantTitle: 'Conforme',
+        compliantDesc: 'Assure la conformité complète RGPD et lois de confidentialité',
+        ctaText: 'Démarrer Votre Implémentation',
+        stepsTitle: 'Étapes d\'Implémentation',
         leadText: 'Notre **méthodologie d\'implémentation** est conçue pour minimiser les perturbations commerciales tout en assurant une conformité RGPD complète. Nous commençons par une **analyse approfondie des exigences légales** pour comprendre votre paysage réglementaire spécifique, puis procédons par **déploiement par phases** qui permet des tests et une validation à chaque étape. Le processus inclut une **collaboration des parties prenantes** avec vos équipes juridiques, marketing et techniques, assurant l\'alignement de tous les départements. Nous implémentons le **blocage du consentement** avant toute interaction utilisateur, configurons les **déclencheurs GTM** basés sur des catégories de consentement granulaires, et fournissons une **documentation complète** pour la maintenance continue. Notre approche garantit que votre déploiement CMP est non seulement conforme, mais aussi optimisé pour l\'expérience utilisateur et la qualité des données.',
         steps: [
           {
@@ -1072,6 +1155,13 @@ export function getContent(locale: Locale) {
         headlineBlue: 'Cumplimiento de Cookies',
         headlineGray: '¡Que Realmente Funcione!',
         solutionText: 'Resolvemos todos estos problemas',
+        commonProblems: '⚠️ Problemas Comunes',
+        problemsDesc: 'Solucionamos estos problemas de forma rápida y profesional',
+        stats: {
+          websites: 'Sitios Web Protegidos',
+          support: 'Soporte Experto',
+          success: 'Tasa de Éxito'
+        },
         cta: {
           primary: 'Arreglar mi banner',
           secondary: 'Verificación gratuita'
@@ -1130,7 +1220,8 @@ export function getContent(locale: Locale) {
             description: 'multi-dominios/multi-localizaciones, eventos personalizados, informes white-label'
           }
         ],
-        note: 'precios y SLA exactos - después del diagnóstico expreso'
+        note: 'precios y SLA exactos - después del diagnóstico expreso',
+        ctaText: 'Listo para empezar'
       },
       process: {
         title: 'Nuestro Proceso de Implementación',
@@ -1139,7 +1230,16 @@ export function getContent(locale: Locale) {
         methodologyTitle: 'Nuestra Metodología de Implementación',
         methodologySubtitle: 'Diseñada para minimizar la interrupción del negocio mientras garantiza el cumplimiento integral de GDPR',
         whyWorksTitle: 'Por Qué Nuestro Proceso Funciona',
+        whyWorksSubtitle: 'Enfoque estructurado que garantiza éxito y cumplimiento',
+        systematicTitle: 'Sistemático',
+        systematicDesc: 'Enfoque paso a paso asegura que nada se pase por alto',
+        efficientTitle: 'Eficiente',
+        efficientDesc: 'Flujo de trabajo optimizado ahorra tiempo y recursos',
+        compliantTitle: 'Conforme',
+        compliantDesc: 'Asegura cumplimiento completo de GDPR y leyes de privacidad',
         leadText: 'Nuestro proceso sistemático garantiza una implementación fluida con mínima interrupción.',
+        ctaText: 'Iniciar Su Implementación',
+        stepsTitle: 'Pasos de Implementación',
         steps: [
           {
             title: 'Auditoría',
@@ -1196,6 +1296,20 @@ export function getContent(locale: Locale) {
         title: 'Precios Transparentes',
         subtitle: 'Precios simples y transparentes. Solo cobramos por la implementación, usted elige su plan de servicio CMP.',
         badge: '💰 Precios Transparentes',
+        howItWorksTitle: 'Cómo Funcionan Nuestros Precios',
+        howItWorksSubtitle: 'Sin tarifas ocultas, sin cargos continuos. Solo costos de implementación transparentes y únicos.',
+        implementationTitle: 'Solo Tarifa de Implementación',
+        implementationDesc: 'Cobramos solo por nuestro trabajo técnico: configuración CMP, integración GTM y configuración. Sin tarifas continuas.',
+        chooseCmpTitle: 'Elija Su CMP',
+        chooseCmpDesc: 'Usted selecciona y paga directamente a su proveedor CMP preferido (Cookiebot, Iubenda, etc.).',
+        transparentTitle: 'Costos Transparentes',
+        transparentDesc: 'Todo incluido en un precio. Sin sorpresas, sin cargos adicionales más tarde.',
+        flexibleTitle: 'Opciones Flexibles',
+        flexibleDesc: 'Elija implementación Básica, Pro o Business según sus necesidades.',
+        whyModelTitle: '¿Por qué este modelo?',
+        whyModelDesc: 'Le da control total sobre los costos de su CMP mientras asegura calidad de implementación profesional. Páguenos una vez por la configuración, luego gestione su suscripción CMP directamente.',
+        packagesTitle: 'Paquetes de Implementación',
+        packagesSubtitle: 'Elija el nivel de servicio adecuado para su negocio',
         plans: [
           {
             name: 'Plan Básico',
@@ -1225,6 +1339,7 @@ export function getContent(locale: Locale) {
       platforms: {
         title: 'Plataformas Soportadas',
         subtitle: 'Trabajamos con todas las tecnologías principales',
+        badge: '🚀 Plataformas',
         items: [
           'WordPress',
           'Shopify',
@@ -1275,6 +1390,11 @@ export function getContent(locale: Locale) {
         knowledgeDescription: 'Tomar decisiones informadas sobre su estrategia CMP',
         cantFindAnswer: '¿No encuentra su respuesta?',
         teamReadyToHelp: 'Nuestro equipo está listo para ayudar con cualquier pregunta específica sobre sus necesidades de cumplimiento GDPR.',
+        stillHaveQuestions: '¿Aún Tiene Preguntas?',
+        expertsHelp: 'Nuestros expertos en cumplimiento GDPR están aquí para ayudarle con cualquier pregunta específica sobre su implementación.',
+        contactExperts: 'Contactar Nuestros Expertos',
+        proTip: 'Consejo Profesional:',
+        proTipText: 'Esta información se basa en las regulaciones GDPR actuales y mejores prácticas. Para detalles específicos de implementación, considere consultar con nuestros expertos en cumplimiento.',
         items: [
           {
             question: '¿Cuánto tiempo toma la implementación?',

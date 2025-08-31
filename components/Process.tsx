@@ -9,6 +9,15 @@ interface ProcessProps {
     methodologyTitle?: string
     methodologySubtitle?: string
     whyWorksTitle?: string
+    whyWorksSubtitle?: string
+    systematicTitle?: string
+    systematicDesc?: string
+    efficientTitle?: string
+    efficientDesc?: string
+    compliantTitle?: string
+    compliantDesc?: string
+    ctaText?: string
+    stepsTitle?: string
     steps: Array<{
       title: string
       description: string
@@ -81,7 +90,7 @@ export default function Process({ content }: ProcessProps) {
               {content.whyWorksTitle || 'Why Our Process Works'}
             </h2>
             <p className="text-xl text-gray-600">
-              Structured approach that guarantees success and compliance
+              {content.whyWorksSubtitle || 'Structured approach that guarantees success and compliance'}
             </p>
           </div>
           
@@ -91,10 +100,10 @@ export default function Process({ content }: ProcessProps) {
                 <Calculator className="text-white w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Systematic
+                {content.systematicTitle || 'Systematic'}
               </h3>
               <p className="text-gray-600">
-                Step-by-step approach ensures nothing is missed
+                {content.systematicDesc || 'Step-by-step approach ensures nothing is missed'}
               </p>
             </div>
             
@@ -103,10 +112,10 @@ export default function Process({ content }: ProcessProps) {
                 <Clock className="text-white w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Efficient
+                {content.efficientTitle || 'Efficient'}
               </h3>
               <p className="text-gray-600">
-                Optimized workflow saves time and resources
+                {content.efficientDesc || 'Optimized workflow saves time and resources'}
               </p>
             </div>
             
@@ -115,10 +124,10 @@ export default function Process({ content }: ProcessProps) {
                 <Shield className="text-white w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Compliant
+                {content.compliantTitle || 'Compliant'}
               </h3>
               <p className="text-gray-600">
-                Ensures full GDPR and privacy law compliance
+                {content.compliantDesc || 'Ensures full GDPR and privacy law compliance'}
               </p>
             </div>
           </div>
@@ -128,7 +137,7 @@ export default function Process({ content }: ProcessProps) {
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Implementation Steps
+              {content.stepsTitle || 'Implementation Steps'}
             </h2>
           </div>
           
@@ -200,7 +209,7 @@ export default function Process({ content }: ProcessProps) {
         <div className="text-center">
           <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
             <Settings className="w-5 h-5" />
-            <span className="font-semibold">Start Your Implementation</span>
+            <span className="font-semibold">{content.ctaText || 'Start Your Implementation'}</span>
             <ArrowRight className="w-5 h-5" />
           </div>
         </div>

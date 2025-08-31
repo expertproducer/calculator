@@ -5,6 +5,20 @@ interface PricingProps {
     title: string
     subtitle?: string
     badge?: string
+    howItWorksTitle?: string
+    howItWorksSubtitle?: string
+    implementationTitle?: string
+    implementationDesc?: string
+    chooseCmpTitle?: string
+    chooseCmpDesc?: string
+    transparentTitle?: string
+    transparentDesc?: string
+    flexibleTitle?: string
+    flexibleDesc?: string
+    whyModelTitle?: string
+    whyModelDesc?: string
+    packagesTitle?: string
+    packagesSubtitle?: string
     plans: Array<{
       name: string
       features: string[]
@@ -47,11 +61,11 @@ export default function Pricing({ content }: PricingProps) {
               </div>
               
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                How Our Pricing Works
+                {content.howItWorksTitle || 'How Our Pricing Works'}
               </h2>
               
               <p className="text-lg text-gray-600">
-                No hidden fees, no ongoing charges. Just transparent, one-time implementation costs.
+                {content.howItWorksSubtitle || 'No hidden fees, no ongoing charges. Just transparent, one-time implementation costs.'}
               </p>
             </div>
             
@@ -62,9 +76,9 @@ export default function Pricing({ content }: PricingProps) {
                     <Check className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Implementation Fee Only</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.implementationTitle || 'Implementation Fee Only'}</h3>
                     <p className="text-gray-700 leading-relaxed">
-                      We charge only for our technical work: CMP setup, GTM integration, and configuration. No ongoing fees.
+                      {content.implementationDesc || 'We charge only for our technical work: CMP setup, GTM integration, and configuration. No ongoing fees.'}
                     </p>
                   </div>
                 </div>
@@ -74,9 +88,9 @@ export default function Pricing({ content }: PricingProps) {
                     <Shield className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Choose Your CMP</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.chooseCmpTitle || 'Choose Your CMP'}</h3>
                     <p className="text-gray-700 leading-relaxed">
-                      You select and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.).
+                      {content.chooseCmpDesc || 'You select and pay directly to your preferred CMP provider (Cookiebot, Iubenda, etc.).'}
                     </p>
                   </div>
                 </div>
@@ -88,9 +102,9 @@ export default function Pricing({ content }: PricingProps) {
                     <Info className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Transparent Costs</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.transparentTitle || 'Transparent Costs'}</h3>
                     <p className="text-gray-700 leading-relaxed">
-                      Everything included in one price. No surprises, no additional charges later.
+                      {content.transparentDesc || 'Everything included in one price. No surprises, no additional charges later.'}
                     </p>
                   </div>
                 </div>
@@ -100,9 +114,9 @@ export default function Pricing({ content }: PricingProps) {
                     <Star className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Flexible Options</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{content.flexibleTitle || 'Flexible Options'}</h3>
                     <p className="text-gray-700 leading-relaxed">
-                      Choose Basic, Pro, or Business implementation based on your needs.
+                      {content.flexibleDesc || 'Choose Basic, Pro, or Business implementation based on your needs.'}
                     </p>
                   </div>
                 </div>
@@ -111,8 +125,7 @@ export default function Pricing({ content }: PricingProps) {
             
             <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-200">
               <p className="text-blue-800 text-center text-lg">
-                <strong>Why this model?</strong> It gives you full control over your CMP costs while ensuring professional implementation quality. 
-                Pay us once for setup, then manage your CMP subscription directly.
+                <strong>{content.whyModelTitle || 'Why this model?'}</strong> {content.whyModelDesc || 'It gives you full control over your CMP costs while ensuring professional implementation quality. Pay us once for setup, then manage your CMP subscription directly.'}
               </p>
             </div>
           </div>
@@ -122,10 +135,10 @@ export default function Pricing({ content }: PricingProps) {
         <div className="max-w-6xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Implementation Packages
+              {content.packagesTitle || 'Implementation Packages'}
             </h2>
             <p className="text-xl text-gray-600">
-              Choose the right level of service for your business
+              {content.packagesSubtitle || 'Choose the right level of service for your business'}
             </p>
           </div>
           

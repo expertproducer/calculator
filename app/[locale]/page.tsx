@@ -2,13 +2,13 @@ import { getContent } from '../../lib/i18n'
 import Hero from '../../components/Hero'
 import { 
   WhyImportant, 
-  Services, 
-  Process, 
+  // Services, 
+  // Process, 
   Benefits, 
   Platforms, 
   CaseStudies, 
-  Pricing, 
-  FAQ, 
+  // Pricing, 
+  // FAQ, 
   Contact, 
   FinalCTA, 
   Footer, 
@@ -49,13 +49,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </section>
         )}
         
-        <section id="services">
+        {/* <section id="services">
           <Services content={content.services} />
         </section>
         
         <section id="process">
           <Process content={content.process} />
-        </section>
+        </section> */}
         
         <section id="benefits">
           <Benefits content={content.benefits} />
@@ -71,13 +71,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <CaseStudies content={content.cases} />
         </section>
         
-        <section id="pricing">
+        {/* <section id="pricing">
           <Pricing content={content.pricing} />
         </section>
         
         <section id="faq">
           <FAQ content={content.faq} />
-        </section>
+        </section> */}
         
         <section id="contact">
           <Contact content={content.contact} />

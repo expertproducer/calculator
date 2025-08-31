@@ -12,6 +12,13 @@ interface HeroProps {
     headlineBlue?: string
     headlineGray?: string
     solutionText?: string
+    commonProblems?: string
+    problemsDesc?: string
+    stats?: {
+      websites: string
+      support: string
+      success: string
+    }
     cta: {
       primary: string
       secondary: string
@@ -88,15 +95,15 @@ export default function Hero({ content }: HeroProps) {
               <div className="flex items-center gap-6 pt-6">
                 <div className="text-sm text-gray-600">
                   <div className="font-semibold text-gray-900">1M+</div>
-                  <div>Websites Protected</div>
+                  <div>{content.stats?.websites || 'Websites Protected'}</div>
                 </div>
                 <div className="text-sm text-gray-600">
                   <div className="font-semibold text-gray-900">24/7</div>
-                  <div>Expert Support</div>
+                  <div>{content.stats?.support || 'Expert Support'}</div>
                 </div>
                 <div className="text-sm text-gray-600">
                   <div className="font-semibold text-gray-900">99%</div>
-                  <div>Success Rate</div>
+                  <div>{content.stats?.success || 'Success Rate'}</div>
                 </div>
               </div>
             </div>
@@ -158,7 +165,7 @@ export default function Hero({ content }: HeroProps) {
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-                ⚠️ Common Problems
+                {content.commonProblems || '⚠️ Common Problems'}
               </div>
               
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
@@ -166,7 +173,7 @@ export default function Hero({ content }: HeroProps) {
               </h2>
               
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We fix these problems quickly and professionally
+                {content.problemsDesc || 'We fix these problems quickly and professionally'}
               </p>
             </div>
             

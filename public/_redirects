@@ -1,0 +1,8 @@
+# Redirect root to English version
+/ /en/ 301
+
+# Redirect www to non-www (if needed)
+https://www.cookiecomply.site/* https://cookiecomply.site/:splat 301
+
+# Handle locale routing
+/[locale] /[locale]/ 301

@@ -9,6 +9,15 @@ const defaultLocale = 'en'
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   
+  // Skip static files and API routes
+  if (pathname.startsWith('/_next') || 
+      pathname.startsWith('/api') || 
+      pathname.startsWith('/images') ||
+      pathname.startsWith('/favicon') ||
+      pathname.includes('.')) {
+    return
+  }
+  
   // Check if the pathname has a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`

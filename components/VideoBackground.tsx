@@ -22,7 +22,7 @@ export default function VideoBackground() {
         loop
         playsInline
         className="w-full h-full object-cover"
-        src="/api/video"
+        src="/images/banners/demo/hero-background.mp4"
       />
       <div className="absolute inset-0 bg-black/50"></div>
     </div>

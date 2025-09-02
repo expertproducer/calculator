@@ -19,12 +19,3 @@ ENVIRONMENT = "preview"
 # Global environment variables
 [vars]
 ENVIRONMENT = "development"
-
-# Exclude large cache files
-[env.production.assets]
-exclude = [
-  "cache/**/*",
-  "server/**/*",
-  "trace/**/*",
-  "webpack/**/*"
-]

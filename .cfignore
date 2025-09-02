@@ -1,0 +1,11 @@
+# Exclude large cache files from Cloudflare Pages deployment
+.next/cache/**/*
+.next/server/**/*
+.next/trace/**/*
+.next/webpack/**/*
+
+# Exclude development files
+node_modules/**/*
+.git/**/*
+.env*local
+*.log

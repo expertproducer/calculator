@@ -2,7 +2,7 @@ interface ServicesStructuredDataProps {
   locale: string
 }
 
-export default function ServicesStructuredData({ locale, faq }: ServicesStructuredDataProps) {
+export default function ServicesStructuredData({ locale }: ServicesStructuredDataProps) {
   const baseUrl = 'https://www.cashandclash.com'
   const currentUrl = `${baseUrl}/${locale}/services/`
   

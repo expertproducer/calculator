@@ -70,7 +70,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
+      <StructuredData />
       <FAQStructuredData locale={locale} faqItems={content.faq.items} />
       <div className="min-h-screen bg-white">
         <Navbar locale={locale} />

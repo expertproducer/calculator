@@ -5,15 +5,27 @@ import type { NextRequest } from 'next/server'
 const locales = ['en', 'de', 'fr', 'es'] as const
 const defaultLocale = 'en'
 
-// Middleware temporarily disabled for static export
-// This file handles locale redirects but is incompatible with output: 'export'
-// For static export, locale handling is done through generateStaticParams
+// Middleware for locale redirects
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+  
+  // Check if the pathname has a locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  )
 
-export function middleware() {
-  // Disabled for static export
-  return
+  if (pathnameHasLocale) return
+
+  // Redirect if there is no locale
+  const locale = defaultLocale
+  return NextResponse.redirect(
+    new URL(`/${locale}${pathname}`, request.url)
+  )
 }
 
 export const config = {
-  matcher: []
+  matcher: [
+    // Skip all internal paths (_next)
+    '/((?!_next|api|favicon.ico).*)',
+  ],
 }

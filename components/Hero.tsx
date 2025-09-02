@@ -1,7 +1,8 @@
 "use client"
 
-import { Shield, CheckCircle, Zap, Clock, AlertTriangle, Unlock, FileX, Frown, ShieldCheck } from 'lucide-react'
+import { ShieldCheck } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import VideoBackground from './VideoBackground'
 
 interface HeroProps {
   content: {
@@ -46,34 +47,11 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
         className="relative min-h-screen overflow-hidden"
         aria-labelledby="hero-title"
       >
-        {/* Full Screen Video Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            poster="/images/banners/demo/modern-banner-example.png"
-            onLoadedMetadata={(e) => {
-              e.currentTarget.playbackRate = 0.75;
-            }}
-          >
-            <source src="/images/banners/demo/hero-background.mp4" type="video/mp4" />
-            <source src="/images/banners/demo/hero-background.webm" type="video/webm" />
-            <img 
-              src="/images/banners/demo/modern-banner-example.png" 
-              alt="Cookie compliance demo" 
-              className="w-full h-full object-cover"
-            />
-          </video>
-          
-          {/* Video Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
+        {/* Full Screen Background */}
+        <VideoBackground />
         
         {/* Main Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-16">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
           
           {/* Hero Content - Centered */}
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">

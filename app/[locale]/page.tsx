@@ -30,9 +30,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <StructuredData />
       <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
-        
-        {/* Spacing for fixed navigation */}
-        <div className="pt-20"></div>
       
       <main>
         <section id="hero">

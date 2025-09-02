@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Cloudflare Pages - ENABLED FOR STATIC HOSTING
-  output: 'export',
+  // Disable static export for Cloudflare Pages with Functions
+  // output: 'export' is disabled to allow API functions
   
-  // Disable image optimization for static export
+  // Disable image optimization for better compatibility
   images: {
     unoptimized: true
   },
@@ -11,9 +11,9 @@ const nextConfig = {
   // Disable trailing slash for better compatibility
   trailingSlash: false,
   
-  // Disable server-side features for static export
+  // Enable server-side features for Cloudflare Functions
   experimental: {
-    // Disable features that don't work with static export
+    // Enable features that work with Cloudflare Functions
   }
 }
 

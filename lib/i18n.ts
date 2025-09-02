@@ -1359,7 +1359,7 @@ export function getContent(locale: Locale) {
       },
       finalCTA: {
         title: 'Prêt pour la conformité RGPD ?',
-        subtitle: 'N'attendez pas d'être sanctionné. Commencez votre parcours de conformité dès aujourd'hui.',
+        subtitle: 'N\'attendez pas d\'être sanctionné. Commencez votre parcours de conformité dès aujourd\'hui.',
         cta: {
           primary: 'Commencer maintenant',
           secondary: 'Consultation gratuite'

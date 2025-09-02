@@ -9,6 +9,8 @@ pages_build_output_dir = "out"
 name = "calculator2"
 [env.production.vars]
 ENVIRONMENT = "production"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 
 # Environment variables for preview
 [env.preview]

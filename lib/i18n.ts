@@ -1656,15 +1656,6 @@ export function getContent(locale: Locale) {
           }
         ]
       },
-      urgency: {
-        title: '⚠️ GDPR Fines Up to €20M - Don\'t Wait!',
-        subtitle: 'Get compliant today and avoid massive penalties. Limited time offer for new clients.',
-        offer: 'Free GDPR Audit + 50% Off Setup',
-        deadline: 'December 31, 2024',
-        discount: '50%',
-        originalPrice: '€2,000',
-        finalPrice: '€1,000'
-      },
       testimonials: {
         title: 'What Our Clients Say',
         subtitle: 'Real results from real businesses who trusted us with their GDPR compliance',

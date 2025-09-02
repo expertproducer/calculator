@@ -45,10 +45,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
             </a>
           </div>
           
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-blue-100 text-blue-800 rounded-full shadow-2xl drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-            <Clock className="w-5 h-5 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-            <span className="text-lg font-bold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content?.responseTime || 'We reply within 24h'}</span>
-          </div>
+
         </div>
       </div>
     </section>

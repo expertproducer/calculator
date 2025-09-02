@@ -75,7 +75,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
+      <StructuredData />
       <ServicesStructuredData locale={locale} />
       <div className="min-h-screen bg-white">
         <Navbar locale={locale} />

@@ -26,12 +26,12 @@ SLACK_WEBHOOK_URL=your_slack_webhook_url_here
 npm run build
 
 # Deploy to Cloudflare Pages
-npx wrangler pages deploy .next --project-name calculator
+npx wrangler pages deploy out --project-name calculator
 ```
 
 ## 📁 Project Structure
 
-- **`.next/`** - Next.js build folder (used for deployment)
+- **`out/`** - Static export folder (used for deployment)
 - **`functions/`** - Cloudflare Functions (replace Next.js API routes)
 - **`app/`** - Next.js pages and components
 - **`wrangler.toml`** - Cloudflare configuration
@@ -39,7 +39,7 @@ npx wrangler pages deploy .next --project-name calculator
 ## 🔧 How It Works
 
 ### Static Pages
-- Next.js builds static pages to `.next` folder
+- Next.js builds static pages to `out` folder using static export
 - Cloudflare Pages serves static content
 
 ### API Functions
@@ -63,7 +63,7 @@ In Cloudflare Pages Dashboard configure:
 1. **DO NOT use `output: 'export'`** in `next.config.js` - this disables API
 2. **Next.js API routes don't work** in static export
 3. **Use Cloudflare Functions** for server logic
-4. **`.next` folder** is used for deployment, not `out`
+4. **`out` folder** is used for deployment (static export)
 
 ## 🔍 Debugging
 
@@ -78,7 +78,7 @@ wrangler pages deployment tail --project-name calculator
 npm run dev
 
 # Run functions locally
-wrangler pages dev .next --compatibility-date=2024-01-01
+wrangler pages dev out --compatibility-date=2024-01-01
 ```
 
 ## 📚 Useful Links

@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
+  const content = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>

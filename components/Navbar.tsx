@@ -3,6 +3,23 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Shield, Globe, Star } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
+import { getContent } from '@/lib/i18n'
+
+type NavbarLabels = {
+  services: string
+  process: string
+  pricing: string
+  faq: string
+  contact: string
+}
+
+const EN_FALLBACK: NavbarLabels = {
+  services: 'Services',
+  process: 'Process',
+  pricing: 'Pricing',
+  faq: 'FAQ',
+  contact: 'Contact'
+}
 
 export default function Navbar({ locale }: { locale: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -31,51 +48,38 @@ export default function Navbar({ locale }: { locale: string }) {
     }
   }, [showLanguageMenu])
 
+  const [labels, setLabels] = useState<NavbarLabels>(EN_FALLBACK)
+
+  useEffect(() => {
+    let mounted = true
+    ;(async () => {
+      try {
+        const content = await getContent((locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as any)
+        const nav = (content?.navbar || {}) as Partial<NavbarLabels>
+        if (mounted) {
+          setLabels({ ...EN_FALLBACK, ...nav })
+        }
+      } catch {
+        // ignore and keep fallback
+      }
+    })()
+    return () => {
+      mounted = false
+    }
+  }, [locale])
+
   const navigateToPage = (page: string) => {
     const basePath = locale === 'en' ? '' : `/${locale}`
     router.push(`${basePath}/${page}`)
     setIsMenuOpen(false)
   }
 
-  const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as 'en' | 'de' | 'fr' | 'es'
-  
-  const translations = {
-    en: {
-      services: 'Services',
-      process: 'Process', 
-      pricing: 'Pricing',
-      faq: 'FAQ',
-      contact: 'Contact'
-    },
-    de: {
-      services: 'Dienstleistungen',
-      process: 'Prozess',
-      pricing: 'Preise', 
-      faq: 'FAQ',
-      contact: 'Kontakt'
-    },
-    fr: {
-      services: 'Services',
-      process: 'Processus',
-      pricing: 'Tarifs',
-      faq: 'FAQ', 
-      contact: 'Contact'
-    },
-    es: {
-      services: 'Servicios',
-      process: 'Proceso',
-      pricing: 'Precios',
-      faq: 'FAQ',
-      contact: 'Contacto'
-    }
-  }[localeTyped]
-
   const navItems = [
-    { id: 'services', label: translations.services },
-    { id: 'process', label: translations.process },
-    { id: 'pricing', label: translations.pricing },
-    { id: 'faq', label: translations.faq },
-    { id: 'contact', label: translations.contact }
+    { id: 'services', label: labels.services },
+    { id: 'process', label: labels.process },
+    { id: 'pricing', label: labels.pricing },
+    { id: 'faq', label: labels.faq },
+    { id: 'contact', label: labels.contact }
   ]
 
   const languages = [

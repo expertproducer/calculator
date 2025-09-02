@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
 export default async function CasesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const content = getContent(locale as 'en' | 'de' | 'fr' | 'es')
+  const content = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
   
   return (
     <>

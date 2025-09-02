@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "CMP Einrichtung\nC&C CookieComply",
+    "subtitle": "Wir richten CMP ein und korrigieren Cookie-Banner."
+  },
+  "navbar": {
+    "services": "Dienstleistungen",
+    "process": "Prozess",
+    "pricing": "Preise",
+    "faq": "FAQ",
+    "contact": "Kontakt"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Erzählen Sie uns von Ihrem Projekt",
+    "fields": {
+      "name": "Name",
+      "email": "E-Mail",
+      "url": "Website URL",
+      "stack": "Technologie-Stack",
+      "regions": "Zielregionen",
+      "languages": "Sprachen",
+      "cmp": "Bevorzugtes CMP",
+      "integrations": "Integrationen",
+      "message": "Nachricht"
+    },
+    "submit": "Nachricht senden",
+    "contactInfo": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "workingHours": "Arbeitszeiten",
+      "location": "Standort",
+      "responseTime": "Antwortzeit",
+      "responseDescription": "Wir antworten innerhalb von 24 Stunden.",
+      "whatYouGet": {
+        "title": "Was Sie erhalten",
+        "items": ["Express-Audit", "CMP-Empfehlung", "Umsetzungsplan", "Nächste Schritte"]
+      }
+    }
+  }
+}

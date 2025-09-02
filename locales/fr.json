@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "Mise en place CMP\nC&C CookieComply",
+    "subtitle": "Nous configurons le CMP et corrigeons les bannières de cookies."
+  },
+  "navbar": {
+    "services": "Services",
+    "process": "Processus",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Parlez-nous de votre projet",
+    "fields": {
+      "name": "Nom",
+      "email": "Email",
+      "url": "URL du site",
+      "stack": "Stack technique",
+      "regions": "Régions cibles",
+      "languages": "Langues",
+      "cmp": "CMP préféré",
+      "integrations": "Intégrations",
+      "message": "Message"
+    },
+    "submit": "Envoyer le message",
+    "contactInfo": {
+      "title": "Informations de contact",
+      "email": "Email",
+      "workingHours": "Heures d'ouverture",
+      "location": "Localisation",
+      "responseTime": "Délai de réponse",
+      "responseDescription": "Nous répondons sous 24 heures.",
+      "whatYouGet": {
+        "title": "Ce que vous obtenez",
+        "items": ["Audit express", "Recommandation CMP", "Plan de mise en œuvre", "Prochaines étapes"]
+      }
+    }
+  }
+}

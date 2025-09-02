@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "Configuración CMP\nC&C CookieComply",
+    "subtitle": "Configuramos CMP y corregimos banners de cookies."
+  },
+  "navbar": {
+    "services": "Servicios",
+    "process": "Proceso",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "contact": "Contacto"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Cuéntanos sobre tu proyecto",
+    "fields": {
+      "name": "Nombre",
+      "email": "Email",
+      "url": "URL del sitio",
+      "stack": "Stack técnico",
+      "regions": "Regiones objetivo",
+      "languages": "Idiomas",
+      "cmp": "CMP preferido",
+      "integrations": "Integraciones",
+      "message": "Mensaje"
+    },
+    "submit": "Enviar mensaje",
+    "contactInfo": {
+      "title": "Información de contacto",
+      "email": "Email",
+      "workingHours": "Horario",
+      "location": "Ubicación",
+      "responseTime": "Tiempo de respuesta",
+      "responseDescription": "Respondemos en 24 horas.",
+      "whatYouGet": {
+        "title": "Qué obtienes",
+        "items": ["Auditoría exprés", "Recomendación CMP", "Plan de implementación", "Siguientes pasos"]
+      }
+    }
+  }
+}

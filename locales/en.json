@@ -1,0 +1,272 @@
+{
+  "hero": {
+    "title": "CMP Setup\nC&C CookieComply",
+    "subtitle": "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.",
+    "headline": "Every Business Needs",
+    "headlineBlue": "Cookie Compliance",
+    "headlineGray": "That Actually Works!",
+    "solutionText": "We solve all these problems",
+    "commonProblems": "Common Problems",
+    "problemsDesc": "We fix these problems quickly and professionally",
+    "stats": {
+      "websites": "Websites Protected",
+      "support": "Expert Support",
+      "success": "Success Rate"
+    },
+    "cta": { "primary": "Fix my banner", "secondary": "Free quick check" }
+  },
+  "problem": {
+    "title": "Common GDPR & Cookie Banner Issues",
+    "points": [
+      "Non-compliant cookie banners",
+      "Scripts loading before consent",
+      "Missing consent logs",
+      "Poor user experience"
+    ]
+  },
+  "urgency": {
+    "title": "Don’t risk fines",
+    "subtitle": "We make cookie consent clean and compliant",
+    "offer": "Express Compliance Check",
+    "discount": "20%",
+    "originalPrice": "$499",
+    "finalPrice": "$399",
+    "deadline": "This week"
+  },
+  "whyImportant": {
+    "title": "Why Cookie Consent Management Matters",
+    "subtitle": "As privacy laws get stricter, clean consent is essential.",
+    "expertiseTitle": "Our Expertise Makes the Difference",
+    "points": [
+      "Comprehensive compliance with GDPR/CCPA",
+      "Risk mitigation and penalty avoidance",
+      "Enhanced user trust and transparency",
+      "Maintained website functionality with analytics"
+    ],
+    "description": "We bridge the gap between legal requirements and technical implementation, ensuring your data is legally clean and usable."
+  },
+  "services": {
+    "title": "GDPR Services: CMP Setup & Cookie Banner Fixes",
+    "subtitle": "Comprehensive solutions for full GDPR compliance",
+    "approachTitle": "Our Approach",
+    "leadText": "Cookie consent is a managed process: CMP shows a proper first layer with Accept / Decline / Preferences, blocks non-essential scripts before consent, and sends clean consent events to GTM/GA4/Ads/Meta.",
+    "sections": [
+      {
+        "title": "What We Implement",
+        "items": [
+          "CMP setup (Cookiebot / Iubenda / Usercentrics / Termly)",
+          "Strict pre-consent blocking",
+          "Preference Center with categories",
+          "Consent events for GTM/GA4/Ads/Meta"
+        ]
+      },
+      {
+        "title": "Documentation & Policies",
+        "items": [
+          "Privacy & Cookie Policy pages",
+          "Consent logs and exports",
+          "QA for first-visit, change, withdrawal, restore"
+        ]
+      }
+    ],
+    "packagesTitle": "Service Packages",
+    "packagesSubtitle": "Choose the right solution for your business",
+    "packages": [
+      { "name": "Basic", "description": "Banner fix + basic blocking + copywriting" },
+      { "name": "Pro", "description": "Full CMP, GTM triggers, before/after scan, policies" },
+      { "name": "Business", "description": "Multi-domain/locales, custom events, white-label reports" }
+    ],
+    "note": "Exact pricing and SLA after express diagnostics",
+    "ctaText": "Start Your Implementation"
+  },
+  "process": {
+    "title": "Implementation Process: From Audit to Validation",
+    "subtitle": "Our systematic 5-step approach ensures seamless CMP deployment.",
+    "methodologyTitle": "Our Implementation Methodology",
+    "methodologySubtitle": "Minimize disruption while ensuring comprehensive GDPR compliance",
+    "whyWorksTitle": "Why Our Process Works",
+    "whyWorksSubtitle": "Structured approach that guarantees success and compliance",
+    "systematicTitle": "Systematic",
+    "systematicDesc": "Step-by-step approach ensures nothing is missed",
+    "efficientTitle": "Efficient",
+    "efficientDesc": "Optimized workflow saves time and resources",
+    "compliantTitle": "Compliant",
+    "compliantDesc": "Ensures full GDPR and privacy law compliance",
+    "ctaText": "Start Your Implementation",
+    "stepsTitle": "Implementation Steps",
+    "leadText": "We start with legal requirements analysis, then phased deployment with validation, consent blocking, GTM triggers per category, and documentation.",
+    "steps": [
+      { "title": "Legal Requirements Analysis", "description": "Align with applicable regulations and consent mode configuration." },
+      { "title": "CMP Script Deployment", "description": "Deploy CMP in test/stage with marketing team collaboration." },
+      { "title": "GTM Integration & Configuration", "description": "Ensure tags fire based on consent; migrate hardcoded pixels." },
+      { "title": "Production Deployment", "description": "Roll out to live with minimal disruption after QA." },
+      { "title": "Data Impact Analysis", "description": "Quantify and optimize to minimize analytics impact." }
+    ]
+  },
+  "benefits": {
+    "title": "Why Choose Us",
+    "subtitle": "Clear advantages for your business",
+    "items": [
+      { "title": "End-to-end solution", "description": "Complete setup from audit to implementation" },
+      { "title": "No dark patterns", "description": "Transparent banners respecting user choice" },
+      { "title": "Proper GTM integration", "description": "Correct trigger and variable configuration" },
+      { "title": "Multilingual support", "description": "Multiple languages and regions" },
+      { "title": "Consent logs & exports", "description": "Full audit trail and documentation" },
+      { "title": "24/7 Support", "description": "Expert assistance when you need it" },
+      { "title": "Fast Implementation", "description": "Quick setup without disruption" },
+      { "title": "Cost Effective", "description": "Affordable solutions that fit your budget" }
+    ]
+  },
+  "platforms": {
+    "title": "Platforms",
+    "subtitle": "We work with leading CMPs and stacks",
+    "items": [
+      "Cookiebot",
+      "Iubenda",
+      "Usercentrics",
+      "Termly",
+      { "name": "OneTrust", "description": "Enterprise consent management" }
+    ],
+    "note": "Don’t see your CMP? We can work with any consent platform."
+  },
+  "cases": {
+    "title": "Case Studies",
+    "subtitle": "Selected projects and outcomes",
+    "items": [
+      { "title": "E-commerce (DE)", "description": "Accept-only banner; scripts loaded immediately.", "result": "Accept/Decline/Preferences; strict blocking; improved conversion." },
+      { "title": "Media (FR)", "description": "3rd-party cookies before consent; no preferences.", "result": "Auto-blocking; preference center; FR/EN localization." },
+      { "title": "SaaS (EU)", "description": "Inconsistent logic across subdomains.", "result": "Unified CMP; consistent categories; centralized logging." }
+    ],
+    "cta": "Get Your Case Study"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real results from real businesses",
+    "items": [
+      { "name": "Alex", "company": "EcomCo", "role": "CMO", "testimonial": "Quick and professional CMP rollout.", "rating": 5 },
+      { "name": "Marie", "company": "MediaGroup", "role": "Head of Product", "testimonial": "Clean implementation and analytics stayed intact.", "rating": 5 }
+    ]
+  },
+  "pricing": {
+    "title": "Transparent Pricing",
+    "subtitle": "Simple, transparent pricing. One-time implementation.",
+    "howItWorksTitle": "How Our Pricing Works",
+    "howItWorksSubtitle": "No hidden fees, no ongoing charges.",
+    "implementationTitle": "Implementation Fee Only",
+    "implementationDesc": "We charge only for technical work: CMP setup, GTM integration, configuration.",
+    "chooseCmpTitle": "Choose Your CMP",
+    "chooseCmpDesc": "You pay directly to your preferred CMP provider.",
+    "packagesTitle": "Implementation Packages",
+    "packagesSubtitle": "Pick what fits your needs",
+    "plans": [
+      { "name": "Basic", "features": ["Banner fix", "Copy optimization", "Basic blocking"] },
+      { "name": "Pro", "features": ["CMP setup", "GTM integration", "Scan report", "Policy pages"] },
+      { "name": "Business", "features": ["Multi-domain", "Migration", "Custom events", "White-label report"] }
+    ],
+    "note": "Pricing & timelines on request (stack, traffic, regions)."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "question": "How is a CMP different from a simple banner?", "answer": "A CMP records lawful consent per category and controls script loading via consent events; a simple banner won’t ensure proper pre-consent blocking." },
+      { "question": "Do you support Google Consent Mode v2?", "answer": "Yes, we configure Consent Mode and GTM triggers accordingly." },
+      { "question": "How long does implementation take?", "answer": "Typically 3–7 days depending on scope and stack." }
+    ],
+    "whyQuestionsTitle": "Why These Questions Matter",
+    "whyQuestionsDescription": "Understanding the right questions helps you decide your GDPR strategy.",
+    "complianceTitle": "Compliance",
+    "complianceDescription": "Meet GDPR requirements and avoid penalties.",
+    "implementationTitle": "Implementation",
+    "implementationDescription": "Technical setup and integration best practices.",
+    "knowledgeTitle": "Knowledge",
+    "knowledgeDescription": "Make informed CMP decisions.",
+    "cantFindAnswer": "Can't find your answer?",
+    "teamReadyToHelp": "Our team is ready to help with your GDPR needs."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Tell us about your project",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "url": "Website URL",
+      "stack": "Tech stack",
+      "regions": "Target regions",
+      "languages": "Languages",
+      "cmp": "Preferred CMP",
+      "integrations": "Integrations",
+      "message": "Message"
+    },
+    "submit": "Send message",
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": "Email",
+      "workingHours": "Working hours",
+      "location": "Location",
+      "responseTime": "Response time",
+      "responseDescription": "We reply within 24 hours.",
+      "whatYouGet": {
+        "title": "What you get",
+        "items": ["Express audit", "CMP recommendation", "Implementation plan", "Next steps"]
+      }
+    },
+    "badge": "GDPR",
+    "formTitle": "Tell Us About Your Project",
+    "formDescription": "Fill the form and we’ll reply in 24h"
+  },
+  "finalCTA": {
+    "title": "Ready to get compliant?",
+    "subtitle": "Transform your banners into user-friendly compliance.",
+    "cta": { "primary": "Fix my banner", "secondary": "Free quick check" }
+  },
+  "footer": {
+    "copyright": "C&C CookieComply",
+    "links": ["Privacy", "Cookies", "Contact"],
+    "description": "GDPR CMP setup & cookie banner fixes",
+    "location": "EU",
+    "workingHours": "CET 9:00-18:00",
+    "quickLinks": "Quick links",
+    "services": "Services",
+    "process": "Process",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contacts": "Contacts",
+    "legalInfo": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "cookiePreferences": "Cookie Preferences",
+    "allRightsReserved": "All rights reserved"
+  },
+  "navbar": {
+    "services": "Services",
+    "process": "Process",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "languages": {
+      "en": { "name": "English", "flag": "🇬🇧" },
+      "de": { "name": "Deutsch", "flag": "🇩🇪" },
+      "fr": { "name": "Français", "flag": "🇫🇷" },
+      "es": { "name": "Español", "flag": "🇪🇸" }
+    }
+  },
+  "cookieConsent": {
+    "title": "We use cookies to enhance your experience",
+    "description": "We use cookies and similar technologies to help personalize content, provide social media features, and analyze our traffic. We also share information about your use of our site with our social media, advertising, and analytics partners.",
+    "acceptAll": "Accept All",
+    "decline": "Decline",
+    "preferences": "Preferences",
+    "preferencesTitle": "Cookie Preferences",
+    "essential": "Essential Cookies",
+    "analytics": "Analytics Cookies",
+    "marketing": "Marketing Cookies",
+    "functional": "Functional Cookies",
+    "alwaysActive": "Always Active",
+    "savePreferences": "Save Preferences",
+    "cancel": "Cancel",
+    "essentialDesc": "These cookies are necessary for the website to function and cannot be disabled.",
+    "analyticsDesc": "Help us understand how visitors interact with our website by collecting and reporting information anonymously.",
+    "marketingDesc": "Used to track visitors across websites to display relevant and engaging advertisements.",
+    "functionalDesc": "Enable enhanced functionality and personalization such as chat support and social media integration."
+  }
+}

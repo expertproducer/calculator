@@ -1,11 +1,43 @@
-# Exclude large cache files from Cloudflare Pages deployment
-.next/cache/**/*
-.next/server/**/*
-.next/trace/**/*
-.next/webpack/**/*
+# Cloudflare Pages ignore file
+# Исключаем кеш webpack и большие файлы
 
-# Exclude development files
-node_modules/**/*
-.git/**/*
-.env*local
+# Webpack cache
+.next/cache/
+.next/cache/**/*
+cache/
+cache/**/*
+*.pack
+*.pack.gz
+
+# Development files
+node_modules/
+.git/
+.vscode/
+.idea/
 *.log
+.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Documentation
+README.md
+*.md
+SETUP.md
+DEPLOY.md
+
+# Config files
+tsconfig.json
+tsconfig.node.json
+package-lock.json
+yarn.lock
+.gitignore
+.eslintrc.json
+
+# Build artifacts not needed
+.next/build-manifest.json
+.next/export-marker.json
+.next/images-manifest.json
+.next/prerender-manifest.json
+.next/routes-manifest.json

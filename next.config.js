@@ -22,6 +22,15 @@ const nextConfig = {
   // Disable ESLint during build for static export
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  
+  // Webpack configuration for production builds
+  webpack: (config, { dev, isServer }) => {
+    // Disable webpack cache in production to avoid large cache files
+    if (!dev) {
+      config.cache = false;
+    }
+    return config;
   }
 }
 

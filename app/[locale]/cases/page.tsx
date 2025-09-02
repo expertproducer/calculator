@@ -19,7 +19,7 @@ export default async function CasesPage({ params }: { params: Promise<{ locale: 
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
+      <StructuredData />
       <div className="min-h-screen bg-white">
         <Navbar locale={locale} />
         

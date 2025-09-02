@@ -1,39 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Cloudflare Pages - ENABLE FOR PRODUCTION
+  // Static export for Cloudflare Pages
   output: 'export',
   
-  // Disable image optimization for better compatibility
+  // Disable image optimization for static export
   images: {
     unoptimized: true
   },
   
-  // SEO optimizations
+  // Disable trailing slash for better compatibility
   trailingSlash: false,
   
-  // Webpack optimizations
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    
-    return config;
-  },
-  
-  // Performance optimizations
-  onDemandEntries: {
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
-  },
-
-  // Enable experimental features for better SEO
+  // Disable server-side features for static export
   experimental: {
-    // optimizeCss: true, // Disabled due to critters module issues
+    // Disable features that don't work with static export
   }
 }
 

@@ -1,3 +1,6 @@
+// i18n configuration file
+// Last updated: 2025-09-02
+
 export type Locale = 'en' | 'de' | 'fr' | 'es'
 
 // Content types

@@ -1,12 +1,12 @@
 # Configuration for Cloudflare Pages
-name = "calculator"
+name = "calculator2"
 
 # Specify build output directory for Pages (static export)
 pages_build_output_dir = "out"
 
 # Environment variables for production
 [env.production]
-name = "calculator"
+name = "calculator2"
 [env.production.vars]
 ENVIRONMENT = "production"
 

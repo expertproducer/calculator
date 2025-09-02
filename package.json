@@ -11,7 +11,7 @@
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next, out, dist -ErrorAction SilentlyContinue\"",
     "clean-cache": "node scripts/clean-cache.js",
     "type-check": "tsc --noEmit",
-    "deploy": "npm run build:clean && npx wrangler pages deploy out --project-name calculator",
+    "deploy": "npm run build:clean && npx wrangler pages deploy out --project-name calculator2",
     "stagewise": "stagewise",
     "stagewise:analyze": "stagewise analyze",
     "stagewise:generate": "stagewise generate",

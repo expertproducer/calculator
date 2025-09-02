@@ -1,4 +1,4 @@
-# Force HTTPS and handle www
+# Force HTTPS and handle www redirects
 https://www.cookiecomply.site/* https://cookiecomply.site/:splat 301
 http://cookiecomply.site/* https://cookiecomply.site/:splat 301
 http://www.cookiecomply.site/* https://cookiecomply.site/:splat 301
@@ -8,3 +8,6 @@ http://www.cookiecomply.site/* https://cookiecomply.site/:splat 301
 
 # Handle locale routing
 /[locale] /[locale]/ 301
+
+# SPA fallback for all other routes
+/* /index.html 200

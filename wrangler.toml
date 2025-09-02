@@ -2,7 +2,7 @@
 name = "calculator"
 
 # Specify build output directory for Pages (static export)
-pages_build_output_dir = ".next"
+pages_build_output_dir = "out"
 
 # Exclude large files from deployment
 [env.production]
@@ -19,3 +19,10 @@ ENVIRONMENT = "preview"
 # Global environment variables
 [vars]
 ENVIRONMENT = "development"
+
+# Pages configuration
+[pages]
+# Enable function support
+functions_dir = "functions"
+# Enable static assets
+assets_dir = "out"

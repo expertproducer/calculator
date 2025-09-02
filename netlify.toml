@@ -5,13 +5,43 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Domain redirects
+[[redirects]]
+  from = "https://www.cookiecomply.site/*"
+  to = "https://cookiecomply.site/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://cookiecomply.site/*"
+  to = "https://cookiecomply.site/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.cookiecomply.site/*"
+  to = "https://cookiecomply.site/:splat"
+  status = 301
+  force = true
+
 # API request handling
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
 
-# SPA routes
+# Locale redirects
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 301
+
+[[redirects]]
+  from = "/:locale"
+  to = "/:locale/"
+  status = 301
+
+# SPA routes for all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -5,9 +5,10 @@ import type { NextRequest } from 'next/server'
 const locales = ['en', 'de', 'fr', 'es'] as const
 const defaultLocale = 'en'
 
-// Middleware for locale redirects
+// Middleware for locale redirects and domain handling
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
+  const hostname = request.nextUrl.hostname
   
   // Skip static files and API routes
   if (pathname.startsWith('/_next') || 
@@ -16,6 +17,14 @@ export function middleware(request: NextRequest) {
       pathname.startsWith('/favicon') ||
       pathname.includes('.')) {
     return
+  }
+  
+  // Handle www redirects
+  if (hostname.startsWith('www.')) {
+    const newHostname = hostname.replace('www.', '')
+    const newUrl = new URL(request.url)
+    newUrl.hostname = newHostname
+    return NextResponse.redirect(newUrl, 301)
   }
   
   // Check if the pathname has a locale

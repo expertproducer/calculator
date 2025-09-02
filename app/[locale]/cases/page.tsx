@@ -4,14 +4,7 @@ import { Navbar, Footer } from '../../../components/AllComponents'
 import StructuredData from '../../../components/StructuredData'
 import CookieConsent from '../../../components/CookieConsent'
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'de' },
-    { locale: 'fr' },
-    { locale: 'es' }
-  ]
-}
+
 
 export default async function CasesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

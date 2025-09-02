@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "CMP Setup\nC&C CookieComply",
+    "title": "CMP Setup\\nC&C CookieComply",
     "subtitle": "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.",
     "headline": "Every Business Needs",
     "headlineBlue": "Cookie Compliance",
@@ -249,6 +249,16 @@
       "fr": { "name": "Français", "flag": "🇫🇷" },
       "es": { "name": "Español", "flag": "🇪🇸" }
     }
+  },
+  "deliverables": {
+    "title": "What You Get",
+    "items": [
+      "Fully configured CMP",
+      "Compliant cookie banner", 
+      "Preference center",
+      "Policy pages",
+      "Maintenance guide"
+    ]
   },
   "cookieConsent": {
     "title": "We use cookies to enhance your experience",

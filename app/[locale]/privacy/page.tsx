@@ -4,14 +4,7 @@ import CookieConsent from '@/components/CookieConsent'
 import PrivacySettingsButton from './PrivacySettingsButton'
 
 // Generate static pages for all locales
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'de' },
-    { locale: 'fr' },
-    { locale: 'es' }
-  ]
-}
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params

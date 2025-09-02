@@ -6,14 +6,7 @@ import FAQStructuredData from '../../../components/FAQStructuredData'
 import CookieConsent from '../../../components/CookieConsent'
 import { Metadata } from 'next'
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'de' },
-    { locale: 'fr' },
-    { locale: 'es' }
-  ]
-}
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params

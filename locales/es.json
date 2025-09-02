@@ -1,22 +1,208 @@
 {
   "hero": {
-    "title": "Configuración CMP\nC&C CookieComply",
-    "subtitle": "Configuramos CMP y corregimos banners de cookies."
+    "title": "Configuración CMP\\nC&C CookieComply",
+    "subtitle": "Configuramos CMP, arreglamos banners de cookies y bloqueamos rastreadores antes del consentimiento.",
+    "headline": "Todo Negocio Necesita",
+    "headlineBlue": "Cumplimiento de Cookies",
+    "headlineGray": "¡Que Realmente Funcione!",
+    "solutionText": "Resolvemos todos estos problemas",
+    "commonProblems": "Problemas Comunes",
+    "problemsDesc": "Solucionamos estos problemas de forma rápida y profesional",
+    "stats": {
+      "websites": "Sitios Web Protegidos",
+      "support": "Soporte Experto",
+      "success": "Tasa de Éxito"
+    },
+    "cta": {
+      "primary": "Arreglar mi banner",
+      "secondary": "Verificación gratuita"
+    }
   },
-  "navbar": {
-    "services": "Servicios",
-    "process": "Proceso",
-    "pricing": "Precios",
-    "faq": "FAQ",
-    "contact": "Contacto"
+  "problem": {
+    "title": "Problemas Comunes GDPR y Banners de Cookies",
+    "points": [
+      "Banners de cookies no conformes",
+      "Scripts cargando antes del consentimiento",
+      "Registros de consentimiento faltantes",
+      "Mala experiencia de usuario"
+    ]
+  },
+  "urgency": {
+    "title": "No arriesgues multas",
+    "subtitle": "Hacemos el consentimiento de cookies limpio y conforme",
+    "offer": "Verificación de cumplimiento exprés",
+    "discount": "20%",
+    "originalPrice": "499€",
+    "finalPrice": "399€",
+    "deadline": "Esta semana"
+  },
+  "whyImportant": {
+    "title": "Por Qué Importa la Gestión del Consentimiento de Cookies",
+    "subtitle": "A medida que las leyes de privacidad se vuelven más estrictas, el consentimiento limpio es esencial.",
+    "expertiseTitle": "Nuestra Experiencia Marca la Diferencia",
+    "points": [
+      "Cumplimiento integral con GDPR/CCPA",
+      "Mitigación de riesgos y evitación de sanciones",
+      "Mayor confianza del usuario y transparencia",
+      "Funcionalidad del sitio web mantenida con analytics"
+    ],
+    "description": "Cerramos la brecha entre los requisitos legales y la implementación técnica, asegurando que sus datos sean jurídicamente limpios y utilizables."
+  },
+  "services": {
+    "title": "Servicios GDPR: Configuración CMP y Reparación de Banners de Cookies",
+    "subtitle": "Soluciones integrales para cumplimiento completo de GDPR",
+    "approachTitle": "Nuestro Enfoque",
+    "leadText": "El consentimiento de cookies es un proceso gestionado: CMP muestra una primera capa apropiada con Aceptar/Rechazar/Preferencias, bloquea scripts no esenciales antes del consentimiento y envía eventos de consentimiento limpios a GTM/GA4/Ads/Meta.",
+    "sections": [
+      {
+        "title": "Lo que implementamos",
+        "items": [
+          "Configuración CMP (Cookiebot / Iubenda / Usercentrics / Termly)",
+          "Bloqueo estricto antes del consentimiento",
+          "Centro de preferencias con categorías",
+          "Eventos de consentimiento para GTM/GA4/Ads/Meta"
+        ]
+      },
+      {
+        "title": "Documentación & Políticas",
+        "items": [
+          "Páginas de Política de Privacidad & Cookies",
+          "Registros de consentimiento y exportaciones",
+          "QA para primera visita, cambio, retiro, restauración"
+        ]
+      }
+    ],
+    "packagesTitle": "Paquetes de Servicio",
+    "packagesSubtitle": "Elija la solución correcta para su negocio",
+    "packages": [
+      { "name": "Básico", "description": "Reparación de banner + bloqueo básico + redacción" },
+      { "name": "Pro", "description": "CMP completo, disparadores GTM, escaneo antes/después, políticas" },
+      { "name": "Negocio", "description": "Multi-dominios/locales, eventos personalizados, informes white-label" }
+    ],
+    "note": "Precios y SLA exactos después del diagnóstico exprés",
+    "ctaText": "Iniciar Su Implementación"
+  },
+  "process": {
+    "title": "Nuestro Proceso de Implementación",
+    "subtitle": "Nuestro enfoque sistemático de 5 pasos asegura un despliegue CMP transparente.",
+    "methodologyTitle": "Nuestra Metodología de Implementación",
+    "methodologySubtitle": "Minimizar interrupciones mientras se asegura cumplimiento integral de GDPR",
+    "whyWorksTitle": "Por Qué Nuestro Proceso Funciona",
+    "whyWorksSubtitle": "Enfoque estructurado que garantiza éxito y cumplimiento",
+    "systematicTitle": "Sistemático",
+    "systematicDesc": "Enfoque paso a paso asegura que nada se pase por alto",
+    "efficientTitle": "Eficiente",
+    "efficientDesc": "Flujo de trabajo optimizado ahorra tiempo y recursos",
+    "compliantTitle": "Conforme",
+    "compliantDesc": "Asegura cumplimiento completo de GDPR y leyes de privacidad",
+    "ctaText": "Iniciar Su Implementación",
+    "stepsTitle": "Pasos de Implementación",
+    "leadText": "Comenzamos con análisis de requisitos legales, luego despliegue por fases con validación, bloqueo de consentimiento, disparadores GTM por categoría y documentación.",
+    "steps": [
+      { "title": "Análisis de Requisitos Legales", "description": "Alineación con regulaciones aplicables y configuración del modo de consentimiento." },
+      { "title": "Despliegue de Scripts CMP", "description": "Desplegar CMP en test/stage con colaboración del equipo de marketing." },
+      { "title": "Integración y Configuración GTM", "description": "Asegurar que las etiquetas se disparen según el consentimiento; migrar píxeles codificados." },
+      { "title": "Despliegue en Producción", "description": "Desplegar en vivo con interrupciones mínimas después de QA." },
+      { "title": "Análisis de Impacto en Datos", "description": "Cuantificar y optimizar para minimizar el impacto en analytics." }
+    ]
+  },
+  "deliverables": {
+    "title": "Qué Recibirá",
+    "items": [
+      "CMP completamente configurado",
+      "Banner de cookies conforme",
+      "Centro de preferencias",
+      "Páginas de política",
+      "Guía de mantenimiento"
+    ]
+  },
+  "benefits": {
+    "title": "Por Qué Elegirnos",
+    "subtitle": "Ventajas claras para su negocio",
+    "items": [
+      { "title": "Solución de extremo a extremo", "description": "Configuración completa desde la auditoría hasta la implementación" },
+      { "title": "Sin patrones oscuros", "description": "Banners transparentes que respetan la elección del usuario" },
+      { "title": "Integración GTM apropiada", "description": "Configuración correcta de triggers y variables" },
+      { "title": "Soporte multilingüe", "description": "Múltiples idiomas y regiones" },
+      { "title": "Registros de consentimiento y exportaciones", "description": "Rastro de auditoría completo y documentación" },
+      { "title": "Soporte 24/7", "description": "Asistencia experta cuando la necesite" },
+      { "title": "Implementación rápida", "description": "Configuración rápida sin interrupciones" },
+      { "title": "Rentable", "description": "Soluciones asequibles que se ajustan a su presupuesto" }
+    ]
+  },
+  "platforms": {
+    "title": "Plataformas",
+    "subtitle": "Trabajamos con CMPs y stacks líderes",
+    "items": [
+      "Cookiebot",
+      "Iubenda",
+      "Usercentrics",
+      "Termly",
+      { "name": "OneTrust", "description": "Gestión de consentimiento empresarial" }
+    ],
+    "note": "¿No ve su CMP? Podemos trabajar con cualquier plataforma de consentimiento."
+  },
+  "cases": {
+    "title": "Casos de Estudio",
+    "subtitle": "Proyectos seleccionados y resultados",
+    "items": [
+      { "title": "E-commerce (ES)", "description": "Banner de solo aceptación; scripts cargados inmediatamente.", "result": "Aceptar/Rechazar/Preferencias; bloqueo estricto; conversión mejorada." },
+      { "title": "Medios (ES)", "description": "Cookies de terceros antes del consentimiento; sin preferencias.", "result": "Bloqueo automático; centro de preferencias; localización ES/EN." },
+      { "title": "SaaS (EU)", "description": "Lógica inconsistente entre subdominios.", "result": "CMP unificado; categorías consistentes; registro centralizado." }
+    ],
+    "cta": "Obtener Su Caso de Estudio"
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "subtitle": "Resultados reales de empresas reales",
+    "items": [
+      { "name": "Alex", "company": "EcomCo", "role": "CMO", "testimonial": "Despliegue CMP rápido y profesional.", "rating": 5 },
+      { "name": "Marie", "company": "MediaGroup", "role": "Head of Product", "testimonial": "Implementación limpia y analytics se mantuvieron intactos.", "rating": 5 }
+    ]
+  },
+  "pricing": {
+    "title": "Precios Transparentes",
+    "subtitle": "Precios simples y transparentes. Implementación única.",
+    "howItWorksTitle": "Cómo Funcionan Nuestros Precios",
+    "howItWorksSubtitle": "Sin tarifas ocultas, sin cargos continuos.",
+    "implementationTitle": "Solo Tarifa de Implementación",
+    "implementationDesc": "Cobramos solo por nuestro trabajo técnico: configuración CMP, integración GTM, configuración.",
+    "chooseCmpTitle": "Elija Su CMP",
+    "chooseCmpDesc": "Usted paga directamente a su proveedor CMP preferido.",
+    "packagesTitle": "Paquetes de Implementación",
+    "packagesSubtitle": "Elija lo que se ajusta a sus necesidades",
+    "plans": [
+      { "name": "Básico", "features": ["Reparación de banner", "Optimización de copia", "Bloqueo básico"] },
+      { "name": "Pro", "features": ["Configuración CMP", "Integración GTM", "Informe de escaneo", "Páginas de política"] },
+      { "name": "Negocio", "features": ["Multi-dominios", "Migración", "Eventos personalizados", "Informe white-label"] }
+    ],
+    "note": "Precios y plazos por solicitud (stack, tráfico, regiones)."
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      { "question": "¿En qué se diferencia un CMP de un banner simple?", "answer": "Un CMP registra el consentimiento legal por categoría y controla la carga de scripts a través de eventos de consentimiento; un banner simple no asegura un bloqueo apropiado antes del consentimiento." },
+      { "question": "¿Soportan Google Consent Mode v2?", "answer": "Sí, configuramos Consent Mode y los disparadores GTM en consecuencia." },
+      { "question": "¿Cuánto tiempo toma la implementación?", "answer": "Típicamente 3-7 días dependiendo del alcance y stack." }
+    ],
+    "whyQuestionsTitle": "Por Qué Importan Estas Preguntas",
+    "whyQuestionsDescription": "Entender las preguntas correctas le ayuda a decidir su estrategia de cumplimiento GDPR.",
+    "complianceTitle": "Cumplimiento",
+    "complianceDescription": "Cumplir con los requisitos GDPR y evitar sanciones.",
+    "implementationTitle": "Implementación",
+    "implementationDescription": "Configuración técnica y mejores prácticas de integración.",
+    "knowledgeTitle": "Conocimiento",
+    "knowledgeDescription": "Tomar decisiones CMP informadas.",
+    "cantFindAnswer": "¿No encuentra su respuesta?",
+    "teamReadyToHelp": "Nuestro equipo está listo para ayudar con sus necesidades de cumplimiento GDPR."
   },
   "contact": {
-    "title": "Contacto",
+    "title": "Contáctenos",
     "subtitle": "Cuéntanos sobre tu proyecto",
     "fields": {
       "name": "Nombre",
       "email": "Email",
-      "url": "URL del sitio",
+      "url": "URL del sitio web",
       "stack": "Stack técnico",
       "regions": "Regiones objetivo",
       "languages": "Idiomas",
@@ -36,6 +222,64 @@
         "title": "Qué obtienes",
         "items": ["Auditoría exprés", "Recomendación CMP", "Plan de implementación", "Siguientes pasos"]
       }
+    },
+    "badge": "GDPR",
+    "formTitle": "Cuéntanos sobre tu proyecto",
+    "formDescription": "Complete el formulario y responderemos en 24h"
+  },
+  "finalCTA": {
+    "title": "¿Listo para cumplir?",
+    "subtitle": "Transforme sus banners en cumplimiento amigable para el usuario.",
+    "cta": { "primary": "Arreglar mi banner", "secondary": "Verificación gratuita" }
+  },
+  "footer": {
+    "copyright": "C&C CookieComply",
+    "links": ["Privacidad", "Cookies", "Contacto"],
+    "description": "Configuración CMP GDPR y reparación de banners de cookies",
+    "location": "UE",
+    "workingHours": "CET 9:00-18:00",
+    "quickLinks": "Enlaces rápidos",
+    "services": "Servicios",
+    "process": "Proceso",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "contacts": "Contactos",
+    "legalInfo": "Legal",
+    "privacyPolicy": "Política de privacidad",
+    "cookiePolicy": "Política de cookies",
+    "cookiePreferences": "Preferencias de cookies",
+    "allRightsReserved": "Todos los derechos reservados"
+  },
+  "navbar": {
+    "services": "Servicios",
+    "process": "Proceso",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "languages": {
+      "en": { "name": "English", "flag": "🇬🇧" },
+      "de": { "name": "Deutsch", "flag": "🇩🇪" },
+      "fr": { "name": "Français", "flag": "🇫🇷" },
+      "es": { "name": "Español", "flag": "🇪🇸" }
     }
+  },
+  "cookieConsent": {
+    "title": "Utilizamos cookies para mejorar su experiencia",
+    "description": "Utilizamos cookies y tecnologías similares para ayudar a personalizar contenido, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre su uso de nuestro sitio con nuestros socios de redes sociales, publicidad y análisis.",
+    "acceptAll": "Aceptar todo",
+    "decline": "Rechazar",
+    "preferences": "Preferencias",
+    "preferencesTitle": "Preferencias de cookies",
+    "essential": "Cookies esenciales",
+    "analytics": "Cookies de análisis",
+    "marketing": "Cookies de marketing",
+    "functional": "Cookies funcionales",
+    "alwaysActive": "Siempre activo",
+    "savePreferences": "Guardar preferencias",
+    "cancel": "Cancelar",
+    "essentialDesc": "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
+    "analyticsDesc": "Ayúdenos a entender cómo los visitantes interactúan con nuestro sitio web recopilando y reportando información de forma anónima.",
+    "marketingDesc": "Se utiliza para rastrear visitantes a través de sitios web para mostrar anuncios relevantes y atractivos.",
+    "functionalDesc": "Permiten funcionalidad mejorada y personalización como soporte de chat e integración de redes sociales."
   }
 }

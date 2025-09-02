@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../globals.css'
-import { PAGE_METADATA, GDPR_SUBDOMAIN } from '@/lib/locales'
+import { PAGE_METADATA, GDPR_SUBDOMAIN, LOCALES } from '@/lib/locales'
 import StructuredData from '@/components/StructuredData'
 
 const inter = Inter({ 
@@ -12,12 +12,7 @@ const inter = Inter({
 
 // Generate static layouts for all locales
 export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'de' },
-    { locale: 'fr' },
-    { locale: 'es' }
-  ]
+  return LOCALES.map(locale => ({ locale }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

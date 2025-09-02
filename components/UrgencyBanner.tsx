@@ -11,9 +11,10 @@ interface UrgencyBannerProps {
     originalPrice?: string
     finalPrice?: string
   }
+  locale?: string
 }
 
-export default function UrgencyBanner({ content }: UrgencyBannerProps) {
+export default function UrgencyBanner({ content, locale = 'en' }: UrgencyBannerProps) {
   // Если контент не передан, не отображаем компонент
   if (!content) {
     return null
@@ -66,7 +67,7 @@ export default function UrgencyBanner({ content }: UrgencyBannerProps) {
           {/* CTA Button */}
           <div className="mt-12">
             <a
-              href="/contact"
+              href={locale === 'en' ? '/contact' : `/${locale}/contact`}
               className="inline-flex items-center gap-3 px-12 py-6 bg-white text-red-600 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold text-2xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
             >
               <AlertTriangle className="w-7 h-7 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />

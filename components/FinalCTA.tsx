@@ -12,9 +12,10 @@ interface FinalCTAProps {
     badge?: string
     responseTime?: string
   }
+  locale?: string
 }
 
-export default function FinalCTA({ content }: FinalCTAProps) {
+export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -29,7 +30,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <a
-              href="#contact"
+              href={locale === 'en' ? '/contact' : `/${locale}/contact`}
               className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
             >
               <span>{content?.cta?.primary || 'Fix my banner'}</span>
@@ -37,7 +38,7 @@ export default function FinalCTA({ content }: FinalCTAProps) {
             </a>
             
             <a
-              href="#services"
+              href={locale === 'en' ? '/services' : `/${locale}/services`}
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-gray-900 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
             >
               <span>{content?.cta?.secondary || 'Free quick check'}</span>

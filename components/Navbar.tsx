@@ -54,12 +54,16 @@ export default function Navbar({ locale }: { locale: string }) {
     let mounted = true
     ;(async () => {
       try {
-        const content = await getContent((locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as any)
+        console.log('Loading translations for locale:', locale)
+        const content = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
+        console.log('Loaded content:', content?.navbar)
         const nav = (content?.navbar || {}) as Partial<NavbarLabels>
         if (mounted) {
+          console.log('Setting labels:', { ...EN_FALLBACK, ...nav })
           setLabels({ ...EN_FALLBACK, ...nav })
         }
-      } catch {
+      } catch (error) {
+        console.error('Error loading translations:', error)
         // ignore and keep fallback
       }
     })()

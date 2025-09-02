@@ -12,9 +12,10 @@ interface CaseStudiesProps {
     }>
     cta?: string
   }
+  locale?: string
 }
 
-export default function CaseStudies({ content }: CaseStudiesProps) {
+export default function CaseStudies({ content, locale = 'en' }: CaseStudiesProps) {
   const typeIcons = [ShoppingCart, Newspaper, Cloud]
 
   return (
@@ -81,7 +82,7 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
         <div className="text-center mt-16">
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
-                href="/contact"
+                href={locale === 'en' ? '/contact' : `/${locale}/contact`}
                 className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
               >
                 <span>{content.cta || 'Get Your Case Study'}</span>
@@ -91,7 +92,7 @@ export default function CaseStudies({ content }: CaseStudiesProps) {
               </a>
               
               <a
-                href="/services"
+                href={locale === 'en' ? '/services' : `/${locale}/services`}
                 className="inline-flex items-center gap-3 px-10 py-5 bg-white text-gray-900 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
               >
                 <span>Learn More</span>

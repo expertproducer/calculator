@@ -1,19 +1,12 @@
-import { getContent } from '../../../lib/i18n'
-import Services from '../../../components/Services'
-import { Navbar, Footer } from '../../../components/AllComponents'
-import StructuredData from '../../../components/StructuredData'
-import ServicesStructuredData from '../../../components/ServicesStructuredData'
-import CookieConsent from '../../../components/CookieConsent'
+import { getContent } from '@/lib/i18n'
+import Services from '@/components/Services'
+import { Navbar, Footer } from '@/components/AllComponents'
+import StructuredData from '@/components/StructuredData'
+import ServicesStructuredData from '@/components/ServicesStructuredData'
+import CookieConsent from '@/components/CookieConsent'
 import { Metadata } from 'next'
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'en' },
-    { locale: 'de' },
-    { locale: 'fr' },
-    { locale: 'es' }
-  ]
-}
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params

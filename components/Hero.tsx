@@ -36,9 +36,10 @@ interface HeroProps {
       points: string[]
     }
   }
+  locale?: string
 }
 
-export default function Hero({ content }: HeroProps) {
+export default function Hero({ content, locale = 'en' }: HeroProps) {
   return (
     <>
       <section 
@@ -94,14 +95,14 @@ export default function Hero({ content }: HeroProps) {
             {/* CTA Buttons - Enhanced */}
             <div className="flex flex-col sm:flex-row gap-8 mb-20">
               <a
-                href="/contact"
+                href={locale === 'en' ? '/contact' : `/${locale}/contact`}
                 className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]"
               >
                 <span className="relative z-10">{content.cta.primary}</span>
               </a>
               
               <a
-                href="/services"
+                href={locale === 'en' ? '/services' : `/${locale}/services`}
                 className="inline-flex items-center gap-4 px-12 py-6 bg-white text-gray-900 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]"
               >
                 {content.cta.secondary}

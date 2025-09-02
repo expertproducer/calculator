@@ -75,7 +75,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   
   return (
     <>
-      <StructuredData locale={locale as 'en' | 'de' | 'fr' | 'es'} />
+      <StructuredData />
       <PricingStructuredData locale={locale} />
       <div className="min-h-screen bg-white">
         <Navbar locale={locale} />

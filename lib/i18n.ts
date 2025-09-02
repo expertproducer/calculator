@@ -926,6 +926,14 @@ export function getContent(locale: Locale) {
             result: 'Conformité complète + formation de l\'équipe'
           }
         ]
+      },
+      finalCTA: {
+        title: 'Bereit für DSGVO-Compliance?',
+        subtitle: 'Warten Sie nicht, bis Sie eine Strafe erhalten. Starten Sie jetzt Ihre Compliance-Reise.',
+        cta: {
+          primary: 'Jetzt starten',
+          secondary: 'Kostenlose Beratung'
+        }
       }
     },
     fr: {
@@ -1348,6 +1356,14 @@ export function getContent(locale: Locale) {
             result: 'Conformité complète + formation de l\'équipe'
           }
         ]
+      },
+      finalCTA: {
+        title: 'Prêt pour la conformité RGPD ?',
+        subtitle: 'N'attendez pas d'être sanctionné. Commencez votre parcours de conformité dès aujourd'hui.',
+        cta: {
+          primary: 'Commencer maintenant',
+          secondary: 'Consultation gratuite'
+        }
       }
     },
     es: {
@@ -1677,11 +1693,11 @@ export function getContent(locale: Locale) {
         ]
       },
       finalCTA: {
-        title: 'Ready to Get GDPR Compliant?',
-        subtitle: 'Don\'t wait until you get fined. Start your compliance journey today.',
+        title: '¿Listo para cumplir con GDPR?',
+        subtitle: 'No espere a ser multado. Comience su camino hacia el cumplimiento hoy mismo.',
         cta: {
-          primary: 'Get Started Now',
-          secondary: 'Free Consultation'
+          primary: 'Comenzar ahora',
+          secondary: 'Consulta gratuita'
         }
       },
       contact: {

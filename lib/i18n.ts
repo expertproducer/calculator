@@ -1695,14 +1695,6 @@ export function getContent(locale: Locale) {
           }
         ]
       },
-      finalCTA: {
-        title: '¿Listo para cumplir con GDPR?',
-        subtitle: 'No espere a ser multado. Comience su camino hacia el cumplimiento hoy mismo.',
-        cta: {
-          primary: 'Comenzar ahora',
-          secondary: 'Consulta gratuita'
-        }
-      },
       contact: {
         title: '¿Listo para Empezar?',
         subtitle: 'Contáctenos para una consulta gratuita y propuesta personalizada',

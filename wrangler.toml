@@ -2,7 +2,7 @@
 name = "calculator"
 
 # Specify build output directory for Pages (static export)
-pages_build_output_dir = "out"
+pages_build_output_dir = ".next"
 
 # Exclude large files from deployment
 [env.production]

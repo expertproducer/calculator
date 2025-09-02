@@ -1656,36 +1656,6 @@ export function getContent(locale: Locale) {
           }
         ]
       },
-      testimonials: {
-        title: 'What Our Clients Say',
-        subtitle: 'Real results from real businesses who trusted us with their GDPR compliance',
-        items: [
-          {
-            name: 'Sarah Johnson',
-            company: 'TechStart Inc.',
-            role: 'CTO',
-            testimonial: 'C&C CookieComply saved us from a potential €500K fine. Their expertise in GDPR compliance is unmatched. The setup was smooth and their support is incredible.',
-            rating: 5,
-            result: 'Avoided €500K fine, 100% compliant'
-          },
-          {
-            name: 'Michael Chen',
-            company: 'E-commerce Solutions',
-            role: 'CEO',
-            testimonial: 'We were struggling with cookie compliance for months. C&C fixed everything in just 2 weeks. Our analytics are now clean and we\'re fully compliant.',
-            rating: 5,
-            result: 'Fixed in 2 weeks, analytics restored'
-          },
-          {
-            name: 'Emma Rodriguez',
-            company: 'Digital Marketing Agency',
-            role: 'Operations Director',
-            testimonial: 'The team at C&C is professional, knowledgeable, and responsive. They not only fixed our compliance issues but also educated our team on best practices.',
-            rating: 5,
-            result: 'Full compliance + team training'
-          }
-        ]
-      },
       contact: {
         title: '¿Listo para Empezar?',
         subtitle: 'Contáctenos para una consulta gratuita y propuesta personalizada',

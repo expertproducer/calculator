@@ -2,7 +2,7 @@
 name = "calculator"
 
 # Specify build output directory for Pages (static export)
-pages_build_output_dir = ".next"
+pages_build_output_dir = "out"
 
 # Exclude large files from deployment
 [env.production]
@@ -19,3 +19,12 @@ ENVIRONMENT = "preview"
 # Global environment variables
 [vars]
 ENVIRONMENT = "development"
+
+# Exclude large cache files
+[env.production.assets]
+exclude = [
+  "cache/**/*",
+  "server/**/*",
+  "trace/**/*",
+  "webpack/**/*"
+]

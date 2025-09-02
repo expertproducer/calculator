@@ -3,6 +3,13 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url)
     
+    // Redirect www to non-www
+    if (url.hostname.startsWith('www.')) {
+      const newHostname = url.hostname.replace('www.', '')
+      const newUrl = `https://${newHostname}${url.pathname}${url.search}`
+      return Response.redirect(newUrl, 301)
+    }
+    
     // Обрабатываем API запросы
     if (url.pathname.startsWith('/api/')) {
       // Импортируем и вызываем соответствующую функцию

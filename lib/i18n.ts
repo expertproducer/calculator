@@ -370,7 +370,10 @@ export function getContent(locale: Locale) {
               'Timeline & cost estimate'
             ]
           }
-        }
+        },
+        badge: '🚀 Ready to Start?',
+        formTitle: 'Tell Us About Your Project',
+        formDescription: 'Fill out the form below and we\'ll get back to you within 24 hours'
       },
       footer: {
         copyright: '© 2024 C&C CookieComply by Cash & Clash',
@@ -512,14 +515,14 @@ export function getContent(locale: Locale) {
         title: 'DSGVO Services: CMP Einrichtung & Cookie-Banner Reparaturen',
         subtitle: 'Umfassende Lösungen für vollständige DSGVO-Compliance',
         approachTitle: 'Unser Ansatz',
-        leadText: 'Cookie-Zustimmung ist nicht nur ein "Banner um des Banners willen", sondern ein **verwalteter Prozess**: **CMP** (**Cookiebot / Iubenda / Usercentrics / Termly**) zeigt die erste Ebene mit gleichberechtigten **Accept / Decline / Preferences** Schaltflächen an, und dann werden je nach Ihrer Wahl nur die **Tag-Kategorien** aktiviert, für die eine Erlaubnis erteilt wurde; dadurch werden alle **nicht-essentiellen Skripte** vor der Zustimmung blockiert und "selbststartende" **Analysen und Werbung** verschwinden. Das **Preference Center** gibt Benutzern transparente Kategoriebeschreibungen und die Möglichkeit, ihre Wahl jederzeit zu ändern, während es der Technik stabile **Zustimmungsereignisse** liefert: Wir leiten Signale an **GTM/GA4/Ads/Meta** weiter, damit Trigger streng nach der Erlaubnis ausgelöst werden und Daten in Berichten **rechtlich sauber** bleiben. Parallel dazu organisieren wir **Privacy/Cookie Policy**, fügen einen permanenten "Cookie Preferences" Link im Footer hinzu, konfigurieren **Sprachen und Geo-Regeln** (eine Domain - mehrere Lokalisierungen ohne Duplizierung von Tags). Wenn Sie mehrere Websites haben, schließen wir die **domänenübergreifende Zustimmungskonsolidierung** ein, damit Benutzer keine wiederholten Anfragen unnötigerweise sehen. Alle Aktionen werden in **Zustimmungsprotokollen** mit Exportmöglichkeit für **DPO/Audit** aufgezeichnet, und die Qualität wird durch Tests von Schlüsselszenarien sichergestellt: **erster Besuch**, **Zustimmungsänderung und -widerruf**, **Einstellungs-Wiederherstellung**. Das Ergebnis ist **vorhersagbares Banner-Verhalten**, **korrekte Blockierung vor der Zustimmung**, **saubere Marketing-Tool-Daten** und **klare Abhängigkeit von Dokumentation und Protokollen**.',
+        leadText: 'Cookie-Zustimmung ist nicht nur ein "Banner um des Banners willen", sondern ein **verwalteter Prozess**: **CMP** (**Cookiebot / Iubenda / Usercentrics / Termly**) zeigt die erste Ebene mit gleichberechtigten **Accept / Decline / Preferences** Schaltflächen an, und dann werden je nach Ihrer Wahl nur die **Tag-Kategorien** aktiviert, für die eine Erlaubnis erteilt wurde; dadurch werden alle **nicht-essentiellen Skripte** vor der Zustimmung blockiert und "selbststartende" **Analysen und Werbung** verschwinden. Das **Preference Center** gibt Benutzern transparente Kategoriebeschreibungen und die Möglichkeit, ihre Wahl jederzeit zu ändern, während es der Technik stabile **Zustimmungsereignisse** liefert: Wir leiten Signale an **GTM/GA4/Ads/Meta** weiter, damit Trigger streng nach der Erlaubnis ausgelöst werden und Daten in Berichten **rechtlich sauber** bleiben. Parallel dazu organisieren wir **Privacy/Cookie Policy**, fügen einen permanenten "Cookie Preferences" Link im Footer hinzu, konfigurieren **Sprachen und Geo-Regeln** (eine Domain - mehrere Lokalisierungen ohne Duplizierung von Tags). Wenn Sie mehrere Websites haben, schließen wir die **domänenübergreifende Zustimmungskonsolidierung** ein, damit Benutzer keine wiederholten Anfragen unnötigerweise sehen. Alle Aktionen werden in **Zustimmungsprotokollen** mit Exportmöglichkeit für **DPO/Audit** aufgezeichnet, und die Qualität wird durch Tests von Schlüsselszenarien sichergestellt: **erster Besuch**, **Zustimmungsänderung und -widerruf**, **Einstellungs-Wiederherstellung**. Das Ergebnis ist **vorhersagbares Banner-Verhalten**, un **blocage correct avant consentement**, des **données d\'outils marketing propres** et une **dépendance claire à la documentation et aux journaux**.',
         sections: [
           {
             title: 'Wann Zustimmung obligatorisch ist und was genau erforderlich ist',
             content: [
               'Vor jedem Lesen/Schreiben von Informationen auf dem Gerät (cookie, localStorage, SDK) ist eine **vorherige** Zustimmung erforderlich, außer für streng notwendige Cookies. Dies folgt aus Art. 5(3) ePrivacy-Richtlinie; Kriterien für gültige Zustimmung - gemäß DSGVO und EDPB-Richtlinien.',
               'Das **Accountability**-Prinzip: Der Betreiber muss in der Lage sein, Compliance und die Tatsache der Zustimmung zu **beweisen**.',
-              'In Frankreich verlangt der CNIL-Regulator, dass die Ablehnung **genauso einfach** ist wie die Zustimmung (Schaltfläche "Alle ablehnen"/"Ohne Annahme fortfahren" auf der ersten Ebene).',
+              'In Frankreich verlangt der CNIL-Regulator, dass die Ablehnung **aussi simple** ist wie die Zustimmung (Schaltfläche "Alle ablehnen"/"Ohne Annahme fortfahren" auf der ersten Ebene).',
               'Bei Verstößen sind erhebliche Geldstrafen nach Art. 83 DSGVO möglich: bis zu **20 Millionen € oder 4%** des weltweiten Umsatzes (je nachdem, was höher ist).'
             ]
           },
@@ -538,7 +541,7 @@ export function getContent(locale: Locale) {
               {
                 title: 'Blockierung vor Zustimmung',
                 items: [
-                  'Wir deaktivieren alle nicht-essentiellen Tags vor dem Consent-Event',
+                  'Wir deaktivieren alle nicht-essentielen Tags vor dem Consent-Event',
                   'Für GTM: Wir konfigurieren `triggers`/`variables` und leiten Consent-Events nach Kategorien weiter',
                   'Für "Roh"-Code: Wir wickeln Aufrufe/SDK in Schutz-Gates ein'
                 ]
@@ -834,7 +837,10 @@ export function getContent(locale: Locale) {
               'Zeitplan & Kostenkalkulation'
             ]
           }
-        }
+        },
+        badge: '🚀 Bereit zu starten?',
+        formTitle: 'Erzählen Sie uns von Ihrem Projekt',
+        formDescription: 'Füllen Sie das untenstehende Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.'
       },
       footer: {
         copyright: '© 2024 C&C CookieComply von Cash & Clash',
@@ -874,50 +880,50 @@ export function getContent(locale: Locale) {
           'Wir verwenden die folgenden Arten von Cookies:',
           '• Wesentliche Cookies: Erforderlich für grundlegende Website-Funktionalität',
           '• Analytics-Cookies: Helfen uns zu verstehen, wie Besucher unsere Website nutzen',
-          '• Marketing-Cookies: Werden verwendet, um relevante Werbung zu liefern',
-          '• Funktionale Cookies: Ermöglichen erweiterte Funktionalität und Personalisierung',
-          'Sie können Cookies in Ihren Browser-Einstellungen deaktivieren, aber dies kann die Website-Funktionalität beeinträchtigen. Verwenden Sie die nachstehenden Einstellungen, um Ihre Präferenzen zu verwalten.'
+          '• Marketing-Cookies: Utilisés pour diffuser des publicités pertinentes',
+          '• Cookies fonctionnels : Permettent une fonctionnalité améliorée et la personnalisation',
+          'Vous pouvez désactiver les cookies dans les paramètres de votre navigateur, mais cela peut affecter la fonctionnalité du site web. Utilisez les paramètres ci-dessous pour gérer vos préférences.'
         ],
         manageCookieSettings: 'Cookie-Einstellungen verwalten',
         manageCookieDescription: 'Klicken Sie auf die Schaltfläche unten, um Ihre Cookie-Einstellungen zu verwalten.',
-        cookieSettings: 'Cookie-Einstellungen'
+        cookieSettings: 'Paramètres des cookies'
       },
       urgency: {
-        title: '⚠️ DSGVO-Strafen bis zu 20M € - Nicht warten!',
-        subtitle: 'Werden Sie heute konform und vermeiden Sie massive Strafen. Begrenztes Angebot für neue Kunden.',
-        offer: 'Kostenlose DSGVO-Prüfung + 50% Rabatt auf Einrichtung',
-        deadline: '31. Dezember 2024',
+        title: '⚠️ Amendes RGPD jusqu\'à 20M € - N\'attendez pas !',
+        subtitle: 'Soyez conforme aujourd\'hui et évitez les amendes massives. Offre limitée pour les nouveaux clients.',
+        offer: 'Audit RGPD gratuit + 50% de réduction sur la configuration',
+        deadline: '31 décembre 2024',
         discount: '50%',
-        originalPrice: '2.000 €',
-        finalPrice: '1.000 €'
+        originalPrice: '2 000 €',
+        finalPrice: '1 000 €'
       },
       testimonials: {
-        title: 'Was unsere Kunden sagen',
-        subtitle: 'Echte Ergebnisse von echten Unternehmen, die uns ihre DSGVO-Compliance anvertraut haben',
+        title: 'Ce que disent nos clients',
+        subtitle: 'Vrais résultats d\'entreprises réelles qui nous ont fait confiance pour leur conformité RGPD',
         items: [
           {
             name: 'Sarah Johnson',
             company: 'TechStart Inc.',
             role: 'CTO',
-            testimonial: 'C&C CookieComply hat uns vor einer potenziellen Strafe von 500.000 € gerettet. Ihre Expertise in DSGVO-Compliance ist unübertroffen. Die Einrichtung war reibungslos und ihr Support ist unglaublich.',
+            testimonial: 'C&C CookieComply nous a sauvés d\'une amende potentielle de 500 000 €. Leur expertise en conformité RGPD est inégalée. La configuration était fluide et leur support est incroyable.',
             rating: 5,
-            result: '500.000 € Strafe vermieden, 100% konform'
+            result: 'Évité une amende de 500 000 €, 100% conforme'
           },
           {
             name: 'Michael Chen',
             company: 'E-commerce Solutions',
             role: 'CEO',
-            testimonial: 'Wir hatten monatelang Probleme mit der Cookie-Compliance. C&C hat alles in nur 2 Wochen repariert. Unsere Analytics sind jetzt sauber und wir sind vollständig konform.',
+            testimonial: 'Nous avions des problèmes de conformité des cookies depuis des mois. C&C a tout réparé en seulement 2 semaines. Nos analyses sont maintenant propres et nous sommes entièrement conformes.',
             rating: 5,
-            result: 'In 2 Wochen repariert, Analytics wiederhergestellt'
+            result: 'Réparé en 2 semaines, analyses restaurées'
           },
           {
             name: 'Emma Rodriguez',
             company: 'Digital Marketing Agency',
             role: 'Operations Director',
-            testimonial: 'Das Team bei C&C ist professionell, sachkundig und reaktionsschnell. Sie haben nicht nur unsere Compliance-Probleme behoben, sondern auch unser Team in Best Practices geschult.',
+            testimonial: 'L\'équipe chez C&C est professionnelle, compétente et réactive. Ils ont non seulement résolu nos problèmes de conformité mais ont aussi formé notre équipe aux meilleures pratiques.',
             rating: 5,
-            result: 'Vollständige Compliance + Team-Schulung'
+            result: 'Conformité complète + formation de l\'équipe'
           }
         ]
       }
@@ -1253,7 +1259,10 @@ export function getContent(locale: Locale) {
               'Calendrier & estimation des coûts'
             ]
           }
-        }
+        },
+        badge: '🚀 Prêt à commencer ?',
+        formTitle: 'Parlez-nous de votre projet',
+        formDescription: 'Remplissez le formulaire ci-dessous et nous vous répondrons sous 24 heures.'
       },
       footer: {
         copyright: '© 2024 C&C CookieComply par Cash & Clash',

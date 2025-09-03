@@ -153,14 +153,13 @@
     },
     "items": [
       { 
-        "name": "Alex Thompson", 
-        "company": "EcomCo", 
-        "role": "CMO", 
-        "testimonial": "C&C transformed our cookie compliance from a nightmare into a smooth, automated process. Our conversion rates actually improved after implementation!", 
+                "name": "Alex Thompson",
+        "company": "EcomCo",
+        "role": "CMO",
+        "testimonial": "C&C transformed our cookie compliance from a nightmare into a smooth, automated process. Our conversion rates actually improved after implementation!",
         "rating": 5,
         "result": "25% increase in consent rates",
         "avatar": "/images/testimonials/alex-thompson.webp",
-        "companyLogo": "/images/testimonials/logos/ecomco-logo.svg",
         "metrics": {
           "before": "45% consent rate",
           "after": "70% consent rate",

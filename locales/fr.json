@@ -253,6 +253,7 @@
   "navbar": {
     "services": "Services",
     "process": "Processus",
+    "blog": "Blog",
     "pricing": "Tarifs",
     "faq": "FAQ",
     "contact": "Contact",
@@ -261,6 +262,38 @@
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
       "fr": { "name": "Français", "flag": "🇫🇷" },
       "es": { "name": "Español", "flag": "🇪🇸" }
+    }
+  },
+  "blog": {
+    "title": "Blog Conformité RGPD & Cookies",
+    "subtitle": "Insights d'experts, guides d'implémentation et mises à jour de l'industrie pour la conformité cookies et le droit de la vie privée.",
+    "featured": "Articles en vedette",
+    "allArticles": "Tous les articles",
+    "readMore": "Lire plus",
+    "backToBlog": "Retour au blog",
+    "share": "Partager",
+    "tags": "Tags",
+    "needHelp": "Besoin d'aide avec la conformité RGPD?",
+    "helpDescription": "Nos experts peuvent vous aider à implémenter ces meilleures pratiques sur votre site web.",
+    "getHelp": "Obtenir de l'aide d'expert",
+    "newsletter": {
+      "title": "Restez informé des changements RGPD",
+      "description": "Recevez les dernières informations sur la conformité cookies et les réglementations de confidentialité dans votre boîte mail.",
+      "cta": "S'abonner aux mises à jour"
+    },
+    "posts": {
+      "post1": {
+        "title": "RGPD Consent Mode v2: Ce qui a changé en 2025",
+        "excerpt": "Guide complet de l'implémentation de Google Consent Mode v2 et son impact sur le tracking analytics."
+      },
+      "post2": {
+        "title": "Meilleures pratiques des bannières cookies: UX vs Conformité",
+        "excerpt": "Comment concevoir des bannières cookies qui respectent le choix de l'utilisateur tout en maintenant de bons taux de conversion."
+      },
+      "post3": {
+        "title": "Comparaison CMP 2025: Cookiebot vs OneTrust vs Usercentrics",
+        "excerpt": "Comparaison détaillée des principales plateformes de gestion du consentement avec prix et fonctionnalités."
+      }
     }
   },
   "cookieConsent": {

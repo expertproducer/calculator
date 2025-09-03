@@ -237,9 +237,187 @@
     "cookiePreferences": "Cookie Preferences",
     "allRightsReserved": "All rights reserved"
   },
+  "calculator": {
+    "title": "GDPR Fine Calculator",
+    "subtitle": "Calculate your potential GDPR fine and compliance risk level",
+    "revenue": {
+      "label": "Annual Revenue (€)",
+      "placeholder": "1000000"
+    },
+    "visitors": {
+      "label": "Monthly Website Visitors",
+      "placeholder": "50000"
+    },
+    "compliance": {
+      "label": "Current Compliance Level",
+      "options": {
+        "none": "No GDPR compliance",
+        "basic": "Basic cookie banner",
+        "full": "Full GDPR compliance"
+      }
+    },
+    "results": {
+      "title": "Risk Assessment Results",
+      "maxFine": "Maximum Possible Fine",
+      "riskLevel": "Risk Level",
+      "recommendation": "Our Recommendation",
+      "levels": {
+        "low": "Low Risk",
+        "medium": "Medium Risk", 
+        "high": "High Risk"
+      },
+      "recommendations": {
+        "implement": "Implement full GDPR compliance immediately to avoid potential fines",
+        "upgrade": "Upgrade your current compliance setup to reduce risks",
+        "audit": "Regular compliance audits recommended to maintain standards"
+      }
+    },
+    "calculate": "Calculate Risk & Fine"
+  },
+  "checklist": {
+    "title": "GDPR Compliance Checklist",
+    "subtitle": "Interactive checklist to assess your current GDPR compliance status",
+    "progress": "Compliance Progress",
+    "completed": "Completed",
+    "categories": {
+      "legal": {
+        "title": "Legal Requirements",
+        "items": [
+          {
+            "id": "privacy-policy",
+            "title": "Privacy Policy Updated",
+            "description": "Clear, comprehensive privacy policy covering all data processing activities",
+            "priority": "high"
+          },
+          {
+            "id": "legal-basis",
+            "title": "Legal Basis Identified",
+            "description": "Legal basis for processing identified for all data collection",
+            "priority": "high"
+          },
+          {
+            "id": "consent-mechanism",
+            "title": "Valid Consent Mechanism",
+            "description": "Proper consent collection with clear opt-in/opt-out options",
+            "priority": "high"
+          },
+          {
+            "id": "data-mapping",
+            "title": "Data Processing Mapping",
+            "description": "Complete mapping of all personal data processing activities",
+            "priority": "medium"
+          },
+          {
+            "id": "dpo-appointed",
+            "title": "DPO Appointed (if required)",
+            "description": "Data Protection Officer appointed if processing meets GDPR thresholds",
+            "priority": "medium"
+          }
+        ]
+      },
+      "technical": {
+        "title": "Technical Implementation",
+        "items": [
+          {
+            "id": "cookie-banner",
+            "title": "Compliant Cookie Banner",
+            "description": "Cookie banner with proper categorization and consent options",
+            "priority": "high"
+          },
+          {
+            "id": "script-blocking",
+            "title": "Script Blocking Before Consent",
+            "description": "All tracking scripts blocked until user provides consent",
+            "priority": "high"
+          },
+          {
+            "id": "consent-logging",
+            "title": "Consent Proof Logging",
+            "description": "System to log and prove user consent with timestamps",
+            "priority": "high"
+          },
+          {
+            "id": "data-encryption",
+            "title": "Data Encryption",
+            "description": "Personal data encrypted both in transit and at rest",
+            "priority": "medium"
+          },
+          {
+            "id": "backup-security",
+            "title": "Secure Data Backups",
+            "description": "Regular, encrypted backups with access controls",
+            "priority": "medium"
+          },
+          {
+            "id": "access-controls",
+            "title": "Access Controls Implemented",
+            "description": "Role-based access controls for personal data systems",
+            "priority": "low"
+          }
+        ]
+      },
+      "organizational": {
+        "title": "Organizational Measures",
+        "items": [
+          {
+            "id": "staff-training",
+            "title": "Staff GDPR Training",
+            "description": "Regular GDPR awareness training for all staff handling personal data",
+            "priority": "medium"
+          },
+          {
+            "id": "breach-procedures",
+            "title": "Data Breach Procedures",
+            "description": "Clear procedures for detecting, reporting, and handling data breaches",
+            "priority": "high"
+          },
+          {
+            "id": "vendor-agreements",
+            "title": "Vendor Data Processing Agreements",
+            "description": "DPAs in place with all third-party data processors",
+            "priority": "medium"
+          },
+          {
+            "id": "retention-policy",
+            "title": "Data Retention Policy",
+            "description": "Clear policy on how long different types of data are retained",
+            "priority": "medium"
+          },
+          {
+            "id": "subject-rights",
+            "title": "Data Subject Rights Process",
+            "description": "Procedures for handling data subject access, deletion, and portability requests",
+            "priority": "high"
+          },
+          {
+            "id": "regular-audits",
+            "title": "Regular Compliance Audits",
+            "description": "Scheduled internal audits of GDPR compliance measures",
+            "priority": "low"
+          }
+        ]
+      }
+    },
+    "summary": {
+      "title": "Compliance Assessment",
+      "score": "Complete",
+      "recommendations": {
+        "excellent": "Excellent! Your GDPR compliance is comprehensive. Continue regular audits to maintain standards.",
+        "good": "Good progress! Address remaining items to achieve full compliance and reduce risks.",
+        "needsWork": "Your compliance needs improvement. Focus on high-priority items first to reduce immediate risks.",
+        "critical": "Critical gaps in compliance detected. Immediate action required to avoid potential fines and legal issues."
+      }
+    },
+    "cta": {
+      "title": "Need Help Completing Your Compliance?",
+      "description": "Our GDPR experts can help you address all remaining compliance gaps quickly and effectively.",
+      "button": "Get Expert Help"
+    }
+  },
   "navbar": {
     "services": "Services",
     "process": "Process",
+    "blog": "Blog",
     "pricing": "Pricing",
     "faq": "FAQ",
     "contact": "Contact",
@@ -259,6 +437,38 @@
       "Policy pages",
       "Maintenance guide"
     ]
+  },
+  "blog": {
+    "title": "GDPR & Cookie Compliance Blog",
+    "subtitle": "Expert insights, implementation guides, and industry updates for cookie compliance and privacy law.",
+    "featured": "Featured Articles",
+    "allArticles": "All Articles",
+    "readMore": "Read More",
+    "backToBlog": "Back to Blog",
+    "share": "Share",
+    "tags": "Tags",
+    "needHelp": "Need Help with GDPR Compliance?",
+    "helpDescription": "Our experts can help you implement these best practices on your website.",
+    "getHelp": "Get Expert Help",
+    "newsletter": {
+      "title": "Stay Updated on GDPR Changes",
+      "description": "Get the latest insights on cookie compliance and privacy regulations delivered to your inbox.",
+      "cta": "Subscribe to Updates"
+    },
+    "posts": {
+      "post1": {
+        "title": "GDPR Consent Mode v2: What Changed in 2025",
+        "excerpt": "Complete guide to Google Consent Mode v2 implementation and its impact on analytics tracking."
+      },
+      "post2": {
+        "title": "Cookie Banner Best Practices: UX vs Compliance",
+        "excerpt": "How to design cookie banners that respect user choice while maintaining good conversion rates."
+      },
+      "post3": {
+        "title": "CMP Comparison 2025: Cookiebot vs OneTrust vs Usercentrics",
+        "excerpt": "Detailed comparison of leading Consent Management Platforms with pricing and features."
+      }
+    }
   },
   "cookieConsent": {
     "title": "We use cookies to enhance your experience",

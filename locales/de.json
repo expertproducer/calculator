@@ -250,9 +250,187 @@
     "cookiePreferences": "Cookie-Einstellungen",
     "allRightsReserved": "Alle Rechte vorbehalten"
   },
+  "calculator": {
+    "title": "DSGVO-Bußgeld Rechner",
+    "subtitle": "Berechnen Sie Ihr potenzielles DSGVO-Bußgeld und Compliance-Risiko",
+    "revenue": {
+      "label": "Jahresumsatz (€)",
+      "placeholder": "1000000"
+    },
+    "visitors": {
+      "label": "Monatliche Website-Besucher",
+      "placeholder": "50000"
+    },
+    "compliance": {
+      "label": "Aktueller Compliance-Status",
+      "options": {
+        "none": "Keine DSGVO-Compliance",
+        "basic": "Einfacher Cookie-Banner",
+        "full": "Vollständige DSGVO-Compliance"
+      }
+    },
+    "results": {
+      "title": "Risikobewertung Ergebnisse",
+      "maxFine": "Maximal mögliches Bußgeld",
+      "riskLevel": "Risikostufe",
+      "recommendation": "Unsere Empfehlung",
+      "levels": {
+        "low": "Geringes Risiko",
+        "medium": "Mittleres Risiko",
+        "high": "Hohes Risiko"
+      },
+      "recommendations": {
+        "implement": "Sofortige Umsetzung vollständiger DSGVO-Compliance zur Vermeidung von Bußgeldern",
+        "upgrade": "Upgrade Ihrer aktuellen Compliance-Maßnahmen zur Risikominimierung",
+        "audit": "Regelmäßige Compliance-Audits empfohlen zur Aufrechterhaltung der Standards"
+      }
+    },
+    "calculate": "Risiko & Bußgeld berechnen"
+  },
+  "checklist": {
+    "title": "DSGVO-Compliance Checkliste",
+    "subtitle": "Interaktive Checkliste zur Bewertung Ihres aktuellen DSGVO-Compliance-Status",
+    "progress": "Compliance-Fortschritt",
+    "completed": "Abgeschlossen",
+    "categories": {
+      "legal": {
+        "title": "Rechtliche Anforderungen",
+        "items": [
+          {
+            "id": "privacy-policy",
+            "title": "Datenschutzerklärung aktualisiert",
+            "description": "Klare, umfassende Datenschutzerklärung für alle Datenverarbeitungsaktivitäten",
+            "priority": "high"
+          },
+          {
+            "id": "legal-basis",
+            "title": "Rechtsgrundlage identifiziert",
+            "description": "Rechtsgrundlage für die Verarbeitung bei allen Datenerhebungen identifiziert",
+            "priority": "high"
+          },
+          {
+            "id": "consent-mechanism",
+            "title": "Gültiger Einwilligungsmechanismus",
+            "description": "Ordnungsgemäße Einwilligungserfassung mit klaren Opt-in/Opt-out-Optionen",
+            "priority": "high"
+          },
+          {
+            "id": "data-mapping",
+            "title": "Datenverarbeitungs-Mapping",
+            "description": "Vollständige Erfassung aller personenbezogenen Datenverarbeitungsaktivitäten",
+            "priority": "medium"
+          },
+          {
+            "id": "dpo-appointed",
+            "title": "DSB ernannt (falls erforderlich)",
+            "description": "Datenschutzbeauftragter ernannt, falls Verarbeitung DSGVO-Schwellenwerte erreicht",
+            "priority": "medium"
+          }
+        ]
+      },
+      "technical": {
+        "title": "Technische Umsetzung",
+        "items": [
+          {
+            "id": "cookie-banner",
+            "title": "Konformer Cookie-Banner",
+            "description": "Cookie-Banner mit ordnungsgemäßer Kategorisierung und Einwilligungsoptionen",
+            "priority": "high"
+          },
+          {
+            "id": "script-blocking",
+            "title": "Script-Blockierung vor Einwilligung",
+            "description": "Alle Tracking-Scripts blockiert bis Benutzer Einwilligung erteilt",
+            "priority": "high"
+          },
+          {
+            "id": "consent-logging",
+            "title": "Einwilligungsnachweis-Protokollierung",
+            "description": "System zur Protokollierung und Nachweis der Benutzereinwilligung mit Zeitstempeln",
+            "priority": "high"
+          },
+          {
+            "id": "data-encryption",
+            "title": "Datenverschlüsselung",
+            "description": "Personenbezogene Daten sowohl bei der Übertragung als auch im Ruhezustand verschlüsselt",
+            "priority": "medium"
+          },
+          {
+            "id": "backup-security",
+            "title": "Sichere Daten-Backups",
+            "description": "Regelmäßige, verschlüsselte Backups mit Zugriffskontrollen",
+            "priority": "medium"
+          },
+          {
+            "id": "access-controls",
+            "title": "Zugriffskontrollen implementiert",
+            "description": "Rollenbasierte Zugriffskontrollen für personenbezogene Datensysteme",
+            "priority": "low"
+          }
+        ]
+      },
+      "organizational": {
+        "title": "Organisatorische Maßnahmen",
+        "items": [
+          {
+            "id": "staff-training",
+            "title": "Mitarbeiter-DSGVO-Schulung",
+            "description": "Regelmäßige DSGVO-Awareness-Schulungen für alle Mitarbeiter mit personenbezogenen Daten",
+            "priority": "medium"
+          },
+          {
+            "id": "breach-procedures",
+            "title": "Datenschutzverletzung-Verfahren",
+            "description": "Klare Verfahren zur Erkennung, Meldung und Behandlung von Datenschutzverletzungen",
+            "priority": "high"
+          },
+          {
+            "id": "vendor-agreements",
+            "title": "Lieferanten-Datenverarbeitungsverträge",
+            "description": "AVV mit allen Drittanbieter-Datenverarbeitern vorhanden",
+            "priority": "medium"
+          },
+          {
+            "id": "retention-policy",
+            "title": "Datenspeicherungsrichtlinie",
+            "description": "Klare Richtlinie zur Speicherdauer verschiedener Datentypen",
+            "priority": "medium"
+          },
+          {
+            "id": "subject-rights",
+            "title": "Betroffenenrechte-Verfahren",
+            "description": "Verfahren für Betroffenenanfragen zu Zugang, Löschung und Datenübertragbarkeit",
+            "priority": "high"
+          },
+          {
+            "id": "regular-audits",
+            "title": "Regelmäßige Compliance-Audits",
+            "description": "Geplante interne Audits der DSGVO-Compliance-Maßnahmen",
+            "priority": "low"
+          }
+        ]
+      }
+    },
+    "summary": {
+      "title": "Compliance-Bewertung",
+      "score": "Vollständig",
+      "recommendations": {
+        "excellent": "Ausgezeichnet! Ihre DSGVO-Compliance ist umfassend. Führen Sie regelmäßige Audits zur Aufrechterhaltung der Standards durch.",
+        "good": "Guter Fortschritt! Bearbeiten Sie verbleibende Punkte für vollständige Compliance und Risikominimierung.",
+        "needsWork": "Ihre Compliance muss verbessert werden. Fokussieren Sie sich zuerst auf hochpriorisierte Punkte zur sofortigen Risikominimierung.",
+        "critical": "Kritische Compliance-Lücken erkannt. Sofortiges Handeln erforderlich zur Vermeidung von Bußgeldern und rechtlichen Problemen."
+      }
+    },
+    "cta": {
+      "title": "Benötigen Sie Hilfe bei der Compliance-Vervollständigung?",
+      "description": "Unsere DSGVO-Experten können Ihnen helfen, alle verbleibenden Compliance-Lücken schnell und effektiv zu schließen.",
+      "button": "Expertenberatung erhalten"
+    }
+  },
   "navbar": {
     "services": "Dienstleistungen",
     "process": "Prozess",
+    "blog": "Blog",
     "pricing": "Preise",
     "faq": "FAQ",
     "contact": "Kontakt",
@@ -261,6 +439,38 @@
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
       "fr": { "name": "Français", "flag": "🇫🇷" },
       "es": { "name": "Español", "flag": "🇪🇸" }
+    }
+  },
+  "blog": {
+    "title": "DSGVO & Cookie-Compliance Blog",
+    "subtitle": "Experteneinblicke, Implementierungsleitfäden und Branchenupdates für Cookie-Compliance und Datenschutzrecht.",
+    "featured": "Empfohlene Artikel",
+    "allArticles": "Alle Artikel",
+    "readMore": "Weiterlesen",
+    "backToBlog": "Zurück zum Blog",
+    "share": "Teilen",
+    "tags": "Tags",
+    "needHelp": "Brauchen Sie Hilfe bei der DSGVO-Compliance?",
+    "helpDescription": "Unsere Experten können Ihnen helfen, diese Best Practices auf Ihrer Website umzusetzen.",
+    "getHelp": "Expertenhilfe erhalten",
+    "newsletter": {
+      "title": "Bleiben Sie über DSGVO-Änderungen informiert",
+      "description": "Erhalten Sie die neuesten Erkenntnisse zu Cookie-Compliance und Datenschutzbestimmungen in Ihrem Posteingang.",
+      "cta": "Updates abonnieren"
+    },
+    "posts": {
+      "post1": {
+        "title": "DSGVO Consent Mode v2: Was sich 2025 geändert hat",
+        "excerpt": "Vollständiger Leitfaden zur Google Consent Mode v2 Implementierung und deren Auswirkungen auf Analytics-Tracking."
+      },
+      "post2": {
+        "title": "Cookie-Banner Best Practices: UX vs Compliance",
+        "excerpt": "Wie man Cookie-Banner gestaltet, die die Benutzerwahl respektieren und gleichzeitig gute Konversionsraten beibehalten."
+      },
+      "post3": {
+        "title": "CMP-Vergleich 2025: Cookiebot vs OneTrust vs Usercentrics",
+        "excerpt": "Detaillierter Vergleich führender Consent Management Plattformen mit Preisen und Features."
+      }
     }
   },
   "cookieConsent": {

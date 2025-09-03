@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static export for Cloudflare Pages
-  output: 'export',
+  // Enable static export for Cloudflare Pages (only in production)
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   
   // Use default .next directory
   // distDir: 'dist',

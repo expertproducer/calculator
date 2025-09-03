@@ -11,6 +11,7 @@ type NavbarLabels = {
   pricing: string
   faq: string
   contact: string
+  blog: string
 }
 
 const EN_FALLBACK: NavbarLabels = {
@@ -18,7 +19,8 @@ const EN_FALLBACK: NavbarLabels = {
   process: 'Process',
   pricing: 'Pricing',
   faq: 'FAQ',
-  contact: 'Contact'
+  contact: 'Contact',
+  blog: 'Blog'
 }
 
 export default function Navbar({ locale }: { locale: string }) {
@@ -81,6 +83,7 @@ export default function Navbar({ locale }: { locale: string }) {
   const navItems = [
     { id: 'services', label: labels.services },
     { id: 'process', label: labels.process },
+    { id: 'blog', label: labels.blog },
     { id: 'pricing', label: labels.pricing },
     { id: 'faq', label: labels.faq },
     { id: 'contact', label: labels.contact }

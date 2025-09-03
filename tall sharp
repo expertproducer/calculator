@@ -1,0 +1,10 @@
+warning: in the working copy of 'components/Navbar.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'locales/de.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'locales/en.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'locales/es.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'locales/fr.json', LF will be replaced by CRLF the next time Git touches it
+components/Navbar.tsx
+locales/de.json
+locales/en.json
+locales/es.json
+locales/fr.json

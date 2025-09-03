@@ -10,6 +10,10 @@ export { default as Platforms } from './Platforms'
 export { default as Testimonials } from './Testimonials'
 export { default as UrgencyBanner } from './UrgencyBanner'
 
+// Interactive components
+export { default as GDPRCalculator } from './GDPRCalculator'
+export { default as GDPRChecklist } from './GDPRChecklist'
+
 // Pricing Component - Re-export from the main Pricing component
 export { default as Pricing } from './Pricing'
 

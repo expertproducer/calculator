@@ -253,6 +253,7 @@
   "navbar": {
     "services": "Servicios",
     "process": "Proceso",
+    "blog": "Blog",
     "pricing": "Precios",
     "faq": "FAQ",
     "contact": "Contacto",
@@ -261,6 +262,38 @@
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
       "fr": { "name": "Français", "flag": "🇫🇷" },
       "es": { "name": "Español", "flag": "🇪🇸" }
+    }
+  },
+  "blog": {
+    "title": "Blog Cumplimiento GDPR & Cookies",
+    "subtitle": "Insights de expertos, guías de implementación y actualizaciones de la industria para cumplimiento de cookies y derecho de privacidad.",
+    "featured": "Artículos destacados",
+    "allArticles": "Todos los artículos",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al blog",
+    "share": "Compartir",
+    "tags": "Tags",
+    "needHelp": "¿Necesita ayuda con el cumplimiento GDPR?",
+    "helpDescription": "Nuestros expertos pueden ayudarle a implementar estas mejores prácticas en su sitio web.",
+    "getHelp": "Obtener ayuda experta",
+    "newsletter": {
+      "title": "Manténgase actualizado sobre cambios GDPR",
+      "description": "Reciba las últimas perspectivas sobre cumplimiento de cookies y regulaciones de privacidad en su bandeja de entrada.",
+      "cta": "Suscribirse a actualizaciones"
+    },
+    "posts": {
+      "post1": {
+        "title": "GDPR Consent Mode v2: Qué cambió en 2025",
+        "excerpt": "Guía completa de implementación de Google Consent Mode v2 y su impacto en el seguimiento de analytics."
+      },
+      "post2": {
+        "title": "Mejores prácticas de banners de cookies: UX vs Cumplimiento",
+        "excerpt": "Cómo diseñar banners de cookies que respeten la elección del usuario mientras mantienen buenas tasas de conversión."
+      },
+      "post3": {
+        "title": "Comparación CMP 2025: Cookiebot vs OneTrust vs Usercentrics",
+        "excerpt": "Comparación detallada de las principales plataformas de gestión de consentimiento con precios y características."
+      }
     }
   },
   "cookieConsent": {

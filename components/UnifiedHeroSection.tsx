@@ -146,86 +146,42 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
              </div>
            )}
 
-           {/* Four Sections Grid - 2x2 Layout */}
-           <div className="grid lg:grid-cols-2 gap-8 mb-8">
-             
-                           {/* Why Important */}
-                             {content.whyImportant && (
-                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                   <div className="text-center mb-6">
-                     <h3 className="text-3xl font-black text-gray-900 mb-3 leading-tight">{content.whyImportant.title}</h3>
-                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{content.whyImportant.subtitle}</p>
-                   </div>
+            {/* Six Sections Grid - 3x2 Layout */}
+            <div className="grid lg:grid-cols-3 gap-8 mb-8">
+              
+              {/* Why Important */}
+              {content.whyImportant && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Why It Matters</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Privacy compliance essentials</p>
+                  </div>
                   
-                  <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    {content.whyImportant.points.map((point, index) => {
-                      const IconComponent = benefitIcons[index % benefitIcons.length]
+                                    <div className="space-y-3">
+                    {content.whyImportant.points.slice(0, 5).map((point, index) => {
                       const colors = [
-                        'bg-gradient-to-br from-blue-500 to-blue-600',
-                        'bg-gradient-to-br from-green-500 to-green-600', 
-                        'bg-gradient-to-br from-purple-500 to-purple-600',
-                        'bg-gradient-to-br from-orange-500 to-orange-600'
+                        'bg-blue-500',
+                        'bg-green-500',
+                        'bg-purple-500',
+                        'bg-orange-500',
+                        'bg-red-500'
                       ]
                       const color = colors[index % colors.length]
                       
-                      return (
-                        <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-lg transition-all duration-300">
-                          <div className="flex items-start gap-3">
-                            <div className={`p-2 ${color} rounded-lg shadow-md flex-shrink-0`}>
-                              <IconComponent className="text-white w-5 h-5 drop-shadow-sm" />
-                            </div>
-                            <div className="flex-1">
-                              <p className="text-gray-800 font-semibold text-sm leading-relaxed">{point}</p>
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
-                    <div className="text-center">
-                      <div className="inline-flex p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl mb-3 shadow-lg">
-                        <Shield className="text-white w-5 h-5 drop-shadow-lg" />
-                      </div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-3">{content.whyImportant.expertiseTitle || 'Our Expertise Makes the Difference'}</h4>
-                      <p className="text-gray-700 text-sm leading-relaxed max-w-3xl mx-auto">{content.whyImportant.description}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-                           {/* Benefits */}
-                             {content.benefits && (
-                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                   <div className="text-center mb-6">
-                     <h3 className="text-3xl font-black text-gray-900 mb-3 leading-tight">{content.benefits.title}</h3>
-                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{content.benefits.subtitle}</p>
-                   </div>
-                  
-                  <div className="grid md:grid-cols-3 gap-4">
-                    {content.benefits.items.map((item, index) => {
-                      const colors = [
-                        'bg-gradient-to-br from-blue-500 to-blue-600',
-                        'bg-gradient-to-br from-green-500 to-green-600',
-                        'bg-gradient-to-br from-purple-500 to-purple-600',
-                        'bg-gradient-to-br from-orange-500 to-orange-600',
-                        'bg-gradient-to-br from-red-500 to-red-600',
-                        'bg-gradient-to-br from-indigo-500 to-indigo-600',
-                        'bg-gradient-to-br from-pink-500 to-pink-600',
-                        'bg-gradient-to-br from-teal-500 to-teal-600',
-                        'bg-gradient-to-br from-yellow-500 to-yellow-600'
+                      const subtitles = [
+                        'Meet all legal requirements',
+                        'Avoid costly fines and penalties',
+                        'Build customer confidence',
+                        'Keep analytics working properly',
+                        'Stay ahead of new regulations'
                       ]
-                      const color = colors[index % colors.length]
                       
                       return (
-                        <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                          <div className="text-center">
-                            <div className={`inline-flex p-3 ${color} rounded-xl shadow-md mb-3`}>
-                              <CheckCircle className="text-white w-5 h-5 drop-shadow-sm" />
-                            </div>
-                            <h4 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{item.title}</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{point}</div>
+                            <div className="text-xs text-gray-600">{subtitles[index]}</div>
                           </div>
                         </div>
                       )
@@ -234,175 +190,215 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
                 </div>
               )}
 
-                           {/* Platforms */}
-                             {content.platforms && (
-                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                   <div className="text-center mb-6">
-                     <h3 className="text-3xl font-black text-gray-900 mb-3 leading-tight">{content.platforms.title}</h3>
-                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{content.platforms.subtitle}</p>
-                   </div>
+              {/* Benefits */}
+              {content.benefits && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Why Choose Us</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Clear advantages for your business</p>
+                  </div>
                   
-                  <div className="grid md:grid-cols-3 gap-4 mb-6">
-                    {content.platforms.items.map((platform, index) => {
+                  <div className="space-y-3">
+                    {content.benefits.items.slice(0, 5).map((item, index) => {
+                      const colors = [
+                        'bg-blue-500',
+                        'bg-green-500',
+                        'bg-purple-500',
+                        'bg-orange-500',
+                        'bg-red-500'
+                      ]
+                      const color = colors[index % colors.length]
+                      
+                      return (
+                        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{item.title}</div>
+                            <div className="text-xs text-gray-600">{item.description}</div>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Platforms */}
+              {content.platforms && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Platforms</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Leading CMPs and stacks</p>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {content.platforms.items.slice(0, 5).map((platform, index) => {
                       const platformName = typeof platform === 'string' ? platform : platform.name
                       const colors = [
-                        'bg-gradient-to-br from-blue-500 to-blue-600',
-                        'bg-gradient-to-br from-green-500 to-green-600',
-                        'bg-gradient-to-br from-purple-500 to-purple-600',
-                        'bg-gradient-to-br from-orange-500 to-orange-600',
-                        'bg-gradient-to-br from-red-500 to-red-600',
-                        'bg-gradient-to-br from-indigo-500 to-indigo-600',
-                        'bg-gradient-to-br from-pink-500 to-pink-600',
-                        'bg-gradient-to-br from-teal-500 to-teal-600',
-                        'bg-gradient-to-br from-yellow-500 to-yellow-600'
+                        'bg-blue-500',
+                        'bg-green-500',
+                        'bg-purple-500',
+                        'bg-orange-500',
+                        'bg-red-500'
                       ]
                       const color = colors[index % colors.length]
                       
+                      const subtitles = [
+                        'AI-powered consent management',
+                        'Legal compliance automation',
+                        'Enterprise-grade solution',
+                        'Simple setup & management',
+                        'Comprehensive privacy suite'
+                      ]
+                      
                       return (
-                        <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                          <div className="text-center">
-                            <div className={`inline-flex p-3 ${color} rounded-xl shadow-md mb-3`}>
-                              <CheckCircle className="text-white w-5 h-5 drop-shadow-sm" />
-                            </div>
-                            <h4 className="text-lg font-bold text-gray-900 leading-tight">{platformName}</h4>
+                        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{platformName}</div>
+                            <div className="text-xs text-gray-600">{subtitles[index]}</div>
                           </div>
                         </div>
                       )
                     })}
                   </div>
+                </div>
+              )}
+
+              {/* Case Studies */}
+              {content.cases && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Case Studies</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">Selected projects and outcomes</p>
+                  </div>
                   
-                  {content.platforms.note && (
-                    <div className="text-center">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg border border-gray-200">
-                        <CheckCircle className="text-gray-600 w-4 h-4" />
-                        <p className="text-sm text-gray-600 font-medium">{content.platforms.note}</p>
-                      </div>
+                  <div className="space-y-3">
+                    {content.cases.items.slice(0, 5).map((caseItem, index) => {
+                      const colors = [
+                        'bg-purple-500',
+                        'bg-blue-500',
+                        'bg-orange-500',
+                        'bg-green-500',
+                        'bg-red-500'
+                      ]
+                      const color = colors[index % colors.length]
+                      
+                      return (
+                        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{caseItem.title}</div>
+                            <div className="text-xs text-gray-600">{caseItem.result}</div>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* What You Get */}
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">What You Get</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">Complete compliance solution</p>
+                </div>
+                
+                                                 <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Express audit</div>
+                      <div className="text-xs text-gray-600">Quick compliance assessment</div>
                     </div>
-                  )}
-                </div>
-              )}
-
-                           {/* Case Studies */}
-                             {content.cases && (
-                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                   <div className="text-center mb-6">
-                     <h3 className="text-3xl font-black text-gray-900 mb-3 leading-tight">{content.cases.title}</h3>
-                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{content.cases.subtitle}</p>
-                   </div>
+                  </div>
                   
-                                                        <div className="space-y-4 mb-6">
-                     {content.cases.items.map((caseItem, index) => {
-                       const TypeIcon = typeIcons[index % typeIcons.length]
-                       const colors = [
-                         'bg-gradient-to-br from-purple-500 to-purple-600',
-                         'bg-gradient-to-br from-blue-500 to-blue-600',
-                         'bg-gradient-to-br from-orange-500 to-orange-600'
-                       ]
-                       const color = colors[index % colors.length]
-                       
-                       return (
-                         <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100 hover:shadow-lg transition-all duration-300">
-                           <div className="flex items-start gap-3 mb-3">
-                             <div className={`p-2 ${color} rounded-lg shadow-md flex-shrink-0`}>
-                               <TypeIcon className="text-white w-5 h-5 drop-shadow-sm" />
-                             </div>
-                             <div className="flex-1">
-                               <h4 className="text-lg font-bold text-gray-900 mb-1 leading-tight">{caseItem.title}</h4>
-                               <p className="text-gray-600 text-sm leading-relaxed">{caseItem.description}</p>
-                             </div>
-                           </div>
-                           
-                           <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-3 border border-gray-200">
-                             <div className="flex items-center gap-2 mb-1">
-                               <div className="p-1.5 bg-gradient-to-br from-gray-500 to-gray-600 rounded-md shadow-md">
-                                 <ArrowUp className="text-white w-3 h-3 drop-shadow-sm" />
-                               </div>
-                               <span className="font-bold text-gray-800 text-sm">Result</span>
-                             </div>
-                             <p className="text-gray-700 text-sm leading-relaxed font-medium">{caseItem.result}</p>
-                           </div>
-                         </div>
-                       )
-                     })}
-                   </div>
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">CMP recommendation</div>
+                      <div className="text-xs text-gray-600">Best platform for your needs</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Implementation plan</div>
+                      <div className="text-xs text-gray-600">Step-by-step deployment</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Next steps</div>
+                      <div className="text-xs text-gray-600">Clear action plan</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Ongoing support</div>
+                      <div className="text-xs text-gray-600">Continuous assistance</div>
+                    </div>
+                  </div>
                 </div>
-              )}
-             
-           </div>
+              </div>
 
-           {/* Compact Bottom Section - Two narrow blocks in one row */}
-           <div className="grid lg:grid-cols-2 gap-8 mb-8">
-             
-             {/* What You Get - Narrow Block */}
-             <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-               <div className="text-center mb-6">
-                 <h3 className="text-2xl font-black text-gray-900 mb-3">What You Get</h3>
-               </div>
-               
-               <div className="space-y-3">
-                 <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                   <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg">
-                     <Shield className="text-white w-4 h-4" />
-                   </div>
-                   <span className="text-gray-700 font-semibold text-sm">Express audit</span>
-                 </div>
-                 
-                 <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
-                   <div className="p-2 bg-gradient-to-br from-green-500 to-green-600 rounded-lg">
-                     <CheckCircle className="text-white w-4 h-4" />
-                   </div>
-                   <span className="text-gray-700 font-semibold text-sm">CMP recommendation</span>
-                 </div>
-                 
-                 <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-                   <div className="p-2 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg">
-                     <ArrowUp className="text-white w-4 h-4" />
-                   </div>
-                   <span className="text-gray-700 font-semibold text-sm">Implementation plan</span>
-                 </div>
-                 
-                 <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
-                   <div className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg">
-                     <TrendingUp className="text-white w-4 h-4" />
-                   </div>
-                   <span className="text-gray-700 font-semibold text-sm">Next steps</span>
-                 </div>
-               </div>
-             </div>
-
-                           {/* Don't Risk Fines - Narrow Block */}
-              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl shadow-2xl p-6 hover:shadow-3xl transition-all duration-300">
-                <div className="text-center">
-                  <h3 className="text-2xl font-black mb-3">Don't risk fines</h3>
-                  <p className="text-sm mb-4">We make cookie consent clean and compliant</p>
-                 
-                 <div className="bg-white/10 rounded-xl p-4 mb-4">
-                   <div className="text-xl font-bold mb-2">Express Compliance Check</div>
-                   <div className="text-sm">
-                     <span className="line-through opacity-75">$499</span>
-                     <span className="ml-2 text-xl font-bold">$399</span>
-                     <span className="ml-2 bg-white text-red-600 px-2 py-1 rounded-lg text-xs font-bold">
-                       20% OFF
-                     </span>
-                   </div>
-                 </div>
-                 
-                 <div className="flex items-center justify-center gap-2 text-xs font-bold mb-4">
-                   <Clock className="w-3 h-3" />
-                   <span>Offer expires: This week</span>
-                 </div>
-                 
-                 <a
-                   href={locale === 'en' ? '/contact' : `/${locale}/contact`}
-                   className="inline-flex items-center gap-2 px-4 py-2 bg-white text-red-600 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 text-sm"
-                 >
-                   <AlertTriangle className="w-4 h-4" />
-                   <span>Claim Your Discount Now</span>
-                 </a>
-               </div>
-             </div>
-             
-           </div>
+              {/* Don't Risk Fines */}
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Don't Risk Fines</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">Clean and compliant consent</p>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">GDPR fines up to €20M</div>
+                      <div className="text-xs text-gray-600">4% of global revenue</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">CCPA penalties $7,500</div>
+                      <div className="text-xs text-gray-600">Per intentional violation</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-700 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Reputation damage</div>
+                      <div className="text-xs text-gray-600">Loss of customer trust</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-800 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Legal investigations</div>
+                      <div className="text-xs text-gray-600">Regulatory scrutiny</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-red-900 rounded-full flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900">Business disruption</div>
+                      <div className="text-xs text-gray-600">Forced compliance changes</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
         </div>
       </div>
     </div>

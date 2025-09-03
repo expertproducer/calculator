@@ -38,10 +38,11 @@
     "subtitle": "As privacy laws get stricter, clean consent is essential.",
     "expertiseTitle": "Our Expertise Makes the Difference",
     "points": [
-      "Comprehensive compliance with GDPR/CCPA",
+      "GDPR/CCPA compliance",
       "Risk mitigation and penalty avoidance",
       "Enhanced user trust and transparency",
-      "Maintained website functionality with analytics"
+      "Website analytics functionality",
+      "Future-proof privacy compliance"
     ],
     "description": "We bridge the gap between legal requirements and technical implementation, ensuring your data is legally clean and usable."
   },
@@ -138,9 +139,11 @@
     "title": "Case Studies",
     "subtitle": "Selected projects and outcomes",
     "items": [
-      { "title": "E-commerce (DE)", "description": "Accept-only banner; scripts loaded immediately.", "result": "Accept/Decline/Preferences; strict blocking; improved conversion." },
-      { "title": "Media (FR)", "description": "3rd-party cookies before consent; no preferences.", "result": "Auto-blocking; preference center; FR/EN localization." },
-      { "title": "SaaS (EU)", "description": "Inconsistent logic across subdomains.", "result": "Unified CMP; consistent categories; centralized logging." }
+      { "title": "E-commerce (DE)", "description": "Accept-only banner; scripts loaded immediately.", "result": "Full banner; strict blocking; better conversion" },
+      { "title": "Media (FR)", "description": "3rd-party cookies before consent; no preferences.", "result": "Auto-blocking; preference center; FR/EN support" },
+      { "title": "SaaS (EU)", "description": "Inconsistent logic across subdomains.", "result": "Unified CMP; consistent categories; central logging" },
+      { "title": "FinTech (UK)", "description": "Complex regulatory requirements; multiple tracking tools.", "result": "Compliant setup; audit trail; regulatory approval" },
+      { "title": "Healthcare (NL)", "description": "Sensitive data handling; strict privacy requirements.", "result": "HIPAA-compliant setup; secure processing; privacy" }
     ],
     "cta": "Get Your Case Study"
   },

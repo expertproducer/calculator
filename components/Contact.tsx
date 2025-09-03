@@ -77,26 +77,6 @@ export default function Contact({ content }: ContactProps) {
           <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed mb-12 font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
-          
-          {/* What you get - Process Page benefit */}
-          <div className="bg-white rounded-2xl p-8 max-w-5xl mx-auto border border-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-            <div className="inline-flex p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-8 shadow-2xl">
-              <Rocket className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-            </div>
-            
-            <h3 className="text-3xl font-bold text-blue-900 mb-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              {content.contactInfo.whatYouGet.title}
-            </h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {content.contactInfo.whatYouGet.items.map((item, index) => (
-                <div key={index} className="flex items-center gap-3 text-blue-800">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-                  <span className="font-bold text-lg drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">

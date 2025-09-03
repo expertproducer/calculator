@@ -1,23 +1,16 @@
 import { getContent } from '@/lib/i18n'
-import Hero from '@/components/Hero'
 import { 
-  WhyImportant, 
-  Benefits, 
-  Platforms, 
-  CaseStudies, 
   EnhancedTestimonials,
-  UrgencyBanner,
   Contact, 
   FinalCTA, 
   Footer, 
   Navbar,
   CompactServiceCalculator,
-  CompactGDPRChecklist
+  CompactGDPRChecklist,
+  UnifiedHeroSection
 } from '@/components/AllComponents'
 import StructuredData from '@/components/StructuredData'
 import CookieConsent from '@/components/CookieConsent'
-
-
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -30,34 +23,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Navbar locale={locale} />
       
       <main>
-        <section id="hero">
-          <Hero content={{...content.hero, problem: content.problem}} locale={locale} />
-        </section>
-        
-        {/* Urgency Banner - New */}
-        <section id="urgency">
-          <UrgencyBanner content={content.urgency} locale={locale} />
-        </section>
-        
-        {content.whyImportant && (
-          <section id="why-important">
-            <WhyImportant content={content.whyImportant} />
-          </section>
-        )}
-        
-        <section id="benefits">
-          <Benefits content={content.benefits} />
-        </section>
-        
-        {content.platforms && (
-          <section id="platforms">
-            <Platforms content={content.platforms} />
-          </section>
-        )}
-        
-        <section id="case-studies">
-          <CaseStudies content={content.cases} locale={locale} />
-        </section>
+        {/* Unified Hero Section - All content from banner to calculator */}
+        <UnifiedHeroSection content={{
+          hero: content.hero,
+          urgency: content.urgency,
+          whyImportant: content.whyImportant,
+          benefits: content.benefits,
+          platforms: content.platforms,
+          cases: content.cases
+        }} locale={locale} />
         
         {/* Interactive Tools - Side by Side */}
         <section id="interactive-tools" className="py-16 bg-gray-50">

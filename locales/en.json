@@ -114,7 +114,8 @@
       { "title": "Consent logs & exports", "description": "Full audit trail and documentation" },
       { "title": "24/7 Support", "description": "Expert assistance when you need it" },
       { "title": "Fast Implementation", "description": "Quick setup without disruption" },
-      { "title": "Cost Effective", "description": "Affordable solutions that fit your budget" }
+      { "title": "Cost Effective", "description": "Affordable solutions that fit your budget" },
+      { "title": "Future-proof compliance", "description": "Adapts to evolving privacy regulations" }
     ]
   },
   "platforms": {
@@ -125,7 +126,11 @@
       "Iubenda",
       "Usercentrics",
       "Termly",
-      { "name": "OneTrust", "description": "Enterprise consent management" }
+      "OneTrust",
+      "Quantcast",
+      "Sourcepoint",
+      "Didomi",
+      "TrustArc"
     ],
     "note": "Don’t see your CMP? We can work with any consent platform."
   },

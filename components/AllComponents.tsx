@@ -6,6 +6,9 @@ export { default as CaseStudies } from './CaseStudies'
 export { default as WhyImportant } from './WhyImportant'
 export { default as Platforms } from './Platforms'
 
+// Unified Hero Section Component
+export { default as UnifiedHeroSection } from './UnifiedHeroSection'
+
 // New selling components
 export { default as Testimonials } from './Testimonials'
 export { default as EnhancedTestimonials } from './EnhancedTestimonials'

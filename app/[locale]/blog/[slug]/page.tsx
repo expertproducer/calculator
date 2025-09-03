@@ -4,6 +4,8 @@ import { Calendar, Clock, ArrowLeft, Share2, Tag } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import BlogImage from '@/components/BlogImage'
+import type { Metadata } from 'next'
+import { GDPR_SUBDOMAIN, LOCALES } from '@/lib/locales'
 
 interface BlogPost {
   id: string
@@ -22,6 +24,167 @@ interface BlogPost {
   seoDescription?: string
   featured: boolean
   image: string
+}
+
+// Generate metadata for individual blog posts
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params
+  
+  // Blog post metadata by slug
+  const blogMetadata: Record<string, any> = {
+    'gdpr-consent-mode-v2-2025': {
+      en: {
+        title: 'GDPR Consent Mode v2: What Changed in 2025 | Complete Guide',
+        description: 'Everything you need to know about Google Consent Mode v2 changes in 2025. Implementation guide, compliance requirements, and impact on analytics.',
+        keywords: ['Consent Mode v2', 'GDPR 2025', 'Google Analytics', 'consent management', 'privacy compliance']
+      },
+      de: {
+        title: 'DSGVO Consent Mode v2: Was sich 2025 geändert hat | Vollständiger Leitfaden',
+        description: 'Alles was Sie über Google Consent Mode v2 Änderungen 2025 wissen müssen. Implementierungsleitfaden, Compliance-Anforderungen und Auswirkungen auf Analytics.',
+        keywords: ['Consent Mode v2', 'DSGVO 2025', 'Google Analytics', 'Consent Management', 'Datenschutz-Compliance']
+      },
+      fr: {
+        title: 'RGPD Consent Mode v2: Ce qui a changé en 2025 | Guide Complet',
+        description: 'Tout ce que vous devez savoir sur les changements Google Consent Mode v2 en 2025. Guide d\'implémentation, exigences de conformité et impact sur analytics.',
+        keywords: ['Consent Mode v2', 'RGPD 2025', 'Google Analytics', 'gestion consentement', 'conformité confidentialité']
+      },
+      es: {
+        title: 'RGPD Consent Mode v2: Qué cambió en 2025 | Guía Completa',
+        description: 'Todo lo que necesita saber sobre los cambios de Google Consent Mode v2 en 2025. Guía de implementación, requisitos de cumplimiento e impacto en analytics.',
+        keywords: ['Consent Mode v2', 'RGPD 2025', 'Google Analytics', 'gestión consentimiento', 'cumplimiento privacidad']
+      }
+    },
+    'cookie-banner-best-practices': {
+      en: {
+        title: 'Cookie Banner Best Practices: UX vs Compliance Balance | 2025 Guide',
+        description: 'Master cookie banner design that balances user experience with GDPR compliance. Best practices, examples, and implementation tips for 2025.',
+        keywords: ['cookie banner', 'UX design', 'GDPR compliance', 'user experience', 'consent design']
+      },
+      de: {
+        title: 'Cookie-Banner Best Practices: UX vs Compliance Balance | 2025 Leitfaden',
+        description: 'Meistern Sie Cookie-Banner-Design, das Benutzererfahrung mit DSGVO-Compliance ausbalanciert. Best Practices, Beispiele und Implementierungstipps für 2025.',
+        keywords: ['Cookie-Banner', 'UX-Design', 'DSGVO-Compliance', 'Benutzererfahrung', 'Consent-Design']
+      },
+      fr: {
+        title: 'Meilleures Pratiques Bannière Cookies: Équilibre UX vs Conformité | Guide 2025',
+        description: 'Maîtrisez la conception de bannières cookies qui équilibre expérience utilisateur et conformité RGPD. Meilleures pratiques, exemples et conseils d\'implémentation pour 2025.',
+        keywords: ['bannière cookies', 'design UX', 'conformité RGPD', 'expérience utilisateur', 'design consentement']
+      },
+      es: {
+        title: 'Mejores Prácticas Banner Cookies: Equilibrio UX vs Cumplimiento | Guía 2025',
+        description: 'Domine el diseño de banners de cookies que equilibra experiencia de usuario con cumplimiento RGPD. Mejores prácticas, ejemplos y consejos de implementación para 2025.',
+        keywords: ['banner cookies', 'diseño UX', 'cumplimiento RGPD', 'experiencia usuario', 'diseño consentimiento']
+      }
+    },
+    'cmp-comparison-2025': {
+      en: {
+        title: 'CMP Comparison 2025: Cookiebot vs OneTrust vs Usercentrics | Complete Review',
+        description: 'Detailed comparison of leading Consent Management Platforms. Features, pricing, implementation, and recommendations for choosing the right CMP in 2025.',
+        keywords: ['CMP comparison', 'Cookiebot', 'OneTrust', 'Usercentrics', 'consent management platform']
+      },
+      de: {
+        title: 'CMP-Vergleich 2025: Cookiebot vs OneTrust vs Usercentrics | Vollständige Bewertung',
+        description: 'Detaillierter Vergleich führender Consent Management Plattformen. Features, Preise, Implementierung und Empfehlungen für die Wahl der richtigen CMP 2025.',
+        keywords: ['CMP-Vergleich', 'Cookiebot', 'OneTrust', 'Usercentrics', 'Consent Management Plattform']
+      },
+      fr: {
+        title: 'Comparaison CMP 2025: Cookiebot vs OneTrust vs Usercentrics | Revue Complète',
+        description: 'Comparaison détaillée des principales plateformes de gestion du consentement. Fonctionnalités, prix, implémentation et recommandations pour choisir la bonne CMP en 2025.',
+        keywords: ['comparaison CMP', 'Cookiebot', 'OneTrust', 'Usercentrics', 'plateforme gestion consentement']
+      },
+      es: {
+        title: 'Comparación CMP 2025: Cookiebot vs OneTrust vs Usercentrics | Revisión Completa',
+        description: 'Comparación detallada de las principales plataformas de gestión de consentimiento. Características, precios, implementación y recomendaciones para elegir la CMP correcta en 2025.',
+        keywords: ['comparación CMP', 'Cookiebot', 'OneTrust', 'Usercentrics', 'plataforma gestión consentimiento']
+      }
+    },
+    'gdpr-compliance-checklist-2025': {
+      en: {
+        title: 'GDPR Compliance Checklist 2025: Complete Guide & Requirements',
+        description: 'Essential GDPR compliance checklist for 2025. Ensure your website meets all requirements and avoid fines with our comprehensive guide.',
+        keywords: ['GDPR checklist', 'compliance requirements', 'data protection', 'privacy compliance', 'GDPR 2025']
+      },
+      de: {
+        title: 'DSGVO-Compliance-Checkliste 2025: Vollständiger Leitfaden & Anforderungen',
+        description: 'Essentielle DSGVO-Compliance-Checkliste für 2025. Stellen Sie sicher, dass Ihre Website alle Anforderungen erfüllt und vermeiden Sie Bußgelder mit unserem umfassenden Leitfaden.',
+        keywords: ['DSGVO-Checkliste', 'Compliance-Anforderungen', 'Datenschutz', 'Datenschutz-Compliance', 'DSGVO 2025']
+      },
+      fr: {
+        title: 'Liste de Contrôle Conformité RGPD 2025: Guide Complet & Exigences',
+        description: 'Liste de contrôle essentielle de conformité RGPD pour 2025. Assurez-vous que votre site web respecte toutes les exigences et évitez les amendes avec notre guide complet.',
+        keywords: ['liste contrôle RGPD', 'exigences conformité', 'protection données', 'conformité confidentialité', 'RGPD 2025']
+      },
+      es: {
+        title: 'Lista de Verificación Cumplimiento RGPD 2025: Guía Completa y Requisitos',
+        description: 'Lista de verificación esencial de cumplimiento RGPD para 2025. Asegúrese de que su sitio web cumpla todos los requisitos y evite multas con nuestra guía completa.',
+        keywords: ['lista verificación RGPD', 'requisitos cumplimiento', 'protección datos', 'cumplimiento privacidad', 'RGPD 2025']
+      }
+    }
+  }
+
+  const meta = blogMetadata[slug]?.[locale] || blogMetadata[slug]?.en || {
+    title: 'Blog Post | C&C CookieComply',
+    description: 'GDPR compliance insights and updates from C&C CookieComply experts.',
+    keywords: ['GDPR', 'compliance', 'privacy', 'cookies']
+  }
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    authors: [{ name: 'C&C CookieComply Team' }],
+    creator: 'C&C CookieComply',
+    publisher: 'C&C CookieComply',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `${GDPR_SUBDOMAIN}${locale === 'en' ? `/blog/${slug}` : `/${locale}/blog/${slug}`}`,
+      siteName: 'C&C CookieComply',
+      locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : locale === 'fr' ? 'fr_FR' : 'es_ES',
+      type: 'article',
+      publishedTime: '2025-01-01T00:00:00Z',
+      modifiedTime: '2025-01-01T00:00:00Z',
+      section: 'GDPR Compliance',
+      tags: meta.keywords,
+      images: [
+        {
+          url: `${GDPR_SUBDOMAIN}/images/blog/${slug.replace(/-/g, '-')}.webp`,
+          width: 1600,
+          height: 900,
+          alt: meta.title
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.description,
+      images: [`${GDPR_SUBDOMAIN}/images/blog/${slug.replace(/-/g, '-')}.webp`],
+      creator: '@cashandclash',
+      site: '@cashandclash'
+    },
+    alternates: {
+      canonical: `${GDPR_SUBDOMAIN}${locale === 'en' ? `/blog/${slug}` : `/${locale}/blog/${slug}`}`,
+      languages: {
+        'en': `${GDPR_SUBDOMAIN}/blog/${slug}`,
+        'de': `${GDPR_SUBDOMAIN}/de/blog/${slug}`,
+        'fr': `${GDPR_SUBDOMAIN}/fr/blog/${slug}`,
+        'es': `${GDPR_SUBDOMAIN}/es/blog/${slug}`,
+        'x-default': `${GDPR_SUBDOMAIN}/blog/${slug}`
+      },
+    }
+  }
 }
 
 // Временные данные для демонстрации
@@ -690,36 +853,7 @@ export async function generateStaticParams() {
   ])
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params
-  const post = blogPosts[slug]
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-      description: 'The requested blog post could not be found.'
-    }
-  }
 
-  return {
-    title: post.seoTitle || post.title,
-    description: post.seoDescription || post.excerpt,
-    keywords: post.tags.join(', '),
-    openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-      type: 'article',
-      publishedTime: post.publishedAt,
-      authors: [post.author.name],
-      tags: post.tags,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-    }
-  }
-}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params

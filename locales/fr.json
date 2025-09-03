@@ -155,9 +155,76 @@
   "testimonials": {
     "title": "Ce que disent nos clients",
     "subtitle": "Vrais résultats d'entreprises réelles",
+    "metrics": {
+      "title": "Résultats Prouvés",
+      "items": [
+        { "number": "500+", "label": "Clients Satisfaits", "description": "Les entreprises font confiance à notre expertise" },
+        { "number": "4.9/5", "label": "Note Moyenne", "description": "Satisfaction constamment élevée" },
+        { "number": "99%", "label": "Taux de Succès", "description": "Projets achevés avec succès" },
+        { "number": "24/7", "label": "Support", "description": "Toujours là quand vous avez besoin" }
+      ]
+    },
     "items": [
-      { "name": "Alex", "company": "EcomCo", "role": "CMO", "testimonial": "Déploiement CMP rapide et professionnel.", "rating": 5 },
-      { "name": "Marie", "company": "MediaGroup", "role": "Head of Product", "testimonial": "Implémentation propre et analytics restés intacts.", "rating": 5 }
+      { 
+        "name": "Alex Thompson", 
+        "company": "EcomCo", 
+        "role": "CMO", 
+        "testimonial": "C&C a transformé notre conformité cookies d'un cauchemar en un processus fluide et automatisé. Nos taux de conversion se sont même améliorés après l'implémentation !", 
+        "rating": 5,
+        "result": "25% d'augmentation des taux de consentement",
+        "avatar": "/images/testimonials/alex-thompson.webp",
+        "companyLogo": "/images/testimonials/logos/ecomco-logo.svg",
+        "metrics": {
+          "before": "45% taux de consentement",
+          "after": "70% taux de consentement",
+          "improvement": "+25% d'amélioration"
+        }
+      },
+      { 
+        "name": "Marie Dubois", 
+        "company": "MediaGroup", 
+        "role": "Head of Product", 
+        "testimonial": "Implémentation parfaite qui a maintenu l'intégrité de nos analytics tout en assurant une conformité RGPD complète. L'expertise de l'équipe nous a fait économiser des mois de développement.", 
+        "rating": 5,
+        "result": "Zéro violation de conformité",
+        "avatar": "/images/testimonials/marie-dubois.webp",
+        "companyLogo": "/images/testimonials/logos/mediagroup-logo.svg",
+        "metrics": {
+          "before": "12 problèmes de conformité",
+          "after": "0 violation",
+          "improvement": "100% conforme"
+        }
+      },
+      { 
+        "name": "David Müller", 
+        "company": "TechStartup", 
+        "role": "CTO", 
+        "testimonial": "Implémentation technique exceptionnelle sur notre configuration multi-domaines. Le système de gestion du consentement unifié fonctionne parfaitement sur toutes nos propriétés.", 
+        "rating": 5,
+        "result": "Consentement unifié sur 5 domaines",
+        "avatar": "/images/testimonials/david-mueller.webp",
+        "companyLogo": "/images/testimonials/logos/techstartup-logo.svg",
+        "metrics": {
+          "before": "Consentement incohérent",
+          "after": "Système unifié",
+          "improvement": "5 domaines synchronisés"
+        }
+      },
+      { 
+        "name": "Sarah Johnson", 
+        "company": "FinanceCorp", 
+        "role": "Legal Director", 
+        "testimonial": "L'implémentation la plus approfondie et légalement conforme que nous ayons vue. L'attention de C&C aux détails réglementaires nous a donné une confiance complète dans notre posture de conformité.", 
+        "rating": 5,
+        "result": "Audit réglementaire réussi",
+        "avatar": "/images/testimonials/sarah-johnson.webp",
+        "companyLogo": "/images/testimonials/logos/financecorp-logo.svg",
+        "metrics": {
+          "before": "Lacunes de conformité",
+          "after": "Prêt pour audit",
+          "improvement": "100% audit réussi"
+        }
+      }
     ]
   },
   "pricing": {

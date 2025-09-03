@@ -52,19 +52,19 @@ export default function ServiceCalculator({ content }: ServiceCalculatorProps) {
 
   const allServices: Service[] = [
     // Audit Services
-    { id: 'gdpr-audit', name: content.services.audit.items[0]?.name || 'GDPR/Cookie Site Audit', description: content.services.audit.items[0]?.description || 'Check cookie/tracker loading before consent, CMP presence, Cookie/Privacy Policy analysis, script scanning. Result — PDF report with violations.', price: 100, category: 'audit' },
-    { id: 'monthly-monitoring', name: content.services.ongoing.items[0]?.name || 'Monthly Monitoring', description: content.services.ongoing.items[0]?.description || 'Automatic site scan + report once a month. Subscription.', price: 50, category: 'ongoing' },
+    { id: 'gdpr-audit', name: 'GDPR/Cookie Site Audit', description: 'Check cookie/tracker loading before consent, CMP presence, Cookie/Privacy Policy analysis, script scanning. Result — PDF report with violations.', price: 100, category: 'audit' },
+    { id: 'monthly-monitoring', name: 'Monthly Monitoring', description: 'Automatic site scan + report once a month. Subscription.', price: 50, category: 'ongoing' },
     
     // Consulting Services  
-    { id: 'fix-recommendations', name: content.services.consulting.items[0]?.name || 'Fix Recommendations', description: content.services.consulting.items[0]?.description || 'Document with step list: what to change in policy, which CMPs are suitable, which scripts to block.', price: 100, category: 'consulting' },
-    { id: 'cmp-selection', name: content.services.consulting.items[1]?.name || 'CMP Selection for Client', description: content.services.consulting.items[1]?.description || 'Comparison of Cookiebot / Usercentrics / Iubenda / Termly, license cost calculation.', price: 50, category: 'consulting' },
-    { id: 'staff-training', name: content.services.consulting.items[2]?.name || 'Staff Training', description: content.services.consulting.items[2]?.description || 'Workshop 1-2 hours (Zoom): how to work with consent logs, CMP and GTM.', price: 200, category: 'consulting' },
-    { id: 'legal-consultation', name: content.services.consulting.items[3]?.name || 'Basic Legal Consultation', description: content.services.consulting.items[3]?.description || 'Analysis and translation of GDPR language to understandable, Cookie/Privacy Policy check, text recommendations.', price: 150, category: 'consulting' },
+    { id: 'fix-recommendations', name: 'Fix Recommendations', description: 'Document with step list: what to change in policy, which CMPs are suitable, which scripts to block.', price: 100, category: 'consulting' },
+    { id: 'cmp-selection', name: 'CMP Selection for Client', description: 'Comparison of Cookiebot / Usercentrics / Iubenda / Termly, license cost calculation.', price: 50, category: 'consulting' },
+    { id: 'staff-training', name: 'Staff Training', description: 'Workshop 1-2 hours (Zoom): how to work with consent logs, CMP and GTM.', price: 200, category: 'consulting' },
+    { id: 'legal-consultation', name: 'Basic Legal Consultation', description: 'Analysis and translation of GDPR language to understandable, Cookie/Privacy Policy check, text recommendations.', price: 150, category: 'consulting' },
     
     // Implementation Services
-    { id: 'cmp-installation', name: content.services.implementation.items[0]?.name || 'CMP Installation (via GTM)', description: content.services.implementation.items[0]?.description || 'Connect Cookiebot/Iubenda/Usercentrics, configure banner. Without website code intervention.', price: 200, category: 'implementation' },
-    { id: 'consent-mode', name: content.services.implementation.items[1]?.name || 'Consent Mode Setup (Google)', description: content.services.implementation.items[1]?.description || 'Configure Consent Mode via GTM, correct Google Analytics/Ads operation considering consents.', price: 200, category: 'implementation' },
-    { id: 'policy-creation', name: content.services.implementation.items[2]?.name || 'Cookie/Privacy Policy Creation', description: content.services.implementation.items[2]?.description || 'Text based on templates + adaptation to client business.', price: 100, category: 'implementation' }
+    { id: 'cmp-installation', name: 'CMP Installation (via GTM)', description: 'Connect Cookiebot/Iubenda/Usercentrics, configure banner. Without website code intervention.', price: 200, category: 'implementation' },
+    { id: 'consent-mode', name: 'Consent Mode Setup (Google)', description: 'Configure Consent Mode via GTM, correct Google Analytics/Ads operation considering consents.', price: 200, category: 'implementation' },
+    { id: 'policy-creation', name: 'Cookie/Privacy Policy Creation', description: 'Text based on templates + adaptation to client business.', price: 100, category: 'implementation' }
   ]
 
   const toggleService = (serviceId: string) => {

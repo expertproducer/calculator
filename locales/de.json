@@ -155,9 +155,76 @@
   "testimonials": {
     "title": "Was unsere Kunden sagen",
     "subtitle": "Echte Ergebnisse von echten Unternehmen",
+    "metrics": {
+      "title": "Bewiesene Ergebnisse",
+      "items": [
+        { "number": "500+", "label": "Zufriedene Kunden", "description": "Unternehmen vertrauen unserer Expertise" },
+        { "number": "4.9/5", "label": "Durchschnittsbewertung", "description": "Konstant hohe Zufriedenheit" },
+        { "number": "99%", "label": "Erfolgsrate", "description": "Projekte erfolgreich abgeschlossen" },
+        { "number": "24/7", "label": "Support", "description": "Immer da, wenn Sie uns brauchen" }
+      ]
+    },
     "items": [
-      { "name": "Alex", "company": "EcomCo", "role": "CMO", "testimonial": "Schnelle und professionelle CMP-Einführung.", "rating": 5 },
-      { "name": "Marie", "company": "MediaGroup", "role": "Head of Product", "testimonial": "Saubere Implementierung und Analytics blieben intakt.", "rating": 5 }
+      { 
+        "name": "Alex Thompson", 
+        "company": "EcomCo", 
+        "role": "CMO", 
+        "testimonial": "C&C hat unsere Cookie-Compliance von einem Albtraum in einen reibungslosen, automatisierten Prozess verwandelt. Unsere Conversion-Raten haben sich nach der Implementierung sogar verbessert!", 
+        "rating": 5,
+        "result": "25% Steigerung der Zustimmungsraten",
+        "avatar": "/images/testimonials/alex-thompson.webp",
+        "companyLogo": "/images/testimonials/logos/ecomco-logo.svg",
+        "metrics": {
+          "before": "45% Zustimmungsrate",
+          "after": "70% Zustimmungsrate",
+          "improvement": "+25% Verbesserung"
+        }
+      },
+      { 
+        "name": "Marie Dubois", 
+        "company": "MediaGroup", 
+        "role": "Head of Product", 
+        "testimonial": "Fehlerfreie Implementierung, die unsere Analytics-Integrität beibehielt und gleichzeitig vollständige DSGVO-Compliance sicherstellte. Das Fachwissen des Teams ersparte uns Monate Entwicklungszeit.", 
+        "rating": 5,
+        "result": "Null Compliance-Verstöße",
+        "avatar": "/images/testimonials/marie-dubois.webp",
+        "companyLogo": "/images/testimonials/logos/mediagroup-logo.svg",
+        "metrics": {
+          "before": "12 Compliance-Probleme",
+          "after": "0 Verstöße",
+          "improvement": "100% konform"
+        }
+      },
+      { 
+        "name": "David Müller", 
+        "company": "TechStartup", 
+        "role": "CTO", 
+        "testimonial": "Hervorragende technische Implementierung über unser Multi-Domain-Setup. Das einheitliche Consent-Management-System funktioniert perfekt über alle unsere Properties.", 
+        "rating": 5,
+        "result": "Einheitliche Zustimmung über 5 Domains",
+        "avatar": "/images/testimonials/david-mueller.webp",
+        "companyLogo": "/images/testimonials/logos/techstartup-logo.svg",
+        "metrics": {
+          "before": "Inkonsistente Zustimmung",
+          "after": "Einheitliches System",
+          "improvement": "5 Domains synchronisiert"
+        }
+      },
+      { 
+        "name": "Sarah Johnson", 
+        "company": "FinanceCorp", 
+        "role": "Legal Director", 
+        "testimonial": "Die gründlichste und rechtlich konforme Implementierung, die wir gesehen haben. C&Cs Aufmerksamkeit für regulatorische Details gab uns vollstes Vertrauen in unsere Compliance-Haltung.", 
+        "rating": 5,
+        "result": "Regulatorische Prüfung bestanden",
+        "avatar": "/images/testimonials/sarah-johnson.webp",
+        "companyLogo": "/images/testimonials/logos/financecorp-logo.svg",
+        "metrics": {
+          "before": "Compliance-Lücken",
+          "after": "Prüfungsbereit",
+          "improvement": "100% Prüfung bestanden"
+        }
+      }
     ]
   },
   "pricing": {
@@ -251,41 +318,34 @@
     "allRightsReserved": "Alle Rechte vorbehalten"
   },
   "calculator": {
-    "title": "DSGVO-Bußgeld Rechner",
-    "subtitle": "Berechnen Sie Ihr potenzielles DSGVO-Bußgeld und Compliance-Risiko",
-    "revenue": {
-      "label": "Jahresumsatz (€)",
-      "placeholder": "1000000"
-    },
-    "visitors": {
-      "label": "Monatliche Website-Besucher",
-      "placeholder": "50000"
-    },
-    "compliance": {
-      "label": "Aktueller Compliance-Status",
-      "options": {
-        "none": "Keine DSGVO-Compliance",
-        "basic": "Einfacher Cookie-Banner",
-        "full": "Vollständige DSGVO-Compliance"
+    "title": "Service-Kostenrechner",
+    "subtitle": "Wählen Sie die benötigten Services und erhalten Sie sofort eine Preisschätzung",
+    "services": {
+      "audit": {
+        "title": "Audit-Services",
+        "items": []
+      },
+      "consulting": {
+        "title": "Beratungs-Services", 
+        "items": []
+      },
+      "implementation": {
+        "title": "Implementierungs-Services",
+        "items": []
+      },
+      "ongoing": {
+        "title": "Laufende Services",
+        "items": []
       }
     },
     "results": {
-      "title": "Risikobewertung Ergebnisse",
-      "maxFine": "Maximal mögliches Bußgeld",
-      "riskLevel": "Risikostufe",
+      "title": "Ihre Kostenschätzung",
+      "total": "Gesamtkosten",
+      "selected": "Ausgewählte Services",
       "recommendation": "Unsere Empfehlung",
-      "levels": {
-        "low": "Geringes Risiko",
-        "medium": "Mittleres Risiko",
-        "high": "Hohes Risiko"
-      },
-      "recommendations": {
-        "implement": "Sofortige Umsetzung vollständiger DSGVO-Compliance zur Vermeidung von Bußgeldern",
-        "upgrade": "Upgrade Ihrer aktuellen Compliance-Maßnahmen zur Risikominimierung",
-        "audit": "Regelmäßige Compliance-Audits empfohlen zur Aufrechterhaltung der Standards"
-      }
+      "contact": "Angebot erhalten & Kontakt"
     },
-    "calculate": "Risiko & Bußgeld berechnen"
+    "calculate": "Gesamtsumme berechnen"
   },
   "checklist": {
     "title": "DSGVO-Compliance Checkliste",

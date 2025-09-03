@@ -142,9 +142,76 @@
   "testimonials": {
     "title": "What Our Clients Say",
     "subtitle": "Real results from real businesses",
+    "metrics": {
+      "title": "Proven Results",
+      "items": [
+        { "number": "500+", "label": "Happy Clients", "description": "Businesses trust our expertise" },
+        { "number": "4.9/5", "label": "Average Rating", "description": "Consistently high satisfaction" },
+        { "number": "99%", "label": "Success Rate", "description": "Projects completed successfully" },
+        { "number": "24/7", "label": "Support", "description": "Always here when you need us" }
+      ]
+    },
     "items": [
-      { "name": "Alex", "company": "EcomCo", "role": "CMO", "testimonial": "Quick and professional CMP rollout.", "rating": 5 },
-      { "name": "Marie", "company": "MediaGroup", "role": "Head of Product", "testimonial": "Clean implementation and analytics stayed intact.", "rating": 5 }
+      { 
+        "name": "Alex Thompson", 
+        "company": "EcomCo", 
+        "role": "CMO", 
+        "testimonial": "C&C transformed our cookie compliance from a nightmare into a smooth, automated process. Our conversion rates actually improved after implementation!", 
+        "rating": 5,
+        "result": "25% increase in consent rates",
+        "avatar": "/images/testimonials/alex-thompson.webp",
+        "companyLogo": "/images/testimonials/logos/ecomco-logo.svg",
+        "metrics": {
+          "before": "45% consent rate",
+          "after": "70% consent rate",
+          "improvement": "+25% improvement"
+        }
+      },
+      { 
+        "name": "Marie Dubois", 
+        "company": "MediaGroup", 
+        "role": "Head of Product", 
+        "testimonial": "Flawless implementation that maintained our analytics integrity while ensuring full GDPR compliance. The team's expertise saved us months of development time.", 
+        "rating": 5,
+        "result": "Zero compliance violations",
+        "avatar": "/images/testimonials/marie-dubois.webp",
+        "companyLogo": "/images/testimonials/logos/mediagroup-logo.svg",
+        "metrics": {
+          "before": "12 compliance issues",
+          "after": "0 violations",
+          "improvement": "100% compliant"
+        }
+      },
+      { 
+        "name": "David Müller", 
+        "company": "TechStartup", 
+        "role": "CTO", 
+        "testimonial": "Outstanding technical implementation across our multi-domain setup. The unified consent management system works perfectly across all our properties.", 
+        "rating": 5,
+        "result": "Unified consent across 5 domains",
+        "avatar": "/images/testimonials/david-mueller.webp",
+        "companyLogo": "/images/testimonials/logos/techstartup-logo.svg",
+        "metrics": {
+          "before": "Inconsistent consent",
+          "after": "Unified system",
+          "improvement": "5 domains synchronized"
+        }
+      },
+      { 
+        "name": "Sarah Johnson", 
+        "company": "FinanceCorp", 
+        "role": "Legal Director", 
+        "testimonial": "The most thorough and legally compliant implementation we've seen. C&C's attention to regulatory details gave us complete confidence in our compliance posture.", 
+        "rating": 5,
+        "result": "Passed regulatory audit",
+        "avatar": "/images/testimonials/sarah-johnson.webp",
+        "companyLogo": "/images/testimonials/logos/financecorp-logo.svg",
+        "metrics": {
+          "before": "Compliance gaps",
+          "after": "Audit ready",
+          "improvement": "100% audit pass"
+        }
+      }
     ]
   },
   "pricing": {
@@ -238,41 +305,34 @@
     "allRightsReserved": "All rights reserved"
   },
   "calculator": {
-    "title": "GDPR Fine Calculator",
-    "subtitle": "Calculate your potential GDPR fine and compliance risk level",
-    "revenue": {
-      "label": "Annual Revenue (€)",
-      "placeholder": "1000000"
-    },
-    "visitors": {
-      "label": "Monthly Website Visitors",
-      "placeholder": "50000"
-    },
-    "compliance": {
-      "label": "Current Compliance Level",
-      "options": {
-        "none": "No GDPR compliance",
-        "basic": "Basic cookie banner",
-        "full": "Full GDPR compliance"
+    "title": "Service Cost Calculator",
+    "subtitle": "Select the services you need and get an instant price estimate",
+    "services": {
+      "audit": {
+        "title": "Audit Services",
+        "items": []
+      },
+      "consulting": {
+        "title": "Consulting Services", 
+        "items": []
+      },
+      "implementation": {
+        "title": "Implementation Services",
+        "items": []
+      },
+      "ongoing": {
+        "title": "Ongoing Services",
+        "items": []
       }
     },
     "results": {
-      "title": "Risk Assessment Results",
-      "maxFine": "Maximum Possible Fine",
-      "riskLevel": "Risk Level",
+      "title": "Your Estimate",
+      "total": "Total Cost",
+      "selected": "Selected services",
       "recommendation": "Our Recommendation",
-      "levels": {
-        "low": "Low Risk",
-        "medium": "Medium Risk", 
-        "high": "High Risk"
-      },
-      "recommendations": {
-        "implement": "Implement full GDPR compliance immediately to avoid potential fines",
-        "upgrade": "Upgrade your current compliance setup to reduce risks",
-        "audit": "Regular compliance audits recommended to maintain standards"
-      }
+      "contact": "Get Quote & Contact Us"
     },
-    "calculate": "Calculate Risk & Fine"
+    "calculate": "Calculate Total"
   },
   "checklist": {
     "title": "GDPR Compliance Checklist",

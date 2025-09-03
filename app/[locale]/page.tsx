@@ -5,14 +5,14 @@ import {
   Benefits, 
   Platforms, 
   CaseStudies, 
-  Testimonials,
+  EnhancedTestimonials,
   UrgencyBanner,
   Contact, 
   FinalCTA, 
   Footer, 
   Navbar,
-  GDPRCalculator,
-  GDPRChecklist
+  CompactServiceCalculator,
+  CompactGDPRChecklist
 } from '@/components/AllComponents'
 import StructuredData from '@/components/StructuredData'
 import CookieConsent from '@/components/CookieConsent'
@@ -59,22 +59,33 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <CaseStudies content={content.cases} locale={locale} />
         </section>
         
-        {/* Interactive Calculator */}
-        <section id="calculator" className="py-16 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <GDPRCalculator content={content.calculator} />
+        {/* Interactive Tools - Side by Side */}
+        <section id="interactive-tools" className="py-16 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Interactive Tools</h2>
+              <p className="text-xl text-gray-600">Calculate costs and check your compliance status</p>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-8">
+              <CompactServiceCalculator content={{
+                title: content.calculator?.title || 'Service Calculator',
+                subtitle: content.calculator?.subtitle || 'Select services and get instant pricing',
+                total: content.calculator?.results?.total || 'Total Cost',
+                contact: content.calculator?.results?.contact || 'Get Quote'
+              }} />
+              <CompactGDPRChecklist content={{
+                title: content.checklist?.title || 'GDPR Checklist',
+                subtitle: content.checklist?.subtitle || 'Check your compliance status',
+                progress: content.checklist?.progress || 'Progress',
+                completed: content.checklist?.completed || 'Completed',
+                getHelp: content.checklist?.cta?.button || 'Get Help'
+              }} locale={locale} />
+            </div>
           </div>
         </section>
         
-        {/* Interactive Checklist */}
-        <section id="checklist">
-          <GDPRChecklist content={content.checklist} locale={locale} />
-        </section>
-        
-        {/* Testimonials - New */}
-        <section id="testimonials">
-          <Testimonials content={content.testimonials} />
-        </section>
+        {/* Enhanced Testimonials with Photos & Metrics */}
+        <EnhancedTestimonials content={content.testimonials} />
         
         <section id="contact">
           <Contact content={content.contact} />

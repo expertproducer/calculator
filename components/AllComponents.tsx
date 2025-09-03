@@ -8,11 +8,14 @@ export { default as Platforms } from './Platforms'
 
 // New selling components
 export { default as Testimonials } from './Testimonials'
+export { default as EnhancedTestimonials } from './EnhancedTestimonials'
 export { default as UrgencyBanner } from './UrgencyBanner'
 
 // Interactive components
-export { default as GDPRCalculator } from './GDPRCalculator'
+export { default as ServiceCalculator } from './GDPRCalculator'
 export { default as GDPRChecklist } from './GDPRChecklist'
+export { default as CompactServiceCalculator } from './CompactServiceCalculator'
+export { default as CompactGDPRChecklist } from './CompactGDPRChecklist'
 
 // Pricing Component - Re-export from the main Pricing component
 export { default as Pricing } from './Pricing'

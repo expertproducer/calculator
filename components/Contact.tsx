@@ -70,11 +70,11 @@ export default function Contact({ content }: ContactProps) {
         
         {/* Header - Process Page style */}
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title}
           </h1>
           
-          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed mb-12 font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+          <p className="text-xl text-gray-600 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
@@ -84,10 +84,10 @@ export default function Contact({ content }: ContactProps) {
           {/* Contact Form - Process Page style */}
           <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                 {content.formTitle || 'Tell Us About Your Project'}
               </h2>
-              <p className="text-lg font-medium text-gray-600 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 {content.formDescription || 'Fill out the form below and we\'ll get back to you within 24 hours'}
               </p>
             </div>
@@ -96,7 +96,7 @@ export default function Contact({ content }: ContactProps) {
               {/* Basic Information */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+                  <label className="block text-lg font-bold text-gray-900 mb-3">
                     {content.fields.name} *
                   </label>
                   <input
@@ -111,7 +111,7 @@ export default function Contact({ content }: ContactProps) {
                 </div>
                 
                 <div>
-                  <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+                  <label className="block text-lg font-bold text-gray-900 mb-3">
                     {content.fields.email} *
                   </label>
                   <input
@@ -128,9 +128,9 @@ export default function Contact({ content }: ContactProps) {
 
               {/* Website URL */}
               <div>
-                <label className="block text-lg font-bold text-gray-900 mb-3 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-                  {content.fields.url} *
-                </label>
+                                  <label className="block text-lg font-bold text-gray-900 mb-3">
+                    {content.fields.url} *
+                  </label>
                 <input
                   type="url"
                   name="url"
@@ -297,11 +297,11 @@ export default function Contact({ content }: ContactProps) {
                 <Rocket className="text-white w-8 h-8 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
               </div>
               
-              <h3 className="text-3xl font-bold text-green-900 mb-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+              <h3 className="text-2xl md:text-3xl font-bold text-green-900 mb-4 leading-tight">
                 {content.contactInfo.responseTime}
               </h3>
               
-              <p className="text-green-800 leading-relaxed text-lg font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
+              <p className="text-green-800 leading-relaxed text-lg font-medium">
                 {content.contactInfo.responseDescription}
               </p>
             </div>

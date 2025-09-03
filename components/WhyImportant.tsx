@@ -21,11 +21,11 @@ export default function WhyImportant({ content }: WhyImportantProps) {
         
         {/* Header - Process Page style */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
             {content.title}
           </h2>
           
-          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+          <p className="text-lg text-gray-600 max-w-5xl mx-auto leading-relaxed">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>

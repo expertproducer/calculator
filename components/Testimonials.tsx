@@ -27,12 +27,8 @@ export default function Testimonials({ content }: TestimonialsProps) {
     <section id="testimonials" className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
-            {content.title || 'What Our Clients Say'}
-          </h2>
-          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle || 'Real results from real businesses') }} />
-          </p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+          <p className="text-xl text-gray-600">Real results from real businesses</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -89,28 +85,6 @@ export default function Testimonials({ content }: TestimonialsProps) {
               </div>
             </div>
           ))}
-        </div>
-        
-        {/* Trust Indicators */}
-        <div className="mt-20 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
-              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">500+</div>
-              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Happy Clients</div>
-            </div>
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
-              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">4.9/5</div>
-              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Average Rating</div>
-            </div>
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
-              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">99%</div>
-              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Success Rate</div>
-            </div>
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 transform hover:scale-105">
-              <div className="text-4xl font-bold text-gray-900 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">24/7</div>
-              <div className="text-lg text-gray-600 font-medium drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Support</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

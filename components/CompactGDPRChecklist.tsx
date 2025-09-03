@@ -84,8 +84,8 @@ export default function CompactGDPRChecklist({ content, locale }: CompactGDPRChe
         <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-3">
           <Target className="w-6 h-6 text-blue-600" />
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{content.title}</h3>
-        <p className="text-sm text-gray-600">{content.subtitle}</p>
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{content.title}</h3>
+        <p className="text-lg text-gray-600 leading-relaxed">{content.subtitle}</p>
       </div>
 
       {/* Progress Summary */}

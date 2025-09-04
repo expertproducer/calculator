@@ -1,0 +1,450 @@
+[
+  {
+    "code": "AT",
+    "sitesCount": 1500347,
+    "consentRate": 66.0,
+    "regulator": "DSB",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 166.7,
+    "cmpGap": 34.0,
+    "deltaVsEU": 13.3,
+    "priorityScore": 38.2,
+    "populationM": 9.0
+  },
+  {
+    "code": "BE",
+    "sitesCount": 1718116,
+    "consentRate": 62.0,
+    "regulator": "GBA/APD",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 146.8,
+    "cmpGap": 38.0,
+    "deltaVsEU": 9.3,
+    "priorityScore": 46.1,
+    "populationM": 11.7
+  },
+  {
+    "code": "BG",
+    "sitesCount": 61234,
+    "consentRate": 36.0,
+    "regulator": "CPDP Bulgaria",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 9.0,
+    "cmpGap": 64.0,
+    "deltaVsEU": -16.7,
+    "priorityScore": 41.0,
+    "populationM": 6.8
+  },
+  {
+    "code": "HR",
+    "sitesCount": 138031,
+    "consentRate": 38.0,
+    "regulator": "AZOP",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 35.4,
+    "cmpGap": 62.0,
+    "deltaVsEU": -14.7,
+    "priorityScore": 40.9,
+    "populationM": 3.9
+  },
+  {
+    "code": "CY",
+    "sitesCount": 30211,
+    "consentRate": 49.0,
+    "regulator": "Commissioner for Personal Data Protection Cyprus",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 32.8,
+    "cmpGap": 51.0,
+    "deltaVsEU": -3.7,
+    "priorityScore": 33.1,
+    "populationM": 0.92
+  },
+  {
+    "code": "CZ",
+    "sitesCount": 1502253,
+    "consentRate": 47.0,
+    "regulator": "UOOU",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 137.8,
+    "cmpGap": 53.0,
+    "deltaVsEU": -5.7,
+    "priorityScore": 50.2,
+    "populationM": 10.9
+  },
+  {
+    "code": "DK",
+    "sitesCount": 1460530,
+    "consentRate": 66.0,
+    "regulator": "Datatilsynet",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 245.5,
+    "cmpGap": 34.0,
+    "deltaVsEU": 13.3,
+    "priorityScore": 39.9,
+    "populationM": 5.95
+  },
+  {
+    "code": "EE",
+    "sitesCount": 177398,
+    "consentRate": 46.0,
+    "regulator": "Andmekaitse Inspektsioon",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 133.4,
+    "cmpGap": 54.0,
+    "deltaVsEU": -6.7,
+    "priorityScore": 40.2,
+    "populationM": 1.33
+  },
+  {
+    "code": "FI",
+    "sitesCount": 561519,
+    "consentRate": 61.0,
+    "regulator": "Tietosuojavaltuutetun toimisto",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 100.3,
+    "cmpGap": 39.0,
+    "deltaVsEU": 8.3,
+    "priorityScore": 38.5,
+    "populationM": 5.6
+  },
+  {
+    "code": "FR",
+    "sitesCount": 4216786,
+    "consentRate": 54.0,
+    "regulator": "CNIL",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 62.5,
+    "cmpGap": 46.0,
+    "deltaVsEU": 1.3,
+    "priorityScore": 55.0,
+    "populationM": 67.5
+  },
+  {
+    "code": "DE",
+    "sitesCount": 17620428,
+    "consentRate": 74.0,
+    "regulator": "BfDI + Länder DPAs",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 209.8,
+    "cmpGap": 26.0,
+    "deltaVsEU": 21.3,
+    "priorityScore": 47.8,
+    "populationM": 84.0
+  },
+  {
+    "code": "GR",
+    "sitesCount": 497812,
+    "consentRate": 51.0,
+    "regulator": "HDPA Greece",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 47.9,
+    "cmpGap": 49.0,
+    "deltaVsEU": -1.7,
+    "priorityScore": 42.9,
+    "populationM": 10.4
+  },
+  {
+    "code": "HU",
+    "sitesCount": 875609,
+    "consentRate": 47.0,
+    "regulator": "NAIH",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 91.2,
+    "cmpGap": 53.0,
+    "deltaVsEU": -5.7,
+    "priorityScore": 47.9,
+    "populationM": 9.6
+  },
+  {
+    "code": "IE",
+    "sitesCount": 326562,
+    "consentRate": 58.0,
+    "regulator": "DPC Ireland",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 62.8,
+    "cmpGap": 42.0,
+    "deltaVsEU": 5.3,
+    "priorityScore": 52.2,
+    "populationM": 5.2
+  },
+  {
+    "code": "IT",
+    "sitesCount": 3505656,
+    "consentRate": 48.0,
+    "regulator": "Garante Privacy",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 59.5,
+    "cmpGap": 52.0,
+    "deltaVsEU": -4.7,
+    "priorityScore": 59.1,
+    "populationM": 58.9
+  },
+  {
+    "code": "LV",
+    "sitesCount": 147382,
+    "consentRate": 45.0,
+    "regulator": "Datu valsts inspekcija",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 78.4,
+    "cmpGap": 55.0,
+    "deltaVsEU": -7.7,
+    "priorityScore": 38.2,
+    "populationM": 1.88
+  },
+  {
+    "code": "LT",
+    "sitesCount": 242315,
+    "consentRate": 45.0,
+    "regulator": "VDAI",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 86.5,
+    "cmpGap": 55.0,
+    "deltaVsEU": -7.7,
+    "priorityScore": 38.6,
+    "populationM": 2.8
+  },
+  {
+    "code": "LU",
+    "sitesCount": 117794,
+    "consentRate": 61.0,
+    "regulator": "CNPD Luxembourg",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 175.8,
+    "cmpGap": 39.0,
+    "deltaVsEU": 8.3,
+    "priorityScore": 55.7,
+    "populationM": 0.67
+  },
+  {
+    "code": "MT",
+    "sitesCount": 20157,
+    "consentRate": 55.0,
+    "regulator": "IDPC Malta",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 37.3,
+    "cmpGap": 45.0,
+    "deltaVsEU": 2.3,
+    "priorityScore": 29.0,
+    "populationM": 0.54
+  },
+  {
+    "code": "NL",
+    "sitesCount": 6143000,
+    "consentRate": 63.0,
+    "regulator": "Autoriteit Persoonsgegevens",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 343.2,
+    "cmpGap": 37.0,
+    "deltaVsEU": 10.3,
+    "priorityScore": 48.0,
+    "populationM": 17.9
+  },
+  {
+    "code": "PL",
+    "sitesCount": 2579014,
+    "consentRate": 46.0,
+    "regulator": "UODO",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 68.4,
+    "cmpGap": 54.0,
+    "deltaVsEU": -6.7,
+    "priorityScore": 47.4,
+    "populationM": 37.7
+  },
+  {
+    "code": "PT",
+    "sitesCount": 2001432,
+    "consentRate": 50.0,
+    "regulator": "CNPD Portugal",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 192.4,
+    "cmpGap": 50.0,
+    "deltaVsEU": -2.7,
+    "priorityScore": 56.8,
+    "populationM": 10.4
+  },
+  {
+    "code": "RO",
+    "sitesCount": 598068,
+    "consentRate": 47.0,
+    "regulator": "ANSPDCP",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 31.5,
+    "cmpGap": 53.0,
+    "deltaVsEU": -5.7,
+    "priorityScore": 44.9,
+    "populationM": 19.0
+  },
+  {
+    "code": "SK",
+    "sitesCount": 473278,
+    "consentRate": 46.0,
+    "regulator": "ÚOOÚ SR",
+    "fineRisk": "low_medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 87.6,
+    "cmpGap": 54.0,
+    "deltaVsEU": -6.7,
+    "priorityScore": 42.4,
+    "populationM": 5.4
+  },
+  {
+    "code": "SI",
+    "sitesCount": 167471,
+    "consentRate": 49.0,
+    "regulator": "Informacijski pooblaščenec",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 79.4,
+    "cmpGap": 51.0,
+    "deltaVsEU": -3.7,
+    "priorityScore": 35.4,
+    "populationM": 2.11
+  },
+  {
+    "code": "ES",
+    "sitesCount": 2133880,
+    "consentRate": 49.0,
+    "regulator": "AEPD",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 43.7,
+    "cmpGap": 51.0,
+    "deltaVsEU": -3.7,
+    "priorityScore": 57.6,
+    "populationM": 48.8
+  },
+  {
+    "code": "SE",
+    "sitesCount": 1450320,
+    "consentRate": 63.0,
+    "regulator": "IMY",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 136.8,
+    "cmpGap": 37.0,
+    "deltaVsEU": 10.3,
+    "priorityScore": 38.9,
+    "populationM": 10.6
+  },
+  {
+    "code": "CH",
+    "sitesCount": 2562914,
+    "consentRate": 63.0,
+    "regulator": "FDPIC",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 288.0,
+    "cmpGap": 37.0,
+    "deltaVsEU": 10.3,
+    "priorityScore": 48.0,
+    "populationM": 8.9
+  }
+]

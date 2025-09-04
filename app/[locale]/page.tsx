@@ -6,6 +6,7 @@ import {
   Footer, 
   Navbar,
   EuComplianceMap,
+  EuGdprCharts,
   CompactServiceCalculator,
   CompactGDPRChecklist,
   UnifiedHeroSection
@@ -84,6 +85,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         
         {/* EU Compliance Map */}
         <EuComplianceMap title="Hover a country" subtitle="to see info" countries={countriesFromJson as any} />
+
+        {/* GDPR Charts */}
+        <EuGdprCharts />
 
         <section id="contact">
           <Contact content={content.contact} />

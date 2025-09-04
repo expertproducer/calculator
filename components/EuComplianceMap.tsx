@@ -139,6 +139,27 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     return map
   }, [countries])
 
+  // Quantiles for sitesCount to color countries by volume (green → yellow → pink)
+  const sitesQuantiles = useMemo(() => {
+    const values = countries
+      .map(c => (typeof c.sitesCount === 'number' && isFinite(c.sitesCount) ? c.sitesCount : null))
+      .filter((v): v is number => v !== null)
+      .sort((a, b) => a - b)
+    if (values.length === 0) return { q1: 0, q2: 0 }
+    const pick = (p: number) => values[Math.floor((values.length - 1) * p)]
+    return { q1: pick(0.33), q2: pick(0.66) }
+  }, [countries])
+
+  const getSitesFill = (sites?: number, isSpecial?: boolean): string => {
+    if (isSpecial) return "#EF4444" // Switzerland special red
+    if (sites === undefined || sites === null || !isFinite(sites)) return "#E5E7EB"
+    const { q1, q2 } = sitesQuantiles
+    if (q1 === 0 && q2 === 0) return "rgba(134,239,172,0.7)" // default light green
+    if (sites <= q1) return "rgba(134,239,172,0.7)" // light green
+    if (sites <= q2) return "rgba(253,224,71,0.7)" // light yellow
+    return "rgba(251,207,232,0.7)" // light pink
+  }
+
   // Focused mercator projection centered on Europe; slight tilt via scale/translate to get a pseudo-3D feel with CSS.
   // Keep mercator object if needed later, but ComposableMap will use projection by name for compatibility
   useMemo(() => geoMercator().center([15, 55]).scale(650), [])
@@ -183,7 +204,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                             const isSpecial = code ? SPECIAL_INCLUDE.has(code) : false
                             if (!isEu && !isSpecial) return null
                             const data = code ? countryByCode.get(code) : undefined
-                            const fill = isSpecial ? "#EF4444" : getCountryColor(data?.consentRate)
+                            const fill = getSitesFill(data?.sitesCount, isSpecial)
                             const centroid = geoCentroid(geo as any) as [number, number]
                             return (
                               <>
@@ -230,9 +251,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                               />
                               {isSpecial && code === 'CHE' && (
                                 <Marker key={`${geo.rsmKey}-swiss`} coordinates={centroid}>
-                                  <g pointerEvents="none">
-                                    <rect x={-3} y={-9} width={6} height={18} fill="#FFFFFF" />
-                                    <rect x={-9} y={-3} width={18} height={6} fill="#FFFFFF" />
+                                  <g pointerEvents="none" transform="translate(0,-2)">
+                                    <rect x={-2} y={-6} width={4} height={12} fill="#FFFFFF" />
+                                    <rect x={-6} y={-2} width={12} height={4} fill="#FFFFFF" />
                                   </g>
                                 </Marker>
                               )}
@@ -276,9 +297,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
         {tooltip && <Tooltip key={tooltip.countryCode} x={tooltip.x} y={tooltip.y} content={tooltip.content} />}
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
-          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "#60A5FA" }} /> High consent (≥70%)</span>
-          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "#93C5FD" }} /> Medium (50–69%)</span>
-          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "#BFDBFE" }} /> Low (&lt;50%)</span>
+          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(134,239,172,0.7)" }} /> Low sites (≤ Q33)</span>
+          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(253,224,71,0.7)" }} /> Medium (Q33–Q66)</span>
+          <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(251,207,232,0.7)" }} /> High (&gt; Q66)</span>
           <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "#E5E7EB" }} /> No data</span>
         </div>
       </div>

@@ -1,6 +1,8 @@
 "use client"
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import ReactCountryFlag from 'react-country-flag'
 import rawChartsData from '../eu_gdpr_charts_v3.json'
 
 type ChartsItem = {
@@ -29,10 +31,103 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value))
 }
 
+function Gauge({ title, value, max }: { title: string; value: number; max: number }) {
+  const pct = clamp(value / max, 0, 1)
+  const angle = -180 + 180 * pct
+  
+  // Цвет шкалы в зависимости от значения
+  const getGaugeColor = () => {
+    if (title.includes('CMP')) {
+      // Для CMP adoption: зеленый при высоких значениях
+      return pct > 0.7 ? '#10B981' : pct > 0.5 ? '#22D3EE' : pct > 0.3 ? '#F59E0B' : '#EF4444'
+    } else {
+      // Для Urgency: красный при высоких значениях
+      return pct > 0.7 ? '#EF4444' : pct > 0.5 ? '#F59E0B' : pct > 0.3 ? '#22D3EE' : '#10B981'
+    }
+  }
+  
+  const gaugeColor = getGaugeColor()
+  
+  return (
+    <div className="p-5 border border-gray-100 rounded-2xl bg-white shadow-sm">
+      <div className="text-gray-700 font-medium mb-3">{title}</div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <svg viewBox="0 0 200 120" className="w-full h-auto">
+          {/* Фоновая шкала */}
+          <path 
+            d="M10,110 A90,90 0 0 1 190,110" 
+            fill="none" 
+            stroke="#E5E7EB" 
+            strokeWidth="16" 
+          />
+          
+          {/* Заполненная шкала с анимацией */}
+          <motion.path 
+            d="M10,110 A90,90 0 0 1 190,110" 
+            fill="none" 
+            stroke={gaugeColor} 
+            strokeWidth="16" 
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: pct }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            strokeLinecap="round" 
+          />
+          
+          {/* Стрелка */}
+          <motion.g 
+            initial={{ rotate: -180 }}
+            animate={{ rotate: angle }}
+            transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.5 }}
+            style={{ originX: 100, originY: 110 }}
+          >
+            <rect x={-2} y={-80} width={4} height={80} fill="#0F172A" rx={2} />
+            <circle cx={0} cy={-80} r={6} fill={gaugeColor} stroke="#ffffff" strokeWidth={2} />
+          </motion.g>
+          
+          {/* Значение */}
+          <motion.text 
+            x={100} 
+            y={105} 
+            textAnchor="middle" 
+            fontSize={24} 
+            fill="#111827" 
+            fontWeight={700}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            {Math.round(value)}
+          </motion.text>
+          
+          {/* Шкала значений */}
+          <g className="text-xs fill-gray-400">
+            <text x={10} y={130} textAnchor="middle" fontSize={10}>0</text>
+            <text x={100} y={130} textAnchor="middle" fontSize={10}>{Math.round(max/2)}</text>
+            <text x={190} y={130} textAnchor="middle" fontSize={10}>{max}</text>
+          </g>
+        </svg>
+      </motion.div>
+    </div>
+  )
+}
+
 export default function EuGdprCharts() {
   const [leaderboardMode, setLeaderboardMode] = useState<'absolute' | 'perCapita' | 'log'>('absolute')
   const [activeTab, setActiveTab] = useState<'market' | 'adoption' | 'scatter' | 'risks' | 'violations' | 'gauges'>('market')
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
+  const [isChartVisible, setIsChartVisible] = useState(false)
+  
+  useEffect(() => {
+    // Добавляем небольшую задержку для анимации появления графиков
+    const timer = setTimeout(() => {
+      setIsChartVisible(true)
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [])
 
   const data = useMemo(() => {
     const items = (rawChartsData as unknown as ChartsItem[]).map(d => ({
@@ -99,188 +194,827 @@ export default function EuGdprCharts() {
 
   return (
     <section className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto px-6"
+      >
         <div className="mb-6">
-          <h2 className="text-3xl font-extrabold text-gray-900">GDPR Маркет аналитика</h2>
-          <p className="text-gray-600">Лидерборды, внедрение CMP, риски и нарушения</p>
+          <motion.h2 
+            initial={{ y: -20, opacity: 0 }} 
+            animate={{ y: 0, opacity: 1 }} 
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl font-display font-bold text-gray-900 mb-2"
+          >
+            GDPR Маркет аналитика
+          </motion.h2>
+          <motion.p 
+            initial={{ y: -10, opacity: 0 }} 
+            animate={{ y: 0, opacity: 1 }} 
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg text-gray-600 font-light"
+          >
+            Лидерборды, внедрение CMP, риски и нарушения
+          </motion.p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='market'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('market')}>Рынок</button>
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='adoption'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('adoption')}>Внедрение</button>
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='scatter'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('scatter')}>Плотность vs Внедрение</button>
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='gauges'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('gauges')}>Приоритет</button>
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='risks'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('risks')}>Риски</button>
-          <button className={`px-3 py-1.5 rounded-full border ${activeTab==='violations'?'bg-gray-900 text-white border-gray-900':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setActiveTab('violations')}>Нарушения</button>
-        </div>
+        <motion.div 
+          initial={{ y: 10, opacity: 0 }} 
+          animate={{ y: 0, opacity: 1 }} 
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-wrap gap-3 mb-8"
+        >
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='market'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('market')}
+          >
+            Рынок
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='adoption'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('adoption')}
+          >
+            Внедрение
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='scatter'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('scatter')}
+          >
+            Плотность vs Внедрение
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='gauges'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('gauges')}
+          >
+            Приоритет
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='risks'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('risks')}
+          >
+            Риски
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='violations'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+            onClick={() => setActiveTab('violations')}
+          >
+            Нарушения
+          </motion.button>
+        </motion.div>
 
-        {activeTab === 'market' && (
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-gray-600">Показать:</span>
-              <button className={`px-2 py-1 rounded border ${leaderboardMode==='absolute'?'bg-blue-600 text-white border-blue-600':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setLeaderboardMode('absolute')}>Абсолют</button>
-              <button className={`px-2 py-1 rounded border ${leaderboardMode==='perCapita'?'bg-blue-600 text-white border-blue-600':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setLeaderboardMode('perCapita')}>На 1000 жителей</button>
-              <button className={`px-2 py-1 rounded border ${leaderboardMode==='log'?'bg-blue-600 text-white border-blue-600':'bg-white text-gray-800 border-gray-300'}`} onClick={() => setLeaderboardMode('log')}>Log-scale</button>
-            </div>
-            <div className="grid grid-cols-1 gap-2">
-              {marketLeaderboard.list.slice(0, 20).map(row => (
-                <div key={row.code} className="flex items-center gap-3" onClick={() => setSelectedCode(row.code)}>
-                  <div className="w-12 text-xs text-gray-600">{row.code}</div>
-                  <div className="flex-1 bg-gray-100 rounded">
-                    <div className="h-3 rounded bg-blue-500" style={{ width: `${(row.value / marketLeaderboard.max) * 100}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'adoption' && (
-          <div className="space-y-4">
-            <div className="relative">
-              <div className="absolute left-0 right-0" style={{ top: 0 }}>
-                <div className="h-0.5 bg-gray-200" />
+        <AnimatePresence mode="wait">
+          {activeTab === 'market' && (
+            <motion.div 
+              key="market"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
+              <motion.div 
+                className="flex items-center gap-3 text-sm bg-gray-50 p-4 rounded-xl shadow-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <span className="text-gray-700 font-medium">Показать:</span>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='absolute'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+                  onClick={() => setLeaderboardMode('absolute')}
+                >
+                  Абсолют
+                </motion.button>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='perCapita'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+                  onClick={() => setLeaderboardMode('perCapita')}
+                >
+                  На 1000 жителей
+                </motion.button>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='log'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
+                  onClick={() => setLeaderboardMode('log')}
+                >
+                  Log-scale
+                </motion.button>
+              </motion.div>
+              
+              <div className="grid grid-cols-1 gap-3">
+                {marketLeaderboard.list.slice(0, 20).map((row, index) => (
+                  <motion.div 
+                    key={row.code} 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.03 }}
+                    whileHover={{ scale: 1.01 }}
+                    className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors" 
+                    onClick={() => setSelectedCode(row.code)}
+                  >
+                    <div className="w-16 flex items-center gap-2">
+                      <ReactCountryFlag 
+                        countryCode={row.code} 
+                        svg 
+                        style={{ width: '1.5em', height: '1.5em' }} 
+                        title={row.code}
+                      />
+                      <span className="text-sm font-medium text-gray-700">{row.code}</span>
+                    </div>
+                    <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden shadow-inner">
+                      <motion.div 
+                        className="h-full rounded-full bg-gradient-to-r from-primary-500 to-primary-400" 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(row.value / marketLeaderboard.max) * 100}%` }}
+                        transition={{ delay: 0.3 + index * 0.05, duration: 0.8, ease: "easeOut" }}
+                      />
+                    </div>
+                    <div className="w-16 text-right text-sm font-medium text-gray-900">
+                      {leaderboardMode === 'perCapita' ? row.value.toFixed(2) : Math.round(row.value).toLocaleString()}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <div className="grid grid-cols-1 gap-2 mt-4">
-                {adoptionOrdered.list.map(row => (
-                  <div key={row.code} className="flex items-center gap-3" onClick={() => setSelectedCode(row.code)}>
-                    <div className="w-12 text-xs text-gray-600">{row.code}</div>
-                    <div className="flex-1 bg-gray-100 rounded relative">
-                      <div className="h-3 rounded bg-green-500" style={{ width: `${(row.consentRate / 85) * 100}%` }} />
-                      <div className="absolute inset-y-0" style={{ left: `${(adoptionOrdered.euAvg / 85) * 100}%` }}>
-                        <div className="w-0.5 h-full bg-red-500/70" />
+            </motion.div>
+          )}
+
+          {activeTab === 'adoption' && (
+            <motion.div 
+              key="adoption"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
+              <motion.div 
+                className="p-6 bg-white border border-gray-200 rounded-2xl shadow-glass"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <motion.h3 
+                  className="text-xl font-semibold mb-6 text-gray-800"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Уровень внедрения CMP по странам
+                </motion.h3>
+                
+                <div className="relative">
+                  {/* Средняя линия по ЕС */}
+                  <motion.div 
+                    className="absolute left-0 right-0 flex items-center justify-between px-16" 
+                    style={{ top: 30 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <div className="h-0.5 w-full bg-gray-200 relative">
+                      <motion.div 
+                        className="absolute inset-y-0" 
+                        style={{ left: `${(adoptionOrdered.euAvg / 85) * 100}%` }}
+                        initial={{ height: 0 }}
+                        animate={{ height: '100%' }}
+                        transition={{ delay: 0.6, duration: 0.5 }}
+                      >
+                        <div className="w-0.5 h-full bg-red-500 shadow-sm" />
+                        <div className="absolute -top-6 transform -translate-x-1/2 bg-red-500 text-white px-2 py-0.5 rounded text-xs font-medium">
+                          Среднее: {Math.round(adoptionOrdered.euAvg)}%
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                  
+                  <div className="grid grid-cols-1 gap-3 mt-12">
+                    {adoptionOrdered.list.map((row, index) => (
+                      <motion.div 
+                        key={row.code} 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + index * 0.03 }}
+                        whileHover={{ scale: 1.01, backgroundColor: '#f8fafc' }}
+                        className="flex items-center gap-4 p-3 rounded-lg cursor-pointer transition-all" 
+                        onClick={() => setSelectedCode(row.code)}
+                      >
+                        <div className="w-16 flex items-center gap-2">
+                          <ReactCountryFlag 
+                            countryCode={row.code} 
+                            svg 
+                            style={{ width: '1.5em', height: '1.5em', borderRadius: '2px', boxShadow: '0 1px 2px rgba(0,0,0,0.1)' }} 
+                            title={row.code}
+                          />
+                          <span className="text-sm font-medium text-gray-700">{row.code}</span>
+                        </div>
+                        
+                        <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden shadow-inner relative">
+                          <motion.div 
+                            className={`h-full rounded-full ${row.consentRate > adoptionOrdered.euAvg ? 'bg-gradient-to-r from-green-500 to-green-400' : 'bg-gradient-to-r from-yellow-500 to-yellow-400'}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${(row.consentRate / 85) * 100}%` }}
+                            transition={{ delay: 0.5 + index * 0.05, duration: 0.8, ease: "easeOut" }}
+                          />
+                          
+                          {/* Маркер среднего значения на полосе */}
+                          <div className="absolute inset-y-0" style={{ left: `${(adoptionOrdered.euAvg / 85) * 100}%` }}>
+                            <div className="w-0.5 h-full bg-red-500/70" />
+                          </div>
+                        </div>
+                        
+                        <div className="w-16 text-right">
+                          <span className="font-semibold text-gray-900">{Math.round(row.consentRate)}%</span>
+                          <motion.span 
+                            className={`ml-1 text-xs ${row.consentRate > adoptionOrdered.euAvg ? 'text-green-600' : 'text-yellow-600'}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 + index * 0.03 }}
+                          >
+                            {row.consentRate > adoptionOrdered.euAvg ? '↑' : '↓'} 
+                            {Math.abs(Math.round(row.consentRate - adoptionOrdered.euAvg))}%
+                          </motion.span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <motion.div 
+                    className="flex items-center gap-3 mt-6 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block w-3 h-3 bg-green-500 rounded-full" /> 
+                      <span>Выше среднего</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block w-3 h-3 bg-yellow-500 rounded-full" /> 
+                      <span>Ниже среднего</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block w-3 h-3 bg-red-500 rounded-full" /> 
+                      <span>Среднее по ЕС</span>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {activeTab === 'scatter' && (
+            <motion.div 
+              key="scatter"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="overflow-x-auto"
+            >
+              <div className="w-full max-w-full">
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-glass overflow-hidden">
+                  <motion.h3 
+                    className="text-xl font-semibold mb-6 text-gray-800"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    Зависимость плотности рынка и внедрения CMP
+                  </motion.h3>
+                  <svg viewBox="0 0 600 360" className="w-full h-auto">
+                    {/* Фоновая сетка */}
+                    <motion.g 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.5 }}
+                      transition={{ delay: 0.3, duration: 0.8 }}
+                    >
+                      {[...Array(5)].map((_, i) => (
+                        <line 
+                          key={`grid-h-${i}`} 
+                          x1="50" 
+                          y1={20 + i * 70} 
+                          x2="580" 
+                          y2={20 + i * 70} 
+                          stroke="#E2E8F0" 
+                          strokeWidth="1" 
+                          strokeDasharray="4 4"
+                        />
+                      ))}
+                      {[...Array(6)].map((_, i) => (
+                        <line 
+                          key={`grid-v-${i}`} 
+                          x1={50 + i * 106} 
+                          y1="20" 
+                          x2={50 + i * 106} 
+                          y2="300" 
+                          stroke="#E2E8F0" 
+                          strokeWidth="1" 
+                          strokeDasharray="4 4"
+                        />
+                      ))}
+                    </motion.g>
+                    
+                    {/* Оси */}
+                    <motion.g 
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
+                    >
+                      <line x1="50" y1="300" x2="580" y2="300" stroke="#94A3B8" strokeWidth="2" />
+                      <line x1="50" y1="20" x2="50" y2="300" stroke="#94A3B8" strokeWidth="2" />
+                    </motion.g>
+                    
+                    {/* Точки */}
+                    {data.map((pt, idx) => {
+                      const x = 50 + (clamp(pt.marketDensity, 0, 200) / 200) * 530
+                      const y = 300 - (clamp(pt.consentRate, 0, 85) / 85) * 280
+                      const r = Math.max(6, Math.min(22, Math.log10(Math.max(1, pt.sitesCount)) * 3.5))
+                      const color = RISK_COLOR[pt.fineRisk]
+                      return (
+                        <motion.g 
+                          key={pt.code} 
+                          onClick={() => setSelectedCode(pt.code)}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.6 + idx * 0.02, duration: 0.5, type: "spring" }}
+                          whileHover={{ scale: 1.15, cursor: "pointer" }}
+                        >
+                          <circle 
+                            cx={x} 
+                            cy={y} 
+                            r={r} 
+                            fill={color} 
+                            fillOpacity={0.8} 
+                            stroke="#ffffff" 
+                            strokeWidth={2} 
+                          />
+                          <foreignObject x={x - 12} y={y - 12} width={24} height={24} style={{ overflow: 'visible', textAlign: 'center' }}>
+                            <div className="flex items-center justify-center h-full">
+                              <ReactCountryFlag 
+                                countryCode={pt.code} 
+                                svg 
+                                style={{ 
+                                  width: '1.2em', 
+                                  height: '1.2em',
+                                  filter: 'drop-shadow(0px 1px 1px rgba(0,0,0,0.3))'
+                                }} 
+                                title={pt.code}
+                              />
+                            </div>
+                          </foreignObject>
+                          <text 
+                            x={x} 
+                            y={y + r + 12} 
+                            textAnchor="middle" 
+                            fontSize={10} 
+                            fontWeight="bold"
+                            fill="#334155"
+                          >
+                            {pt.code}
+                          </text>
+                        </motion.g>
+                      )
+                    })}
+                    
+                    {/* Подписи осей */}
+                    <motion.g
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1, duration: 0.5 }}
+                    >
+                      <text x={300} y={340} textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">Плотность рынка (на 1000 жителей)</text>
+                      <text x={-160} y={15} transform="rotate(-90)" textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">Внедрение CMP (%)</text>
+                      
+                      {/* Метки на осях */}
+                      {[0, 50, 100, 150, 200].map((val, i) => (
+                        <g key={`x-label-${i}`}>
+                          <text x={50 + (val/200) * 530} y={320} textAnchor="middle" fontSize={10} fill="#64748B">{val}</text>
+                        </g>
+                      ))}
+                      {[0, 20, 40, 60, 80].map((val, i) => (
+                        <g key={`y-label-${i}`}>
+                          <text x={40} y={300 - (val/85) * 280} textAnchor="end" fontSize={10} fill="#64748B">{val}%</text>
+                        </g>
+                      ))}
+                    </motion.g>
+                  </svg>
+                  
+                  {/* Легенда */}
+                  <motion.div 
+                    className="mt-4 flex flex-wrap gap-4 justify-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-green-500"></span>
+                      <span className="text-sm text-gray-600">Низкий риск</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
+                      <span className="text-sm text-gray-600">Средний риск</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-red-500"></span>
+                      <span className="text-sm text-gray-600">Высокий риск</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block w-4 h-4 border border-gray-300 rounded-full relative">
+                        <span className="absolute inset-0.5 bg-gray-200 rounded-full"></span>
+                      </span>
+                      <span className="text-sm text-gray-600">Размер = кол-во сайтов</span>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === 'gauges' && (
+            <motion.div 
+              key="gauges"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="grid md:grid-cols-2 gap-8 items-start"
+            >
+              <motion.div 
+                className="p-6 border border-gray-200 rounded-2xl shadow-glass bg-white"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold mb-4 text-gray-800"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Выберите страну для анализа
+                </motion.h3>
+                
+                <div className="relative mb-6">
+                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                    {selectedCode && (
+                      <ReactCountryFlag 
+                        countryCode={selectedCode} 
+                        svg 
+                        style={{ width: '1.5em', height: '1.5em' }} 
+                      />
+                    )}
+                  </div>
+                  <select 
+                    className={`w-full border border-gray-200 rounded-xl px-4 py-3 shadow-sm focus:ring-2 focus:ring-primary-300 focus:border-primary-300 outline-none transition-all ${selectedCode ? 'pl-10' : ''}`} 
+                    value={selectedCode || ''} 
+                    onChange={(e) => setSelectedCode(e.target.value || null)}
+                  >
+                    <option value="">— Выберите страну —</option>
+                    {data.map(d => (
+                      <option key={d.code} value={d.code}>
+                        {d.code}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <Gauge title="Внедрение CMP" value={(selected?.consentRate ?? 0)} max={85} />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <Gauge title="Приоритет" value={(selected?.priorityScore ?? 0)} max={100} />
+                  </motion.div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="p-6 border border-gray-200 rounded-2xl shadow-glass bg-white"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold mb-4 text-gray-800"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  Подробная информация
+                </motion.h3>
+                
+                {selected ? (
+                  <motion.div 
+                    className="space-y-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                      {selectedCode && (
+                        <div className="mr-3">
+                          <ReactCountryFlag 
+                            countryCode={selected.code} 
+                            svg 
+                            style={{ width: '2.5em', height: '2.5em', borderRadius: '4px', boxShadow: '0 1px 2px rgba(0,0,0,0.1)' }} 
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <div className="text-sm text-gray-500">Код страны</div>
+                        <div className="font-semibold text-gray-900 text-lg">{selected.code}</div>
                       </div>
                     </div>
-                    <div className="w-10 text-xs text-gray-800 text-right">{Math.round(row.consentRate)}%</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 mt-2 text-xs text-gray-600">
-                <span className="inline-block w-2 h-2 bg-red-500 rounded-sm" /> Среднее по ЕС
-              </div>
-            </div>
-          </div>
-        )}
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">Регулятор</div>
+                      <div className="font-semibold text-gray-900">{selected.regulator}</div>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">Риск штрафов</div>
+                      <div className="font-semibold text-lg flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: RISK_COLOR[selected.fineRisk] }}></span>
+                        <span style={{ color: RISK_COLOR[selected.fineRisk] }}>
+                          {selected.fineRisk === 'low' ? 'Низкий' : 
+                           selected.fineRisk === 'low_medium' ? 'Низкий-средний' : 
+                           selected.fineRisk === 'medium' ? 'Средний' : 
+                           selected.fineRisk === 'medium_high' ? 'Средний-высокий' : 
+                           'Высокий'}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">Плотность рынка</div>
+                      <div className="font-semibold text-gray-900 text-lg">{selected.marketDensity.toFixed(1)} <span className="text-sm text-gray-500">на 1000 жителей</span></div>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">Количество сайтов</div>
+                      <div className="font-semibold text-gray-900 text-lg">{selected.sitesCount.toLocaleString()}</div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    className="flex flex-col items-center justify-center p-8 text-center bg-gray-50 rounded-xl h-64"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div className="text-gray-500 font-medium">Выберите страну для просмотра подробной информации</div>
+                  </motion.div>
+                )}
+              </motion.div>
+            </motion.div>
+          )}
 
-        {activeTab === 'scatter' && (
-          <div className="overflow-x-auto">
-            <div className="w-full max-w-full">
-              <svg viewBox="0 0 600 360" className="w-full h-auto bg-white border border-gray-200 rounded-xl">
-                {/* axes */}
-                <line x1="50" y1="300" x2="580" y2="300" stroke="#CBD5E1" strokeWidth="1" />
-                <line x1="50" y1="20" x2="50" y2="300" stroke="#CBD5E1" strokeWidth="1" />
-                {/* points */}
-                {data.map(pt => {
-                  const x = 50 + (clamp(pt.marketDensity, 0, 200) / 200) * 530
-                  const y = 300 - (clamp(pt.consentRate, 0, 85) / 85) * 280
-                  const r = Math.max(4, Math.min(18, Math.log10(Math.max(1, pt.sitesCount)) * 3))
-                  const color = RISK_COLOR[pt.fineRisk]
+          {activeTab === 'risks' && (
+            <motion.div 
+              key="risks"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="p-6 border border-gray-200 rounded-2xl shadow-glass bg-white"
+            >
+              <motion.h3 
+                className="text-xl font-semibold mb-6 text-gray-800"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Распределение стран по рискам
+              </motion.h3>
+              
+              <div className="mb-8">
+                <motion.div 
+                  className="h-10 w-full bg-gray-100 rounded-xl overflow-hidden flex shadow-inner"
+                  initial={{ opacity: 0, scaleX: 0.8 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  {(['low','low_medium','medium','medium_high','high'] as ChartsItem['fineRisk'][]).map((k, idx) => {
+                    const share = (riskBuckets.counts[k] / riskBuckets.total) * 100
+                    return (
+                      <motion.div 
+                        key={k} 
+                        className="h-full relative group cursor-pointer" 
+                        style={{ width: `${share}%`, background: RISK_COLOR[k] }}
+                        initial={{ scaleY: 0 }}
+                        animate={{ scaleY: 1 }}
+                        transition={{ delay: 0.4 + idx * 0.1, duration: 0.5 }}
+                        whileHover={{ y: -3 }}
+                      >
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-white px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                          <div className="text-sm font-medium">
+                            {k === 'low' ? 'Низкий' : 
+                             k === 'low_medium' ? 'Низкий-средний' : 
+                             k === 'medium' ? 'Средний' : 
+                             k === 'medium_high' ? 'Средний-высокий' : 
+                             'Высокий'}: {riskBuckets.counts[k]} стран
+                          </div>
+                          <div className="text-xs text-gray-500">{Math.round(share)}% от общего числа</div>
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
+              </div>
+              
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                {(['low','low_medium','medium','medium_high','high'] as ChartsItem['fineRisk'][]).map((k, idx) => {
+                  const riskLabel = k === 'low' ? 'Низкий' : 
+                                   k === 'low_medium' ? 'Низкий-средний' : 
+                                   k === 'medium' ? 'Средний' : 
+                                   k === 'medium_high' ? 'Средний-высокий' : 
+                                   'Высокий'
+                  const countries = data.filter(d => d.fineRisk === k)
+                  
                   return (
-                    <g key={pt.code} onClick={() => setSelectedCode(pt.code)}>
-                      <circle cx={x} cy={y} r={r} fill={color} fillOpacity={0.7} stroke="#ffffff" strokeWidth={1} />
-                      <text x={x + r + 2} y={y + 3} fontSize={9} fill="#334155">{pt.code}</text>
-                    </g>
+                    <motion.div 
+                      key={k} 
+                      className="p-4 bg-gray-50 rounded-xl"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9 + idx * 0.1 }}
+                    >
+                      <div className="flex items-center gap-2 mb-3">
+                        <span 
+                          className="w-4 h-4 inline-block rounded-full" 
+                          style={{ background: RISK_COLOR[k] }} 
+                        />
+                        <span className="font-medium text-gray-800">{riskLabel}</span>
+                        <span className="ml-auto bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-medium">
+                          {riskBuckets.counts[k]}
+                        </span>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-1.5">
+                        {countries.map(country => (
+                          <div 
+                            key={country.code} 
+                            className="flex items-center bg-white rounded-lg px-2 py-1 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow"
+                            onClick={() => setSelectedCode(country.code)}
+                          >
+                            <ReactCountryFlag 
+                              countryCode={country.code} 
+                              svg 
+                              style={{ width: '1.2em', height: '1.2em', marginRight: '4px' }} 
+                            />
+                            <span className="text-xs font-medium">{country.code}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
                   )
                 })}
-                {/* labels */}
-                <text x={300} y={340} textAnchor="middle" fontSize={12} fill="#64748B">Плотность рынка (на 1000 жителей)</text>
-                <text x={-160} y={15} transform="rotate(-90)" textAnchor="middle" fontSize={12} fill="#64748B">Внедрение CMP (%)</text>
-              </svg>
-            </div>
-          </div>
-        )}
+              </motion.div>
+            </motion.div>
+          )}
 
-        {activeTab === 'gauges' && (
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div className="p-4 border rounded-xl">
-              <div className="text-sm text-gray-600 mb-2">Страна</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={selectedCode || ''} onChange={(e) => setSelectedCode(e.target.value || null)}>
-                <option value="">— Выбрать —</option>
-                {data.map(d => (<option key={d.code} value={d.code}>{d.code}</option>))}
-              </select>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <Gauge title="CMP adoption" value={(selected?.consentRate ?? 0)} max={85} />
-                <Gauge title="Urgency" value={(selected?.priorityScore ?? 0)} max={100} />
-              </div>
-            </div>
-            <div className="p-4 border rounded-xl">
-              <div className="text-sm text-gray-600 mb-2">Подробности</div>
-              {selected ? (
-                <div className="space-y-2 text-sm">
-                  <div><span className="text-gray-500">Регулятор:</span> <span className="font-semibold text-gray-800">{selected.regulator}</span></div>
-                  <div><span className="text-gray-500">Риск штрафов:</span> <span className="font-semibold" style={{ color: RISK_COLOR[selected.fineRisk] }}>{selected.fineRisk.replace(/_/g,' ')}</span></div>
-                  <div><span className="text-gray-500">Плотность рынка:</span> <span className="font-semibold text-gray-800">{selected.marketDensity}</span></div>
-                </div>
-              ) : (
-                <div className="text-gray-500">Выберите страну слева</div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'risks' && (
-          <div className="p-4 border rounded-xl">
-            <div className="text-sm text-gray-600 mb-2">Распределение стран по рискам</div>
-            <div className="h-6 w-full bg-gray-100 rounded overflow-hidden flex">
-              {(['low','low_medium','medium','medium_high','high'] as ChartsItem['fineRisk'][]).map((k) => {
-                const share = (riskBuckets.counts[k] / riskBuckets.total) * 100
-                return <div key={k} className="h-full" style={{ width: `${share}%`, background: RISK_COLOR[k] }} />
-              })}
-            </div>
-            <div className="flex flex-wrap gap-3 mt-3 text-xs">
-              {(['low','low_medium','medium','medium_high','high'] as ChartsItem['fineRisk'][]).map((k) => (
-                <span key={k} className="inline-flex items-center gap-2"><span className="w-3 h-3 inline-block rounded-sm" style={{ background: RISK_COLOR[k] }} /> {k.replace(/_/g,' ')}: {riskBuckets.counts[k]}</span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'violations' && (
-          <div className="p-4 border rounded-xl overflow-x-auto">
-            <div className="text-sm text-gray-600 mb-2">Матрица нарушений (топ-3)</div>
-            <table className="min-w-[640px] w-full text-sm">
-              <thead>
-                <tr className="text-left text-gray-500">
-                  <th className="py-2 pr-4">Страна</th>
-                  {violationsSet.map(v => (<th key={v} className="py-2 pr-4">{v}</th>))}
-                </tr>
-              </thead>
-              <tbody>
-                {data.map(row => (
-                  <tr key={row.code} className="border-t border-gray-100 hover:bg-gray-50">
-                    <td className="py-2 pr-4 font-semibold text-gray-800">{row.code}</td>
-                    {violationsSet.map(v => (
-                      <td key={v} className="py-2 pr-4">
-                        {row.violationsPattern.includes(v) ? <span className="inline-block w-2.5 h-2.5 bg-blue-600 rounded-sm" /> : <span className="inline-block w-2.5 h-2.5 bg-gray-200 rounded-sm" />}
-                      </td>
-                    ))}
-                  </tr>
+          {activeTab === 'violations' && (
+            <motion.div 
+              key="violations"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="p-6 border border-gray-200 rounded-2xl shadow-glass bg-white overflow-x-auto"
+            >
+              <motion.h3 
+                className="text-xl font-semibold mb-6 text-gray-800"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Матрица нарушений по странам
+              </motion.h3>
+              
+              <motion.div 
+                className="mb-4 flex flex-wrap gap-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                {violationsSet.map((v, idx) => (
+                  <motion.div 
+                    key={v} 
+                    className="px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200 flex items-center gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + idx * 0.1 }}
+                  >
+                    <span className="inline-block w-3 h-3 bg-primary-500 rounded-full" />
+                    <span className="text-sm font-medium">{v}</span>
+                  </motion.div>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
+              </motion.div>
+              
+              <div className="relative overflow-hidden rounded-xl border border-gray-200">
+                <motion.table 
+                  className="min-w-[640px] w-full text-sm bg-white"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <thead>
+                    <tr className="bg-gray-50 text-left">
+                      <th className="py-3 px-4 font-semibold text-gray-700">Страна</th>
+                      {violationsSet.map(v => (
+                        <th key={v} className="py-3 px-4 font-semibold text-gray-700">
+                          <div className="truncate max-w-[150px]" title={v}>{v}</div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((row, rowIdx) => (
+                      <motion.tr 
+                        key={row.code} 
+                        className="border-t border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
+                        onClick={() => setSelectedCode(row.code)}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + rowIdx * 0.02 }}
+                      >
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-2">
+                            <ReactCountryFlag 
+                              countryCode={row.code} 
+                              svg 
+                              style={{ width: '1.5em', height: '1.5em' }} 
+                            />
+                            <span className="font-medium text-gray-800">{row.code}</span>
+                          </div>
+                        </td>
+                        {violationsSet.map((v, colIdx) => (
+                          <td key={v} className="py-3 px-4">
+                            <motion.div 
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ delay: 0.8 + rowIdx * 0.02 + colIdx * 0.01, type: "spring" }}
+                            >
+                              {row.violationsPattern.includes(v) ? (
+                                <span className="inline-flex items-center justify-center w-6 h-6 bg-primary-500 text-white rounded-full">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                  </svg>
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                  </svg>
+                                </span>
+                              )}
+                            </motion.div>
+                          </td>
+                        ))}
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </motion.table>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </section>
   )
 }
-
-function Gauge({ title, value, max }: { title: string; value: number; max: number }) {
-  const pct = clamp(value / max, 0, 1)
-  const angle = -180 + 180 * pct
-  return (
-    <div className="p-3 border rounded-xl">
-      <div className="text-sm text-gray-600 mb-2">{title}</div>
-      <svg viewBox="0 0 200 120" className="w-full h-auto">
-        <path d="M10,110 A90,90 0 0 1 190,110" fill="none" stroke="#E5E7EB" strokeWidth="16" />
-        <path d="M10,110 A90,90 0 0 1 190,110" fill="none" stroke="#10B981" strokeWidth="16" strokeDasharray={`${Math.max(1, 283 * pct)} 283`} strokeLinecap="round" />
-        <g transform={`translate(100,110) rotate(${angle})`}>
-          <rect x={-2} y={-80} width={4} height={80} fill="#0F172A" rx={2} />
-        </g>
-        <text x={100} y={105} textAnchor="middle" fontSize={18} fill="#111827" fontWeight={800}>{Math.round(value)}</text>
-      </svg>
-    </div>
-  )
-}
-
-

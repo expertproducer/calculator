@@ -3,6 +3,7 @@
 import { ShieldCheck, Flame, Shield, AlertTriangle, Users, TrendingUp, CheckCircle, ArrowUp, ShoppingCart, Newspaper, Cloud, Clock } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
 import VideoBackground from './VideoBackground'
+import HeroBanner from './HeroBanner'
 
 interface UnifiedHeroSectionProps {
   content: {
@@ -22,6 +23,12 @@ interface UnifiedHeroSectionProps {
       }
       problemsDesc?: string
       solutionText?: string
+    }
+    heroBanner?: {
+      title: string
+      description: string
+      button: string
+      image?: { src: string; alt: string }
     }
     urgency?: {
       title: string
@@ -115,6 +122,9 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
           </div>
         </div>
       </div>
+
+      {/* Banner directly after hero video */}
+      {content.heroBanner && <HeroBanner content={content.heroBanner} />}
 
       {/* Unified Content Section */}
       <div className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">

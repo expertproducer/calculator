@@ -293,6 +293,21 @@
     "subtitle": "Transform your banners into user-friendly compliance.",
     "cta": { "primary": "Fix my banner", "secondary": "Free quick check" }
   },
+  "heroBanner": {
+    "title": "⚠️ Fines up to €20,000 for non-compliant cookie banners",
+    "description": "70% of EU websites violate GDPR today. Regulators check in minutes — fines may come without warning.",
+    "button": "Check my site now",
+    "image": { "src": "/images/gdpr_fine_2025.webp", "alt": "GDPR fines risk banner" }
+  },
+  "finesLinks": {
+    "title": "Real GDPR Fines and Cases",
+    "subtitle": "Selected articles and regulator decisions about cookie banner violations.",
+    "links": [
+      { "title": "CNIL fines for cookie violations (FR)", "href": "https://www.cnil.fr/en/cookies-and-trackers" },
+      { "title": "GDPR Enforcement Tracker (EU)", "href": "https://www.enforcementtracker.com/" },
+      { "title": "Cookie consent violations overview", "href": "https://www.cookiechoices.org/" }
+    ]
+  },
   "footer": {
     "copyright": "C&C CookieComply",
     "links": ["Privacy", "Cookies", "Contact"],

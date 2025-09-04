@@ -22,6 +22,10 @@ export { default as CompactGDPRChecklist } from './CompactGDPRChecklist'
 export { default as EuComplianceMap } from './EuComplianceMap'
 export { default as EuGdprCharts } from './EuGdprCharts'
 
+// New sections under hero
+export { default as HeroBanner } from './HeroBanner'
+export { default as FinesLinks } from './FinesLinks'
+
 // Pricing Component - Re-export from the main Pricing component
 export { default as Pricing } from './Pricing'
 

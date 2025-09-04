@@ -9,7 +9,8 @@ import {
   EuGdprCharts,
   CompactServiceCalculator,
   CompactGDPRChecklist,
-  UnifiedHeroSection
+  UnifiedHeroSection,
+  FinesLinks
 } from '@/components/AllComponents'
 import StructuredData from '@/components/StructuredData'
 import CookieConsent from '@/components/CookieConsent'
@@ -45,15 +46,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Navbar locale={locale} />
       
       <main>
-        {/* Unified Hero Section - All content from banner to calculator */}
+        {/* Unified Hero Section - All content from banner to calculator */
+        }
         <UnifiedHeroSection content={{
           hero: content.hero,
           urgency: content.urgency,
+          heroBanner: content.heroBanner,
           whyImportant: content.whyImportant,
           benefits: content.benefits,
           platforms: content.platforms,
           cases: content.cases
         }} locale={locale} />
+
+        {/* Second block with links to real fines and cases */}
+        <FinesLinks content={content.finesLinks} />
         
         {/* Interactive Tools - Side by Side */}
         <section id="interactive-tools" className="py-16 bg-gray-50">

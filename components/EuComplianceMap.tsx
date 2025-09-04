@@ -1,7 +1,7 @@
 "use client"
 
 import { memo, useMemo, useState } from 'react'
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { ComposableMap, Geographies, Geography, Marker, Graticule } from 'react-simple-maps'
 import { geoMercator, geoCentroid } from 'd3-geo'
 
 type CountryInfo = {
@@ -184,12 +184,14 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
         <div className="grid md:grid-cols-2 gap-6 items-start">
           <div className="relative rounded-3xl border border-gray-100 bg-white shadow-2xl overflow-hidden w-full" style={{ aspectRatio: '10 / 16' }}>
             <div className="absolute inset-0 bg-gradient-to-t from-blue-50/40 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 [background:radial-gradient(70%_50%_at_50%_55%,rgba(59,130,246,0.06)_0%,rgba(59,130,246,0)_70%)] pointer-events-none" />
 
             <div className="p-2 md:p-3">
               <div className="relative w-full" style={{ maxWidth: '100%' }}>
                 <div className="relative transform-gpu will-change-transform [perspective:1200px] [transform-style:preserve-3d]">
                   <div className="[transform:rotateX(4deg)_rotateZ(-1deg)] md:[transform:rotateX(5deg)_rotateZ(-1deg)] transition-transform duration-500">
                     <ComposableMap projection="geoMercator" projectionConfig={{ center: [12.8, 55.2], scale: 650 }} width={640} height={1024} style={{ width: "100%", height: "auto" }}>
+                      <Graticule stroke="#93C5FD22" strokeWidth={0.5} />
                       <Geographies geography={TOPO_JSON_URL}>
                         {({ geographies }) => geographies
                           // Render only EU countries, no deduplication to allow all polygons
@@ -244,9 +246,36 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   // Keep tooltip visible - it will only hide when entering another country or clicking outside
                                 }}
                                 style={{
-                                  default: { fill, outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
-                                  hover: { fill: isSpecial ? "#DC2626" : "#3B82F6", outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
-                                  pressed: { fill: isSpecial ? "#B91C1C" : "#2563EB", outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" }
+                                  default: {
+                                    fill,
+                                    outline: "none",
+                                    stroke: "#FFFFFF",
+                                    strokeWidth: isSpecial ? 1.2 : 0.4,
+                                    vectorEffect: "non-scaling-stroke",
+                                    transition: "transform 180ms ease, filter 180ms ease, stroke-width 180ms ease",
+                                    transform: "translateZ(0)",
+                                    transformBox: "fill-box",
+                                    transformOrigin: "center"
+                                  },
+                                  hover: {
+                                    fill,
+                                    outline: "none",
+                                    stroke: "#CBD5E1",
+                                    strokeWidth: isSpecial ? 1.2 : 0.8,
+                                    vectorEffect: "non-scaling-stroke",
+                                    filter: "brightness(1.04) drop-shadow(0 6px 12px rgba(0,0,0,0.18))",
+                                    transform: "translateY(-2px) scale(1.01)",
+                                    cursor: "pointer"
+                                  },
+                                  pressed: {
+                                    fill,
+                                    outline: "none",
+                                    stroke: "#94A3B8",
+                                    strokeWidth: isSpecial ? 1.2 : 0.8,
+                                    vectorEffect: "non-scaling-stroke",
+                                    filter: "brightness(0.98)",
+                                    transform: "translateY(-1px) scale(1.005)"
+                                  }
                                 }}
                               />
                               {isSpecial && code === 'CHE' && (

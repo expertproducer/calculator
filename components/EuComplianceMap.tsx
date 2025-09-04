@@ -1,8 +1,8 @@
 "use client"
 
 import { memo, useMemo, useState } from 'react'
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
-import { geoMercator } from 'd3-geo'
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { geoMercator, geoCentroid } from 'd3-geo'
 
 type CountryInfo = {
   code: string
@@ -183,8 +183,10 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                             const isSpecial = code ? SPECIAL_INCLUDE.has(code) : false
                             if (!isEu && !isSpecial) return null
                             const data = code ? countryByCode.get(code) : undefined
-                            const fill = isSpecial ? "#F97316" : getCountryColor(data?.consentRate)
+                            const fill = isSpecial ? "#EF4444" : getCountryColor(data?.consentRate)
+                            const centroid = geoCentroid(geo as any) as [number, number]
                             return (
+                              <>
                               <Geography
                                 key={geo.rsmKey}
                                 geography={geo}
@@ -221,11 +223,20 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   // Keep tooltip visible - it will only hide when entering another country or clicking outside
                                 }}
                                 style={{
-                                  default: { fill, outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
-                                  hover: { fill: isSpecial ? "#FB923C" : "#3B82F6", outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
-                                  pressed: { fill: isSpecial ? "#EA580C" : "#2563EB", outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" }
+                                  default: { fill, outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
+                                  hover: { fill: isSpecial ? "#DC2626" : "#3B82F6", outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
+                                  pressed: { fill: isSpecial ? "#B91C1C" : "#2563EB", outline: "none", stroke: isSpecial ? "#FFFFFF" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" }
                                 }}
                               />
+                              {isSpecial && code === 'CHE' && (
+                                <Marker key={`${geo.rsmKey}-swiss`} coordinates={centroid}>
+                                  <g pointerEvents="none">
+                                    <rect x={-3} y={-9} width={6} height={18} fill="#FFFFFF" />
+                                    <rect x={-9} y={-3} width={18} height={6} fill="#FFFFFF" />
+                                  </g>
+                                </Marker>
+                              )}
+                              </>
                             )
                           })}
                       </Geographies>

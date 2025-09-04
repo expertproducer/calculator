@@ -5,6 +5,7 @@ import {
   FinalCTA, 
   Footer, 
   Navbar,
+  EuComplianceMap,
   CompactServiceCalculator,
   CompactGDPRChecklist,
   UnifiedHeroSection
@@ -61,6 +62,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         {/* Enhanced Testimonials with Photos & Metrics */}
         <EnhancedTestimonials content={content.testimonials} />
         
+        {/* EU Compliance Map */}
+        <EuComplianceMap title="EU Cookie Compliance" subtitle="Hover a country to see consent stats" countries={[
+          { code: 'DEU', name: 'Germany', consentRate: 0.68, violationsFixed: 12 },
+          { code: 'FRA', name: 'France', consentRate: 0.62, violationsFixed: 9 },
+          { code: 'ESP', name: 'Spain', consentRate: 0.54, violationsFixed: 7 },
+          { code: 'ITA', name: 'Italy', consentRate: 0.59, violationsFixed: 10 },
+          { code: 'SWE', name: 'Sweden', consentRate: 0.73, violationsFixed: 6 },
+          { code: 'NLD', name: 'Netherlands', consentRate: 0.71, violationsFixed: 5 },
+          { code: 'POL', name: 'Poland', consentRate: 0.52, violationsFixed: 8 }
+        ]} />
+
         <section id="contact">
           <Contact content={content.contact} />
         </section>

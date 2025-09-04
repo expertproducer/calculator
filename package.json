@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "d3-geo": "^3.1.1",
+    "d3-geo-projection": "^4.0.0",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.292.0",
     "next": "^15.5.2",
@@ -26,6 +28,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.62.0",
     "react-player": "^3.3.2",
+    "react-simple-maps": "^3.0.0",
     "stagewise": "^0.8.2",
     "zod": "^3.25.76"
   },

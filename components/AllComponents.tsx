@@ -19,6 +19,7 @@ export { default as ServiceCalculator } from './GDPRCalculator'
 export { default as GDPRChecklist } from './GDPRChecklist'
 export { default as CompactServiceCalculator } from './CompactServiceCalculator'
 export { default as CompactGDPRChecklist } from './CompactGDPRChecklist'
+export { default as EuComplianceMap } from './EuComplianceMap'
 
 // Pricing Component - Re-export from the main Pricing component
 export { default as Pricing } from './Pricing'

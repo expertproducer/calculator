@@ -1,0 +1,338 @@
+[
+  {
+    "code": "AT",
+    "sitesCount": 1500347,
+    "consentRate": 66.0,
+    "regulator": "DSB",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 166.7
+  },
+  {
+    "code": "BE",
+    "sitesCount": 1718116,
+    "consentRate": 62.0,
+    "regulator": "GBA/APD",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "dark patterns",
+      "tracking before consent"
+    ],
+    "marketDensity": 146.8
+  },
+  {
+    "code": "BG",
+    "sitesCount": 61234,
+    "consentRate": 36.0,
+    "regulator": "CPDP Bulgaria",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 9.0
+  },
+  {
+    "code": "HR",
+    "sitesCount": 138031,
+    "consentRate": 38.0,
+    "regulator": "AZOP",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "incomplete policy links"
+    ],
+    "marketDensity": 35.4
+  },
+  {
+    "code": "CY",
+    "sitesCount": 30211,
+    "consentRate": 49.0,
+    "regulator": "Commissioner for Personal Data Protection Cyprus",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 32.8
+  },
+  {
+    "code": "CZ",
+    "sitesCount": 1502253,
+    "consentRate": 47.0,
+    "regulator": "UOOU",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "incorrect Consent Mode v2"
+    ],
+    "marketDensity": 137.8
+  },
+  {
+    "code": "DK",
+    "sitesCount": 1460530,
+    "consentRate": 66.0,
+    "regulator": "Datatilsynet",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 245.5
+  },
+  {
+    "code": "EE",
+    "sitesCount": 177398,
+    "consentRate": 46.0,
+    "regulator": "Andmekaitse Inspektsioon",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "incomplete policy links"
+    ],
+    "marketDensity": 133.4
+  },
+  {
+    "code": "FI",
+    "sitesCount": 561519,
+    "consentRate": 61.0,
+    "regulator": "Tietosuojavaltuutetun toimisto",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "incorrect Consent Mode v2",
+      "tracking before consent"
+    ],
+    "marketDensity": 100.3
+  },
+  {
+    "code": "FR",
+    "sitesCount": 4216786,
+    "consentRate": 54.0,
+    "regulator": "CNIL",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no Reject‑all button",
+      "dark patterns in consent UI"
+    ],
+    "marketDensity": 62.5
+  },
+  {
+    "code": "DE",
+    "sitesCount": 17620428,
+    "consentRate": 74.0,
+    "regulator": "BfDI + Länder DPAs",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "no equal prominence (Accept/Reject)",
+      "tracking before consent"
+    ],
+    "marketDensity": 209.8
+  },
+  {
+    "code": "GR",
+    "sitesCount": 497812,
+    "consentRate": 51.0,
+    "regulator": "HDPA Greece",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "no Reject‑all button"
+    ],
+    "marketDensity": 47.9
+  },
+  {
+    "code": "HU",
+    "sitesCount": 875609,
+    "consentRate": 47.0,
+    "regulator": "NAIH",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "incomplete policy links"
+    ],
+    "marketDensity": 91.2
+  },
+  {
+    "code": "IE",
+    "sitesCount": 326562,
+    "consentRate": 58.0,
+    "regulator": "DPC Ireland",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "improper legitimate interest",
+      "tracking before consent"
+    ],
+    "marketDensity": 62.8
+  },
+  {
+    "code": "IT",
+    "sitesCount": 3505656,
+    "consentRate": 48.0,
+    "regulator": "Garante Privacy",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "tracking before consent",
+      "incorrect Consent Mode v2"
+    ],
+    "marketDensity": 59.5
+  },
+  {
+    "code": "LV",
+    "sitesCount": 147382,
+    "consentRate": 45.0,
+    "regulator": "Datu valsts inspekcija",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 78.4
+  },
+  {
+    "code": "LT",
+    "sitesCount": 242315,
+    "consentRate": 45.0,
+    "regulator": "VDAI",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "incorrect Consent Mode v2"
+    ],
+    "marketDensity": 86.5
+  },
+  {
+    "code": "LU",
+    "sitesCount": 117794,
+    "consentRate": 61.0,
+    "regulator": "CNPD Luxembourg",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "incomplete vendor disclosures",
+      "tracking before consent"
+    ],
+    "marketDensity": 175.8
+  },
+  {
+    "code": "MT",
+    "sitesCount": 20157,
+    "consentRate": 55.0,
+    "regulator": "IDPC Malta",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 37.3
+  },
+  {
+    "code": "NL",
+    "sitesCount": 6143000,
+    "consentRate": 63.0,
+    "regulator": "Autoriteit Persoonsgegevens",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "incomplete vendor disclosures"
+    ],
+    "marketDensity": 343.2
+  },
+  {
+    "code": "PL",
+    "sitesCount": 2579014,
+    "consentRate": 46.0,
+    "regulator": "UODO",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "analytics before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 68.4
+  },
+  {
+    "code": "PT",
+    "sitesCount": 2001432,
+    "consentRate": 50.0,
+    "regulator": "CNPD Portugal",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 192.4
+  },
+  {
+    "code": "RO",
+    "sitesCount": 598068,
+    "consentRate": 47.0,
+    "regulator": "ANSPDCP",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "incorrect Consent Mode v2"
+    ],
+    "marketDensity": 31.5
+  },
+  {
+    "code": "SK",
+    "sitesCount": 473278,
+    "consentRate": 46.0,
+    "regulator": "ÚOOÚ SR",
+    "fineRisk": "low_medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 87.6
+  },
+  {
+    "code": "SI",
+    "sitesCount": 167471,
+    "consentRate": 49.0,
+    "regulator": "Informacijski pooblaščenec",
+    "fineRisk": "low",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 79.4
+  },
+  {
+    "code": "ES",
+    "sitesCount": 2133880,
+    "consentRate": 49.0,
+    "regulator": "AEPD",
+    "fineRisk": "high",
+    "violationsPattern": [
+      "tracking before consent",
+      "missing reject option"
+    ],
+    "marketDensity": 43.7
+  },
+  {
+    "code": "SE",
+    "sitesCount": 1450320,
+    "consentRate": 63.0,
+    "regulator": "IMY",
+    "fineRisk": "medium",
+    "violationsPattern": [
+      "tracking before consent",
+      "incomplete policy links"
+    ],
+    "marketDensity": 136.8
+  },
+  {
+    "code": "CH",
+    "sitesCount": 2562914,
+    "consentRate": 63.0,
+    "regulator": "FDPIC",
+    "fineRisk": "medium_high",
+    "violationsPattern": [
+      "no equal prominence",
+      "tracking before consent"
+    ],
+    "marketDensity": 288.0
+  }
+]

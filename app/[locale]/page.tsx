@@ -12,7 +12,7 @@ import {
 } from '@/components/AllComponents'
 import StructuredData from '@/components/StructuredData'
 import CookieConsent from '@/components/CookieConsent'
-import rawMapData from '../../eu_gdpr_map_clean.json'
+import rawMapData from '../../eu_gdpr_map_v2_extended.json'
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -23,7 +23,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     IT: 'ITA', LV: 'LVA', LT: 'LTU', LU: 'LUX', MT: 'MLT', NL: 'NLD', PL: 'POL',
     PT: 'PRT', RO: 'ROU', SK: 'SVK', SI: 'SVN', ES: 'ESP', SE: 'SWE', CH: 'CHE'
   }
-  const countriesFromJson = (rawMapData as Array<{ code: string; sitesCount: number | null; consentRate?: number | null; regulator?: string | null; fineRisk?: string | null }> )
+  const countriesFromJson = (rawMapData as Array<{ code: string; sitesCount: number | null; consentRate?: number | null; regulator?: string | null; fineRisk?: string | null; violationsPattern?: string[] | null; marketDensity?: number | null }> )
     .map(item => ({
       code: ISO2_TO_ISO3[item.code] || item.code,
       sitesCount: item.sitesCount ?? 0,
@@ -31,7 +31,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       violationsFixed: undefined,
       name: undefined as any,
       regulator: item.regulator ?? undefined,
-      fineRisk: item.fineRisk ?? undefined
+      fineRisk: item.fineRisk ?? undefined,
+      violationsPattern: item.violationsPattern ?? undefined,
+      marketDensity: item.marketDensity ?? undefined
     }))
     .filter(c => c.code && c.code.length === 3)
   

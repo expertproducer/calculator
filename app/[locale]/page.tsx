@@ -12,10 +12,28 @@ import {
 } from '@/components/AllComponents'
 import StructuredData from '@/components/StructuredData'
 import CookieConsent from '@/components/CookieConsent'
+import rawMapData from '../../eu_gdpr_map_clean.json'
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const content = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
+  const ISO2_TO_ISO3: Record<string, string> = {
+    AT: 'AUT', BE: 'BEL', BG: 'BGR', HR: 'HRV', CY: 'CYP', CZ: 'CZE', DK: 'DNK',
+    EE: 'EST', FI: 'FIN', FR: 'FRA', DE: 'DEU', GR: 'GRC', HU: 'HUN', IE: 'IRL',
+    IT: 'ITA', LV: 'LVA', LT: 'LTU', LU: 'LUX', MT: 'MLT', NL: 'NLD', PL: 'POL',
+    PT: 'PRT', RO: 'ROU', SK: 'SVK', SI: 'SVN', ES: 'ESP', SE: 'SWE', CH: 'CHE'
+  }
+  const countriesFromJson = (rawMapData as Array<{ code: string; sitesCount: number | null; consentRate?: number | null; regulator?: string | null; fineRisk?: string | null }> )
+    .map(item => ({
+      code: ISO2_TO_ISO3[item.code] || item.code,
+      sitesCount: item.sitesCount ?? 0,
+      consentRate: (item.consentRate ?? undefined) as number | undefined,
+      violationsFixed: undefined,
+      name: undefined as any,
+      regulator: item.regulator ?? undefined,
+      fineRisk: item.fineRisk ?? undefined
+    }))
+    .filter(c => c.code && c.code.length === 3)
   
   return (
     <>
@@ -63,15 +81,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <EnhancedTestimonials content={content.testimonials} />
         
         {/* EU Compliance Map */}
-        <EuComplianceMap title="EU Cookie Compliance" subtitle="Hover a country to see consent stats" countries={[
-          { code: 'DEU', name: 'Germany', consentRate: 0.68, violationsFixed: 12 },
-          { code: 'FRA', name: 'France', consentRate: 0.62, violationsFixed: 9 },
-          { code: 'ESP', name: 'Spain', consentRate: 0.54, violationsFixed: 7 },
-          { code: 'ITA', name: 'Italy', consentRate: 0.59, violationsFixed: 10 },
-          { code: 'SWE', name: 'Sweden', consentRate: 0.73, violationsFixed: 6 },
-          { code: 'NLD', name: 'Netherlands', consentRate: 0.71, violationsFixed: 5 },
-          { code: 'POL', name: 'Poland', consentRate: 0.52, violationsFixed: 8 }
-        ]} />
+        <EuComplianceMap title="EU Cookie Compliance" subtitle="Hover a country to see consent stats" countries={countriesFromJson as any} />
 
         <section id="contact">
           <Contact content={content.contact} />

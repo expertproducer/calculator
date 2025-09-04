@@ -9,6 +9,7 @@ type CountryInfo = {
   name: string
   consentRate?: number
   violationsFixed?: number
+  sitesCount?: number
 }
 
 interface EuComplianceMapProps {
@@ -17,12 +18,15 @@ interface EuComplianceMapProps {
   countries?: CountryInfo[]
 }
 
-// Lightweight TopoJSON: EU countries subset (ISO codes). Using CDN URL to keep bundle small.
-const TOPO_JSON_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+// TopoJSON: All European countries (including Switzerland). Using world-atlas for full coverage.
+const TOPO_JSON_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"
 
 const EU_ISO_CODES = new Set([
   "AUT","BEL","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT","ROU","SVK","SVN","ESP","SWE"
 ])
+
+// Non‑EU countries we still want to display alongside EU
+const SPECIAL_INCLUDE = new Set(["CHE"]) // Switzerland
 
 // Fallback mapping from common English names to ISO3 codes (for world-atlas properties without iso_a3)
 const NAME_TO_ISO3: Record<string, string> = {
@@ -53,7 +57,8 @@ const NAME_TO_ISO3: Record<string, string> = {
   Slovakia: "SVK",
   Slovenia: "SVN",
   Spain: "ESP",
-  Sweden: "SWE"
+  Sweden: "SWE",
+  Switzerland: "CHE"
 }
 
 // Canonical EU country labels by ISO3 (short English names)
@@ -84,7 +89,16 @@ const EU_COUNTRY_LABELS: Record<string, string> = {
   SVK: "Slovakia",
   SVN: "Slovenia",
   ESP: "Spain",
-  SWE: "Sweden"
+  SWE: "Sweden",
+  CHE: "Switzerland"
+}
+
+// Map ISO3 to ISO2 for flags
+const ISO3_TO_ISO2: Record<string, string> = {
+  AUT: 'AT', BEL: 'BE', BGR: 'BG', HRV: 'HR', CYP: 'CY', CZE: 'CZ', DNK: 'DK',
+  EST: 'EE', FIN: 'FI', FRA: 'FR', DEU: 'DE', GRC: 'GR', HUN: 'HU', IRL: 'IE',
+  ITA: 'IT', LVA: 'LV', LTU: 'LT', LUX: 'LU', MLT: 'MT', NLD: 'NL', POL: 'PL',
+  PRT: 'PT', ROU: 'RO', SVK: 'SK', SVN: 'SI', ESP: 'ES', SWE: 'SE', CHE: 'CH'
 }
 
 function getCountryColor(consentRate?: number): string {
@@ -92,6 +106,15 @@ function getCountryColor(consentRate?: number): string {
   if (consentRate >= 0.7) return "#60A5FA" // blue-400
   if (consentRate >= 0.5) return "#93C5FD" // blue-300
   return "#BFDBFE" // blue-200
+}
+
+function formatNumber(value?: number | null): string {
+  if (value === null || value === undefined || Number.isNaN(value)) return 'n/a'
+  try {
+    return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value)
+  } catch {
+    return String(value)
+  }
 }
 
 function Tooltip({ x, y, content }: { x: number; y: number; content: string }) {
@@ -108,6 +131,7 @@ function Tooltip({ x, y, content }: { x: number; y: number; content: string }) {
 function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hover a country to see details", countries = [] }: EuComplianceMapProps) {
   const [tooltip, setTooltip] = useState<{ x: number; y: number; content: string; countryCode: string } | null>(null)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
+  const [selected, setSelected] = useState<{ code: string; label: string; iso2: string | null; sitesCount: number | null } | null>(null)
 
   const countryByCode = useMemo(() => {
     const map = new Map<string, CountryInfo>()
@@ -121,7 +145,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
 
   return (
     <section 
-      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50" 
+      className="py-4 bg-gradient-to-br from-gray-50 via-white to-blue-50" 
       aria-label="EU GDPR compliance map"
       onClick={(e) => {
         // Hide tooltip when clicking outside the map
@@ -131,82 +155,114 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">{title}</h2>
-          <p className="text-lg md:text-xl text-gray-600 font-semibold">{subtitle}</p>
+        <div className="text-center mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-1 leading-tight">{title}</h2>
+          <p className="text-base md:text-lg text-gray-600 font-semibold leading-tight">{subtitle}</p>
         </div>
 
-        <div className="relative rounded-3xl border border-gray-100 bg-white shadow-2xl overflow-hidden mx-auto" style={{ aspectRatio: '10 / 16', maxWidth: 640 }}>
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-50/40 to-transparent pointer-events-none" />
+        <div className="grid md:grid-cols-2 gap-6 items-start">
+          <div className="relative rounded-3xl border border-gray-100 bg-white shadow-2xl overflow-hidden w-full" style={{ aspectRatio: '10 / 16' }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-50/40 to-transparent pointer-events-none" />
 
-          <div className="p-4 md:p-8">
-            <div className="relative mx-auto w-full" style={{ maxWidth: '100%' }}>
-              <div className="relative transform-gpu will-change-transform [perspective:1200px] [transform-style:preserve-3d]">
-                <div className="[transform:rotateX(4deg)_rotateZ(-1deg)] md:[transform:rotateX(5deg)_rotateZ(-1deg)] transition-transform duration-500">
-                  <ComposableMap projection="geoMercator" projectionConfig={{ center: [12.8, 55.2], scale: 650 }} width={640} height={1024} style={{ width: "100%", height: "auto" }}>
-                    <Geographies geography={TOPO_JSON_URL}>
-                      {({ geographies }) => geographies
-                        // Render only EU countries, no deduplication to allow all polygons
-                        .map(geo => {
-                          const props: any = geo.properties || {}
-                          const rawCode: unknown = props.iso_a3 || props.ISO_A3 || props.ISO_A3_EH || props.ADM0_A3 || props.A3 || props.ISO3
-                          const rawName: unknown = props.name || props.NAME || props.NAME_EN
-                          const nameStr = typeof rawName === 'string' ? rawName : undefined
-                          const codeFromName = nameStr && NAME_TO_ISO3[nameStr]
-                          const code = (typeof rawCode === 'string' ? rawCode : codeFromName || '').toUpperCase()
-                          const isEu = code ? EU_ISO_CODES.has(code) : false
-                          if (!isEu) return null
-                          const data = code ? countryByCode.get(code) : undefined
-                          const fill = getCountryColor(data?.consentRate)
-                          return (
-                            <Geography
-                              key={geo.rsmKey}
-                              geography={geo}
-                              onMouseEnter={(evt) => {
-                                if (hideTimeout) {
-                                  clearTimeout(hideTimeout)
-                                  setHideTimeout(null)
-                                }
-                                const cr = data?.consentRate !== undefined ? `${Math.round((data!.consentRate) * 100)}%` : "n/a"
-                                const vf = data?.violationsFixed !== undefined ? `${data!.violationsFixed}` : "n/a"
-                                const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
-                                const newContent = `${label} — consent: ${cr}, fixed: ${vf}`
-                                
-                                console.log(`Mouse entered ${code}: ${label}`)
-                                // Clear tooltip first, then set new one to force re-render
-                                setTooltip(null)
-                                setTimeout(() => {
-                                  setTooltip({
-                                    x: evt.clientX,
-                                    y: evt.clientY,
-                                    content: newContent,
-                                    countryCode: code || 'unknown'
-                                  })
-                                }, 10)
-                              }}
-                              onMouseMove={(evt) => {
-                                if (tooltip) setTooltip({ ...tooltip, x: evt.clientX, y: evt.clientY })
-                              }}
-                              onMouseLeave={() => {
-                                // Keep tooltip visible - it will only hide when entering another country or clicking outside
-                              }}
-                              style={{
-                                default: { fill, outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" },
-                                hover: { fill: "#3B82F6", outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" },
-                                pressed: { fill: "#2563EB", outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" }
-                              }}
-                            />
-                          )
-                        })}
-                    </Geographies>
-                  </ComposableMap>
+            <div className="p-2 md:p-3">
+              <div className="relative w-full" style={{ maxWidth: '100%' }}>
+                <div className="relative transform-gpu will-change-transform [perspective:1200px] [transform-style:preserve-3d]">
+                  <div className="[transform:rotateX(4deg)_rotateZ(-1deg)] md:[transform:rotateX(5deg)_rotateZ(-1deg)] transition-transform duration-500">
+                    <ComposableMap projection="geoMercator" projectionConfig={{ center: [12.8, 55.2], scale: 650 }} width={640} height={1024} style={{ width: "100%", height: "auto" }}>
+                      <Geographies geography={TOPO_JSON_URL}>
+                        {({ geographies }) => geographies
+                          // Render only EU countries, no deduplication to allow all polygons
+                          .map(geo => {
+                            const props: any = geo.properties || {}
+                            const rawCode: unknown = props.iso_a3 || props.ISO_A3 || props.ISO_A3_EH || props.ADM0_A3 || props.A3 || props.ISO3
+                            const rawName: unknown = props.name || props.NAME || props.NAME_EN
+                            const nameStr = typeof rawName === 'string' ? rawName : undefined
+                            const codeFromName = nameStr && NAME_TO_ISO3[nameStr]
+                            const code = (typeof rawCode === 'string' ? rawCode : codeFromName || '').toUpperCase()
+                            const isEu = code ? EU_ISO_CODES.has(code) : false
+                            const isSpecial = code ? SPECIAL_INCLUDE.has(code) : false
+                            if (!isEu && !isSpecial) return null
+                            const data = code ? countryByCode.get(code) : undefined
+                            const fill = isSpecial ? "#F97316" : getCountryColor(data?.consentRate)
+                            return (
+                              <Geography
+                                key={geo.rsmKey}
+                                geography={geo}
+                                onMouseEnter={(evt) => {
+                                  if (hideTimeout) {
+                                    clearTimeout(hideTimeout)
+                                    setHideTimeout(null)
+                                  }
+                                  const cr = data?.consentRate !== undefined ? `${Math.round((data!.consentRate) * 100)}%` : "n/a"
+                                  const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
+                                  const sitesTxt = data?.sitesCount !== undefined ? formatNumber(data!.sitesCount) : 'n/a'
+                                  const risk = data && (data as any).fineRisk ? String((data as any).fineRisk).replace(/_/g,' ') : 'n/a'
+                                  const newContent = `${label} — consent: ${cr}, sites: ${sitesTxt}, risk: ${risk}`
+                                  
+                                  console.log(`Mouse entered ${code}: ${label}`)
+                                  // Clear tooltip first, then set new one to force re-render
+                                  setTooltip(null)
+                                  setTimeout(() => {
+                                    setTooltip({
+                                      x: evt.clientX,
+                                      y: evt.clientY,
+                                      content: newContent,
+                                      countryCode: code || 'unknown'
+                                    })
+                                  }, 10)
+                                  const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
+                                  const sites = typeof data?.sitesCount === 'number' ? data!.sitesCount : null
+                                  setSelected({ code: code || 'unknown', label, iso2, sitesCount: sites })
+                                }}
+                                onMouseMove={(evt) => {
+                                  if (tooltip) setTooltip({ ...tooltip, x: evt.clientX, y: evt.clientY })
+                                }}
+                                onMouseLeave={() => {
+                                  // Keep tooltip visible - it will only hide when entering another country or clicking outside
+                                }}
+                                style={{
+                                  default: { fill, outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
+                                  hover: { fill: isSpecial ? "#FB923C" : "#3B82F6", outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" },
+                                  pressed: { fill: isSpecial ? "#EA580C" : "#2563EB", outline: "none", stroke: isSpecial ? "#7C2D12" : "#FFFFFF", strokeWidth: isSpecial ? 1.2 : 0.4, vectorEffect: "non-scaling-stroke" }
+                                }}
+                              />
+                            )
+                          })}
+                      </Geographies>
+                    </ComposableMap>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {tooltip && <Tooltip key={tooltip.countryCode} x={tooltip.x} y={tooltip.y} content={tooltip.content} />}
+          <div className="relative rounded-3xl border border-gray-100 bg-white shadow-2xl overflow-hidden w-full" style={{ aspectRatio: '10 / 16' }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-50/40 to-transparent pointer-events-none" />
+            <div className="h-full p-4 md:p-5 flex flex-col items-center justify-start">
+              {selected ? (
+                <div className="text-center space-y-3">
+                  {selected.iso2 ? (
+                    <img
+                      src={`https://flagcdn.com/w80/${selected.iso2.toLowerCase()}.png`}
+                      alt={selected.label}
+                      className="mx-auto rounded shadow"
+                      width={80}
+                      height={60}
+                    />
+                  ) : (
+                    <div className="w-20 h-14 bg-gray-100 rounded mx-auto" />
+                  )}
+                  <div className="text-lg font-bold text-gray-900">{selected.label}</div>
+                  <div className="text-sm text-gray-600">Sites registered: {formatNumber(selected.sitesCount)}</div>
+                </div>
+              ) : (
+                <div className="text-center text-gray-500 text-sm">Hover a country to see info</div>
+              )}
+            </div>
+          </div>
         </div>
+
+        {tooltip && <Tooltip key={tooltip.countryCode} x={tooltip.x} y={tooltip.y} content={tooltip.content} />}
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
           <span className="inline-flex items-center gap-2"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: "#60A5FA" }} /> High consent (≥70%)</span>

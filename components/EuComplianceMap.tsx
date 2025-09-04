@@ -191,9 +191,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                 // Keep tooltip visible - it will only hide when entering another country or clicking outside
                               }}
                               style={{
-                                default: { fill, outline: "none", stroke: "#93C5FD", strokeWidth: 0.6 },
-                                hover: { fill: "#3B82F6", outline: "none" },
-                                pressed: { fill: "#2563EB", outline: "none" }
+                                default: { fill, outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" },
+                                hover: { fill: "#3B82F6", outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" },
+                                pressed: { fill: "#2563EB", outline: "none", stroke: "#FFFFFF", strokeWidth: 0.4, vectorEffect: "non-scaling-stroke" }
                               }}
                             />
                           )

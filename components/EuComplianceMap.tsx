@@ -227,9 +227,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-4">
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-1 leading-tight">{title}</h2>
-          <p className="text-base md:text-lg text-gray-600 font-semibold leading-tight">{subtitle}</p>
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2 leading-tight tracking-tight">{title}</h2>
+          <p className="text-xl md:text-2xl text-gray-700 font-medium leading-snug opacity-90">{subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -271,11 +271,8 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                     clearTimeout(hideTimeout)
                                     setHideTimeout(null)
                                   }
-                                  const cr = data?.consentRate !== undefined && data?.consentRate !== null ? `${Math.round((data!.consentRate) * 100)}%` : "n/a"
                                   const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
-                                  const sitesTxt = data?.sitesCount !== undefined ? formatNumber(data!.sitesCount) : 'n/a'
-                                  const risk = data && (data as any).fineRisk ? String((data as any).fineRisk).replace(/_/g,' ') : 'n/a'
-                                  const newContent = `${label} — consent: ${cr}, sites: ${sitesTxt}, risk: ${risk}`
+                                  const newContent = label
                                   
                                   console.log(`Mouse entered ${code}: ${label}`)
                                   // Clear tooltip first, then set new one to force re-render
@@ -309,31 +306,31 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                     fill, 
                                     outline: "none", 
                                     stroke: "#FFFFFF", 
-                                    strokeWidth: isSpecial ? 1.2 : 0.4, 
+                                    strokeWidth: isSpecial ? 1.2 : 0.6, 
                                     vectorEffect: "non-scaling-stroke", 
-                                    transition: "all 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+                                    transition: "transform 360ms cubic-bezier(0.16, 1, 0.3, 1), filter 360ms ease, fill 360ms ease",
                                     transform: "translateZ(0)",
                                     transformOrigin: "center"
                                   },
                                   hover: { 
                                     fill: fill, 
                                     outline: "none", 
-                                    stroke: "transparent", 
-                                    strokeWidth: isSpecial ? 1.2 : 0.4, 
+                                    stroke: "#FFFFFF", 
+                                    strokeWidth: isSpecial ? 1.2 : 0.6, 
                                     vectorEffect: "non-scaling-stroke", 
-                                    filter: "brightness(1.15) drop-shadow(0 6px 20px rgba(0,0,0,0.3))", 
+                                    filter: "brightness(1.06) drop-shadow(0 6px 16px rgba(0,0,0,0.18))", 
                                     cursor: "pointer",
-                                    transform: "translateY(-3px) scale(1.04)",
+                                    transform: "translateY(-1.5px) scale(1.012)",
                                     transformOrigin: "center"
                                   },
                                   pressed: { 
                                     fill, 
                                     outline: "none", 
-                                    stroke: "#F59E0B", 
-                                    strokeWidth: isSpecial ? 1.8 : 1.0, 
+                                    stroke: "#FFFFFF", 
+                                    strokeWidth: isSpecial ? 1.2 : 0.6, 
                                     vectorEffect: "non-scaling-stroke", 
-                                    filter: "brightness(0.95) drop-shadow(0 2px 8px rgba(0,0,0,0.2))",
-                                    transform: "translateY(-1px) scale(1.01)",
+                                    filter: "brightness(0.99) drop-shadow(0 3px 10px rgba(0,0,0,0.16))",
+                                    transform: "translateY(-0.75px) scale(1.006)",
                                     transformOrigin: "center"
                                   }
                                 }}

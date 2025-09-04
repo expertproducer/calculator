@@ -83,7 +83,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <EnhancedTestimonials content={content.testimonials} />
         
         {/* EU Compliance Map */}
-        <EuComplianceMap title="EU Cookie Compliance" subtitle="Hover a country to see consent stats" countries={countriesFromJson as any} />
+        <EuComplianceMap title="Hover a country" subtitle="to see info" countries={countriesFromJson as any} />
 
         <section id="contact">
           <Contact content={content.contact} />

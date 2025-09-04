@@ -1,8 +1,8 @@
 "use client"
 
-import { memo, useMemo, useState, useEffect } from 'react'
+import { memo, useMemo, useState, useEffect, useRef } from 'react'
 import { ComposableMap, Geographies, Geography, Marker, Graticule } from 'react-simple-maps'
-import { geoMercator, geoCentroid } from 'd3-geo'
+import { geoMercator, geoCentroid, geoArea } from 'd3-geo'
 
 type CountryInfo = {
   code: string
@@ -24,6 +24,7 @@ interface EuComplianceMapProps {
 
 // TopoJSON: All European countries (including Switzerland). Using world-atlas for full coverage.
 const TOPO_JSON_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"
+const TINY_AREA_THRESHOLD = 1e-4
 
 const EU_ISO_CODES = new Set([
   "AUT","BEL","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT","ROU","SVK","SVN","ESP","SWE"
@@ -179,6 +180,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     return () => document.head.removeChild(style)
   }, [])
   const [tooltip, setTooltip] = useState<{ x: number; y: number; content: string; countryCode: string } | null>(null)
+  const lastTooltipCountry = useRef<string | null>(null)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
   const [selected, setSelected] = useState<{ code: string; label: string; iso2: string | null; sitesCount: number | null; consentRate: number | null; regulator: string | null; fineRisk: string | null; violationsPattern: string[] | null; marketDensity: number | null } | null>(null)
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
@@ -188,6 +190,24 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     for (const c of countries) map.set(c.code.toUpperCase(), c)
     return map
   }, [countries])
+
+  // Hide tooltip on page scroll/resize/touch to avoid stale tooltip
+  useEffect(() => {
+    const hide = () => {
+      setTooltip(null)
+      setHoveredCountry(null)
+    }
+    window.addEventListener('scroll', hide)
+    window.addEventListener('resize', hide)
+    window.addEventListener('wheel', hide)
+    window.addEventListener('touchmove', hide)
+    return () => {
+      window.removeEventListener('scroll', hide)
+      window.removeEventListener('resize', hide)
+      window.removeEventListener('wheel', hide)
+      window.removeEventListener('touchmove', hide)
+    }
+  }, [])
 
   // Quantiles for sitesCount to color countries by volume (green → yellow → pink)
   const sitesQuantiles = useMemo(() => {
@@ -273,6 +293,10 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                         {({ geographies }) => geographies
                           // Render only EU countries, no deduplication to allow all polygons
                           .map(geo => {
+                            try {
+                              const a = geoArea(geo as any)
+                              if (a < TINY_AREA_THRESHOLD) return null
+                            } catch {}
                             const props: any = geo.properties || {}
                             const rawCode: unknown = props.iso_a3 || props.ISO_A3 || props.ISO_A3_EH || props.ADM0_A3 || props.A3 || props.ISO3
                             const rawName: unknown = props.name || props.NAME || props.NAME_EN
@@ -292,6 +316,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                 geography={geo}
                                 className={hoveredCountry === code ? 'country-hover-animation' : ''}
                                 onMouseEnter={(evt) => {
+                                  // Filter out very small polygons from hover interactions
+                                  if (geo.properties.rsmArea < 0.0001) return;
+                                  
                                   setHoveredCountry(code || null)
                                   if (hideTimeout) {
                                     clearTimeout(hideTimeout)
@@ -301,16 +328,13 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   const newContent = label
                                   
                                   console.log(`Mouse entered ${code}: ${label}`)
-                                  // Clear tooltip first, then set new one to force re-render
-                                  setTooltip(null)
-                                  setTimeout(() => {
-                                    setTooltip({
-                                      x: evt.clientX,
-                                      y: evt.clientY,
-                                      content: newContent,
-                                      countryCode: code || 'unknown'
-                                    })
-                                  }, 10)
+                                  lastTooltipCountry.current = code || null
+                                  setTooltip({
+                                    x: evt.clientX,
+                                    y: evt.clientY,
+                                    content: newContent,
+                                    countryCode: code || 'unknown'
+                                  })
                                   const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
                                   const sites = typeof data?.sitesCount === 'number' ? data!.sitesCount : null
                                   const consentRate = typeof data?.consentRate === 'number' ? data!.consentRate : null
@@ -321,11 +345,17 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   setSelected({ code: code || 'unknown', label, iso2, sitesCount: sites, consentRate, regulator, fineRisk, violationsPattern, marketDensity })
                                 }}
                                 onMouseMove={(evt) => {
-                                  if (tooltip) setTooltip({ ...tooltip, x: evt.clientX, y: evt.clientY })
+                                  // Only update tooltip position if we're already showing this country
+                                  if (tooltip && tooltip.countryCode === (code || 'unknown')) {
+                                    // Throttle tooltip movement to ~60fps
+                                    if (Date.now() - (tooltip as any).lastMove > 16) {
+                                      setTooltip({ ...tooltip, x: evt.clientX, y: evt.clientY, lastMove: Date.now() });
+                                    }
+                                  }
                                 }}
                                 onMouseLeave={() => {
                                   setHoveredCountry(null)
-                                  // Keep tooltip visible - it will only hide when entering another country or clicking outside
+                                  setTooltip(null)
                                 }}
                                 style={{
                                   default: { 

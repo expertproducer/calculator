@@ -204,6 +204,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
   const lastTooltipCountry = useRef<string | null>(null)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
   const [selected, setSelected] = useState<{ code: string; label: string; iso2: string | null; sitesCount: number | null; consentRate: number | null; regulator: string | null; fineRisk: string | null; violationsPattern: string[] | null; marketDensity: number | null } | null>(null)
+  const [pinnedCode, setPinnedCode] = useState<string | null>(null)
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
 
   const countryByCode = useMemo(() => {
@@ -290,6 +291,8 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
         // Hide tooltip when clicking outside the map
         if (e.target === e.currentTarget) {
           setTooltip(null)
+          setPinnedCode(null)
+          setSelected(null)
         }
       }}
     >
@@ -365,7 +368,9 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   const fineRisk = (data as any)?.fineRisk ? String((data as any).fineRisk) : null
                                   const violationsPattern = Array.isArray((data as any)?.violationsPattern) ? (data as any).violationsPattern as string[] : null
                                   const marketDensity = typeof (data as any)?.marketDensity === 'number' ? (data as any).marketDensity as number : null
-                                  setSelected({ code: code || 'unknown', label, iso2, sitesCount: sites, consentRate, regulator, fineRisk, violationsPattern, marketDensity })
+                                  if (!pinnedCode) {
+                                    setSelected({ code: code || 'unknown', label, iso2, sitesCount: sites, consentRate, regulator, fineRisk, violationsPattern, marketDensity })
+                                  }
                                 }}
                                 onMouseMove={(evt) => {
                                   // Only update tooltip position if we're already showing this country
@@ -376,9 +381,29 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                     }
                                   }
                                 }}
+                                onClick={() => {
+                                  const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
+                                  const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
+                                  const sites = typeof data?.sitesCount === 'number' ? data!.sitesCount : null
+                                  const consentRate = typeof data?.consentRate === 'number' ? data!.consentRate : null
+                                  const regulator = (data as any)?.regulator ? String((data as any).regulator) : null
+                                  const fineRisk = (data as any)?.fineRisk ? String((data as any).fineRisk) : null
+                                  const violationsPattern = Array.isArray((data as any)?.violationsPattern) ? (data as any).violationsPattern as string[] : null
+                                  const marketDensity = typeof (data as any)?.marketDensity === 'number' ? (data as any).marketDensity as number : null
+                                  if (pinnedCode === code) {
+                                    setPinnedCode(null)
+                                    setSelected(null)
+                                  } else {
+                                    setPinnedCode(code || null)
+                                    setSelected({ code: code || 'unknown', label, iso2, sitesCount: sites, consentRate, regulator, fineRisk, violationsPattern, marketDensity })
+                                  }
+                                }}
                                 onMouseLeave={() => {
                                   setHoveredCountry(null)
                                   setTooltip(null)
+                                  if (!pinnedCode) {
+                                    setSelected(null)
+                                  }
                                 }}
                                 style={{
                                   default: { 

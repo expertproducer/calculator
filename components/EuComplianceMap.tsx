@@ -32,6 +32,8 @@ const EU_ISO_CODES = new Set([
 
 // Non‑EU countries we still want to display alongside EU
 const SPECIAL_INCLUDE = new Set(["CHE"]) // Switzerland
+// Always include tiny EU countries that might fall under area threshold
+const ALWAYS_INCLUDE_TINY = new Set(["LUX"]) // Luxembourg
 
 // Fallback mapping from common English names to ISO3 codes (for world-atlas properties without iso_a3)
 const NAME_TO_ISO3: Record<string, string> = {
@@ -148,13 +150,32 @@ function getDensityTextClass(value: number | null): string {
   return 'text-slate-700'
 }
 
-function Tooltip({ x, y, content }: { x: number; y: number; content: string }) {
+function Tooltip({ x, y, content, iso2 }: { x: number; y: number; content: string; iso2?: string | null }) {
   return (
     <div
       className="pointer-events-none fixed z-50 rounded-xl bg-white/90 px-3 py-2 text-sm font-medium text-gray-900 shadow-2xl border border-gray-200 backdrop-blur"
       style={{ left: x + 12, top: y + 12 }}
     >
-      {content}
+      <div className="flex items-center gap-2">
+        {iso2 ? (
+          <img
+            src={`https://flagcdn.com/${iso2.toLowerCase()}.svg`}
+            onError={(e) => {
+              const t = e.target as HTMLImageElement
+              if (!t.dataset.fallback) {
+                t.dataset.fallback = '1'
+                t.src = `https://flagcdn.com/w40/${iso2.toLowerCase()}.png`
+              }
+            }}
+            alt={content}
+            width={18}
+            height={12}
+            className="rounded-[2px] shadow-sm"
+            loading="eager"
+          />
+        ) : null}
+        <span>{content}</span>
+      </div>
     </div>
   )
 }
@@ -179,7 +200,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     document.head.appendChild(style)
     return () => document.head.removeChild(style)
   }, [])
-  const [tooltip, setTooltip] = useState<{ x: number; y: number; content: string; countryCode: string } | null>(null)
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; content: string; countryCode: string; iso2?: string | null; lastMove?: number } | null>(null)
   const lastTooltipCountry = useRef<string | null>(null)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
   const [selected, setSelected] = useState<{ code: string; label: string; iso2: string | null; sitesCount: number | null; consentRate: number | null; regulator: string | null; fineRisk: string | null; violationsPattern: string[] | null; marketDensity: number | null } | null>(null)
@@ -231,8 +252,8 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     DNK: 'rgba(198, 12, 48, 0.8)',     // Дания: красный
     EST: 'rgba(0, 114, 206, 0.8)',     // Эстония: синий
     FIN: 'rgba(0, 47, 108, 0.8)',      // Финляндия: синий
-    FRA: 'rgba(0, 146, 70, 0.9)',      // Франция: тёмно-зелёный
-    DEU: 'rgba(176, 135, 0, 0.9)',     // Германия: тёмно-жёлтый
+    FRA: 'rgba(198, 11, 30, 0.85)',     // Франция: красный
+    DEU: 'rgba(255, 206, 0, 0.9)',     // Германия: жёлтый (цвет флага)
     GRC: 'rgba(13, 94, 175, 0.8)',     // Греция: синий
     HUN: 'rgba(205, 42, 62, 0.8)',     // Венгрия: красный
     IRL: 'rgba(22, 155, 98, 0.8)',     // Ирландия: зеленый
@@ -247,7 +268,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     ROU: 'rgba(0, 43, 127, 0.8)',      // Румыния: синий
     SVK: 'rgba(238, 28, 37, 0.8)',     // Словакия: красный
     SVN: 'rgba(237, 41, 57, 0.8)',     // Словения: красный
-    ESP: 'rgba(198, 11, 30, 0.8)',     // Испания: красный
+    ESP: 'rgba(234, 118, 0, 0.85)',     // Испания: оранжевый
     SWE: 'rgba(0, 106, 167, 0.8)'      // Швеция: синий
   }
 
@@ -293,10 +314,6 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                         {({ geographies }) => geographies
                           // Render only EU countries, no deduplication to allow all polygons
                           .map(geo => {
-                            try {
-                              const a = geoArea(geo as any)
-                              if (a < TINY_AREA_THRESHOLD) return null
-                            } catch {}
                             const props: any = geo.properties || {}
                             const rawCode: unknown = props.iso_a3 || props.ISO_A3 || props.ISO_A3_EH || props.ADM0_A3 || props.A3 || props.ISO3
                             const rawName: unknown = props.name || props.NAME || props.NAME_EN
@@ -305,6 +322,11 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                             const code = (typeof rawCode === 'string' ? rawCode : codeFromName || '').toUpperCase()
                             const isEu = code ? EU_ISO_CODES.has(code) : false
                             const isSpecial = code ? SPECIAL_INCLUDE.has(code) : false
+                            // Skip truly tiny shapes unless explicitly allowed (e.g., Luxembourg)
+                            try {
+                              const a = geoArea(geo as any)
+                              if (a < TINY_AREA_THRESHOLD && !ALWAYS_INCLUDE_TINY.has(code)) return null
+                            } catch {}
                             if (!isEu && !isSpecial) return null
                             const data = code ? countryByCode.get(code) : undefined
                                                          const fill = getFlagFill(code)
@@ -314,10 +336,10 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                               <Geography
                                 key={geo.rsmKey}
                                 geography={geo}
-                                className={hoveredCountry === code ? 'country-hover-animation' : ''}
+                                
                                 onMouseEnter={(evt) => {
-                                  // Filter out very small polygons from hover interactions
-                                  if (geo.properties.rsmArea < 0.0001) return;
+                                  // Filter out very small polygons from hover interactions, but keep Luxembourg active
+                                  if (geo.properties.rsmArea < 0.0001 && code !== 'LUX') return;
                                   
                                   setHoveredCountry(code || null)
                                   if (hideTimeout) {
@@ -329,13 +351,14 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                   
                                   console.log(`Mouse entered ${code}: ${label}`)
                                   lastTooltipCountry.current = code || null
+                                  const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
                                   setTooltip({
                                     x: evt.clientX,
                                     y: evt.clientY,
                                     content: newContent,
-                                    countryCode: code || 'unknown'
+                                    countryCode: code || 'unknown',
+                                    iso2
                                   })
-                                  const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
                                   const sites = typeof data?.sitesCount === 'number' ? data!.sitesCount : null
                                   const consentRate = typeof data?.consentRate === 'number' ? data!.consentRate : null
                                   const regulator = (data as any)?.regulator ? String((data as any).regulator) : null
@@ -374,7 +397,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                     stroke: "#FFFFFF", 
                                     strokeWidth: isSpecial ? 1.2 : 0.6, 
                                     vectorEffect: "non-scaling-stroke", 
-                                    filter: "brightness(1.06) drop-shadow(0 6px 16px rgba(0,0,0,0.18))", 
+                                    filter: code === 'DEU' ? "brightness(1.02) drop-shadow(0 6px 16px rgba(0,0,0,0.18))" : "brightness(1.06) drop-shadow(0 6px 16px rgba(0,0,0,0.18))", 
                                     cursor: "pointer",
                                     transform: "translateY(-1.5px) scale(1.012)",
                                     transformOrigin: "center"
@@ -385,7 +408,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                                     stroke: "#FFFFFF", 
                                     strokeWidth: isSpecial ? 1.2 : 0.6, 
                                     vectorEffect: "non-scaling-stroke", 
-                                    filter: "brightness(0.99) drop-shadow(0 3px 10px rgba(0,0,0,0.16))",
+                                    filter: code === 'DEU' ? "brightness(0.995) drop-shadow(0 3px 10px rgba(0,0,0,0.16))" : "brightness(0.99) drop-shadow(0 3px 10px rgba(0,0,0,0.16))",
                                     transform: "translateY(-0.75px) scale(1.006)",
                                     transformOrigin: "center"
                                   }
@@ -484,7 +507,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
           </div>
         </div>
 
-        {tooltip && <Tooltip key={tooltip.countryCode} x={tooltip.x} y={tooltip.y} content={tooltip.content} />}
+        {tooltip && <Tooltip key={tooltip.countryCode} x={tooltip.x} y={tooltip.y} content={tooltip.content} iso2={tooltip.iso2} />}
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
           <span className="inline-flex items-center gap-2">

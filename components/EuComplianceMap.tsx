@@ -121,6 +121,32 @@ function formatNumber(value?: number | null): string {
   }
 }
 
+// Color helpers for ratings/badges
+function getRiskClasses(risk?: string | null): { container: string; text: string } {
+  const r = (risk || '').toLowerCase()
+  if (r === 'low') return { container: 'bg-green-50 border-green-200', text: 'text-green-700' }
+  if (r === 'low_medium') return { container: 'bg-lime-50 border-lime-200', text: 'text-lime-700' }
+  if (r === 'medium') return { container: 'bg-amber-50 border-amber-200', text: 'text-amber-700' }
+  if (r === 'medium_high') return { container: 'bg-orange-50 border-orange-200', text: 'text-orange-700' }
+  if (r === 'high') return { container: 'bg-red-50 border-red-200', text: 'text-red-700' }
+  return { container: 'bg-gray-50 border-gray-200', text: 'text-gray-700' }
+}
+
+function getConsentTextClass(rate: number | null): string {
+  if (rate === null || Number.isNaN(rate)) return 'text-gray-800'
+  if (rate >= 70) return 'text-green-700'
+  if (rate >= 50) return 'text-amber-700'
+  return 'text-red-700'
+}
+
+function getDensityTextClass(value: number | null): string {
+  if (value === null || Number.isNaN(value)) return 'text-gray-800'
+  if (value >= 250) return 'text-indigo-700'
+  if (value >= 150) return 'text-blue-700'
+  if (value >= 80) return 'text-cyan-700'
+  return 'text-slate-700'
+}
+
 function Tooltip({ x, y, content }: { x: number; y: number; content: string }) {
   return (
     <div
@@ -386,21 +412,23 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                   </div>
 
                   <div className="mx-auto max-w-sm grid grid-cols-1 gap-3 md:gap-4 w-full">
-                    <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                    <div className={`rounded-lg border px-3 py-2 bg-white ${getConsentTextClass(selected.consentRate)} border-gray-200`}>
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Consent rate</div>
-                      <div className="text-base md:text-lg font-semibold text-gray-800">{selected.consentRate !== null ? `${Math.round(selected.consentRate * 100)}%` : 'n/a'}</div>
+                      <div className={`text-base md:text-lg font-extrabold`}>{selected.consentRate !== null ? `${Math.round(selected.consentRate)}%` : 'n/a'}</div>
                     </div>
                     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Regulator</div>
                       <div className="text-sm md:text-base font-semibold text-gray-800 break-words">{selected.regulator || 'n/a'}</div>
                     </div>
-                    <div className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 inline-flex items-center justify-center mx-auto">
-                      <span className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mr-2">Fine risk</span>
-                      <span className="text-sm md:text-base font-semibold text-gray-800">{selected.fineRisk ? selected.fineRisk.replace(/_/g,' ') : 'n/a'}</span>
-                    </div>
-                    <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                    {(() => { const c = getRiskClasses(selected.fineRisk); return (
+                      <div className={`rounded-full border px-3 py-1.5 inline-flex items-center justify-center mx-auto ${c.container}`}>
+                        <span className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mr-2">Fine risk</span>
+                        <span className={`text-sm md:text-base font-semibold ${c.text}`}>{selected.fineRisk ? selected.fineRisk.replace(/_/g,' ') : 'n/a'}</span>
+                      </div>
+                    )})()}
+                    <div className={`rounded-lg border px-3 py-2 bg-white`}>
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Market density</div>
-                      <div className="text-base md:text-lg font-semibold text-gray-800">{selected.marketDensity !== null ? `${selected.marketDensity}` : 'n/a'}</div>
+                      <div className={`text-base md:text-lg font-semibold ${getDensityTextClass(selected.marketDensity)}`}>{selected.marketDensity !== null ? `${selected.marketDensity}` : 'n/a'}</div>
                     </div>
                     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mb-1">Violations pattern</div>
@@ -417,7 +445,10 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                   </div>
                 </div>
               ) : (
-                <div className="text-center text-gray-500 text-sm">Hover a country to see info</div>
+                <div className="w-full h-full flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                  <div className="text-2xl md:text-3xl font-extrabold text-gray-900">Hover a country</div>
+                  <div className="text-sm md:text-base text-gray-600">to see stats</div>
+                </div>
               )}
             </div>
           </div>

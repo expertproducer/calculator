@@ -140,10 +140,10 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
           <div className="absolute inset-0 bg-gradient-to-t from-blue-50/40 to-transparent pointer-events-none" />
 
           <div className="p-4 md:p-8">
-            <div className="relative mx-auto w-full" style={{ maxWidth: 820 }}>
+            <div className="relative mx-auto w-full" style={{ maxWidth: 450 }}>
               <div className="relative transform-gpu will-change-transform [perspective:1200px] [transform-style:preserve-3d]">
                 <div className="[transform:rotateX(4deg)_rotateZ(-1deg)] md:[transform:rotateX(5deg)_rotateZ(-1deg)] transition-transform duration-500">
-                  <ComposableMap projection="geoMercator" projectionConfig={{ center: [15, 55], scale: 540 }} width={780} height={440} style={{ width: "100%", height: "auto" }}>
+                  <ComposableMap projection="geoMercator" projectionConfig={{ center: [15, 55], scale: 500 }} width={450} height={800} style={{ width: "100%", height: "auto" }}>
                     <Geographies geography={TOPO_JSON_URL}>
                       {({ geographies }) => geographies
                         // Render only EU countries, no deduplication to allow all polygons

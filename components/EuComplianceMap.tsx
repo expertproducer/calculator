@@ -1,6 +1,7 @@
 "use client"
 
 import { memo, useMemo, useState, useEffect, useRef } from 'react'
+import Container from './Container'
 import { ComposableMap, Geographies, Geography, Marker, Graticule } from 'react-simple-maps'
 import { geoMercator, geoCentroid, geoArea } from 'd3-geo'
 
@@ -296,7 +297,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
         }
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <Container>
         <div className="text-center mb-6 md:mb-8">
           <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2 leading-tight tracking-tight">{title}</h2>
           <p className="text-xl md:text-2xl text-gray-700 font-medium leading-snug opacity-90">{subtitle}</p>
@@ -552,7 +553,7 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
             Швейцария
           </span>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Container from './Container'
 import { CheckCircle, Circle, AlertCircle, Target, TrendingUp } from 'lucide-react'
 
 interface ChecklistItem {
@@ -165,14 +166,14 @@ export default function GDPRChecklist({ content, locale }: GDPRChecklistProps) {
 
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-4">
             <Target className="w-8 h-8 text-blue-600" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">{content.title}</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{content.subtitle}</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto prose">{content.subtitle}</p>
         </div>
 
         {/* Progress Summary */}
@@ -229,7 +230,7 @@ export default function GDPRChecklist({ content, locale }: GDPRChecklistProps) {
             </a>
           </div>
         )}
-      </div>
+      </Container>
     </div>
   )
 }

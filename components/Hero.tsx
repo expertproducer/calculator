@@ -3,6 +3,7 @@
 import { ShieldCheck } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
 import VideoBackground from './VideoBackground'
+import Container from './Container'
 
 interface HeroProps {
   content: {
@@ -51,7 +52,8 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
         <VideoBackground />
         
         {/* Main Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
+        <Container>
+        <div className="relative z-10 pt-32 pb-16">
           
           {/* Hero Content - Centered */}
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
@@ -90,6 +92,7 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
 
           </div>
         </div>
+        </Container>
         
         {/* Убираем лишние декоративные элементы для чистоты */}
       </section>
@@ -97,7 +100,7 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
       {/* Problems Section - Process Page Style */}
       {content.problem && (
         <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
-          <div className="max-w-7xl mx-auto px-6">
+          <Container>
             
             {/* Section Header */}
             <div className="text-center mb-20">
@@ -129,7 +132,7 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
                 <span className="drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">{content.solutionText || 'We solve all these problems'}</span>
               </div>
             </div>
-          </div>
+          </Container>
         </section>
       )}
     </>

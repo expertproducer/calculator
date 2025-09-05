@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Mail, Clock, MapPin, Rocket, Send, Star, CheckCircle, ArrowRight, User, Globe, Code } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import Container from './Container'
 
 interface ContactProps {
   content: {
@@ -66,7 +67,7 @@ export default function Contact({ content }: ContactProps) {
 
   return (
     <section id="contact" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <Container>
         
         {/* Header - Process Page style */}
         <div className="text-center mb-20">
@@ -307,7 +308,7 @@ export default function Contact({ content }: ContactProps) {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

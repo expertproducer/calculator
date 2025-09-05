@@ -139,7 +139,7 @@ export default function Navbar({ locale }: { locale: string }) {
         ? 'bg-white/95 backdrop-blur-sm shadow-2xl border-b border-gray-100' 
         : 'bg-white/90 backdrop-blur-sm'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <button 

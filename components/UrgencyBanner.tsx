@@ -22,7 +22,7 @@ export default function UrgencyBanner({ content, locale = 'en' }: UrgencyBannerP
 
   return (
     <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto w-full max-w-[1280px] px-5">
         <div className="text-center">
           {/* Urgency Icon */}
           <div className="flex justify-center mb-8">

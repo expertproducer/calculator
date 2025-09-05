@@ -1,6 +1,7 @@
 'use client'
 import { Star, Quote, CheckCircle, Building2 } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import Container from './Container'
 import OptimizedImage from './OptimizedImage'
 
 interface TestimonialsProps {
@@ -36,7 +37,7 @@ export default function EnhancedTestimonials({ content }: TestimonialsProps) {
 
   return (
     <section id="testimonials" className="py-24 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <Container>
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
@@ -103,7 +104,7 @@ export default function EnhancedTestimonials({ content }: TestimonialsProps) {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

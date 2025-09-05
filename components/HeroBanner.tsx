@@ -19,7 +19,7 @@ export default function HeroBanner({ content }: HeroBannerProps) {
   const imageAlt = content.image?.alt || 'GDPR fines risk banner'
   return (
     <section id="audit" className="relative py-16 px-4 text-white bg-black">
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative mx-auto w-full max-w-[1280px] px-5">
         <div className="mb-10">
           <div className="relative w-full aspect-[16/9] overflow-hidden">
             <Image

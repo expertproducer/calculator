@@ -1,5 +1,6 @@
 import { Shield, AlertTriangle, Users, TrendingUp, Star, CheckCircle } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import Container from './Container'
 
 interface WhyImportantProps {
   content: {
@@ -17,7 +18,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
 
   return (
     <section id="why-important" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <Container>
         
         {/* Header - Process Page style */}
         <div className="text-center mb-20">
@@ -25,7 +26,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
             {content.title}
           </h2>
           
-          <p className="text-lg text-gray-600 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-5xl mx-auto leading-relaxed prose">
             <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
         </div>
@@ -78,7 +79,7 @@ export default function WhyImportant({ content }: WhyImportantProps) {
             </p>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

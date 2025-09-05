@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Container from './Container'
 import ReactCountryFlag from 'react-country-flag'
 import rawChartsData from '../eu_gdpr_charts_v3.json'
 
@@ -194,6 +195,7 @@ export default function EuGdprCharts() {
 
   return (
     <section className="py-12 bg-white">
+      <Container>
       <motion.div 
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
@@ -1015,6 +1017,7 @@ export default function EuGdprCharts() {
           )}
         </AnimatePresence>
       </motion.div>
+      </Container>
     </section>
   )
 }

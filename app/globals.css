@@ -128,6 +128,11 @@ body {
   padding: 0 var(--spacing-md);
 }
 
+/* Readable text width */
+.prose {
+  max-width: 70ch;
+}
+
 /* Typography - Clean and readable */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);

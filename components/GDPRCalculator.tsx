@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Container from './Container'
 import { Calculator, CheckCircle, Euro, ArrowRight } from 'lucide-react'
 
 interface Service {
@@ -162,6 +163,7 @@ export default function ServiceCalculator({ content }: ServiceCalculatorProps) {
   }
 
   return (
+    <Container>
     <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-4">
@@ -213,5 +215,6 @@ export default function ServiceCalculator({ content }: ServiceCalculatorProps) {
         )}
       </div>
     </div>
+    </Container>
   )
 }

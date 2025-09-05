@@ -82,7 +82,7 @@ const formatText = (text: string) => {
 export default function Services({ content }: ServicesProps) {
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto w-full max-w-[1280px] px-5">
         
         {/* Header - Enhanced with better visual hierarchy */}
         <div className="text-center mb-20">

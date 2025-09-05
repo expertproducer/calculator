@@ -1,5 +1,6 @@
 import { ArrowRight, Clock, Star, Zap } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import Container from './Container'
 
 interface FinalCTAProps {
   content?: {
@@ -18,7 +19,8 @@ interface FinalCTAProps {
 export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <Container>
+      <div className="text-center">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
             {content?.title || 'Ready to get compliant?'}
@@ -49,6 +51,7 @@ export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
 
         </div>
       </div>
+      </Container>
     </section>
   )
 }

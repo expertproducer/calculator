@@ -20,7 +20,7 @@ export default function CaseStudies({ content, locale = 'en' }: CaseStudiesProps
 
   return (
     <section id="cases" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto w-full max-w-[1280px] px-5">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
             {content.title}

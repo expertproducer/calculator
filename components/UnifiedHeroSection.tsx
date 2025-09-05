@@ -2,6 +2,7 @@
 
 import { ShieldCheck, Flame, Shield, AlertTriangle, Users, TrendingUp, CheckCircle, ArrowUp, ShoppingCart, Newspaper, Cloud, Clock } from 'lucide-react'
 import { formatSimpleText } from '../lib/textFormatting'
+import Container from './Container'
 import VideoBackground from './VideoBackground'
 import HeroBanner from './HeroBanner'
 
@@ -86,7 +87,8 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
         <VideoBackground />
         
         {/* Main Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16">
+        <Container>
+        <div className="relative z-10 pt-32 pb-16">
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
             
             {/* Main Headline */}
@@ -121,6 +123,7 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
             </div>
           </div>
         </div>
+        </Container>
       </div>
 
       {/* Banner directly after hero video */}
@@ -128,7 +131,7 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
 
       {/* Unified Content Section */}
       <div className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <Container>
           
                      {/* Problems Section */}
            {content.hero.problem && (
@@ -409,7 +412,7 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               </div>
               
             </div>
-        </div>
+        </Container>
       </div>
     </div>
   )

@@ -25,7 +25,7 @@ export default function Testimonials({ content }: TestimonialsProps) {
 
   return (
     <section id="testimonials" className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto w-full max-w-[1280px] px-5">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
           <p className="text-xl text-gray-600">Real results from real businesses</p>

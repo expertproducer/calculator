@@ -303,7 +303,7 @@
     "title": "⚠️ Fines up to €20,000 for non-compliant cookie banners",
     "description": "70% of EU websites violate GDPR today. Regulators check in minutes — fines may come without warning.",
     "button": "Check my site now",
-    "image": { "src": "/images/gdpr_fine_2025.webp", "alt": "GDPR fines risk banner" }
+    "image": { "src": "/images/dsgvo_bussgeld_2025.webp", "alt": "GDPR fines risk banner" }
   },
   "finesLinks": {
     "title": "Real GDPR Fines and Cases",

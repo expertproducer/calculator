@@ -106,6 +106,31 @@ body {
   background-color: var(--bg);
 }
 
+/* Site frame wrapper */
+.site-frame {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  overflow: clip;
+}
+
+/* Subtle scaling on ultra-wide screens to keep whole page in view */
+@media (min-width: 1600px) {
+  .site-frame {
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+}
+@media (min-width: 1920px) {
+  .site-frame { transform: scale(0.86); }
+}
+@media (min-width: 2560px) {
+  .site-frame { transform: scale(0.78); }
+}
+
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--primary);
@@ -236,6 +261,20 @@ body {
 
 .section-alt {
   background-color: #f9fafb;
+}
+
+/* Fluid typography for hero (caps max size on ultrawide) */
+.text-fluid-hero {
+  font-size: clamp(34px, 4vw, 56px);
+}
+.text-fluid-hero-blue {
+  font-size: clamp(32px, 3.6vw, 52px);
+}
+.text-fluid-hero-gray {
+  font-size: clamp(28px, 3.2vw, 46px);
+}
+.text-fluid-subtitle {
+  font-size: clamp(18px, 2.2vw, 26px);
 }
 
 @media (prefers-color-scheme: dark) {

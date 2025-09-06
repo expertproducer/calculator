@@ -45,7 +45,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <div className="site-frame">
+          {children}
+        </div>
       </body>
     </html>
   )

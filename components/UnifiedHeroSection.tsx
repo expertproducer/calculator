@@ -92,16 +92,16 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
           <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
             
             {/* Main Headline */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight mb-16 mt-20 drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_40%)]">
+            <h1 className="text-fluid-hero font-black text-white leading-tight tracking-tight mb-16 mt-20 drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_40%)]">
               {content.hero.headline || 'Every Business Needs'} 
-              <span className="text-blue-300 block drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.hero.headlineBlue || 'Cookie Compliance'}</span>
-              <span className="text-gray-200 block text-5xl md:text-6xl lg:text-7xl font-black mt-6 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
+              <span className="text-blue-300 block text-fluid-hero-blue drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.hero.headlineBlue || 'Cookie Compliance'}</span>
+              <span className="text-gray-200 block text-fluid-hero-gray font-black mt-6 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
                 {content.hero.headlineGray || 'That Actually Works!'}
               </span>
             </h1>
             
             {/* Subtitle */}
-            <p className="text-3xl md:text-4xl text-gray-200 leading-relaxed max-w-5xl mb-20 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)] font-black">
+            <p className="text-fluid-subtitle text-gray-200 leading-relaxed max-w-5xl mb-20 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)] font-black">
               <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.hero.subtitle) }} />
             </p>
             

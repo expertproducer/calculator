@@ -76,11 +76,11 @@ export default function Process({ content }: ProcessProps) {
         <div className="text-center mb-20">
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-10 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
-            {content.title || 'Our Process'}
+            {content.title}
           </h1>
           
           <p className="text-2xl md:text-3xl font-semibold text-gray-700 max-w-4xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-            {content.subtitle || 'Our proven 5-step process ensures seamless CMP deployment with minimal disruption'}
+            {content.subtitle}
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function Process({ content }: ProcessProps) {
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-tight drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
-              {content.whyWorksTitle || 'Why Our Process Works'}
+              {content.whyWorksTitle}
             </h2>
           </div>
           
@@ -98,10 +98,10 @@ export default function Process({ content }: ProcessProps) {
                 <Calculator className="text-white w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-                {content.systematicTitle || 'Systematic'}
+                {content.systematicTitle}
               </h3>
               <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-                {content.systematicDesc || 'Step-by-step approach ensures nothing is missed'}
+                {content.systematicDesc}
               </p>
               <div className="mt-6 flex justify-center">
                 <CheckCircle className="text-green-500 w-6 h-6" />
@@ -113,7 +113,7 @@ export default function Process({ content }: ProcessProps) {
                 <Clock className="text-white w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-                {content.efficientTitle || 'Efficient'}
+                {content.efficientTitle}
               </h3>
               <p className="text-lg font-medium text-gray-600 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                 {content.efficientDesc || 'Optimized workflow saves time and resources'}

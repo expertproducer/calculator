@@ -23,11 +23,11 @@ export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
       <div className="text-center">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-            {content?.title || 'Ready to get compliant?'}
+            {content?.title}
           </h2>
           
           <p className="text-lg text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed">
-            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content?.subtitle || 'Transform your cookie banners from legal liability into user-friendly compliance. No dark patterns, just clean implementation.') }} />
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content?.subtitle) }} />
           </p>
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
@@ -35,7 +35,7 @@ export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
               href={locale === 'en' ? '/contact' : `/${locale}/contact`}
               className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
             >
-              <span>{content?.cta?.primary || 'Fix my banner'}</span>
+              <span>{content?.cta?.primary}</span>
               <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)] transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             
@@ -43,7 +43,7 @@ export default function FinalCTA({ content, locale = 'en' }: FinalCTAProps) {
               href={locale === 'en' ? '/services' : `/${locale}/services`}
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-gray-900 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold text-xl transform hover:scale-105 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]"
             >
-              <span>{content?.cta?.secondary || 'Free quick check'}</span>
+              <span>{content?.cta?.secondary}</span>
               <Zap className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)] transition-transform duration-300 group-hover:scale-110" />
             </a>
           </div>

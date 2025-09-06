@@ -33,11 +33,11 @@ export default function UrgencyBanner({ content, locale = 'en' }: UrgencyBannerP
           
           {/* Main Message */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
-            {content.title || 'Limited Time Offer'}
+            {content.title}
           </h2>
           
           <p className="text-2xl md:text-3xl mb-8 max-w-4xl mx-auto font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle || 'Don\'t wait until you get fined. Get GDPR compliant today!') }} />
+            <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.subtitle) }} />
           </p>
           
           {/* Offer Details */}

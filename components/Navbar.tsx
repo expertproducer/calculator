@@ -12,15 +12,7 @@ type NavbarLabels = {
   faq: string
   contact: string
   blog: string
-}
-
-const EN_FALLBACK: NavbarLabels = {
-  services: 'Services',
-  process: 'Process',
-  pricing: 'Pricing',
-  faq: 'FAQ',
-  contact: 'Contact',
-  blog: 'Blog'
+  languagesTitle?: string
 }
 
 export default function Navbar({ locale }: { locale: string }) {
@@ -50,19 +42,27 @@ export default function Navbar({ locale }: { locale: string }) {
     }
   }, [showLanguageMenu])
 
-  const [labels, setLabels] = useState<NavbarLabels>(EN_FALLBACK)
+  const [labels, setLabels] = useState<NavbarLabels>({
+    services: '',
+    process: '',
+    pricing: '',
+    faq: '',
+    contact: '',
+    blog: ''
+  })
 
   useEffect(() => {
     let mounted = true
     ;(async () => {
       try {
         console.log('Loading translations for locale:', locale)
-        const content = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
-        console.log('Loaded content:', content?.navbar)
-        const nav = (content?.navbar || {}) as Partial<NavbarLabels>
+        const enContent = await getContent('en')
+        const currentContent = await getContent(locale as 'en' | 'de' | 'fr' | 'es')
+        const enNav = (enContent?.navbar || {}) as Partial<NavbarLabels>
+        const nav = (currentContent?.navbar || {}) as Partial<NavbarLabels>
         if (mounted) {
-          console.log('Setting labels:', { ...EN_FALLBACK, ...nav })
-          setLabels({ ...EN_FALLBACK, ...nav })
+          console.log('Setting labels:', { ...enNav, ...nav })
+          setLabels({ ...enNav, ...nav } as NavbarLabels)
         }
       } catch (error) {
         console.error('Error loading translations:', error)
@@ -237,7 +237,7 @@ export default function Navbar({ locale }: { locale: string }) {
               <div className="border-t-2 border-gray-100 pt-6 mt-6">
                 <div className="px-6 py-3 text-lg font-bold text-gray-600 flex items-center gap-3 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
                   <Globe size={20} className="text-blue-600 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-                  Language / Sprache / Langue / Idioma
+                  {labels?.languagesTitle || 'Languages'}
                 </div>
                 <div className="space-y-2">
                   {languages.map((lang) => (

@@ -65,22 +65,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <section id="interactive-tools" className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">Interactive Tools</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">Calculate costs and check your compliance status</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{content.tools?.title}</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">{content.tools?.subtitle}</p>
             </div>
             <div className="grid lg:grid-cols-2 gap-8">
               <CompactServiceCalculator content={{
-                title: content.calculator?.title || 'Service Calculator',
-                subtitle: content.calculator?.subtitle || 'Select services and get instant pricing',
-                total: content.calculator?.results?.total || 'Total Cost',
-                contact: content.calculator?.results?.contact || 'Get Quote'
+                title: content.calculator?.title,
+                subtitle: content.calculator?.subtitle,
+                total: content.calculator?.results?.total,
+                contact: content.calculator?.results?.contact
               }} />
               <CompactGDPRChecklist content={{
-                title: content.checklist?.title || 'GDPR Checklist',
-                subtitle: content.checklist?.subtitle || 'Check your compliance status',
-                progress: content.checklist?.progress || 'Progress',
-                completed: content.checklist?.completed || 'Completed',
-                getHelp: content.checklist?.cta?.button || 'Get Help'
+                title: content.checklist?.title,
+                subtitle: content.checklist?.subtitle,
+                progress: content.checklist?.progress,
+                completed: content.checklist?.completed,
+                getHelp: content.checklist?.cta?.button
               }} locale={locale} />
             </div>
           </div>
@@ -90,7 +90,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <EnhancedTestimonials content={content.testimonials} />
         
         {/* EU Compliance Map */}
-        <EuComplianceMap title="Hover a country" subtitle="to see info" countries={countriesFromJson as any} />
+        <EuComplianceMap title={content.map?.title} subtitle={content.map?.subtitle} countries={countriesFromJson as any} />
 
         {/* GDPR Charts */}
         <EuGdprCharts />

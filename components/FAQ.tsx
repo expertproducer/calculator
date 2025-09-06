@@ -187,7 +187,7 @@ export default function FAQ({ content }: FAQProps) {
               <Search className="text-blue-600 w-8 h-8" />
             </div>
             <p className="text-lg font-medium text-blue-800 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              <strong>💡 {content.cantFindAnswer || "Can't find your answer?"}</strong> {content.teamReadyToHelp || 'Our team is ready to help with any specific questions about your GDPR compliance needs.'}
+              <strong>💡 {content.cantFindAnswer}</strong> {content.teamReadyToHelp}
             </p>
           </div>
         </div>

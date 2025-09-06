@@ -44,7 +44,8 @@
       "Umfassende Compliance mit DSGVO/CCPA",
       "Risikominimierung und Strafvermeidung",
       "Erhöhtes Benutzervertrauen und Transparenz",
-      "Beibehaltung der Website-Funktionalität mit Analytics"
+      "Beibehaltung der Website-Funktionalität mit Analytics",
+      "Zukunftssichere Datenschutz-Compliance"
     ],
     "description": "Wir überbrücken die Lücke zwischen rechtlichen Anforderungen und technischer Umsetzung und stellen sicher, dass Ihre Daten rechtlich sauber und nutzbar sind."
   },
@@ -127,7 +128,8 @@
       { "title": "Zustimmungsprotokolle & Exporte", "description": "Vollständiger Audit-Trail und Dokumentation" },
       { "title": "24/7 Support", "description": "Expertenhilfe, wenn Sie sie brauchen" },
       { "title": "Schnelle Implementierung", "description": "Schnelle Einrichtung ohne Störungen" },
-      { "title": "Kosteneffektiv", "description": "Erschwingliche Lösungen, die zu Ihrem Budget passen" }
+      { "title": "Kosteneffektiv", "description": "Erschwingliche Lösungen, die zu Ihrem Budget passen" },
+      { "title": "Zukunftssichere Compliance", "description": "Passt sich den sich entwickelnden Datenschutzvorschriften an" }
     ]
   },
   "platforms": {
@@ -138,7 +140,11 @@
       "Iubenda",
       "Usercentrics",
       "Termly",
-      { "name": "OneTrust", "description": "Enterprise-Zustimmungsverwaltung" }
+      { "name": "OneTrust", "description": "Enterprise-Zustimmungsverwaltung" },
+      "Quantcast",
+      "Sourcepoint",
+      "Didomi",
+      "TrustArc"
     ],
     "note": "Sehen Sie Ihr CMP nicht? Wir können mit jeder Zustimmungsplattform arbeiten."
   },
@@ -148,7 +154,9 @@
     "items": [
       { "title": "E-Commerce (DE)", "description": "Nur-Akzeptieren-Banner; Skripte sofort geladen.", "result": "Akzeptieren/Ablehnen/Präferenzen; strenge Blockierung; verbesserte Konversion." },
       { "title": "Medien (DE)", "description": "Third-Party-Cookies vor Zustimmung; keine Präferenzen.", "result": "Auto-Blockierung; Präferenzzentrum; DE/EN-Lokalisierung." },
-      { "title": "SaaS (EU)", "description": "Inkonsistente Logik über Subdomains.", "result": "Einheitliches CMP; konsistente Kategorien; zentrale Protokollierung." }
+      { "title": "SaaS (EU)", "description": "Inkonsistente Logik über Subdomains.", "result": "Einheitliches CMP; konsistente Kategorien; zentrale Protokollierung." },
+      { "title": "FinTech (UK)", "description": "Komplexe regulatorische Anforderungen; mehrere Tracking-Tools.", "result": "Konformes Setup; Audit-Trail; behördliche Genehmigung" },
+      { "title": "Gesundheitswesen (NL)", "description": "Umgang mit sensiblen Daten; strenge Datenschutzanforderungen.", "result": "HIPAA-konforme Einrichtung; sichere Verarbeitung; Privatsphäre" }
     ],
     "cta": "Holen Sie sich Ihre Fallstudie"
   },
@@ -300,14 +308,14 @@
     "cta": { "primary": "Meinen Banner reparieren", "secondary": "Kostenlose Schnellprüfung" }
   },
   "heroBanner": {
-    "title": "⚠️ Fines up to €20,000 for non-compliant cookie banners",
-    "description": "70% of EU websites violate GDPR today. Regulators check in minutes — fines may come without warning.",
-    "button": "Check my site now",
-    "image": { "src": "/images/dsgvo_bussgeld_2025.webp", "alt": "GDPR fines risk banner" }
+    "title": "⚠️ Bußgelder bis zu 20.000 € für nicht konforme Cookie-Banner",
+    "description": "70% der EU‑Websites verstoßen heute gegen die DSGVO. Aufsichtsbehörden prüfen in Minuten — Bußgelder können ohne Vorwarnung kommen.",
+    "button": "Meine Seite jetzt prüfen",
+    "image": { "src": "/images/dsgvo_bussgeld_2025.webp", "alt": "Risiko DSGVO‑Bußgelder" }
   },
   "finesLinks": {
-    "title": "Real GDPR Fines and Cases",
-    "subtitle": "Selected articles and regulator decisions about cookie banner violations.",
+    "title": "Echte DSGVO‑Bußgelder und Fälle",
+    "subtitle": "Ausgewählte Artikel und Entscheidungen der Aufsichtsbehörden zu Verstößen bei Cookie‑Bannern.",
     "links": [
       { "title": "CNIL fines for cookie violations (FR)", "href": "https://www.cnil.fr/en/cookies-and-trackers" },
       { "title": "GDPR Enforcement Tracker (EU)", "href": "https://www.enforcementtracker.com/" },
@@ -509,6 +517,7 @@
     "pricing": "Preise",
     "faq": "FAQ",
     "contact": "Kontakt",
+    "languagesTitle": "Sprachen",
     "languages": {
       "en": { "name": "English", "flag": "🇬🇧" },
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
@@ -566,5 +575,89 @@
     "analyticsDesc": "Helfen Sie uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln und melden.",
     "marketingDesc": "Wird verwendet, um Besucher über Websites hinweg zu verfolgen, um relevante und ansprechende Anzeigen anzuzeigen.",
     "functionalDesc": "Ermöglichen erweiterte Funktionalität und Personalisierung wie Chat-Support und Social-Media-Integration."
+  },
+  "tools": {
+    "title": "Interaktive Tools",
+    "subtitle": "Berechnen Sie Kosten und prüfen Sie Ihren Compliance-Status"
+  },
+  "map": {
+    "title": "EU-Compliance-Karte",
+    "subtitle": "Fahren Sie über ein Land für Details",
+    "emptyTitle": "Bewegen Sie die Maus über ein Land",
+    "emptySubtitle": "um Statistiken zu sehen",
+    "metrics": {
+      "sitesRegistered": "Registrierte Websites",
+      "consentRate": "Zustimmungsrate",
+      "regulator": "Aufsichtsbehörde",
+      "fineRisk": "Bußgeldrisiko",
+      "marketDensity": "Marktdichte",
+      "violationsPattern": "Verstoßmuster",
+      "countryCode": "Ländercode",
+      "na": "n/v"
+    },
+    "legend": {
+      "blueFlags": "Blaue Flaggen",
+      "redFlags": "Rote Flaggen",
+      "greenFlags": "Grüne Flaggen",
+      "switzerland": "Schweiz"
+    }
+  },
+  "charts": {
+    "title": "GDPR Marktanalytik",
+    "subtitle": "Ranglisten, CMP‑Einführung, Risiken und Verstöße",
+    "tabs": {
+      "market": "Markt",
+      "adoption": "Einführung",
+      "scatter": "Dichte vs Einführung",
+      "gauges": "Priorität",
+      "risks": "Risiken",
+      "violations": "Verstöße"
+    },
+    "show": "Anzeigen:",
+    "modes": {
+      "absolute": "Absolut",
+      "perCapita": "Pro 1000 Einwohner",
+      "log": "Log‑Skala"
+    },
+    "adoptionTitle": "CMP‑Einführungsgrad nach Ländern",
+    "average": "Durchschnitt",
+    "legend": {
+      "aboveAverage": "Über dem Durchschnitt",
+      "belowAverage": "Unter dem Durchschnitt",
+      "euAverage": "EU‑Durchschnitt",
+      "lowRisk": "Niedriges Risiko",
+      "mediumRisk": "Mittleres Risiko",
+      "highRisk": "Hohes Risiko",
+      "sizeMeaning": "Größe = Anzahl Websites"
+    },
+    "axes": {
+      "density": "Marktdichte (pro 1000 Einwohner)",
+      "adoption": "CMP‑Einführung (%)"
+    },
+    "selectCountryTitle": "Land zur Analyse auswählen",
+    "selectCountryPlaceholder": "— Land auswählen —",
+    "gauge": {
+      "adoption": "CMP‑Einführung",
+      "priority": "Priorität"
+    },
+    "details": {
+      "title": "Details",
+      "countryCode": "Ländercode",
+      "regulator": "Aufsichtsbehörde",
+      "fineRisk": "Bußgeldrisiko",
+      "marketDensity": "Marktdichte",
+      "sitesCount": "Websites",
+      "empty": "Wählen Sie ein Land für Details aus"
+    },
+    "risksTitle": "Risikoverteilung nach Ländern",
+    "violationsTitle": "Verstoßmatrix nach Ländern",
+    "table": { "country": "Land" },
+    "fineRisk": {
+      "low": "Niedrig",
+      "low_medium": "Niedrig‑mittel",
+      "medium": "Mittel",
+      "medium_high": "Mittel‑hoch",
+      "high": "Hoch"
+    }
   }
 }

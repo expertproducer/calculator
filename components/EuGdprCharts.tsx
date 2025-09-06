@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Container from './Container'
+import { getContent } from '@/lib/i18n'
 import ReactCountryFlag from 'react-country-flag'
 import rawChartsData from '../eu_gdpr_charts_v3.json'
 
@@ -117,12 +118,20 @@ function Gauge({ title, value, max }: { title: string; value: number; max: numbe
 }
 
 export default function EuGdprCharts() {
+  const [labels, setLabels] = useState<any>({})
   const [leaderboardMode, setLeaderboardMode] = useState<'absolute' | 'perCapita' | 'log'>('absolute')
   const [activeTab, setActiveTab] = useState<'market' | 'adoption' | 'scatter' | 'risks' | 'violations' | 'gauges'>('market')
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
   const [isChartVisible, setIsChartVisible] = useState(false)
   
   useEffect(() => {
+    ;(async () => {
+      try {
+        const htmlLang = (typeof document !== 'undefined' ? document.documentElement.lang : 'en') as 'en' | 'de' | 'fr' | 'es'
+        const content = await getContent(htmlLang)
+        setLabels(content?.charts || {})
+      } catch {}
+    })()
     // Добавляем небольшую задержку для анимации появления графиков
     const timer = setTimeout(() => {
       setIsChartVisible(true)
@@ -209,7 +218,7 @@ export default function EuGdprCharts() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl font-display font-bold text-gray-900 mb-2"
           >
-            GDPR Маркет аналитика
+            {labels.title}
           </motion.h2>
           <motion.p 
             initial={{ y: -10, opacity: 0 }} 
@@ -217,7 +226,7 @@ export default function EuGdprCharts() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg text-gray-600 font-light"
           >
-            Лидерборды, внедрение CMP, риски и нарушения
+            {labels.subtitle}
           </motion.p>
         </div>
 
@@ -233,7 +242,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='market'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('market')}
           >
-            Рынок
+            {labels.tabs?.market}
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }} 
@@ -241,7 +250,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='adoption'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('adoption')}
           >
-            Внедрение
+            {labels.tabs?.adoption}
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }} 
@@ -249,7 +258,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='scatter'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('scatter')}
           >
-            Плотность vs Внедрение
+            {labels.tabs?.scatter}
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }} 
@@ -257,7 +266,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='gauges'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('gauges')}
           >
-            Приоритет
+            {labels.tabs?.gauges}
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }} 
@@ -265,7 +274,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='risks'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('risks')}
           >
-            Риски
+            {labels.tabs?.risks}
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }} 
@@ -273,7 +282,7 @@ export default function EuGdprCharts() {
             className={`px-4 py-2 rounded-xl border shadow-sm font-medium transition-all ${activeTab==='violations'?'bg-primary-600 text-white border-primary-600 shadow-primary-100':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
             onClick={() => setActiveTab('violations')}
           >
-            Нарушения
+            {labels.tabs?.violations}
           </motion.button>
         </motion.div>
 
@@ -293,14 +302,14 @@ export default function EuGdprCharts() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <span className="text-gray-700 font-medium">Показать:</span>
+                <span className="text-gray-700 font-medium">{labels.show}</span>
                 <motion.button 
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.95 }}
                   className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='absolute'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
                   onClick={() => setLeaderboardMode('absolute')}
                 >
-                  Абсолют
+                  {labels.modes?.absolute}
                 </motion.button>
                 <motion.button 
                   whileHover={{ scale: 1.05 }} 
@@ -308,7 +317,7 @@ export default function EuGdprCharts() {
                   className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='perCapita'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
                   onClick={() => setLeaderboardMode('perCapita')}
                 >
-                  На 1000 жителей
+                  {labels.modes?.perCapita}
                 </motion.button>
                 <motion.button 
                   whileHover={{ scale: 1.05 }} 
@@ -316,7 +325,7 @@ export default function EuGdprCharts() {
                   className={`px-3 py-1.5 rounded-lg border shadow-sm transition-all ${leaderboardMode==='log'?'bg-primary-500 text-white border-primary-500':'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`} 
                   onClick={() => setLeaderboardMode('log')}
                 >
-                  Log-scale
+                  {labels.modes?.log}
                 </motion.button>
               </motion.div>
               
@@ -378,7 +387,7 @@ export default function EuGdprCharts() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  Уровень внедрения CMP по странам
+                  {labels.adoptionTitle}
                 </motion.h3>
                 
                 <div className="relative">
@@ -400,7 +409,7 @@ export default function EuGdprCharts() {
                       >
                         <div className="w-0.5 h-full bg-red-500 shadow-sm" />
                         <div className="absolute -top-6 transform -translate-x-1/2 bg-red-500 text-white px-2 py-0.5 rounded text-xs font-medium">
-                          Среднее: {Math.round(adoptionOrdered.euAvg)}%
+                          {labels.average}: {Math.round(adoptionOrdered.euAvg)}%
                         </div>
                       </motion.div>
                     </div>
@@ -465,15 +474,15 @@ export default function EuGdprCharts() {
                   >
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-3 h-3 bg-green-500 rounded-full" /> 
-                      <span>Выше среднего</span>
+                      <span>{labels.legend?.aboveAverage}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-3 h-3 bg-yellow-500 rounded-full" /> 
-                      <span>Ниже среднего</span>
+                      <span>{labels.legend?.belowAverage}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-3 h-3 bg-red-500 rounded-full" /> 
-                      <span>Среднее по ЕС</span>
+                      <span>{labels.legend?.euAverage}</span>
                     </div>
                   </motion.div>
                 </div>
@@ -498,7 +507,7 @@ export default function EuGdprCharts() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    Зависимость плотности рынка и внедрения CMP
+                    {labels.axes?.density} / {labels.axes?.adoption}
                   </motion.h3>
                   <svg viewBox="0 0 600 360" className="w-full h-auto">
                     {/* Фоновая сетка */}
@@ -601,8 +610,8 @@ export default function EuGdprCharts() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1, duration: 0.5 }}
                     >
-                      <text x={300} y={340} textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">Плотность рынка (на 1000 жителей)</text>
-                      <text x={-160} y={15} transform="rotate(-90)" textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">Внедрение CMP (%)</text>
+                      <text x={300} y={340} textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">{labels.axes?.density}</text>
+                      <text x={-160} y={15} transform="rotate(-90)" textAnchor="middle" fontSize={14} fontWeight="500" fill="#475569">{labels.axes?.adoption}</text>
                       
                       {/* Метки на осях */}
                       {[0, 50, 100, 150, 200].map((val, i) => (
@@ -627,21 +636,21 @@ export default function EuGdprCharts() {
                   >
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                      <span className="text-sm text-gray-600">Низкий риск</span>
+                      <span className="text-sm text-gray-600">{labels.legend?.lowRisk}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-                      <span className="text-sm text-gray-600">Средний риск</span>
+                      <span className="text-sm text-gray-600">{labels.legend?.mediumRisk}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-red-500"></span>
-                      <span className="text-sm text-gray-600">Высокий риск</span>
+                      <span className="text-sm text-gray-600">{labels.legend?.highRisk}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-4 h-4 border border-gray-300 rounded-full relative">
                         <span className="absolute inset-0.5 bg-gray-200 rounded-full"></span>
                       </span>
-                      <span className="text-sm text-gray-600">Размер = кол-во сайтов</span>
+                      <span className="text-sm text-gray-600">{labels.legend?.sizeMeaning}</span>
                     </div>
                   </motion.div>
                 </div>
@@ -670,7 +679,7 @@ export default function EuGdprCharts() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  Выберите страну для анализа
+                  {labels.selectCountryTitle}
                 </motion.h3>
                 
                 <div className="relative mb-6">
@@ -688,7 +697,7 @@ export default function EuGdprCharts() {
                     value={selectedCode || ''} 
                     onChange={(e) => setSelectedCode(e.target.value || null)}
                   >
-                    <option value="">— Выберите страну —</option>
+                    <option value="">{labels.selectCountryPlaceholder}</option>
                     {data.map(d => (
                       <option key={d.code} value={d.code}>
                         {d.code}
@@ -703,14 +712,14 @@ export default function EuGdprCharts() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <Gauge title="Внедрение CMP" value={(selected?.consentRate ?? 0)} max={85} />
+                    <Gauge title={labels.gauge?.adoption || 'Adoption'} value={(selected?.consentRate ?? 0)} max={85} />
                   </motion.div>
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6 }}
                   >
-                    <Gauge title="Приоритет" value={(selected?.priorityScore ?? 0)} max={100} />
+                    <Gauge title={labels.gauge?.priority || 'Priority'} value={(selected?.priorityScore ?? 0)} max={100} />
                   </motion.div>
                 </div>
               </motion.div>
@@ -727,7 +736,7 @@ export default function EuGdprCharts() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Подробная информация
+                  {labels.details?.title}
                 </motion.h3>
                 
                 {selected ? (
@@ -748,18 +757,18 @@ export default function EuGdprCharts() {
                         </div>
                       )}
                       <div>
-                        <div className="text-sm text-gray-500">Код страны</div>
+                        <div className="text-sm text-gray-500">{labels.details?.countryCode}</div>
                         <div className="font-semibold text-gray-900 text-lg">{selected.code}</div>
                       </div>
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">Регулятор</div>
+                      <div className="text-sm text-gray-500 mb-1">{labels.details?.regulator}</div>
                       <div className="font-semibold text-gray-900">{selected.regulator}</div>
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">Риск штрафов</div>
+                      <div className="text-sm text-gray-500 mb-1">{labels.details?.fineRisk}</div>
                       <div className="font-semibold text-lg flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: RISK_COLOR[selected.fineRisk] }}></span>
                         <span style={{ color: RISK_COLOR[selected.fineRisk] }}>
@@ -773,12 +782,12 @@ export default function EuGdprCharts() {
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">Плотность рынка</div>
+                      <div className="text-sm text-gray-500 mb-1">{labels.details?.marketDensity}</div>
                       <div className="font-semibold text-gray-900 text-lg">{selected.marketDensity.toFixed(1)} <span className="text-sm text-gray-500">на 1000 жителей</span></div>
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">Количество сайтов</div>
+                      <div className="text-sm text-gray-500 mb-1">{labels.details?.sitesCount}</div>
                       <div className="font-semibold text-gray-900 text-lg">{selected.sitesCount.toLocaleString()}</div>
                     </div>
                   </motion.div>
@@ -794,7 +803,7 @@ export default function EuGdprCharts() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <div className="text-gray-500 font-medium">Выберите страну для просмотра подробной информации</div>
+                    <div className="text-gray-500 font-medium">{labels.details?.empty}</div>
                   </motion.div>
                 )}
               </motion.div>
@@ -816,7 +825,7 @@ export default function EuGdprCharts() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Распределение стран по рискам
+                {labels.risksTitle}
               </motion.h3>
               
               <div className="mb-8">
@@ -840,13 +849,9 @@ export default function EuGdprCharts() {
                       >
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-white px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
                           <div className="text-sm font-medium">
-                            {k === 'low' ? 'Низкий' : 
-                             k === 'low_medium' ? 'Низкий-средний' : 
-                             k === 'medium' ? 'Средний' : 
-                             k === 'medium_high' ? 'Средний-высокий' : 
-                             'Высокий'}: {riskBuckets.counts[k]} стран
+                            {(labels.fineRisk?.[k] || k)}: {riskBuckets.counts[k]}
                           </div>
-                          <div className="text-xs text-gray-500">{Math.round(share)}% от общего числа</div>
+                          <div className="text-xs text-gray-500">{Math.round(share)}%</div>
                         </div>
                       </motion.div>
                     )
@@ -861,11 +866,7 @@ export default function EuGdprCharts() {
                 transition={{ delay: 0.8 }}
               >
                 {(['low','low_medium','medium','medium_high','high'] as ChartsItem['fineRisk'][]).map((k, idx) => {
-                  const riskLabel = k === 'low' ? 'Низкий' : 
-                                   k === 'low_medium' ? 'Низкий-средний' : 
-                                   k === 'medium' ? 'Средний' : 
-                                   k === 'medium_high' ? 'Средний-высокий' : 
-                                   'Высокий'
+                  const riskLabel = labels.fineRisk?.[k] || k
                   const countries = data.filter(d => d.fineRisk === k)
                   
                   return (
@@ -925,7 +926,7 @@ export default function EuGdprCharts() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Матрица нарушений по странам
+                {labels.violationsTitle}
               </motion.h3>
               
               <motion.div 
@@ -957,7 +958,7 @@ export default function EuGdprCharts() {
                 >
                   <thead>
                     <tr className="bg-gray-50 text-left">
-                      <th className="py-3 px-4 font-semibold text-gray-700">Страна</th>
+                      <th className="py-3 px-4 font-semibold text-gray-700">{labels.table?.country}</th>
                       {violationsSet.map(v => (
                         <th key={v} className="py-3 px-4 font-semibold text-gray-700">
                           <div className="truncate max-w-[150px]" title={v}>{v}</div>

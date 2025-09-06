@@ -503,6 +503,7 @@
     "pricing": "Pricing",
     "faq": "FAQ",
     "contact": "Contact",
+    "languagesTitle": "Languages",
     "languages": {
       "en": { "name": "English", "flag": "🇬🇧" },
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
@@ -570,5 +571,91 @@
     "analyticsDesc": "Help us understand how visitors interact with our website by collecting and reporting information anonymously.",
     "marketingDesc": "Used to track visitors across websites to display relevant and engaging advertisements.",
     "functionalDesc": "Enable enhanced functionality and personalization such as chat support and social media integration."
+  },
+  "tools": {
+    "title": "Interactive Tools",
+    "subtitle": "Calculate costs and check your compliance status"
+  },
+  "map": {
+    "title": "EU Compliance Map",
+    "subtitle": "Hover a country to see details",
+    "emptyTitle": "Hover a country",
+    "emptySubtitle": "to see stats",
+    "metrics": {
+      "sitesRegistered": "Sites registered",
+      "consentRate": "Consent rate",
+      "regulator": "Regulator",
+      "fineRisk": "Fine risk",
+      "marketDensity": "Market density",
+      "violationsPattern": "Violations pattern",
+      "countryCode": "Country code",
+      "na": "n/a"
+    },
+    "legend": {
+      "blueFlags": "Blue flags",
+      "redFlags": "Red flags",
+      "greenFlags": "Green flags",
+      "switzerland": "Switzerland"
+    }
+  },
+  "charts": {
+    "title": "GDPR Market Analytics",
+    "subtitle": "Leaderboards, CMP adoption, risks and violations",
+    "tabs": {
+      "market": "Market",
+      "adoption": "Adoption",
+      "scatter": "Density vs Adoption",
+      "gauges": "Priority",
+      "risks": "Risks",
+      "violations": "Violations"
+    },
+    "show": "Show:",
+    "modes": {
+      "absolute": "Absolute",
+      "perCapita": "Per 1000 people",
+      "log": "Log scale"
+    },
+    "adoptionTitle": "CMP adoption level by country",
+    "average": "Average",
+    "legend": {
+      "aboveAverage": "Above average",
+      "belowAverage": "Below average",
+      "euAverage": "EU average",
+      "lowRisk": "Low risk",
+      "mediumRisk": "Medium risk",
+      "highRisk": "High risk",
+      "sizeMeaning": "Size = number of sites"
+    },
+    "axes": {
+      "density": "Market density (per 1000 people)",
+      "adoption": "CMP adoption (%)"
+    },
+    "selectCountryTitle": "Select a country to analyze",
+    "selectCountryPlaceholder": "— Select a country —",
+    "gauge": {
+      "adoption": "CMP adoption",
+      "priority": "Priority"
+    },
+    "details": {
+      "title": "Details",
+      "countryCode": "Country code",
+      "regulator": "Regulator",
+      "fineRisk": "Fine risk",
+      "marketDensity": "Market density",
+      "sitesCount": "Sites",
+      "empty": "Select a country to view details"
+    },
+    "risksTitle": "Risk distribution by countries",
+    "violationsTitle": "Violations matrix by country",
+    "table": {
+      "country": "Country"
+    },
+    "fineRisk": {
+      "low": "Low",
+      "low_medium": "Low-medium",
+      "medium": "Medium",
+      "medium_high": "Medium-high",
+      "high": "High"
+    }
   }
 }

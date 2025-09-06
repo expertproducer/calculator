@@ -93,10 +93,10 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
             
             {/* Main Headline */}
             <h1 className="text-fluid-hero font-black text-white leading-tight tracking-tight mb-16 mt-20 drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_40%)]">
-              {content.hero.headline || 'Every Business Needs'} 
-              <span className="text-blue-300 block text-fluid-hero-blue drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.hero.headlineBlue || 'Cookie Compliance'}</span>
+              {content.hero.headline}
+              <span className="text-blue-300 block text-fluid-hero-blue drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.hero.headlineBlue}</span>
               <span className="text-gray-200 block text-fluid-hero-gray font-black mt-6 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
-                {content.hero.headlineGray || 'That Actually Works!'}
+                {content.hero.headlineGray}
               </span>
             </h1>
             
@@ -138,7 +138,7 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 mb-8 hover:shadow-3xl transition-all duration-300">
                <div className="text-center mb-8">
                  <h2 className="text-4xl font-black text-gray-900 mb-4">{content.hero.problem.title}</h2>
-                 <p className="text-xl text-gray-600">{content.hero.problemsDesc || 'We fix these problems quickly and professionally'}</p>
+                 <p className="text-xl text-gray-600">{content.hero.problemsDesc}</p>
                </div>
                
                <div className="grid md:grid-cols-2 gap-4">
@@ -166,8 +166,8 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               {content.whyImportant && (
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Why It Matters</h3>
-                    <p className="text-base text-gray-600 leading-relaxed">Privacy compliance essentials</p>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.whyImportant.title}</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">{content.whyImportant.subtitle}</p>
                   </div>
                   
                                     <div className="space-y-3">
@@ -181,13 +181,7 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
                       ]
                       const color = colors[index % colors.length]
                       
-                      const subtitles = [
-                        'Meet all legal requirements',
-                        'Avoid costly fines and penalties',
-                        'Build customer confidence',
-                        'Keep analytics working properly',
-                        'Stay ahead of new regulations'
-                      ]
+                      const subtitles = content.whyImportant.points
                       
                       return (
                         <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">

@@ -44,7 +44,8 @@
       "Cumplimiento integral con GDPR/CCPA",
       "Mitigación de riesgos y evitación de sanciones",
       "Mayor confianza del usuario y transparencia",
-      "Funcionalidad del sitio web mantenida con analytics"
+      "Funcionalidad del sitio web mantenida con analytics",
+      "Cumplimiento de privacidad preparado para el futuro"
     ],
     "description": "Cerramos la brecha entre los requisitos legales y la implementación técnica, asegurando que sus datos sean jurídicamente limpios y utilizables."
   },
@@ -127,7 +128,8 @@
       { "title": "Registros de consentimiento y exportaciones", "description": "Rastro de auditoría completo y documentación" },
       { "title": "Soporte 24/7", "description": "Asistencia experta cuando la necesite" },
       { "title": "Implementación rápida", "description": "Configuración rápida sin interrupciones" },
-      { "title": "Rentable", "description": "Soluciones asequibles que se ajustan a su presupuesto" }
+      { "title": "Rentable", "description": "Soluciones asequibles que se ajustan a su presupuesto" },
+      { "title": "Cumplimiento preparado para el futuro", "description": "Se adapta a las regulaciones de privacidad en evolución" }
     ]
   },
   "platforms": {
@@ -138,7 +140,11 @@
       "Iubenda",
       "Usercentrics",
       "Termly",
-      { "name": "OneTrust", "description": "Gestión de consentimiento empresarial" }
+      { "name": "OneTrust", "description": "Gestión de consentimiento empresarial" },
+      "Quantcast",
+      "Sourcepoint",
+      "Didomi",
+      "TrustArc"
     ],
     "note": "¿No ve su CMP? Podemos trabajar con cualquier plataforma de consentimiento."
   },
@@ -148,7 +154,9 @@
     "items": [
       { "title": "E-commerce (ES)", "description": "Banner de solo aceptación; scripts cargados inmediatamente.", "result": "Aceptar/Rechazar/Preferencias; bloqueo estricto; conversión mejorada." },
       { "title": "Medios (ES)", "description": "Cookies de terceros antes del consentimiento; sin preferencias.", "result": "Bloqueo automático; centro de preferencias; localización ES/EN." },
-      { "title": "SaaS (EU)", "description": "Lógica inconsistente entre subdominios.", "result": "CMP unificado; categorías consistentes; registro centralizado." }
+      { "title": "SaaS (EU)", "description": "Lógica inconsistente entre subdominios.", "result": "CMP unificado; categorías consistentes; registro centralizado." },
+      { "title": "FinTech (UK)", "description": "Requisitos regulatorios complejos; múltiples herramientas de seguimiento.", "result": "Configuración conforme; rastro de auditoría; aprobación regulatoria" },
+      { "title": "Salud (NL)", "description": "Manejo de datos sensibles; requisitos estrictos de privacidad.", "result": "Configuración compatible con HIPAA; procesamiento seguro; privacidad" }
     ],
     "cta": "Obtener Su Caso de Estudio"
   },
@@ -300,14 +308,14 @@
     "cta": { "primary": "Arreglar mi banner", "secondary": "Verificación gratuita" }
   },
   "heroBanner": {
-    "title": "⚠️ Fines up to €20,000 for non-compliant cookie banners",
-    "description": "70% of EU websites violate GDPR today. Regulators check in minutes — fines may come without warning.",
-    "button": "Check my site now",
-    "image": { "src": "/images/rgpd_multa_2025.webp", "alt": "GDPR fines risk banner" }
+    "title": "⚠️ Multas de hasta 20.000 € por banners de cookies no conformes",
+    "description": "El 70% de los sitios de la UE incumplen hoy el RGPD. Los reguladores revisan en minutos — las multas pueden llegar sin aviso.",
+    "button": "Revisar mi sitio ahora",
+    "image": { "src": "/images/rgpd_multa_2025.webp", "alt": "Riesgo de multas RGPD" }
   },
   "finesLinks": {
-    "title": "Real GDPR Fines and Cases",
-    "subtitle": "Selected articles and regulator decisions about cookie banner violations.",
+    "title": "Multas y casos reales del RGPD",
+    "subtitle": "Artículos seleccionados y decisiones de reguladores sobre infracciones de banners de cookies.",
     "links": [
       { "title": "CNIL fines for cookie violations (FR)", "href": "https://www.cnil.fr/en/cookies-and-trackers" },
       { "title": "GDPR Enforcement Tracker (EU)", "href": "https://www.enforcementtracker.com/" },
@@ -332,6 +340,79 @@
     "cookiePreferences": "Preferencias de cookies",
     "allRightsReserved": "Todos los derechos reservados"
   },
+  "calculator": {
+    "title": "Calculadora de coste del servicio",
+    "subtitle": "Seleccione los servicios que necesita y obtenga una estimación instantánea del precio",
+    "services": {
+      "audit": { "title": "Servicios de auditoría", "items": [] },
+      "consulting": { "title": "Servicios de consultoría", "items": [] },
+      "implementation": { "title": "Servicios de implementación", "items": [] },
+      "ongoing": { "title": "Servicios continuos", "items": [] }
+    },
+    "results": {
+      "title": "Su estimación",
+      "total": "Costo total",
+      "selected": "Servicios seleccionados",
+      "recommendation": "Nuestra recomendación",
+      "contact": "Obtener presupuesto y contactarnos"
+    },
+    "calculate": "Calcular total"
+  },
+  "checklist": {
+    "title": "Lista de verificación de cumplimiento GDPR",
+    "subtitle": "Lista de verificación interactiva para evaluar su estado actual de cumplimiento GDPR",
+    "progress": "Progreso de cumplimiento",
+    "completed": "Completado",
+    "categories": {
+      "legal": {
+        "title": "Requisitos legales",
+        "items": [
+          { "id": "privacy-policy", "title": "Política de privacidad actualizada", "description": "Política de privacidad clara y completa que cubre todas las actividades de procesamiento de datos", "priority": "high" },
+          { "id": "legal-basis", "title": "Base legal identificada", "description": "Base legal de tratamiento identificada para toda recopilación de datos", "priority": "high" },
+          { "id": "consent-mechanism", "title": "Mecanismo de consentimiento válido", "description": "Recopilación de consentimiento adecuada con opciones claras de aceptación/rechazo", "priority": "high" },
+          { "id": "data-mapping", "title": "Mapeo del procesamiento de datos", "description": "Mapeo completo de todas las actividades de procesamiento de datos personales", "priority": "medium" },
+          { "id": "dpo-appointed", "title": "DPO designado (si es necesario)", "description": "Delegado de Protección de Datos designado si el procesamiento cumple los umbrales GDPR", "priority": "medium" }
+        ]
+      },
+      "technical": {
+        "title": "Implementación técnica",
+        "items": [
+          { "id": "cookie-banner", "title": "Banner de cookies conforme", "description": "Banner de cookies con categorización adecuada y opciones de consentimiento", "priority": "high" },
+          { "id": "script-blocking", "title": "Bloqueo de scripts antes del consentimiento", "description": "Todos los scripts de seguimiento bloqueados hasta que el usuario otorgue consentimiento", "priority": "high" },
+          { "id": "consent-logging", "title": "Registro de prueba de consentimiento", "description": "Sistema para registrar y probar el consentimiento del usuario con marcas de tiempo", "priority": "high" },
+          { "id": "data-encryption", "title": "Cifrado de datos", "description": "Datos personales cifrados tanto en tránsito como en reposo", "priority": "medium" },
+          { "id": "backup-security", "title": "Copias de seguridad seguras de datos", "description": "Copias de seguridad regulares y cifradas con controles de acceso", "priority": "medium" },
+          { "id": "access-controls", "title": "Controles de acceso implementados", "description": "Controles de acceso basados en roles para sistemas de datos personales", "priority": "low" }
+        ]
+      },
+      "organizational": {
+        "title": "Medidas organizativas",
+        "items": [
+          { "id": "staff-training", "title": "Formación GDPR del personal", "description": "Formación periódica de concienciación GDPR para todo el personal que maneje datos personales", "priority": "medium" },
+          { "id": "breach-procedures", "title": "Procedimientos de violación de datos", "description": "Procedimientos claros para detectar, reportar y manejar violaciones de datos", "priority": "high" },
+          { "id": "vendor-agreements", "title": "Acuerdos de procesamiento con proveedores", "description": "APDs en vigor con todos los procesadores de datos de terceros", "priority": "medium" },
+          { "id": "retention-policy", "title": "Política de retención de datos", "description": "Política clara sobre cuánto tiempo se conservan los distintos tipos de datos", "priority": "medium" },
+          { "id": "subject-rights", "title": "Proceso de derechos del interesado", "description": "Procedimientos para gestionar solicitudes de acceso, supresión y portabilidad de datos", "priority": "high" },
+          { "id": "regular-audits", "title": "Auditorías de cumplimiento regulares", "description": "Auditorías internas programadas de las medidas de cumplimiento GDPR", "priority": "low" }
+        ]
+      }
+    },
+    "summary": {
+      "title": "Evaluación de cumplimiento",
+      "score": "Completo",
+      "recommendations": {
+        "excellent": "¡Excelente! Su cumplimiento GDPR es integral. Continúe con auditorías regulares para mantener los estándares.",
+        "good": "¡Buen progreso! Aborde los elementos restantes para lograr el cumplimiento total y reducir riesgos.",
+        "needsWork": "Su cumplimiento necesita mejoras. Enfóquese primero en los elementos de alta prioridad para reducir riesgos inmediatos.",
+        "critical": "Se detectaron brechas críticas de cumplimiento. Acción inmediata requerida para evitar posibles multas y problemas legales."
+      }
+    },
+    "cta": {
+      "title": "¿Necesita ayuda para completar su cumplimiento?",
+      "description": "Nuestros expertos en GDPR pueden ayudarle a abordar rápidamente y de manera efectiva todas las brechas de cumplimiento restantes.",
+      "button": "Obtener ayuda de un experto"
+    }
+  },
   "navbar": {
     "services": "Servicios",
     "process": "Proceso",
@@ -339,6 +420,7 @@
     "pricing": "Precios",
     "faq": "FAQ",
     "contact": "Contacto",
+    "languagesTitle": "Idiomas",
     "languages": {
       "en": { "name": "English", "flag": "🇬🇧" },
       "de": { "name": "Deutsch", "flag": "🇩🇪" },
@@ -396,5 +478,89 @@
     "analyticsDesc": "Ayúdenos a entender cómo los visitantes interactúan con nuestro sitio web recopilando y reportando información de forma anónima.",
     "marketingDesc": "Se utiliza para rastrear visitantes a través de sitios web para mostrar anuncios relevantes y atractivos.",
     "functionalDesc": "Permiten funcionalidad mejorada y personalización como soporte de chat e integración de redes sociales."
+  },
+  "tools": {
+    "title": "Herramientas interactivas",
+    "subtitle": "Calcule costos y verifique su estado de cumplimiento"
+  },
+  "map": {
+    "title": "Mapa de cumplimiento UE",
+    "subtitle": "Pase el cursor sobre un país para ver detalles",
+    "emptyTitle": "Pase el cursor sobre un país",
+    "emptySubtitle": "para ver estadísticas",
+    "metrics": {
+      "sitesRegistered": "Sitios registrados",
+      "consentRate": "Tasa de consentimiento",
+      "regulator": "Regulador",
+      "fineRisk": "Riesgo de multa",
+      "marketDensity": "Densidad de mercado",
+      "violationsPattern": "Patrón de infracciones",
+      "countryCode": "Código de país",
+      "na": "n/d"
+    },
+    "legend": {
+      "blueFlags": "Banderas azules",
+      "redFlags": "Banderas rojas",
+      "greenFlags": "Banderas verdes",
+      "switzerland": "Suiza"
+    }
+  },
+  "charts": {
+    "title": "Analítica de mercado RGPD",
+    "subtitle": "Rankings, adopción CMP, riesgos e infracciones",
+    "tabs": {
+      "market": "Mercado",
+      "adoption": "Adopción",
+      "scatter": "Densidad vs Adopción",
+      "gauges": "Prioridad",
+      "risks": "Riesgos",
+      "violations": "Infracciones"
+    },
+    "show": "Mostrar:",
+    "modes": {
+      "absolute": "Absoluto",
+      "perCapita": "Por 1000 personas",
+      "log": "Escala log"
+    },
+    "adoptionTitle": "Nivel de adopción de CMP por país",
+    "average": "Promedio",
+    "legend": {
+      "aboveAverage": "Por encima del promedio",
+      "belowAverage": "Por debajo del promedio",
+      "euAverage": "Promedio UE",
+      "lowRisk": "Bajo riesgo",
+      "mediumRisk": "Riesgo medio",
+      "highRisk": "Alto riesgo",
+      "sizeMeaning": "Tamaño = número de sitios"
+    },
+    "axes": {
+      "density": "Densidad de mercado (por 1000 personas)",
+      "adoption": "Adopción de CMP (%)"
+    },
+    "selectCountryTitle": "Seleccione un país para analizar",
+    "selectCountryPlaceholder": "— Seleccione un país —",
+    "gauge": {
+      "adoption": "Adopción de CMP",
+      "priority": "Prioridad"
+    },
+    "details": {
+      "title": "Detalles",
+      "countryCode": "Código de país",
+      "regulator": "Regulador",
+      "fineRisk": "Riesgo de multa",
+      "marketDensity": "Densidad de mercado",
+      "sitesCount": "Sitios",
+      "empty": "Seleccione un país para ver detalles"
+    },
+    "risksTitle": "Distribución de riesgos por países",
+    "violationsTitle": "Matriz de infracciones por país",
+    "table": { "country": "País" },
+    "fineRisk": {
+      "low": "Bajo",
+      "low_medium": "Bajo‑medio",
+      "medium": "Medio",
+      "medium_high": "Medio‑alto",
+      "high": "Alto"
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 import { memo, useMemo, useState, useEffect, useRef } from 'react'
 import Container from './Container'
+import { getContent } from '@/lib/i18n'
 import { ComposableMap, Geographies, Geography, Marker, Graticule } from 'react-simple-maps'
 import { geoMercator, geoCentroid, geoArea } from 'd3-geo'
 
@@ -181,7 +182,17 @@ function Tooltip({ x, y, content, iso2 }: { x: number; y: number; content: strin
   )
 }
 
-function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hover a country to see details", countries = [] }: EuComplianceMapProps) {
+function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplianceMapProps) {
+  const [labels, setLabels] = useState<any>({})
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const htmlLang = (typeof document !== 'undefined' ? document.documentElement.lang : 'en') as 'en' | 'de' | 'fr' | 'es'
+        const content = await getContent(htmlLang)
+        setLabels(content?.map || {})
+      } catch {}
+    })()
+  }, [])
   // Добавляем CSS стили для анимаций
   useEffect(() => {
     const style = document.createElement('style')
@@ -299,8 +310,8 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
     >
       <Container>
         <div className="text-center mb-6 md:mb-8">
-          <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2 leading-tight tracking-tight">{title}</h2>
-          <p className="text-xl md:text-2xl text-gray-700 font-medium leading-snug opacity-90">{subtitle}</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2 leading-tight tracking-tight">{title || labels.title}</h2>
+          <p className="text-xl md:text-2xl text-gray-700 font-medium leading-snug opacity-90">{subtitle || labels.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -487,30 +498,30 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
 
                   <div className="space-y-1">
                     <div className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">{formatNumber(selected.sitesCount)}</div>
-                    <div className="text-xs md:text-sm uppercase tracking-wider text-gray-500">Sites registered</div>
+                    <div className="text-xs md:text-sm uppercase tracking-wider text-gray-500">{labels.metrics?.sitesRegistered || 'Sites'}</div>
                   </div>
 
                   <div className="mx-auto max-w-sm grid grid-cols-1 gap-3 md:gap-4 w-full">
                     <div className={`rounded-lg border px-3 py-2 bg-white ${getConsentTextClass(selected.consentRate)} border-gray-200`}>
-                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Consent rate</div>
-                      <div className={`text-base md:text-lg font-extrabold`}>{selected.consentRate !== null ? `${Math.round(selected.consentRate)}%` : 'n/a'}</div>
+                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">{labels.metrics?.consentRate || 'Consent rate'}</div>
+                      <div className={`text-base md:text-lg font-extrabold`}>{selected.consentRate !== null ? `${Math.round(selected.consentRate)}%` : (labels.metrics?.na || 'n/a')}</div>
                     </div>
                     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
-                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Regulator</div>
-                      <div className="text-sm md:text-base font-semibold text-gray-800 break-words">{selected.regulator || 'n/a'}</div>
+                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">{labels.metrics?.regulator || 'Regulator'}</div>
+                      <div className="text-sm md:text-base font-semibold text-gray-800 break-words">{selected.regulator || (labels.metrics?.na || 'n/a')}</div>
                     </div>
                     {(() => { const c = getRiskClasses(selected.fineRisk); return (
                       <div className={`rounded-full border px-3 py-1.5 inline-flex items-center justify-center mx-auto ${c.container}`}>
-                        <span className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mr-2">Fine risk</span>
-                        <span className={`text-sm md:text-base font-semibold ${c.text}`}>{selected.fineRisk ? selected.fineRisk.replace(/_/g,' ') : 'n/a'}</span>
+                        <span className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mr-2">{labels.metrics?.fineRisk || 'Fine risk'}</span>
+                        <span className={`text-sm md:text-base font-semibold ${c.text}`}>{selected.fineRisk ? selected.fineRisk.replace(/_/g,' ') : (labels.metrics?.na || 'n/a')}</span>
                       </div>
                     )})()}
                     <div className={`rounded-lg border px-3 py-2 bg-white`}>
-                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">Market density</div>
-                      <div className={`text-base md:text-lg font-semibold ${getDensityTextClass(selected.marketDensity)}`}>{selected.marketDensity !== null ? `${selected.marketDensity}` : 'n/a'}</div>
+                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">{labels.metrics?.marketDensity || 'Market density'}</div>
+                      <div className={`text-base md:text-lg font-semibold ${getDensityTextClass(selected.marketDensity)}`}>{selected.marketDensity !== null ? `${selected.marketDensity}` : (labels.metrics?.na || 'n/a')}</div>
                     </div>
                     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
-                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mb-1">Violations pattern</div>
+                      <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.metrics?.violationsPattern || 'Violations pattern'}</div>
                       {selected.violationsPattern && selected.violationsPattern.length > 0 ? (
                         <ul className="text-sm md:text-base text-gray-800 list-disc list-inside space-y-0.5 text-left">
                           {selected.violationsPattern.map((v, i) => (
@@ -518,15 +529,15 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
                           ))}
                         </ul>
                       ) : (
-                        <div className="text-sm md:text-base text-gray-500">n/a</div>
+                        <div className="text-sm md:text-base text-gray-500">{labels.metrics?.na || 'n/a'}</div>
                       )}
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center text-center gap-2 md:gap-3">
-                  <div className="text-2xl md:text-3xl font-extrabold text-gray-900">Hover a country</div>
-                  <div className="text-sm md:text-base text-gray-600">to see stats</div>
+                  <div className="text-2xl md:text-3xl font-extrabold text-gray-900">{labels.emptyTitle}</div>
+                  <div className="text-sm md:text-base text-gray-600">{labels.emptySubtitle}</div>
                 </div>
               )}
             </div>
@@ -538,19 +549,19 @@ function EuComplianceMapComponent({ title = "EU Compliance Map", subtitle = "Hov
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
           <span className="inline-flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(0, 35, 149, 0.8)" }} /> 
-            Синие флаги
+            {labels.legend?.blueFlags}
           </span>
           <span className="inline-flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(220, 20, 60, 0.8)" }} /> 
-            Красные флаги
+            {labels.legend?.redFlags}
           </span>
           <span className="inline-flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(22, 155, 98, 0.8)" }} /> 
-            Зелёные флаги
+            {labels.legend?.greenFlags}
           </span>
           <span className="inline-flex items-center gap-2">
             <span className="inline-block w-3 h-3 rounded-sm" style={{ background: "rgba(220, 38, 38, 0.8)" }} /> 
-            Швейцария
+            {labels.legend?.switzerland}
           </span>
         </div>
       </Container>

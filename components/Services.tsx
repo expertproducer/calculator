@@ -100,7 +100,7 @@ export default function Services({ content }: ServicesProps) {
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
-              {content.approachTitle || 'Our Approach'}
+              {content.approachTitle}
             </h2>
           </div>
           
@@ -206,7 +206,7 @@ export default function Services({ content }: ServicesProps) {
               {content.packagesTitle || 'Service Packages'}
             </h2>
             <p className="text-lg font-medium text-gray-600 max-w-3xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.packagesSubtitle || 'Choose the **right solution** for your business') }} />
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.packagesSubtitle) }} />
             </p>
           </div>
           
@@ -261,7 +261,7 @@ export default function Services({ content }: ServicesProps) {
           
           <div className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg transform hover:scale-105">
             <Briefcase className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ctaText || 'Start Your Implementation'}</span>
+            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ctaText}</span>
             <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
           </div>
         </div>

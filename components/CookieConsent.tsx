@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Cookie, Settings, X, CheckCircle, AlertTriangle, Info } from 'lucide-react'
 import { initializeGTM, sendConsentEvent } from '@/lib/gtm'
+import { getContent } from '@/lib/i18n'
 
 interface CookiePreferences {
   essential: boolean
@@ -22,87 +23,36 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
   })
 
   const localeTyped = (locale === 'de' ? 'de' : locale === 'fr' ? 'fr' : locale === 'es' ? 'es' : 'en') as 'en' | 'de' | 'fr' | 'es'
-  
-  const translations = {
-    en: {
-      title: "We use cookies to enhance your experience",
-      description: "We use cookies and similar technologies to help personalize content, provide social media features, and analyze our traffic. We also share information about your use of our site with our social media, advertising, and analytics partners.",
-      acceptAll: "Accept All",
-      decline: "Decline",
-      preferences: "Preferences",
-      preferencesTitle: "Cookie Preferences",
-      essential: "Essential Cookies",
-      analytics: "Analytics Cookies",
-      marketing: "Marketing Cookies",
-      functional: "Functional Cookies",
-      alwaysActive: "Always Active",
-      savePreferences: "Save Preferences",
-      cancel: "Cancel",
-      essentialDesc: "These cookies are necessary for the website to function and cannot be disabled.",
-      analyticsDesc: "Help us understand how visitors interact with our website by collecting and reporting information anonymously.",
-      marketingDesc: "Used to track visitors across websites to display relevant and engaging advertisements.",
-      functionalDesc: "Enable enhanced functionality and personalization such as chat support and social media integration."
-    },
-    es: {
-      title: "Usamos cookies para mejorar tu experiencia",
-      description: "Usamos cookies y tecnologías similares para personalizar contenido, proporcionar funciones de redes sociales y analizar nuestro tráfico. También compartimos información sobre tu uso del sitio con nuestros socios de redes sociales, publicidad y análisis.",
-      acceptAll: "Aceptar Todo",
-      decline: "Rechazar",
-      preferences: "Preferencias",
-      preferencesTitle: "Preferencias de Cookies",
-      essential: "Cookies Esenciales",
-      analytics: "Cookies Analíticas",
-      marketing: "Cookies de Marketing",
-      functional: "Cookies Funcionales",
-      alwaysActive: "Siempre Activas",
-      savePreferences: "Guardar Preferencias",
-      cancel: "Cancelar",
-      essentialDesc: "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
-      analyticsDesc: "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando y reportando información de forma anónima.",
-      marketingDesc: "Se usan para rastrear visitantes en sitios web para mostrar anuncios relevantes y atractivos.",
-      functionalDesc: "Permiten funcionalidad mejorada y personalización como soporte de chat e integración de redes sociales."
-    },
-    de: {
-      title: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern",
-      description: "Wir verwenden Cookies und ähnliche Technologien, um Inhalte zu personalisieren, Social-Media-Funktionen bereitzustellen und unseren Traffic zu analysieren. Wir teilen auch Informationen über Ihre Nutzung unserer Website mit unseren Social-Media-, Werbe- und Analytics-Partnern.",
-      acceptAll: "Alle akzeptieren",
-      decline: "Ablehnen",
-      preferences: "Einstellungen",
-      preferencesTitle: "Cookie-Einstellungen",
-      essential: "Wesentliche Cookies",
-      analytics: "Analytics-Cookies",
-      marketing: "Marketing-Cookies",
-      functional: "Funktionale Cookies",
-      alwaysActive: "Immer aktiv",
-      savePreferences: "Einstellungen speichern",
-      cancel: "Abbrechen",
-      essentialDesc: "Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.",
-      analyticsDesc: "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln und melden.",
-      marketingDesc: "Werden verwendet, um Besucher über Websites hinweg zu verfolgen und relevante und ansprechende Werbung anzuzeigen.",
-      functionalDesc: "Ermöglichen erweiterte Funktionalität und Personalisierung wie Chat-Support und Social-Media-Integration."
-    },
-    fr: {
-      title: "Nous utilisons des cookies pour améliorer votre expérience",
-      description: "Nous utilisons des cookies et des technologies similaires pour aider à personnaliser le contenu, fournir des fonctionnalités de médias sociaux et analyser notre trafic. Nous partageons également des informations sur votre utilisation de notre site avec nos partenaires de médias sociaux, de publicité et d'analyse.",
-      acceptAll: "Tout accepter",
-      decline: "Refuser",
-      preferences: "Préférences",
-      preferencesTitle: "Préférences des cookies",
-      essential: "Cookies essentiels",
-      analytics: "Cookies analytiques",
-      marketing: "Cookies marketing",
-      functional: "Cookies fonctionnels",
-      alwaysActive: "Toujours actif",
-      savePreferences: "Sauvegarder les préférences",
-      cancel: "Annuler",
-      essentialDesc: "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
-      analyticsDesc: "Nous aident à comprendre comment les visiteurs interagissent avec notre site web en collectant et rapportant des informations de manière anonyme.",
-      marketingDesc: "Utilisés pour suivre les visiteurs sur les sites web afin d'afficher des publicités pertinentes et engageantes.",
-      functionalDesc: "Permettent une fonctionnalité améliorée et la personnalisation comme le support de chat et l'intégration des médias sociaux."
-    }
-  }[localeTyped]
+
+  const [translations, setTranslations] = useState({
+    title: '',
+    description: '',
+    acceptAll: '',
+    decline: '',
+    preferences: '',
+    preferencesTitle: '',
+    essential: '',
+    analytics: '',
+    marketing: '',
+    functional: '',
+    alwaysActive: '',
+    savePreferences: '',
+    cancel: '',
+    essentialDesc: '',
+    analyticsDesc: '',
+    marketingDesc: '',
+    functionalDesc: ''
+  })
 
   useEffect(() => {
+    let mounted = true
+    ;(async () => {
+      try {
+        const content = await getContent(localeTyped)
+        const cc = (content?.cookieConsent || {}) as any
+        if (mounted) setTranslations(cc)
+      } catch {}
+    })()
     // Check if consent already exists
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
@@ -121,6 +71,7 @@ export default function CookieConsent({ locale = 'en' }: { locale?: string }) {
     window.addEventListener('openCookiePreferences', handleOpenPreferences)
 
     return () => {
+      mounted = false
       window.removeEventListener('openCookiePreferences', handleOpenPreferences)
     }
   }, [])

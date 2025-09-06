@@ -60,10 +60,10 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
             
             {/* Main Headline - Enhanced Process Page Style */}
             <h1 className="text-fluid-hero font-black text-white leading-tight tracking-tight mb-16 mt-20 drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_40%)]">
-              {content.headline || 'Every Business Needs'} 
-              <span className="text-blue-300 block text-fluid-hero-blue drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.headlineBlue || 'Cookie Compliance'}</span>
+              {content.headline}
+              <span className="text-blue-300 block text-fluid-hero-blue drop-shadow-2xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_35%)]">{content.headlineBlue}</span>
               <span className="text-gray-200 block text-fluid-hero-gray font-black mt-6 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
-                {content.headlineGray || 'That Actually Works!'}
+                {content.headlineGray}
               </span>
             </h1>
             
@@ -109,7 +109,7 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
               </h2>
               
               <p className="text-3xl text-gray-600 max-w-5xl mx-auto font-black drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
-                {content.problemsDesc || 'We fix these problems quickly and professionally'}
+                {content.problemsDesc}
               </p>
             </div>
             
@@ -129,7 +129,7 @@ export default function Hero({ content, locale = 'en' }: HeroProps) {
             <div className="text-center mt-20">
               <div className="inline-flex items-center gap-6 px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-black text-2xl transform hover:scale-105 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">
                 <ShieldCheck className="w-8 h-8 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]" />
-                <span className="drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">{content.solutionText || 'We solve all these problems'}</span>
+                <span className="drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_30%)]">{content.solutionText}</span>
               </div>
             </div>
           </Container>

@@ -117,8 +117,9 @@ function Gauge({ title, value, max }: { title: string; value: number; max: numbe
   )
 }
 
-export default function EuGdprCharts() {
+export default function EuGdprCharts({ locale }: { locale?: 'en' | 'de' | 'fr' | 'es' }) {
   const [labels, setLabels] = useState<any>({})
+  const [patternTranslations, setPatternTranslations] = useState<Record<string, string>>({})
   const [leaderboardMode, setLeaderboardMode] = useState<'absolute' | 'perCapita' | 'log'>('absolute')
   const [activeTab, setActiveTab] = useState<'market' | 'adoption' | 'scatter' | 'risks' | 'violations' | 'gauges'>('market')
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
@@ -127,9 +128,10 @@ export default function EuGdprCharts() {
   useEffect(() => {
     ;(async () => {
       try {
-        const htmlLang = (typeof document !== 'undefined' ? document.documentElement.lang : 'en') as 'en' | 'de' | 'fr' | 'es'
+        const htmlLang = (locale || (typeof document !== 'undefined' ? document.documentElement.lang : 'en')) as 'en' | 'de' | 'fr' | 'es'
         const content = await getContent(htmlLang)
         setLabels(content?.charts || {})
+        setPatternTranslations(content?.map?.patternTranslations || {})
       } catch {}
     })()
     // Добавляем небольшую задержку для анимации появления графиков
@@ -137,7 +139,14 @@ export default function EuGdprCharts() {
       setIsChartVisible(true)
     }, 300)
     return () => clearTimeout(timer)
-  }, [])
+  }, [locale])
+
+  const normalizePattern = (s: string) => (s || '')
+    .toLowerCase()
+    .replace(/[\u2010-\u2015]/g, '-')
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
 
   const data = useMemo(() => {
     const items = (rawChartsData as unknown as ChartsItem[]).map(d => ({
@@ -772,18 +781,14 @@ export default function EuGdprCharts() {
                       <div className="font-semibold text-lg flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: RISK_COLOR[selected.fineRisk] }}></span>
                         <span style={{ color: RISK_COLOR[selected.fineRisk] }}>
-                          {selected.fineRisk === 'low' ? 'Низкий' : 
-                           selected.fineRisk === 'low_medium' ? 'Низкий-средний' : 
-                           selected.fineRisk === 'medium' ? 'Средний' : 
-                           selected.fineRisk === 'medium_high' ? 'Средний-высокий' : 
-                           'Высокий'}
+                          {labels.fineRisk?.[selected.fineRisk] || selected.fineRisk}
                         </span>
                       </div>
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
                       <div className="text-sm text-gray-500 mb-1">{labels.details?.marketDensity}</div>
-                      <div className="font-semibold text-gray-900 text-lg">{selected.marketDensity.toFixed(1)} <span className="text-sm text-gray-500">на 1000 жителей</span></div>
+                      <div className="font-semibold text-gray-900 text-lg">{selected.marketDensity.toFixed(1)}</div>
                     </div>
                     
                     <div className="p-4 bg-gray-50 rounded-lg">
@@ -944,7 +949,7 @@ export default function EuGdprCharts() {
                     transition={{ delay: 0.4 + idx * 0.1 }}
                   >
                     <span className="inline-block w-3 h-3 bg-primary-500 rounded-full" />
-                    <span className="text-sm font-medium">{v}</span>
+                    <span className="text-sm font-medium">{patternTranslations[normalizePattern(v)] || v}</span>
                   </motion.div>
                 ))}
               </motion.div>

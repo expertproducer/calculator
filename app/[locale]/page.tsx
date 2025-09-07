@@ -1,7 +1,6 @@
 import { getContent } from '@/lib/i18n'
 import { 
   EnhancedTestimonials,
-  Contact, 
   FinalCTA, 
   Footer, 
   Navbar,
@@ -87,22 +86,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
         
-        {/* Enhanced Testimonials with Photos & Metrics */}
-        <EnhancedTestimonials content={content.testimonials} />
-        
         {/* EU Compliance Map */}
         <EuComplianceMap title={content.map?.title} subtitle={content.map?.subtitle} countries={countriesFromJson as any} locale={locale as any} />
 
         {/* GDPR Charts */}
         <EuGdprCharts locale={locale as any} />
 
-        <section id="contact">
-          <Contact content={content.contact} />
-        </section>
+        {/* Contact section removed from homepage; dedicated page exists */}
         
         <section id="final-cta">
           <FinalCTA content={content.finalCTA} locale={locale} />
         </section>
+
+        {/* Enhanced Testimonials moved to the bottom of the page */}
+        <EnhancedTestimonials content={content.testimonials} />
       </main>
       
       <Footer content={content} locale={locale} />

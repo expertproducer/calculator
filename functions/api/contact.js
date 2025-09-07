@@ -55,13 +55,13 @@ export async function onRequestPost(context) {
         
         const slackMessage = {
           channel: slackChannel,
-          text: '🎯 Новая заявка с сайта C&C CookieComply',
+          text: '🎯 Новая заявка с сайта CookieComply',
           blocks: [
             {
               type: 'header',
               text: {
                 type: 'plain_text',
-                text: '🎯 Новая заявка с сайта C&C CookieComply'
+                text: '🎯 Новая заявка с сайта CookieComply'
               }
             },
             {

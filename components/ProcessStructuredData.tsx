@@ -19,7 +19,7 @@ export default function ProcessStructuredData({ locale }: ProcessStructuredDataP
                   "Notre approche systématique en 5 étapes assure un déploiement CMP transparent avec une perturbation minimale.",
     "provider": {
       "@type": "Organization",
-      "name": "C&C CookieComply",
+      "name": "CookieComply",
       "url": baseUrl
     },
     "url": currentUrl,

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'C&C CookieComply',
+  title: 'CookieComply',
   description: 'GDPR CMP Setup & Cookie Banner Fixes',
   manifest: '/manifest.json?v=2.0.0',
   icons: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
-    'application-name': 'C&C CookieComply',
+    'application-name': 'CookieComply',
     'msapplication-TileImage': '/favicon.png',
     'msapplication-config': '/browserconfig.xml'
   }

@@ -139,7 +139,7 @@ export default function Navbar({ locale }: { locale: string }) {
         ? 'bg-white/95 backdrop-blur-sm shadow-2xl border-b border-gray-100' 
         : 'bg-white/90 backdrop-blur-sm'
     }`}>
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-6">
+      <div className="mx-auto w-full max-w-[1280px] px-0 py-0">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <button 
@@ -149,21 +149,18 @@ export default function Navbar({ locale }: { locale: string }) {
             }}
             className="flex items-center gap-4 hover:opacity-80 transition-all duration-300 group transform hover:scale-105"
           >
-            <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-2xl">
-              <Shield className="text-white w-7 h-7 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
+            <div className="w-16 h-16 bg-transparent rounded-xl overflow-hidden flex items-center justify-center">
+              <img src="/logo.svg" alt="CookieComply logo" className="w-full h-full object-contain" />
             </div>
-            <span className="text-2xl font-black text-gray-900 tracking-tight drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              C&C CookieComply
-            </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => navigateToPage(item.id)}
-                className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-bold text-lg tracking-wide relative group px-6 py-3 rounded-xl hover:bg-blue-50 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]"
+                className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-bold text-lg tracking-wide relative group px-2 py-1 rounded-lg hover:bg-blue-50 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full rounded-full"></span>
@@ -180,8 +177,8 @@ export default function Navbar({ locale }: { locale: string }) {
                   console.log('Language switcher clicked!')
                   setShowLanguageMenu(!showLanguageMenu)
                 }}
-                className="flex items-center gap-3 px-6 py-3 text-lg font-bold text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-xl hover:bg-blue-50 cursor-pointer border-2 border-gray-200 hover:border-blue-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                style={{ minWidth: '80px' }}
+                className="flex items-center gap-1 px-2 py-1 text-base font-semibold text-gray-700 hover:text-blue-600 transition-colors rounded-md hover:bg-blue-50 cursor-pointer border border-gray-200 hover:border-blue-300 shadow-sm"
+                style={{ minWidth: '64px' }}
                 type="button"
               >
                 <Globe size={20} className="text-blue-600 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
@@ -190,19 +187,20 @@ export default function Navbar({ locale }: { locale: string }) {
               
               {/* Language Dropdown */}
               {showLanguageMenu && (
-                <div className="absolute right-0 top-full mt-3 bg-white border-2 border-gray-100 rounded-2xl shadow-2xl py-3 min-w-[180px] z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg py-1 w-44 z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className={`w-full px-6 py-4 text-left text-lg flex items-center gap-4 hover:bg-blue-50 transition-all duration-300 rounded-xl mx-2 font-bold ${
+                      className={`w-full px-3 py-2 text-left text-base flex items-center gap-2 hover:bg-blue-50 transition-colors rounded-md font-medium ${
                         locale === lang.code 
-                          ? 'text-blue-600 bg-blue-50' 
+                          ? 'text-blue-600' 
                           : 'text-gray-700'
                       }`}
                     >
-                      <span className="text-xl">{lang.flag}</span>
+                      <span className="text-lg leading-none w-6 text-center">{lang.flag}</span>
                       <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{lang.name}</span>
+                      {locale === lang.code && <span className="ml-auto text-blue-600">✓</span>}
                     </button>
                   ))}
                 </div>
@@ -212,7 +210,7 @@ export default function Navbar({ locale }: { locale: string }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-3 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-xl hover:bg-blue-50 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-xl hover:bg-blue-50 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               {isMenuOpen ? <X size={28} className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" /> : <Menu size={28} className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />}
             </button>
@@ -239,19 +237,20 @@ export default function Navbar({ locale }: { locale: string }) {
                   <Globe size={20} className="text-blue-600 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
                   {labels?.languagesTitle || 'Languages'}
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => switchLanguage(lang.code)}
-                      className={`w-full px-6 py-4 text-left flex items-center gap-4 rounded-xl transition-all duration-300 font-bold text-lg ${
+                      className={`w-full px-4 py-3 text-left flex items-center gap-3 rounded-lg transition-colors font-semibold text-base ${
                         locale === lang.code 
-                          ? 'text-blue-600 bg-blue-50' 
+                          ? 'text-blue-600' 
                           : 'text-gray-700 hover:bg-blue-50'
                       }`}
                     >
-                      <span className="text-2xl">{lang.flag}</span>
+                      <span className="text-xl w-6 text-center">{lang.flag}</span>
                       <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{lang.name}</span>
+                      {locale === lang.code && <span className="ml-auto text-blue-600">✓</span>}
                     </button>
                   ))}
                 </div>

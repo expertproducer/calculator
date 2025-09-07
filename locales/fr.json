@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Mise en place CMP\\nC&C CookieComply",
+    "title": "Mise en place CMP\\nCookieComply",
     "subtitle": "Nous configurons CMP, corrigeons les bannières de cookies et bloquons les trackers avant le consentement.",
     "headline": "Chaque Entreprise A Besoin",
     "headlineBlue": "Conformité Cookies",
@@ -188,7 +188,7 @@
         "name": "Alex Thompson", 
         "company": "EcomCo", 
         "role": "CMO", 
-        "testimonial": "C&C a transformé notre conformité cookies d'un cauchemar en un processus fluide et automatisé. Nos taux de conversion se sont même améliorés après l'implémentation !", 
+        "testimonial": "CookieComply a transformé notre conformité cookies d'un cauchemar en un processus fluide et automatisé. Nos taux de conversion se sont même améliorés après l'implémentation !", 
         "rating": 5,
         "result": "25% d'augmentation des taux de consentement",
         "avatar": "/images/testimonials/alex-thompson.webp",
@@ -233,7 +233,7 @@
         "name": "Sarah Johnson", 
         "company": "FinanceCorp", 
         "role": "Legal Director", 
-        "testimonial": "L'implémentation la plus approfondie et légalement conforme que nous ayons vue. L'attention de C&C aux détails réglementaires nous a donné une confiance complète dans notre posture de conformité.", 
+        "testimonial": "L'implémentation la plus approfondie et légalement conforme que nous ayons vue. L'attention de CookieComply aux détails réglementaires nous a donné une confiance complète dans notre posture de conformité.", 
         "rating": 5,
         "result": "Audit réglementaire réussi",
         "avatar": "/images/testimonials/sarah-johnson.webp",
@@ -367,7 +367,7 @@
     ]
   },
   "footer": {
-    "copyright": "C&C CookieComply",
+    "copyright": "CookieComply",
     "links": ["Confidentialité", "Cookies", "Contact"],
     "description": "Configuration CMP RGPD & corrections de bannières",
     "location": "UE",

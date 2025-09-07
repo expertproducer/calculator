@@ -11,7 +11,7 @@ export default function StructuredData() {
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "C&C CookieComply",
+      "name": "CookieComply",
       "url": GDPR_SUBDOMAIN,
       "logo": `${GDPR_SUBDOMAIN}/logo.svg`,
       "description": "Professional GDPR compliance solutions for businesses",

@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
-    authors: [{ name: 'C&C CookieComply' }],
-    creator: 'C&C CookieComply',
-    publisher: 'C&C CookieComply',
+    authors: [{ name: 'CookieComply' }],
+    creator: 'CookieComply',
+    publisher: 'CookieComply',
     robots: {
       index: true,
       follow: true,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: meta.title,
       description: meta.description,
       url: `${GDPR_SUBDOMAIN}${locale === 'en' ? '/' : `/${locale}/`}`,
-      siteName: 'C&C CookieComply',
+      siteName: 'CookieComply',
       locale: locale === 'en' ? 'en_US' : locale === 'de' ? 'de_DE' : locale === 'fr' ? 'fr_FR' : 'es_ES',
       type: 'website',
       images: [
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           url: `${GDPR_SUBDOMAIN}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'C&C CookieComply - GDPR Compliance Solutions'
+          alt: 'CookieComply - GDPR Compliance Solutions'
         }
       ]
     },

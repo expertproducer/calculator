@@ -15,7 +15,7 @@ export default function ServicesStructuredData({ locale }: ServicesStructuredDat
             "CMP Implementation and Cookie Banner Setup (GDPR)",
     "provider": {
       "@type": "Organization",
-      "name": "C&C CookieComply",
+      "name": "CookieComply",
       "url": baseUrl
     },
     "areaServed": ["EU", "EEA", "Switzerland"],

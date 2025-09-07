@@ -19,7 +19,7 @@ export default function PricingStructuredData({ locale }: PricingStructuredDataP
                   "Implémentation CMP professionnelle avec un modèle de prix transparent. Nous facturons uniquement l'implémentation, vous choisissez votre plan de service CMP préféré.",
     "provider": {
       "@type": "Organization",
-      "name": "C&C CookieComply",
+      "name": "CookieComply",
       "url": baseUrl
     },
     "url": currentUrl,

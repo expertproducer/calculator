@@ -114,22 +114,11 @@ body {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-  overflow: clip;
+  overflow: visible;
 }
 
 /* Subtle scaling on ultra-wide screens to keep whole page in view */
-@media (min-width: 1600px) {
-  .site-frame {
-    transform: scale(0.92);
-    transform-origin: top center;
-  }
-}
-@media (min-width: 1920px) {
-  .site-frame { transform: scale(0.86); }
-}
-@media (min-width: 2560px) {
-  .site-frame { transform: scale(0.78); }
-}
+/* Removed scaling transforms to ensure fixed/sticky headers behave consistently */
 
 /* Focus styles for accessibility */
 *:focus-visible {

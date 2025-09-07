@@ -31,7 +31,7 @@ export default function FAQStructuredData({ locale, faqItems }: FAQStructuredDat
     })),
     "provider": {
       "@type": "Organization",
-      "name": "C&C CookieComply",
+      "name": "CookieComply",
       "url": baseUrl
     },
     "url": currentUrl

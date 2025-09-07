@@ -52,7 +52,7 @@ export default function Footer({ content, locale }: { content: any; locale: stri
         {/* Нижняя строка: копирайт и email по центру */}
         <div className="mx-auto flex flex-row justify-center items-center border-t-2 border-gray-800 pt-2 gap-4 px-4">
           <div className="text-gray-200 text-sm font-bold drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-            © {currentYear} C&C CookieComply. {content.footer.allRightsReserved}
+            © {currentYear} CookieComply. {content.footer.allRightsReserved}
           </div>
           <span className="text-gray-100 font-bold px-2 py-1 rounded-lg bg-gray-800 border border-gray-700">team@cookiecomply.site</span>
         </div>

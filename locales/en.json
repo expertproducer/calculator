@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "CMP Setup\\nC&C CookieComply",
+    "title": "CMP Setup\\nCookieComply",
     "subtitle": "We set up CMP, fix cookie banners, block trackers before consent, and log consent properly.",
     "headline": "Every Business Needs",
     "headlineBlue": "Cookie Compliance",
@@ -176,7 +176,7 @@
                 "name": "Alex Thompson",
         "company": "EcomCo",
         "role": "CMO",
-        "testimonial": "C&C transformed our cookie compliance from a nightmare into a smooth, automated process. Our conversion rates actually improved after implementation!",
+        "testimonial": "CookieComply transformed our cookie compliance from a nightmare into a smooth, automated process. Our conversion rates actually improved after implementation!",
         "rating": 5,
         "result": "25% increase in consent rates",
         "avatar": "/images/testimonials/alex-thompson.webp",
@@ -220,7 +220,7 @@
         "name": "Sarah Johnson", 
         "company": "FinanceCorp", 
         "role": "Legal Director", 
-        "testimonial": "The most thorough and legally compliant implementation we've seen. C&C's attention to regulatory details gave us complete confidence in our compliance posture.", 
+        "testimonial": "The most thorough and legally compliant implementation we've seen. CookieComply's attention to regulatory details gave us complete confidence in our compliance posture.", 
         "rating": 5,
         "result": "Passed regulatory audit",
         "avatar": "/images/testimonials/sarah-johnson.webp",
@@ -354,7 +354,7 @@
     ]
   },
   "footer": {
-    "copyright": "C&C CookieComply",
+    "copyright": "CookieComply",
     "links": ["Privacy", "Cookies", "Contact"],
     "description": "GDPR CMP setup & cookie banner fixes",
     "location": "EU",

@@ -34,22 +34,22 @@ export function fullUrlFor(locale: Locale, slug = "/") {
 export const PAGE_METADATA = {
   home: {
     en: {
-      title: "Professional GDPR Compliance & CMP Setup | C&C CookieComply",
+      title: "Professional GDPR Compliance & CMP Setup | CookieComply",
       description: "Expert GDPR compliance services: CMP setup, cookie banner fixes, consent tracking & privacy policy creation. Get compliant fast with our proven solutions.",
       keywords: ["GDPR compliance", "CMP setup", "cookie banner", "consent management", "privacy compliance", "CCPA compliance", "cookie audit", "data protection"]
     },
     de: {
-      title: "Professionelle DSGVO-Compliance & CMP-Einrichtung | C&C CookieComply", 
+      title: "Professionelle DSGVO-Compliance & CMP-Einrichtung | CookieComply", 
       description: "Experten-DSGVO-Compliance-Services: CMP-Einrichtung, Cookie-Banner-Reparaturen, Consent-Tracking & Datenschutzerklärung. Schnell compliant werden mit bewährten Lösungen.",
       keywords: ["DSGVO Compliance", "CMP Einrichtung", "Cookie-Banner", "Consent Management", "Datenschutz-Compliance", "Cookie Audit", "Datenschutz", "GDPR"]
     },
     fr: {
-      title: "Conformité RGPD Professionnelle & Configuration CMP | C&C CookieComply",
+      title: "Conformité RGPD Professionnelle & Configuration CMP | CookieComply",
       description: "Services experts de conformité RGPD : configuration CMP, réparation bannières cookies, tracking consentement & politique de confidentialité. Devenez conforme rapidement.",
       keywords: ["Conformité RGPD", "Configuration CMP", "Bannière cookies", "Gestion consentement", "Conformité confidentialité", "Audit cookies", "Protection données", "GDPR"]
     },
     es: {
-      title: "Cumplimiento RGPD Profesional & Configuración CMP | C&C CookieComply",
+      title: "Cumplimiento RGPD Profesional & Configuración CMP | CookieComply",
       description: "Servicios expertos de cumplimiento RGPD: configuración CMP, reparación banners cookies, seguimiento consentimiento & política privacidad. Cumpla rápidamente.",
       keywords: ["Cumplimiento RGPD", "Configuración CMP", "Banner cookies", "Gestión consentimiento", "Cumplimiento privacidad", "Auditoría cookies", "Protección datos", "GDPR"]
     }
@@ -78,22 +78,22 @@ export const PAGE_METADATA = {
   },
   contact: {
     en: {
-      title: "Contact GDPR Compliance Experts | Free Consultation | C&C CookieComply",
+      title: "Contact GDPR Compliance Experts | Free Consultation | CookieComply",
       description: "Get expert GDPR compliance help. Free consultation, custom solutions, and professional implementation. Contact our team for immediate assistance with your privacy compliance needs.",
       keywords: ["GDPR consultation", "privacy compliance help", "CMP implementation", "cookie compliance", "contact experts", "free consultation"]
     },
     de: {
-      title: "DSGVO-Compliance-Experten kontaktieren | Kostenlose Beratung | C&C CookieComply",
+      title: "DSGVO-Compliance-Experten kontaktieren | Kostenlose Beratung | CookieComply",
       description: "Holen Sie sich professionelle DSGVO-Compliance-Hilfe. Kostenlose Beratung, maßgeschneiderte Lösungen und professionelle Umsetzung. Kontaktieren Sie unser Team für sofortige Hilfe.",
       keywords: ["DSGVO-Beratung", "Datenschutz-Compliance-Hilfe", "CMP-Implementierung", "Cookie-Compliance", "Experten kontaktieren", "kostenlose Beratung"]
     },
     fr: {
-      title: "Contacter les Experts Conformité RGPD | Consultation Gratuite | C&C CookieComply",
+      title: "Contacter les Experts Conformité RGPD | Consultation Gratuite | CookieComply",
       description: "Obtenez une aide experte en conformité RGPD. Consultation gratuite, solutions personnalisées et implémentation professionnelle. Contactez notre équipe pour une assistance immédiate.",
       keywords: ["consultation RGPD", "aide conformité confidentialité", "implémentation CMP", "conformité cookies", "contacter experts", "consultation gratuite"]
     },
     es: {
-      title: "Contactar Expertos Cumplimiento RGPD | Consulta Gratuita | C&C CookieComply",
+      title: "Contactar Expertos Cumplimiento RGPD | Consulta Gratuita | CookieComply",
       description: "Obtenga ayuda experta en cumplimiento RGPD. Consulta gratuita, soluciones personalizadas e implementación profesional. Contacte a nuestro equipo para asistencia inmediata.",
       keywords: ["consulta RGPD", "ayuda cumplimiento privacidad", "implementación CMP", "cumplimiento cookies", "contactar expertos", "consulta gratuita"]
     }
@@ -144,37 +144,37 @@ export const PAGE_METADATA = {
   },
   privacy: {
     en: {
-      title: "Privacy Policy — C&C CookieComply",
+      title: "Privacy Policy — CookieComply",
       description: "Our privacy policy explains how we collect, use, and protect your personal information in compliance with GDPR regulations."
     },
     de: {
-      title: "Datenschutzerklärung — C&C CookieComply",
+      title: "Datenschutzerklärung — CookieComply",
       description: "Unsere Datenschutzerklärung erklärt, wie wir Ihre persönlichen Daten in Übereinstimmung mit den GDPR-Vorschriften sammeln, verwenden und schützen."
     },
     fr: {
-      title: "Politique de Confidentialité — C&C CookieComply",
+      title: "Politique de Confidentialité — CookieComply",
       description: "Notre politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles conformément aux réglementations GDPR."
     },
     es: {
-      title: "Política de Privacidad — C&C CookieComply",
+      title: "Política de Privacidad — CookieComply",
       description: "Nuestra política de privacidad explica cómo recopilamos, usamos y protegemos su información personal en cumplimiento con las regulaciones RGPD."
     }
   },
   cookies: {
     en: {
-      title: "Cookie Policy — C&C CookieComply",
+      title: "Cookie Policy — CookieComply",
       description: "Learn about how we use cookies and similar technologies on our website, and how you can manage your preferences."
     },
     de: {
-      title: "Cookie-Richtlinie — C&C CookieComply",
+      title: "Cookie-Richtlinie — CookieComply",
       description: "Erfahren Sie, wie wir Cookies und ähnliche Technologien auf unserer Website verwenden und wie Sie Ihre Einstellungen verwalten können."
     },
     fr: {
-      title: "Politique des Cookies — C&C CookieComply",
+      title: "Politique des Cookies — CookieComply",
       description: "Découvrez comment nous utilisons les cookies et technologies similaires sur notre site et comment vous pouvez gérer vos préférences."
     },
     es: {
-      title: "Política de Cookies — C&C CookieComply",
+      title: "Política de Cookies — CookieComply",
       description: "Aprenda sobre cómo usamos cookies y tecnologías similares en nuestro sitio web, y cómo puede gestionar sus preferencias."
     }
   }

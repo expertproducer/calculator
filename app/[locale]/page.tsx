@@ -94,12 +94,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {/* Contact section removed from homepage; dedicated page exists */}
         
+        {/* Enhanced Testimonials moved to the bottom of the page */}
+        <EnhancedTestimonials content={content.testimonials} />
+
         <section id="final-cta">
           <FinalCTA content={content.finalCTA} locale={locale} />
         </section>
-
-        {/* Enhanced Testimonials moved to the bottom of the page */}
-        <EnhancedTestimonials content={content.testimonials} />
       </main>
       
       <Footer content={content} locale={locale} />

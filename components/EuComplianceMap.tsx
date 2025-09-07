@@ -22,6 +22,7 @@ interface EuComplianceMapProps {
   title?: string
   subtitle?: string
   countries?: CountryInfo[]
+  locale?: 'en' | 'de' | 'fr' | 'es'
 }
 
 // TopoJSON: All European countries (including Switzerland). Using world-atlas for full coverage.
@@ -117,10 +118,11 @@ function getCountryColor(consentRate?: number): string {
   return "#BFDBFE" // blue-200
 }
 
-function formatNumber(value?: number | null): string {
+function formatNumberWithLang(value?: number | null, lang?: string): string {
   if (value === null || value === undefined || Number.isNaN(value)) return 'n/a'
   try {
-    return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value)
+    const l = lang || (typeof document !== 'undefined' && (document as any).documentElement?.lang) || (typeof navigator !== 'undefined' ? navigator.language : 'en-US')
+    return new Intl.NumberFormat(l, { maximumFractionDigits: 0 }).format(value)
   } catch {
     return String(value)
   }
@@ -182,17 +184,34 @@ function Tooltip({ x, y, content, iso2 }: { x: number; y: number; content: strin
   )
 }
 
-function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplianceMapProps) {
+function EuComplianceMapComponent({ title, subtitle, countries = [], locale }: EuComplianceMapProps) {
   const [labels, setLabels] = useState<any>({})
+  const [riskLabels, setRiskLabels] = useState<Record<string, string>>({})
+  const [patternTranslations, setPatternTranslations] = useState<Record<string, string>>({})
+  const normalizePattern = (s: string) => (s || '')
+    .toLowerCase()
+    .replace(/[\u2010-\u2015]/g, '-')
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  const normalizedPatternTranslations = useMemo(() => {
+    const map: Record<string, string> = {}
+    Object.entries(patternTranslations || {}).forEach(([k, v]) => {
+      map[normalizePattern(k)] = String(v)
+    })
+    return map
+  }, [patternTranslations])
   useEffect(() => {
     ;(async () => {
       try {
-        const htmlLang = (typeof document !== 'undefined' ? document.documentElement.lang : 'en') as 'en' | 'de' | 'fr' | 'es'
+        const htmlLang = (locale || (typeof document !== 'undefined' ? document.documentElement.lang : 'en')) as 'en' | 'de' | 'fr' | 'es'
         const content = await getContent(htmlLang)
         setLabels(content?.map || {})
+        setRiskLabels(content?.charts?.fineRisk || {})
+        setPatternTranslations(content?.map?.patternTranslations || {})
       } catch {}
     })()
-  }, [])
+  }, [locale])
   // Добавляем CSS стили для анимаций
   useEffect(() => {
     const style = document.createElement('style')
@@ -361,7 +380,7 @@ function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplia
                                     clearTimeout(hideTimeout)
                                     setHideTimeout(null)
                                   }
-                                  const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
+                                  const label = (code && (labels.countryLabels?.[code] || EU_COUNTRY_LABELS[code])) || nameStr || code || 'Unknown'
                                   const newContent = label
                                   
                                   console.log(`Mouse entered ${code}: ${label}`)
@@ -394,7 +413,7 @@ function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplia
                                   }
                                 }}
                                 onClick={() => {
-                                  const label = (code && EU_COUNTRY_LABELS[code]) || nameStr || code || 'Unknown'
+                                  const label = (code && (labels.countryLabels?.[code] || EU_COUNTRY_LABELS[code])) || nameStr || code || 'Unknown'
                                   const iso2 = code ? (ISO3_TO_ISO2[code] || null) : null
                                   const sites = typeof data?.sitesCount === 'number' ? data!.sitesCount : null
                                   const consentRate = typeof data?.consentRate === 'number' ? data!.consentRate : null
@@ -497,7 +516,7 @@ function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplia
                   <div className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">{selected.label}</div>
 
                   <div className="space-y-1">
-                    <div className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">{formatNumber(selected.sitesCount)}</div>
+                    <div className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">{formatNumberWithLang(selected.sitesCount, locale)}</div>
                     <div className="text-xs md:text-sm uppercase tracking-wider text-gray-500">{labels.metrics?.sitesRegistered || 'Sites'}</div>
                   </div>
 
@@ -513,20 +532,22 @@ function EuComplianceMapComponent({ title, subtitle, countries = [] }: EuComplia
                     {(() => { const c = getRiskClasses(selected.fineRisk); return (
                       <div className={`rounded-full border px-3 py-1.5 inline-flex items-center justify-center mx-auto ${c.container}`}>
                         <span className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mr-2">{labels.metrics?.fineRisk || 'Fine risk'}</span>
-                        <span className={`text-sm md:text-base font-semibold ${c.text}`}>{selected.fineRisk ? selected.fineRisk.replace(/_/g,' ') : (labels.metrics?.na || 'n/a')}</span>
+                        <span className={`text-sm md:text-base font-semibold ${c.text}`}>{selected.fineRisk ? (riskLabels[selected.fineRisk] || selected.fineRisk.replace(/_/g,' ')) : (labels.metrics?.na || 'n/a')}</span>
                       </div>
                     )})()}
                     <div className={`rounded-lg border px-3 py-2 bg-white`}>
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500">{labels.metrics?.marketDensity || 'Market density'}</div>
-                      <div className={`text-base md:text-lg font-semibold ${getDensityTextClass(selected.marketDensity)}`}>{selected.marketDensity !== null ? `${selected.marketDensity}` : (labels.metrics?.na || 'n/a')}</div>
+                      <div className={`text-base md:text-lg font-semibold ${getDensityTextClass(selected.marketDensity)}`}>{selected.marketDensity !== null ? new Intl.NumberFormat((locale || ((typeof document !== 'undefined' && (document as any).documentElement?.lang) || (typeof navigator !== 'undefined' ? navigator.language : 'en-US'))), { maximumFractionDigits: 1 }).format(selected.marketDensity as number) : (labels.metrics?.na || 'n/a')}</div>
                     </div>
                     <div className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                       <div className="text-[11px] md:text-xs uppercase tracking-wider text-gray-500 mb-1">{labels.metrics?.violationsPattern || 'Violations pattern'}</div>
                       {selected.violationsPattern && selected.violationsPattern.length > 0 ? (
                         <ul className="text-sm md:text-base text-gray-800 list-disc list-inside space-y-0.5 text-left">
-                          {selected.violationsPattern.map((v, i) => (
-                            <li key={i}>{v}</li>
-                          ))}
+                          {selected.violationsPattern.map((v, i) => {
+                            const key = normalizePattern(v || '')
+                            const translated = normalizedPatternTranslations[key] || patternTranslations[v] || v
+                            return (<li key={i}>{translated}</li>)
+                          })}
                         </ul>
                       ) : (
                         <div className="text-sm md:text-base text-gray-500">{labels.metrics?.na || 'n/a'}</div>

@@ -91,7 +91,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <EnhancedTestimonials content={content.testimonials} />
         
         {/* EU Compliance Map */}
-        <EuComplianceMap title={content.map?.title} subtitle={content.map?.subtitle} countries={countriesFromJson as any} />
+        <EuComplianceMap title={content.map?.title} subtitle={content.map?.subtitle} countries={countriesFromJson as any} locale={locale as any} />
 
         {/* GDPR Charts */}
         <EuGdprCharts />

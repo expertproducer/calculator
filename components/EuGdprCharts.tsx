@@ -339,7 +339,7 @@ export default function EuGdprCharts({ locale }: { locale?: 'en' | 'de' | 'fr' |
               </motion.div>
               
               <div className="grid grid-cols-1 gap-3">
-                {marketLeaderboard.list.slice(0, 20).map((row, index) => (
+                {marketLeaderboard.list.map((row, index) => (
                   <motion.div 
                     key={row.code} 
                     initial={{ opacity: 0, x: -20 }}
@@ -390,40 +390,28 @@ export default function EuGdprCharts({ locale }: { locale?: 'en' | 'de' | 'fr' |
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <motion.h3 
-                  className="text-xl font-semibold mb-6 text-gray-800"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  {labels.adoptionTitle}
-                </motion.h3>
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <motion.h3 
+                    className="text-xl font-semibold text-gray-800"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    {labels.adoptionTitle}
+                  </motion.h3>
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.35 }}
+                    className="inline-flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-medium shadow-sm"
+                  >
+                    <span>{labels.average}</span>
+                    <span>{Math.round(adoptionOrdered.euAvg)}%</span>
+                  </motion.div>
+                </div>
                 
                 <div className="relative">
-                  {/* Средняя линия по ЕС */}
-                  <motion.div 
-                    className="absolute left-0 right-0 flex items-center justify-between px-16" 
-                    style={{ top: 30 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <div className="h-0.5 w-full bg-gray-200 relative">
-                      <motion.div 
-                        className="absolute inset-y-0" 
-                        style={{ left: `${(adoptionOrdered.euAvg / 85) * 100}%` }}
-                        initial={{ height: 0 }}
-                        animate={{ height: '100%' }}
-                        transition={{ delay: 0.6, duration: 0.5 }}
-                      >
-                        <div className="w-0.5 h-full bg-red-500 shadow-sm" />
-                        <div className="absolute -top-6 transform -translate-x-1/2 bg-red-500 text-white px-2 py-0.5 rounded text-xs font-medium">
-                          {labels.average}: {Math.round(adoptionOrdered.euAvg)}%
-                        </div>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                  
+                  {/* Убрали серую горизонтальную линию поверх полос */}
                   <div className="grid grid-cols-1 gap-3 mt-12">
                     {adoptionOrdered.list.map((row, index) => (
                       <motion.div 

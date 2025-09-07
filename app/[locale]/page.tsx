@@ -55,7 +55,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           whyImportant: content.whyImportant,
           benefits: content.benefits,
           platforms: content.platforms,
-          cases: content.cases
+          cases: content.cases,
+          deliverables: content.deliverables
         }} locale={locale} />
 
         {/* Second block with links to real fines and cases */}
@@ -74,7 +75,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 subtitle: content.calculator?.subtitle,
                 total: content.calculator?.results?.total,
                 contact: content.calculator?.results?.contact
-              }} />
+              }} locale={locale} />
               <CompactGDPRChecklist content={{
                 title: content.checklist?.title,
                 subtitle: content.checklist?.subtitle,

@@ -23,6 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     fr: {
       title: 'FAQ - Questions sur la conformité RGPD & l\'implémentation CMP | C&C CookieComply',
       description: 'Obtenez des réponses aux questions courantes sur la conformité RGPD, l\'implémentation CMP, les outils de consentement aux cookies et les exigences de protection des données. Conseils d\'experts pour vos besoins de conformité.'
+    },
+    es: {
+      title: 'FAQ - Preguntas sobre Cumplimiento RGPD e Implementación CMP | C&C CookieComply',
+      description: 'Obtenga respuestas a preguntas comunes sobre cumplimiento RGPD, implementación CMP, herramientas de consentimiento de cookies y requisitos de protección de datos. Guía experta para sus necesidades de cumplimiento.'
     }
   }
   
@@ -38,6 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'en': 'https://www.cashandclash.com/en/faq/',
         'de': 'https://www.cashandclash.com/de/faq/',
         'fr': 'https://www.cashandclash.com/fr/faq/',
+        'es': 'https://www.cashandclash.com/es/faq/',
         'x-default': 'https://www.cashandclash.com/en/faq/'
       }
     },
@@ -47,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: canonicalUrl,
       type: 'website',
       locale: locale,
-      alternateLocale: ['en', 'de', 'fr'].filter(l => l !== locale)
+      alternateLocale: ['en', 'de', 'fr', 'es'].filter(l => l !== locale)
     },
     twitter: {
       card: 'summary_large_image',

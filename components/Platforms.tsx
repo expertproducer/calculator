@@ -70,7 +70,7 @@ export default function Platforms({ content }: PlatformsProps) {
         <div className="text-center mt-16">
           <div className="bg-white rounded-2xl border border-gray-100 p-8 max-w-3xl mx-auto shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
             <p className="text-xl font-medium text-gray-600 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              {content.note || '¿No ve su CMP preferido? Podemos trabajar con cualquier plataforma de gestión de cookies para asegurar que se cumplan sus necesidades de cumplimiento.'}
+              {content.note || 'We can work with any consent management platform to meet your compliance needs.'}
             </p>
           </div>
         </div>

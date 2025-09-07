@@ -81,7 +81,13 @@
       { "name": "Business", "description": "Multi-domaines/locales, événements personnalisés, rapports white-label" }
     ],
     "note": "Prix et SLA exacts après diagnostic express",
-    "ctaText": "Démarrer Votre Implémentation"
+    "ctaText": "Démarrer Votre Implémentation",
+    "ui": {
+      "readyTitle": "Prêt à commencer ?",
+      "readySubtitle": "Rejoignez **des centaines d'entreprises** qui font confiance à nos services",
+      "statsBusinesses": "Entreprises accompagnées",
+      "statsSupport": "Taux de réussite"
+    }
   },
   "process": {
     "title": "Processus d'implémentation: De l'audit à la validation",
@@ -97,6 +103,12 @@
     "compliantTitle": "Conforme",
     "compliantDesc": "Assure la conformité complète RGPD et lois de confidentialité",
     "ctaText": "Démarrer Votre Implémentation",
+    "ui": {
+      "readyTitle": "Prêt à commencer ?",
+      "readySubtitle": "Rejoignez des centaines d'entreprises qui font confiance à notre processus éprouvé",
+      "statsBusinesses": "Entreprises accompagnées",
+      "statsSupport": "Taux de réussite"
+    },
     "stepsTitle": "Étapes d'Implémentation",
     "leadText": "Nous commençons par l'analyse des exigences légales, puis déploiement par phases avec validation, blocage du consentement, déclencheurs GTM par catégorie et documentation.",
     "steps": [
@@ -250,7 +262,16 @@
       { "name": "Pro", "features": ["Configuration CMP", "Intégration GTM", "Rapport de scan", "Pages de politique"] },
       { "name": "Business", "features": ["Multi-domaines", "Migration", "Événements personnalisés", "Rapport white-label"] }
     ],
-    "note": "Prix et délais sur demande (stack, trafic, régions)."
+    "note": "Prix et délais sur demande (stack, trafic, régions).",
+    "ui": {
+      "getStarted": "Commencer",
+      "customSolutionTitle": "Besoin d'une solution sur mesure ?",
+      "statsCustomLeft": "Sur mesure",
+      "statsCustomRight": "Tarification",
+      "statsTransparentLeft": "100%",
+      "statsTransparentRight": "Transparent",
+      "getCustomQuote": "Obtenir un devis personnalisé"
+    }
   },
   "faq": {
     "title": "Questions fréquemment posées",
@@ -268,7 +289,31 @@
     "knowledgeTitle": "Connaissance",
     "knowledgeDescription": "Prendre des décisions CMP informées.",
     "cantFindAnswer": "Vous ne trouvez pas votre réponse?",
-    "teamReadyToHelp": "Notre équipe est prête à aider avec vos besoins RGPD."
+    "teamReadyToHelp": "Notre équipe est prête à aider avec vos besoins RGPD.",
+    "ui": {
+      "tagline": "Obtenez des réponses aux questions les plus courantes sur la conformité RGPD et l'implémentation CMP",
+      "commonTitle": "Questions courantes",
+      "commonDescription": "Trouvez des réponses aux questions les plus fréquentes sur la conformité RGPD",
+      "toggleExpand": "développer",
+      "toggleHide": "masquer",
+      "detailedAnswer": "Réponse détaillée",
+      "proTip": "Astuce :",
+      "proTipLong": "Ces informations sont basées sur les réglementations RGPD actuelles et les meilleures pratiques. Pour des détails spécifiques d'implémentation, envisagez de consulter nos experts.",
+      "stillQuestionsTitle": "Vous avez encore des questions ?",
+      "stillQuestionsDescription": "Nos experts RGPD peuvent vous aider pour toute question spécifique liée à votre implémentation.",
+      "contactExpertsCta": "Contacter nos experts",
+      "statsBusinesses": "Entreprises aidées",
+      "statsSupport": "Support expert",
+      "category": {
+        "compliance": "Conformité",
+        "technical": "Technique",
+        "timeline": "Planning",
+        "customization": "Personnalisation",
+        "integration": "Intégration",
+        "legal": "Légal",
+        "general": "Général"
+      }
+    }
   },
   "contact": {
     "title": "Contactez-nous",
@@ -343,10 +388,10 @@
     "title": "Calculateur de coût de service",
     "subtitle": "Sélectionnez les services dont vous avez besoin et obtenez une estimation instantanée du prix",
     "services": {
-      "audit": { "title": "Services d'audit", "items": [] },
-      "consulting": { "title": "Services de conseil", "items": [] },
-      "implementation": { "title": "Services d'implémentation", "items": [] },
-      "ongoing": { "title": "Services continus", "items": [] }
+      "audit": { "title": "Services d'audit", "items": ["Audit GDPR/Cookies"] },
+      "consulting": { "title": "Services de conseil", "items": ["Recommandations de correction", "Sélection du CMP", "Formation du personnel", "Consultation juridique"] },
+      "implementation": { "title": "Services d'implémentation", "items": ["Installation du CMP", "Configuration du Consent Mode", "Création des politiques"] },
+      "ongoing": { "title": "Services continus", "items": ["Suivi mensuel"] }
     },
     "results": {
       "title": "Votre estimation",

@@ -25,6 +25,9 @@ interface PricingProps {
       features: string[]
     }>
     note: string
+    ui?: {
+      getStarted?: string
+    }
   }
 }
 
@@ -145,7 +148,7 @@ export default function Pricing({ content }: PricingProps) {
                   </div>
                   
                   <button className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105">
-                    Get Started
+                    {content.ui?.getStarted || 'Get Started'}
                   </button>
                 </div>
               )
@@ -157,7 +160,7 @@ export default function Pricing({ content }: PricingProps) {
         <div className="text-center bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 max-w-4xl mx-auto transform hover:scale-105 transition-all duration-300">
           <div className="mb-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              Need a Custom Solution?
+              {content.ui?.customSolutionTitle || 'Need a Custom Solution?'}
             </h3>
             <p className="text-lg font-medium text-gray-600 mb-8 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
               {content.note}
@@ -167,19 +170,19 @@ export default function Pricing({ content }: PricingProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <div className="flex items-center gap-2 text-gray-600">
               <Calculator className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
-              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">Custom</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Pricing</span>
+              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ui?.statsCustomLeft || 'Custom'}</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsCustomRight || 'Pricing'}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Shield className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
-              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">100%</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Transparent</span>
+              <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ui?.statsTransparentLeft || '100%'}</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsTransparentRight || 'Transparent'}</span>
             </div>
           </div>
           
           <div className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg transform hover:scale-105">
             <Info className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">Get Custom Quote</span>
+            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ui?.getCustomQuote || 'Get Custom Quote'}</span>
             <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
           </div>
         </div>

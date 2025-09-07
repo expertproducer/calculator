@@ -9,7 +9,8 @@ export default async function TestLocalePage({ params }: { params: Promise<{ loc
       <div style={{ marginTop: '20px' }}>
         <a href="/en/" style={{ marginRight: '10px' }}>English</a>
         <a href="/de/" style={{ marginRight: '10px' }}>Deutsch</a>
-        <a href="/fr/">Français</a>
+        <a href="/fr/" style={{ marginRight: '10px' }}>Français</a>
+        <a href="/es/">Español</a>
       </div>
     </div>
   )

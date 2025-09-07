@@ -54,6 +54,17 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
       manageCookieSettings: "Gérer les paramètres de cookies",
       manageCookieDescription: "Personnalisez vos préférences de cookies pour contrôler quelles informations sont collectées et comment elles sont utilisées.",
       cookieSettings: "Paramètres de cookies"
+    },
+    es: {
+      title: "Política de Cookies",
+      content: [
+        "Utilizamos cookies y tecnologías similares para mejorar su experiencia de navegación, analizar el tráfico del sitio y comprender de dónde provienen nuestros visitantes.",
+        "Al continuar usando nuestro sitio web, usted consiente el uso de cookies de acuerdo con esta política.",
+        "Puede gestionar sus preferencias de cookies en cualquier momento utilizando la configuración a continuación."
+      ],
+      manageCookieSettings: "Administrar configuración de cookies",
+      manageCookieDescription: "Personalice sus preferencias de cookies para controlar qué información se recopila y cómo se utiliza.",
+      cookieSettings: "Ajustes de cookies"
     }
   }
   

@@ -71,6 +71,16 @@ interface UnifiedHeroSectionProps {
       }>
       cta?: string
     }
+    deliverables?: {
+      title: string
+      subtitle?: string
+      items: (string | { title: string; description?: string })[]
+    }
+    riskPanel?: {
+      title: string
+      subtitle: string
+      items: Array<{ title: string; description: string }>
+    }
   }
   locale?: string
 }
@@ -201,8 +211,8 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               {content.benefits && (
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Why Choose Us</h3>
-                    <p className="text-base text-gray-600 leading-relaxed">Clear advantages for your business</p>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.benefits.title}</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">{content.benefits.subtitle}</p>
                   </div>
                   
                   <div className="space-y-3">
@@ -234,13 +244,14 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               {content.platforms && (
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Platforms</h3>
-                    <p className="text-base text-gray-600 leading-relaxed">Leading CMPs and stacks</p>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.platforms.title}</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">{content.platforms.subtitle}</p>
                   </div>
                   
                   <div className="space-y-3">
                     {content.platforms.items.slice(0, 5).map((platform, index) => {
                       const platformName = typeof platform === 'string' ? platform : platform.name
+                      const platformDescription = typeof platform === 'object' && 'description' in platform ? platform.description : undefined
                       const colors = [
                         'bg-blue-500',
                         'bg-green-500',
@@ -250,20 +261,14 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
                       ]
                       const color = colors[index % colors.length]
                       
-                      const subtitles = [
-                        'AI-powered consent management',
-                        'Legal compliance automation',
-                        'Enterprise-grade solution',
-                        'Simple setup & management',
-                        'Comprehensive privacy suite'
-                      ]
-                      
                       return (
                         <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                           <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
                           <div className="flex-1">
                             <div className="font-semibold text-sm text-gray-900">{platformName}</div>
-                            <div className="text-xs text-gray-600">{subtitles[index]}</div>
+                            {platformDescription && (
+                              <div className="text-xs text-gray-600">{platformDescription}</div>
+                            )}
                           </div>
                         </div>
                       )
@@ -276,8 +281,10 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               {content.cases && (
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Case Studies</h3>
-                    <p className="text-base text-gray-600 leading-relaxed">Selected projects and outcomes</p>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.cases.title}</h3>
+                    {content.cases.subtitle && (
+                      <p className="text-base text-gray-600 leading-relaxed">{content.cases.subtitle}</p>
+                    )}
                   </div>
                   
                   <div className="space-y-3">
@@ -296,7 +303,9 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
                           <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
                           <div className="flex-1">
                             <div className="font-semibold text-sm text-gray-900">{caseItem.title}</div>
-                            <div className="text-xs text-gray-600">{caseItem.result}</div>
+                            {caseItem.result && (
+                              <div className="text-xs text-gray-600">{caseItem.result}</div>
+                            )}
                           </div>
                         </div>
                       )
@@ -306,104 +315,60 @@ export default function UnifiedHeroSection({ content, locale = 'en' }: UnifiedHe
               )}
 
               {/* What You Get */}
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">What You Get</h3>
-                  <p className="text-base text-gray-600 leading-relaxed">Complete compliance solution</p>
-                </div>
-                
-                                                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Express audit</div>
-                      <div className="text-xs text-gray-600">Quick compliance assessment</div>
-                    </div>
+              {content.deliverables && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.deliverables.title}</h3>
+                    {content.deliverables.subtitle && (
+                      <p className="text-base text-gray-600 leading-relaxed">{content.deliverables.subtitle}</p>
+                    )}
                   </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">CMP recommendation</div>
-                      <div className="text-xs text-gray-600">Best platform for your needs</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Implementation plan</div>
-                      <div className="text-xs text-gray-600">Step-by-step deployment</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Next steps</div>
-                      <div className="text-xs text-gray-600">Clear action plan</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Ongoing support</div>
-                      <div className="text-xs text-gray-600">Continuous assistance</div>
-                    </div>
+                  <div className="space-y-3">
+                    {content.deliverables.items.slice(0, 5).map((item, index) => {
+                      const itemTitle = typeof item === 'string' ? item : item.title
+                      const itemDesc = typeof item === 'object' && 'description' in item ? item.description : undefined
+                      const colors = ['bg-blue-500','bg-green-500','bg-purple-500','bg-orange-500','bg-red-500']
+                      const color = colors[index % colors.length]
+                      return (
+                        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{itemTitle}</div>
+                            {itemDesc && (
+                              <div className="text-xs text-gray-600">{itemDesc}</div>
+                            )}
+                          </div>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Don't Risk Fines */}
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">Don't Risk Fines</h3>
-                  <p className="text-base text-gray-600 leading-relaxed">Clean and compliant consent</p>
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">GDPR fines up to €20M</div>
-                      <div className="text-xs text-gray-600">4% of global revenue</div>
-                    </div>
+              {/* Risk Panel */}
+              {content.riskPanel && (
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 hover:shadow-3xl transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 leading-tight">{content.riskPanel.title}</h3>
+                    <p className="text-base text-gray-600 leading-relaxed">{content.riskPanel.subtitle}</p>
                   </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">CCPA penalties $7,500</div>
-                      <div className="text-xs text-gray-600">Per intentional violation</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-700 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Reputation damage</div>
-                      <div className="text-xs text-gray-600">Loss of customer trust</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-800 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Legal investigations</div>
-                      <div className="text-xs text-gray-600">Regulatory scrutiny</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-red-900 rounded-full flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm text-gray-900">Business disruption</div>
-                      <div className="text-xs text-gray-600">Forced compliance changes</div>
-                    </div>
+                  <div className="space-y-3">
+                    {content.riskPanel.items.slice(0, 5).map((item, idx) => {
+                      const colors = ['bg-red-500','bg-red-600','bg-red-700','bg-red-800','bg-red-900']
+                      const color = colors[idx % colors.length]
+                      return (
+                        <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className={`w-2 h-2 ${color} rounded-full flex-shrink-0`}></div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm text-gray-900">{item.title}</div>
+                            <div className="text-xs text-gray-600">{item.description}</div>
+                          </div>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
-              </div>
+              )}
               
             </div>
         </Container>

@@ -21,6 +21,30 @@ interface FAQProps {
     knowledgeDescription?: string
     cantFindAnswer?: string
     teamReadyToHelp?: string
+    ui?: {
+      tagline?: string
+      commonTitle?: string
+      commonDescription?: string
+      toggleExpand?: string
+      toggleHide?: string
+      detailedAnswer?: string
+      proTip?: string
+      proTipLong?: string
+      stillQuestionsTitle?: string
+      stillQuestionsDescription?: string
+      contactExpertsCta?: string
+      statsBusinesses?: string
+      statsSupport?: string
+      category?: {
+        compliance?: string
+        technical?: string
+        timeline?: string
+        customization?: string
+        integration?: string
+        legal?: string
+        general?: string
+      }
+    }
   }
 }
 
@@ -42,7 +66,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'green', 
         bg: 'bg-green-100/80 dark:bg-green-900/30', 
         textColor: 'text-green-600 dark:text-green-400',
-        label: 'Compliance'
+        label: content.ui?.category?.compliance || 'Compliance'
       }
     } 
     // Technical - implementation, setup, integration, deployment, data loss
@@ -52,7 +76,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'blue', 
         bg: 'bg-blue-100/80 dark:bg-blue-900/30', 
         textColor: 'text-blue-600 dark:text-blue-400',
-        label: 'Technical'
+        label: content.ui?.category?.technical || 'Technical'
       }
     } 
     // Timeline - time, duration, how long, timeline
@@ -62,7 +86,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'orange', 
         bg: 'bg-orange-100/80 dark:bg-orange-900/30', 
         textColor: 'text-orange-600 dark:text-orange-400',
-        label: 'Timeline'
+        label: content.ui?.category?.timeline || 'Timeline'
       }
     } 
     // Customization - customize, appearance, design, look, banner
@@ -72,7 +96,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'purple', 
         bg: 'bg-purple-100/80 dark:bg-purple-900/30', 
         textColor: 'text-purple-600 dark:text-purple-400',
-        label: 'Customization'
+        label: content.ui?.category?.customization || 'Customization'
       }
     } 
     // Integration - analytics, google, tracking, gtm, consent mode, advanced, basic
@@ -82,7 +106,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'yellow', 
         bg: 'bg-yellow-100/80 dark:bg-yellow-900/30', 
         textColor: 'text-yellow-600 dark:text-yellow-400',
-        label: 'Integration'
+        label: content.ui?.category?.integration || 'Integration'
       }
     } 
     // Legal - policy, legal, advice
@@ -92,7 +116,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'indigo', 
         bg: 'bg-indigo-100/80 dark:bg-indigo-900/30', 
         textColor: 'text-indigo-600 dark:text-indigo-400',
-        label: 'Legal'
+        label: content.ui?.category?.legal || 'Legal'
       }
     } 
     // General - other questions
@@ -102,7 +126,7 @@ export default function FAQ({ content }: FAQProps) {
         color: 'gray', 
         bg: 'bg-gray-100/80 dark:bg-gray-700/30', 
         textColor: 'text-gray-600 dark:text-gray-400',
-        label: 'General'
+        label: content.ui?.category?.general || 'General'
       }
     }
   }
@@ -119,7 +143,7 @@ export default function FAQ({ content }: FAQProps) {
           </h1>
           
           <p className="text-2xl md:text-3xl font-semibold text-gray-700 max-w-4xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-            Get answers to the most common questions about GDPR compliance and CMP implementation
+            {content.ui?.tagline || 'Get answers to the most common questions about GDPR compliance and CMP implementation'}
           </p>
         </div>
 
@@ -196,10 +220,10 @@ export default function FAQ({ content }: FAQProps) {
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight drop-shadow-xl [text-shadow:_2px_2px_3px_rgb(0_0_0_/_25%)]">
-              Common Questions
+              {content.ui?.commonTitle || 'Common Questions'}
             </h2>
             <p className="text-xl font-medium text-gray-600 max-w-3xl mx-auto leading-relaxed drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              Find answers to the most frequently asked questions about GDPR compliance
+              {content.ui?.commonDescription || 'Find answers to the most frequently asked questions about GDPR compliance'}
             </p>
           </div>
           
@@ -235,7 +259,7 @@ export default function FAQ({ content }: FAQProps) {
                           {category.label}
                         </span>
                         <span className="text-sm text-gray-500 font-medium">
-                          Click to {openIndex === index ? 'hide' : 'expand'}
+                          {openIndex === index ? (content.ui?.toggleHide || 'hide') : (content.ui?.toggleExpand || 'expand')}
                         </span>
                       </div>
                     </div>
@@ -264,7 +288,7 @@ export default function FAQ({ content }: FAQProps) {
                       </div>
                       <div className="flex-1">
                         <h4 className="text-xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-                          Detailed Answer
+                          {content.ui?.detailedAnswer || 'Detailed Answer'}
                         </h4>
                         <div className="text-lg font-medium text-gray-700 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)] mb-6">
                           {item.answer}
@@ -276,7 +300,7 @@ export default function FAQ({ content }: FAQProps) {
                             </div>
                             <div>
                               <p className="text-base font-medium text-gray-700 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-                                <strong>Pro Tip:</strong> This information is based on current GDPR regulations and best practices. For specific implementation details, consider consulting with our compliance experts.
+                                <strong>{content.ui?.proTip || 'Pro Tip:'}</strong> {content.ui?.proTipLong || 'This information is based on current GDPR regulations and best practices. For specific implementation details, consider consulting with our compliance experts.'}
                               </p>
                             </div>
                           </div>
@@ -295,10 +319,10 @@ export default function FAQ({ content }: FAQProps) {
         <div className="text-center bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 max-w-4xl mx-auto transform hover:scale-105 transition-all duration-300">
           <div className="mb-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              Still Have Questions?
+              {content.ui?.stillQuestionsTitle || 'Still Have Questions?'}
             </h3>
             <p className="text-lg font-medium text-gray-600 mb-8 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              Our GDPR compliance experts are here to help you with any specific questions about your implementation.
+              {content.ui?.stillQuestionsDescription || 'Our GDPR compliance experts are here to help you with any specific questions about your implementation.'}
             </p>
           </div>
           
@@ -306,18 +330,18 @@ export default function FAQ({ content }: FAQProps) {
             <div className="flex items-center gap-2 text-gray-600">
               <Users className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
               <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">500+</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Businesses Helped</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsBusinesses || 'Businesses Helped'}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Target className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
               <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">24/7</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Expert Support</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsSupport || 'Expert Support'}</span>
             </div>
           </div>
           
           <div className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg transform hover:scale-105">
             <HelpCircle className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
-            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">Contact Our Experts</span>
+            <span className="drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">{content.ui?.contactExpertsCta || 'Contact Our Experts'}</span>
             <ArrowRight className="w-6 h-6 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]" />
           </div>
         </div>

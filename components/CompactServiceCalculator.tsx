@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { getContent } from '@/lib/i18n'
 import { Calculator, CheckCircle, Euro, ArrowRight } from 'lucide-react'
 
 interface Service {
@@ -19,11 +20,13 @@ interface CompactCalculatorContent {
 
 interface CompactServiceCalculatorProps {
   content: CompactCalculatorContent
+  locale?: string
 }
 
-export default function CompactServiceCalculator({ content }: CompactServiceCalculatorProps) {
+export default function CompactServiceCalculator({ content, locale = 'en' }: CompactServiceCalculatorProps) {
   const [selectedServices, setSelectedServices] = useState<Set<string>>(new Set())
   const [total, setTotal] = useState(0)
+  const [labelsById, setLabelsById] = useState<Record<string, string>>({})
 
   const allServices: Service[] = [
     { id: 'gdpr-audit', name: 'GDPR/Cookie Audit', price: 100, category: 'audit' },
@@ -36,6 +39,31 @@ export default function CompactServiceCalculator({ content }: CompactServiceCalc
     { id: 'consent-mode', name: 'Consent Mode Setup', price: 200, category: 'implementation' },
     { id: 'policy-creation', name: 'Policy Creation', price: 100, category: 'implementation' }
   ]
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const c = await getContent(locale as any)
+        const s = c?.calculator?.services || {}
+        const audit: string[] = s.audit?.items || []
+        const consulting: string[] = s.consulting?.items || []
+        const implementation: string[] = s.implementation?.items || []
+        const ongoing: string[] = s.ongoing?.items || []
+        const map: Record<string, string> = {}
+        // Map by category index order
+        if (audit[0]) map['gdpr-audit'] = audit[0]
+        if (ongoing[0]) map['monthly-monitoring'] = ongoing[0]
+        if (consulting[0]) map['fix-recommendations'] = consulting[0]
+        if (consulting[1]) map['cmp-selection'] = consulting[1]
+        if (consulting[2]) map['staff-training'] = consulting[2]
+        if (consulting[3]) map['legal-consultation'] = consulting[3]
+        if (implementation[0]) map['cmp-installation'] = implementation[0]
+        if (implementation[1]) map['consent-mode'] = implementation[1]
+        if (implementation[2]) map['policy-creation'] = implementation[2]
+        setLabelsById(map)
+      } catch {}
+    })()
+  }, [locale])
 
   const toggleService = (serviceId: string) => {
     const newSelected = new Set(selectedServices)
@@ -95,7 +123,7 @@ export default function CompactServiceCalculator({ content }: CompactServiceCalc
                   )}
                   <div className={`w-2 h-2 rounded-full ${getCategoryColor(service.category)}`}></div>
                 </div>
-                <span className="text-sm font-medium text-gray-900">{service.name}</span>
+                <span className="text-sm font-medium text-gray-900">{labelsById[service.id] || service.name}</span>
               </div>
               <div className="text-sm font-bold text-gray-900">€{service.price}</div>
             </div>

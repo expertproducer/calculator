@@ -52,6 +52,17 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
       manageCookieSettings: "Gérer les paramètres de confidentialité",
       manageCookieDescription: "Contrôlez comment vos informations personnelles sont collectées et utilisées dans nos services.",
       cookieSettings: "Paramètres de confidentialité"
+    },
+    es: {
+      title: "Política de Privacidad",
+      content: [
+        "Nos comprometemos a proteger su privacidad y garantizar la seguridad de su información personal.",
+        "Esta política de privacidad explica cómo recopilamos, usamos y protegemos sus datos en cumplimiento con las regulaciones del RGPD.",
+        "Solo recopilamos la información necesaria para prestar nuestros servicios y mejorar su experiencia."
+      ],
+      manageCookieSettings: "Gestionar configuración de privacidad",
+      manageCookieDescription: "Controle cómo se recopila y utiliza su información personal en nuestros servicios.",
+      cookieSettings: "Ajustes de privacidad"
     }
   }
   

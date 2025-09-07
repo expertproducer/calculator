@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getContent } from '@/lib/i18n'
 import { CheckCircle, Circle, Target, TrendingUp } from 'lucide-react'
 
 interface CompactChecklistItem {
@@ -39,6 +40,26 @@ export default function CompactGDPRChecklist({ content, locale }: CompactGDPRChe
     { id: 'staff-training', title: 'Staff GDPR Training', priority: 'medium' },
     { id: 'regular-audits', title: 'Regular Compliance Audits', priority: 'low' }
   ]
+
+  const [labels, setLabels] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const c = await getContent(locale as any)
+        const l = c?.checklist?.categories || {}
+        const map: Record<string, string> = {}
+        const legal = l.legal?.items || []
+        const technical = l.technical?.items || []
+        const organizational = l.organizational?.items || []
+        // Map by ids used above
+        legal.forEach((it: any) => { map[it.id] = it.title })
+        technical.forEach((it: any) => { map[it.id] = it.title })
+        organizational.forEach((it: any) => { map[it.id] = it.title })
+        setLabels(map)
+      } catch {}
+    })()
+  }, [locale])
 
   const toggleItem = (itemId: string) => {
     const newChecked = new Set(checkedItems)
@@ -134,7 +155,7 @@ export default function CompactGDPRChecklist({ content, locale }: CompactGDPRChe
                   <span className={`text-sm font-medium ${
                     checkedItems.has(item.id) ? 'text-green-900' : 'text-gray-900'
                   }`}>
-                    {item.title}
+                    {labels[item.id] || item.title}
                   </span>
                   <div className={`w-2 h-2 rounded-full ${getPriorityColor(item.priority)}`}></div>
                 </div>

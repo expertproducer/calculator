@@ -78,7 +78,13 @@
       { "name": "Business", "description": "Multi-domain/locales, custom events, white-label reports" }
     ],
     "note": "Exact pricing and SLA after express diagnostics",
-    "ctaText": "Start Your Implementation"
+    "ctaText": "Start Your Implementation",
+    "ui": {
+      "readyTitle": "Ready to Get Started?",
+      "readySubtitle": "Join **hundreds of businesses** that trust our services",
+      "statsBusinesses": "Businesses Served",
+      "statsSupport": "Success Rate"
+    }
   },
   "process": {
     "title": "Implementation Process: From Audit to Validation",
@@ -94,6 +100,12 @@
     "compliantTitle": "Compliant",
     "compliantDesc": "Ensures full GDPR and privacy law compliance",
     "ctaText": "Start Your Implementation",
+    "ui": {
+      "readyTitle": "Ready to Get Started?",
+      "readySubtitle": "Join hundreds of businesses that trust our proven process",
+      "statsBusinesses": "Businesses Served",
+      "statsSupport": "Success Rate"
+    },
     "stepsTitle": "Implementation Steps",
     "leadText": "We start with legal requirements analysis, then phased deployment with validation, consent blocking, GTM triggers per category, and documentation.",
     "steps": [
@@ -237,7 +249,16 @@
       { "name": "Pro", "features": ["CMP setup", "GTM integration", "Scan report", "Policy pages"] },
       { "name": "Business", "features": ["Multi-domain", "Migration", "Custom events", "White-label report"] }
     ],
-    "note": "Pricing & timelines on request (stack, traffic, regions)."
+    "note": "Pricing & timelines on request (stack, traffic, regions).",
+    "ui": {
+      "getStarted": "Get Started",
+      "customSolutionTitle": "Need a Custom Solution?",
+      "statsCustomLeft": "Custom",
+      "statsCustomRight": "Pricing",
+      "statsTransparentLeft": "100%",
+      "statsTransparentRight": "Transparent",
+      "getCustomQuote": "Get Custom Quote"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -255,7 +276,31 @@
     "knowledgeTitle": "Knowledge",
     "knowledgeDescription": "Make informed CMP decisions.",
     "cantFindAnswer": "Can't find your answer?",
-    "teamReadyToHelp": "Our team is ready to help with your GDPR needs."
+    "teamReadyToHelp": "Our team is ready to help with your GDPR needs.",
+    "ui": {
+      "tagline": "Get answers to the most common questions about GDPR compliance and CMP implementation",
+      "commonTitle": "Common Questions",
+      "commonDescription": "Find answers to the most frequently asked questions about GDPR compliance",
+      "toggleExpand": "expand",
+      "toggleHide": "hide",
+      "detailedAnswer": "Detailed Answer",
+      "proTip": "Pro Tip:",
+      "proTipLong": "This information is based on current GDPR regulations and best practices. For specific implementation details, consider consulting with our compliance experts.",
+      "stillQuestionsTitle": "Still Have Questions?",
+      "stillQuestionsDescription": "Our GDPR compliance experts are here to help you with any specific questions about your implementation.",
+      "contactExpertsCta": "Contact Our Experts",
+      "statsBusinesses": "Businesses Helped",
+      "statsSupport": "Expert Support",
+      "category": {
+        "compliance": "Compliance",
+        "technical": "Technical",
+        "timeline": "Timeline",
+        "customization": "Customization",
+        "integration": "Integration",
+        "legal": "Legal",
+        "general": "General"
+      }
+    }
   },
   "contact": {
     "title": "Contact Us",
@@ -330,22 +375,10 @@
     "title": "Service Cost Calculator",
     "subtitle": "Select the services you need and get an instant price estimate",
     "services": {
-      "audit": {
-        "title": "Audit Services",
-        "items": []
-      },
-      "consulting": {
-        "title": "Consulting Services", 
-        "items": []
-      },
-      "implementation": {
-        "title": "Implementation Services",
-        "items": []
-      },
-      "ongoing": {
-        "title": "Ongoing Services",
-        "items": []
-      }
+      "audit": { "title": "Audit Services", "items": ["GDPR/Cookie Audit"] },
+      "consulting": { "title": "Consulting Services", "items": ["Fix Recommendations", "CMP Selection", "Staff Training", "Legal Consultation"] },
+      "implementation": { "title": "Implementation Services", "items": ["CMP Installation", "Consent Mode Setup", "Policy Creation"] },
+      "ongoing": { "title": "Ongoing Services", "items": ["Monthly Monitoring"] }
     },
     "results": {
       "title": "Your Estimate",

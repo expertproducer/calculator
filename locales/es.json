@@ -81,7 +81,13 @@
       { "name": "Negocio", "description": "Multi-dominios/locales, eventos personalizados, informes white-label" }
     ],
     "note": "Precios y SLA exactos después del diagnóstico exprés",
-    "ctaText": "Iniciar Su Implementación"
+    "ctaText": "Iniciar Su Implementación",
+    "ui": {
+      "readyTitle": "¿Listo para comenzar?",
+      "readySubtitle": "Únase a **cientos de empresas** que confían en nuestros servicios",
+      "statsBusinesses": "Empresas atendidas",
+      "statsSupport": "Tasa de éxito"
+    }
   },
   "process": {
     "title": "Nuestro Proceso de Implementación",
@@ -97,6 +103,12 @@
     "compliantTitle": "Conforme",
     "compliantDesc": "Asegura cumplimiento completo de GDPR y leyes de privacidad",
     "ctaText": "Iniciar Su Implementación",
+    "ui": {
+      "readyTitle": "¿Listo para comenzar?",
+      "readySubtitle": "Únase a cientos de empresas que confían en nuestro proceso probado",
+      "statsBusinesses": "Empresas atendidas",
+      "statsSupport": "Tasa de éxito"
+    },
     "stepsTitle": "Pasos de Implementación",
     "leadText": "Comenzamos con análisis de requisitos legales, luego despliegue por fases con validación, bloqueo de consentimiento, disparadores GTM por categoría y documentación.",
     "steps": [
@@ -110,11 +122,11 @@
   "deliverables": {
     "title": "Qué Recibirá",
     "items": [
-      "CMP completamente configurado",
-      "Banner de cookies conforme",
-      "Centro de preferencias",
-      "Páginas de política",
-      "Guía de mantenimiento"
+      { "title": "CMP completamente configurado", "description": "Implementación técnica y ajustes listos para producción" },
+      { "title": "Banner de cookies conforme", "description": "Diseño con Aceptar/Rechazar/Preferencias y bloqueo previo al consentimiento" },
+      { "title": "Centro de preferencias", "description": "Categorías claras y controles granulares para el usuario" },
+      { "title": "Páginas de política", "description": "Textos de Privacidad y Cookies actualizados con requisitos RGPD" },
+      { "title": "Guía de mantenimiento", "description": "Recomendaciones para cambios futuros y soporte operativo" }
     ]
   },
   "benefits": {
@@ -136,10 +148,10 @@
     "title": "Plataformas",
     "subtitle": "Trabajamos con CMPs y stacks líderes",
     "items": [
-      "Cookiebot",
-      "Iubenda",
-      "Usercentrics",
-      "Termly",
+      { "name": "Cookiebot", "description": "Gestión de consentimiento con IA" },
+      { "name": "Iubenda", "description": "Automatización de cumplimiento legal" },
+      { "name": "Usercentrics", "description": "Solución de nivel empresarial" },
+      { "name": "Termly", "description": "Configuración y gestión sencilla" },
       { "name": "OneTrust", "description": "Gestión de consentimiento empresarial" },
       "Quantcast",
       "Sourcepoint",
@@ -251,7 +263,16 @@
       { "name": "Pro", "features": ["Configuración CMP", "Integración GTM", "Informe de escaneo", "Páginas de política"] },
       { "name": "Negocio", "features": ["Multi-dominios", "Migración", "Eventos personalizados", "Informe white-label"] }
     ],
-    "note": "Precios y plazos por solicitud (stack, tráfico, regiones)."
+    "note": "Precios y plazos por solicitud (stack, tráfico, regiones).",
+    "ui": {
+      "getStarted": "Comenzar",
+      "customSolutionTitle": "¿Necesita una solución a medida?",
+      "statsCustomLeft": "Personalizado",
+      "statsCustomRight": "Precio",
+      "statsTransparentLeft": "100%",
+      "statsTransparentRight": "Transparente",
+      "getCustomQuote": "Obtener presupuesto personalizado"
+    }
   },
   "faq": {
     "title": "Preguntas Frecuentes",
@@ -269,7 +290,31 @@
     "knowledgeTitle": "Conocimiento",
     "knowledgeDescription": "Tomar decisiones CMP informadas.",
     "cantFindAnswer": "¿No encuentra su respuesta?",
-    "teamReadyToHelp": "Nuestro equipo está listo para ayudar con sus necesidades de cumplimiento GDPR."
+    "teamReadyToHelp": "Nuestro equipo está listo para ayudar con sus necesidades de cumplimiento GDPR.",
+    "ui": {
+      "tagline": "Obtenga respuestas a las preguntas más comunes sobre cumplimiento RGPD e implementación CMP",
+      "commonTitle": "Preguntas comunes",
+      "commonDescription": "Encuentre respuestas a las preguntas más frecuentes sobre cumplimiento RGPD",
+      "toggleExpand": "expandir",
+      "toggleHide": "ocultar",
+      "detailedAnswer": "Respuesta detallada",
+      "proTip": "Consejo:",
+      "proTipLong": "Esta información se basa en las regulaciones RGPD actuales y mejores prácticas. Para detalles específicos de implementación, considere consultar a nuestros expertos.",
+      "stillQuestionsTitle": "¿Aún tiene preguntas?",
+      "stillQuestionsDescription": "Nuestros expertos en RGPD pueden ayudarle con cualquier duda específica sobre su implementación.",
+      "contactExpertsCta": "Contactar a nuestros expertos",
+      "statsBusinesses": "Empresas ayudadas",
+      "statsSupport": "Soporte experto",
+      "category": {
+        "compliance": "Cumplimiento",
+        "technical": "Técnico",
+        "timeline": "Plazos",
+        "customization": "Personalización",
+        "integration": "Integración",
+        "legal": "Legal",
+        "general": "General"
+      }
+    }
   },
   "contact": {
     "title": "Contáctenos",
@@ -344,10 +389,10 @@
     "title": "Calculadora de coste del servicio",
     "subtitle": "Seleccione los servicios que necesita y obtenga una estimación instantánea del precio",
     "services": {
-      "audit": { "title": "Servicios de auditoría", "items": [] },
-      "consulting": { "title": "Servicios de consultoría", "items": [] },
-      "implementation": { "title": "Servicios de implementación", "items": [] },
-      "ongoing": { "title": "Servicios continuos", "items": [] }
+      "audit": { "title": "Servicios de auditoría", "items": ["Auditoría GDPR/Cookies"] },
+      "consulting": { "title": "Servicios de consultoría", "items": ["Recomendaciones de corrección", "Selección de CMP", "Formación del personal", "Consultoría legal"] },
+      "implementation": { "title": "Servicios de implementación", "items": ["Instalación de CMP", "Configuración de Consent Mode", "Creación de políticas"] },
+      "ongoing": { "title": "Servicios continuos", "items": ["Monitoreo mensual"] }
     },
     "results": {
       "title": "Su estimación",

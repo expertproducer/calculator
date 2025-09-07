@@ -28,6 +28,12 @@ interface ServicesProps {
     packagesTitle?: string
     packagesSubtitle?: string
     ctaText?: string
+    ui?: {
+      readyTitle?: string
+      readySubtitle?: string
+      statsBusinesses?: string
+      statsSupport?: string
+    }
   }
 }
 
@@ -239,10 +245,10 @@ export default function Services({ content }: ServicesProps) {
         <div className="text-center bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 max-w-4xl mx-auto transform hover:scale-105 transition-all duration-300">
           <div className="mb-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-4 drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
-              Ready to Get Started?
+              {content.ui?.readyTitle || 'Ready to Get Started?'}
             </h3>
             <p className="text-lg font-medium text-gray-600 mb-8 leading-relaxed drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">
-              <span dangerouslySetInnerHTML={{ __html: formatSimpleText('Join **hundreds of businesses** that trust our services') }} />
+              <span dangerouslySetInnerHTML={{ __html: formatSimpleText(content.ui?.readySubtitle || 'Join **hundreds of businesses** that trust our services') }} />
             </p>
           </div>
           
@@ -250,12 +256,12 @@ export default function Services({ content }: ServicesProps) {
             <div className="flex items-center gap-2 text-gray-600">
               <Users className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
               <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">500+</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Businesses Served</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsBusinesses || 'Businesses Served'}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Target className="w-5 h-5 drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]" />
               <span className="font-semibold drop-shadow-lg [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">100%</span>
-              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">Success Rate</span>
+              <span className="drop-shadow-md [text-shadow:_1px_1px_1px_rgb(0_0_0_/_15%)]">{content.ui?.statsSupport || 'Success Rate'}</span>
             </div>
           </div>
           
